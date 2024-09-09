@@ -1,0 +1,31 @@
+﻿
+    <Window x:Class="lab_2._1_zadanie1_variant8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab_2._1_zadanie1_variant8"
+           xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <StackPanel Margin="10">
+            <TextBlock Text="Enter xstart:" />
+            <TextBox x:Name="XStartTextBox" />
+
+            <TextBlock Text="Enter xend:" Margin="0,10,0,0"/>
+            <TextBox x:Name="XEndTextBox" />
+
+            <TextBlock Text="Enter dx:" Margin="0,10,0,0"/>
+            <TextBox x:Name="DxTextBox" />
+
+            <Button Content="Calculate" Click="OnCalculateClick" Margin="0,10,0,0"/>
+
+            <TextBlock Text="TABL 1" Margin="0,20,0,0"/>
+            <TextBlock x:Name="OutputTextBlock" FontFamily="Courier New" />
+        </StackPanel>
+
+    </Grid>
+</Window>
+    

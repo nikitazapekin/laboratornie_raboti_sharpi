@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "b3ifcqJLmK0gPM9THrElNkrhc1RuiIEaUUIi6iXrzr1dl//QyilrI4EAgaMMe2avvCj2HCCZwzL55Sgi3Dv7vw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\wotbl\\source\\repos\\lab-2.1-zadanie1-variant8\\lab-2.1-zadanie1-variant8\\lab-2.1-zadanie1-variant8.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wotbl\\.nuget\\packages\\oxyplot.core\\2.2.0\\oxyplot.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\wotbl\\.nuget\\packages\\oxyplot.wpf\\2.2.0\\oxyplot.wpf.2.2.0.nupkg.sha512",
+    "C:\\Users\\wotbl\\.nuget\\packages\\oxyplot.wpf.shared\\2.2.0\\oxyplot.wpf.shared.2.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}
