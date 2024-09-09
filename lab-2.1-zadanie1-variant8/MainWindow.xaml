@@ -29,7 +29,7 @@
 
         <TextBlock Text="TABL 1" Grid.Row="4" Margin="10" VerticalAlignment="Top"/>
         <TextBlock x:Name="OutputTextBlock" FontFamily="Courier New" Grid.Row="4" Margin="150,0,0,0" HorizontalAlignment="Left"/>
-        <Image Grid.Row="4" Margin="1040,83,38,231" Source="image.png"/>
+        <Image Grid.Row="4" Margin="1040,83,38,231" Source="/Снимок экрана (3570).png"/>
     </Grid>
 </Window>
 
