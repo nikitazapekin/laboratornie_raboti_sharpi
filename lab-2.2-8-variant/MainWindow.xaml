@@ -13,12 +13,12 @@
             <ColumnDefinition Width="263*"/>
         </Grid.ColumnDefinitions>
         <Image HorizontalAlignment="Left" Height="483" Margin="22,17,0,0" VerticalAlignment="Top" Width="876" Source="/Снимок экрана (3528).png" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="R" HorizontalAlignment="Left" Margin="1004,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" FontSize="24" Grid.Column="2"/>
-        <TextBox x:Name="X" HorizontalAlignment="Left" Margin="1004,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" FontSize="24" Grid.Column="2"/>
-        <TextBox x:Name="Y" HorizontalAlignment="Left" Margin="1004,370,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="255" FontSize="24" Grid.Column="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="1003,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Grid.Column="2"><Run Text="Радиуc"/><Run Language="en-gb" Text=" lkz"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="1010,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Text="X" Grid.Column="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="1004,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Text="Y" Grid.Column="2"/>
-        <Button Content="Проверить" HorizontalAlignment="Left" Margin="432,580,0,0" VerticalAlignment="Top" Height="58" Width="406" Click="Button_Click_1" FontSize="36" Background="#FFC6D2DC" Grid.Column="2"/>
+        <TextBox x:Name="R" HorizontalAlignment="Left" Height="100" Margin="1009,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" FontSize="36" Grid.Column="2"/>
+        <TextBox x:Name="X" HorizontalAlignment="Left" Height="100" Margin="1010,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" FontSize="36" Grid.Column="2"/>
+        <TextBox x:Name="Y" HorizontalAlignment="Left" Height="100" Margin="1010,455,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="255" FontSize="36" Grid.Column="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1010,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Grid.Column="2"><Run Text="Радиуc"/><Run Text=" "/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="1009,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="X" Grid.Column="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1011,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Text="Y" Grid.Column="2" RenderTransformOrigin="0.809,0.79"/>
+        <Button Content="Проверить" HorizontalAlignment="Left" Margin="1010,603,0,0" VerticalAlignment="Top" Height="58" Width="406" Click="Button_Click_1" FontSize="36" Background="#FFC6D2DC" Grid.Column="2"/>
     </Grid>
 </Window>
