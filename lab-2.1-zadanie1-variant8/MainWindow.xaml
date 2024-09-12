@@ -17,13 +17,13 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Enter xstart:" Grid.Row="0" VerticalAlignment="Top" Margin="10" FontSize="36"/>
-        <TextBox x:Name="XStartTextBox" Width="200" Height="70" Grid.Row="0" Margin="216,19,0,19" HorizontalAlignment="Left" FontSize="36"/>
+        <TextBox TabIndex="1" x:Name="XStartTextBox" Width="200" Height="70" Grid.Row="0" Margin="216,19,0,19" HorizontalAlignment="Left" FontSize="36"/>
 
         <TextBlock Text="Enter xend:" Grid.Row="1" VerticalAlignment="Top" Margin="10" FontSize="36"/>
-        <TextBox x:Name="XEndTextBox" Width="200" Height="70" Grid.Row="1" Margin="216,19,0,19" HorizontalAlignment="Left" FontSize="36"/>
+        <TextBox TabIndex="2" x:Name="XEndTextBox" Width="200" Height="70" Grid.Row="1" Margin="216,19,0,19" HorizontalAlignment="Left" FontSize="36"/>
 
         <TextBlock Text="Enter dx:" Grid.Row="2" VerticalAlignment="Top" Margin="10" FontSize="36"/>
-        <TextBox x:Name="DxTextBox" Width="200" Height="70" Grid.Row="2" Margin="216,19,0,19" HorizontalAlignment="Left" FontSize="36"/>
+        <TextBox TabIndex="3" x:Name="DxTextBox" Width="200" Height="70" Grid.Row="2" Margin="216,19,0,19" HorizontalAlignment="Left" FontSize="36"/>
 
         <Button Content="Calculate" Click="OnCalculateClick" Width="215" Grid.Row="3" HorizontalAlignment="Left" Margin="10" FontSize="36"/>
 
