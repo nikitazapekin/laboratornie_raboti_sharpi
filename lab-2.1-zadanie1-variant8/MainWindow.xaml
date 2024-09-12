@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:lab_2._1_zadanie1_variant8"
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1200" Width="1800">
+        Title="MainWindow" Height="1200" Width="1800"  Background="#FFF1F1F1">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -28,7 +28,7 @@
         <Button Content="Calculate" Click="OnCalculateClick" Width="215" Grid.Row="3" HorizontalAlignment="Left" Margin="10" FontSize="36"/>
 
         <TextBlock Text="TABL 1" Grid.Row="4" Margin="10" VerticalAlignment="Top" FontSize="36"/>
-        <TextBlock x:Name="OutputTextBlock" Width="600"  FontSize="36" FontFamily="Courier New" Grid.Row="4" Margin="150,0,0,0" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="OutputTextBlock" Width="600"   Background="#FFE6E6E6"   FontSize="36" FontFamily="Courier New" Grid.Row="4" Margin="150,0,0,0" HorizontalAlignment="Left"/>
         <Image Margin="793,-245,0,420" Source="/Снимок экрана (3570).png" Grid.RowSpan="5"/>
     </Grid>
 </Window>
