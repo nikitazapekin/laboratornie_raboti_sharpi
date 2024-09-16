@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "lab-3-variant-8-zadanie-1/1.0.0": {
+        "runtime": {
+          "lab-3-variant-8-zadanie-1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "lab-3-variant-8-zadanie-1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
