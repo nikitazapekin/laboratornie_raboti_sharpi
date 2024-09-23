@@ -1,0 +1,40 @@
+﻿<Window x:Class="lab2_zadanie3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab2_zadanie3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Labels and Input TextBoxes -->
+        <TextBlock Text="Xmin:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
+        <TextBox x:Name="TextBoxXMin" Grid.Row="0" Grid.Column="1" Width="100" Margin="5"/>
+
+        <TextBlock Text="Xmax:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
+        <TextBox x:Name="TextBoxXMax" Grid.Row="1" Grid.Column="1" Width="100" Margin="5"/>
+
+        <TextBlock Text="Dx:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
+        <TextBox x:Name="TextBoxDx" Grid.Row="2" Grid.Column="1" Width="100" Margin="18,151,612,173"/>
+
+        <TextBlock Text="Epsilon:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" Margin="5,192,5,0"/>
+        <TextBox x:Name="TextBoxEpsilon" Grid.Row="2" Grid.Column="1" Width="100" Margin="18,192,612,125"/>
+
+        <!-- Evaluate Button -->
+        <Button Content="Evaluate" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="55,252,0,80"
+                Click="EvaluateButtonClick"/>
+
+        <!-- ListBox for Results -->
+        <ListBox x:Name="valuesList" Grid.Row="2" Margin="420,70,32,88" Height="200" Grid.Column="1"/>
+    </Grid>
+</Window>
