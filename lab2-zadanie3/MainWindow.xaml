@@ -8,33 +8,20 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Button  Click="EvaluateButtonClick" Content="Calculate" HorizontalAlignment="Left" Margin="15,48,0,0" VerticalAlignment="Top" Width="91" Grid.Row="1"/>
+        <Label Content="Введите Xmin" HorizontalAlignment="Left" Margin="15,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.421,0.733"/>
+        <TextBox x:Name="TextBoxXMin" HorizontalAlignment="Left" Margin="158,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Введите Xmax" HorizontalAlignment="Left" Margin="15,103,0,0" VerticalAlignment="Top"/>
+        <Label Content="Введите dx" HorizontalAlignment="Left" Margin="15,152,0,0" VerticalAlignment="Top"/>
+        <Label Content="Введите погрешность" HorizontalAlignment="Left" Margin="15,198,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Image HorizontalAlignment="Left" Height="57" Margin="312,36,0,0" VerticalAlignment="Top" Width="468" Source="/Снимок экрана (3801).png"/>
+        <TextBox  x:Name="TextBoxXMax" HorizontalAlignment="Left" Margin="158,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxDx" HorizontalAlignment="Left" Margin="158,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TextBoxEpsilon" HorizontalAlignment="Left" Margin="158,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.RowSpan="2"/>
+        <ListBox x:Name="valuesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="304,143,0,74" Grid.RowSpan="2"/>
 
-        <!-- Labels and Input TextBoxes -->
-        <TextBlock Text="Xmin:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
-        <TextBox x:Name="TextBoxXMin" Grid.Row="0" Grid.Column="1" Width="100" Margin="5"/>
-
-        <TextBlock Text="Xmax:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
-        <TextBox x:Name="TextBoxXMax" Grid.Row="1" Grid.Column="1" Width="100" Margin="5"/>
-
-        <TextBlock Text="Dx:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
-        <TextBox x:Name="TextBoxDx" Grid.Row="2" Grid.Column="1" Width="100" Margin="18,151,612,173"/>
-
-        <TextBlock Text="Epsilon:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" Margin="5,192,5,0"/>
-        <TextBox x:Name="TextBoxEpsilon" Grid.Row="2" Grid.Column="1" Width="100" Margin="18,192,612,125"/>
-
-        <!-- Evaluate Button -->
-        <Button Content="Evaluate" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="55,252,0,80"
-                Click="EvaluateButtonClick"/>
-
-        <!-- ListBox for Results -->
-        <ListBox x:Name="valuesList" Grid.Row="2" Margin="420,70,32,88" Height="200" Grid.Column="1"/>
     </Grid>
 </Window>
