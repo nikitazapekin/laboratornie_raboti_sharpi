@@ -44,7 +44,7 @@ namespace lab2_zadanie3
                     MessageBox.Show("xmax не может быть меньше xmin");
                     return;
                 }
-
+              
 
                 if (dx <= 0)
                 {
@@ -78,7 +78,7 @@ namespace lab2_zadanie3
 
 
                         term = Math.Pow(-1, n+1 )/((2*n+1)*Math.Pow(x, (2*n+1)));
-                     //   term = Math.Pow(x - 1, 2 * n + 1) / ((2 * n + 1) * Math.Pow(x + 1, 2 * n + 1));
+                    
                         sum += term;
 
                         if (Math.Abs(term) < epsilon)
@@ -87,9 +87,9 @@ namespace lab2_zadanie3
                             break;
                         }
                     }
-                    sum += 3.14/2;
+                    sum += Math.PI/2;
 
-                    //  double f = Math.Log(x);
+               
                     double f = Math.Atan(x);
 
                     if (done)
