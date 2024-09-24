@@ -7,17 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1100" Width="1800">
     <Grid>
-        <Label Content="Введите количество чисел (n):" HorizontalAlignment="Left" Margin="25,17,0,0" VerticalAlignment="Top"/>
-        <TextBox  x:Name="InputN" HorizontalAlignment="Left" Margin="30,54,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="165" Height="28"/>
-        <Label x:Name="GenerateButton" Content="Сгенерированные числа:" HorizontalAlignment="Left" Margin="30,159,0,0" VerticalAlignment="Top"/>
-        <Button Content="Сгенерировать"  Click="GenerateButton_Click" HorizontalAlignment="Left" Margin="30,102,0,0" VerticalAlignment="Top" Width="165" Height="40"/>
-        <TextBox x:Name="OutputNumbers" HorizontalAlignment="Left" Margin="30,197,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="165" Height="42"/>
-        <Label Content="Минимальный элемент" HorizontalAlignment="Left" Margin="30,256,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="MinNumber" HorizontalAlignment="Left" Margin="30,302,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="165"/>
-        <Label Content="Сумма между первым и вторым отрицательным числом:" HorizontalAlignment="Left" Margin="30,333,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" x:Name="Sum" Margin="30,378,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171"/>
-        <Label Content="Преобразованный массив" HorizontalAlignment="Left" Margin="30,423,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TransformedArray" HorizontalAlignment="Left" Margin="30,460,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171" Height="51"/>
+        <Label Content="Введите количество чисел (n):" HorizontalAlignment="Left" Margin="25,17,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox  x:Name="InputN" HorizontalAlignment="Left" Margin="30,54,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="165" Height="28" FontSize="18"/>
+        <Label x:Name="GenerateButton" Content="Сгенерированные числа:" HorizontalAlignment="Left" Margin="30,159,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Button Content="Сгенерировать"  Click="GenerateButton_Click" HorizontalAlignment="Left" Margin="30,102,0,0" VerticalAlignment="Top" Width="165" Height="40" FontSize="18"/>
+        <TextBox x:Name="OutputNumbers" HorizontalAlignment="Left" Margin="30,197,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="165" Height="42" FontSize="18" IsReadOnly="True"/>
+        <Label Content="Минимальный элемент" HorizontalAlignment="Left" Margin="30,256,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="MinNumber" HorizontalAlignment="Left" Margin="30,302,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="165" FontSize="18" IsReadOnly="True"/>
+        <Label Content="Сумма между первым и вторым отрицательным числом:" HorizontalAlignment="Left" Margin="30,333,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Sum" Margin="30,378,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171" FontSize="18" IsReadOnly="True"/>
+        <Label Content="Преобразованный массив" HorizontalAlignment="Left" Margin="30,423,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="TransformedArray" HorizontalAlignment="Left" Margin="30,460,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="171" Height="51" FontSize="18" IsReadOnly="True" />
         <Image HorizontalAlignment="Left" Height="232" Margin="986,68,0,0" VerticalAlignment="Top" Width="720" Source="/Снимок экрана (3818).png"/>
 
 
