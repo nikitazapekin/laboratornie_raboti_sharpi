@@ -16,7 +16,7 @@ namespace lab_3_variant_8_zadanie_1
             InitializeComponent();
         }
 
-   
+ 
         private int GetMinimalElement()
         {
             if (randomNumbers == null || randomNumbers.Length == 0)
@@ -118,6 +118,8 @@ namespace lab_3_variant_8_zadanie_1
                 MessageBox.Show("Введите корректное положительное число.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+ 
     }
 }
  
