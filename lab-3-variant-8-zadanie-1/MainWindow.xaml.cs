@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Linq;  // Добавляем это пространство имен
-using System.Text;
+using System.Linq;   
 using System.Windows;
 using System.Windows.Controls;
 using System.Data;
@@ -27,18 +26,16 @@ namespace lab_3_variant_8_zadanie_1
                     randomNumbers[i] = random.Next(-20, 101);
                 }
 
-                // Заполнение DataGridView исходными данными
+               
                 FillDataGrid(randomNumbers, DataGridView);
 
-                // Вычисление минимального элемента
+             
                 int minElement = GetMinimalElement();
                 MinNumber.Text = minElement.ToString();
-
-                // Вычисление суммы между первыми двумя отрицательными числами
+                 
                 int sumBetweenNegatives = GetSumBetweenFirstTwoNegatives();
                 Sum.Text = sumBetweenNegatives.ToString();
-
-                // Преобразование массива и отображение результата
+                 
                 int[] transformedArray = TransformArray();
                 FillDataGrid(transformedArray, TransformedDataGridView);
             }
@@ -61,7 +58,7 @@ namespace lab_3_variant_8_zadanie_1
 
         private int GetMinimalElement()
         {
-            return randomNumbers.Min();  // Исправленный вызов метода Min через LINQ
+            return randomNumbers.Min(); 
         }
 
         private int GetSumBetweenFirstTwoNegatives()

@@ -10,10 +10,12 @@
 
   <ItemGroup>
     <None Remove="Снимок экрана %283818%29.png" />
+    <None Remove="Снимок экрана %283880%29.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Снимок экрана (3818).png" />
+    <Resource Include="Снимок экрана (3880).png" />
   </ItemGroup>
 
 </Project>

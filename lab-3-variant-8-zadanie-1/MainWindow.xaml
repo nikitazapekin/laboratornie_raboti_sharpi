@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab_3_variant_8_zadanie_1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="900" Width="1600">
     <Grid>
         <Label Content="Введите количество чисел (n):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="InputN" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="120" Height="25" FontSize="14"/>
@@ -13,15 +13,16 @@
         <Button Content="Сгенерировать" Click="GenerateButton_Click" HorizontalAlignment="Left" Margin="150,40,0,0" VerticalAlignment="Top" Width="120" Height="30" FontSize="14"/>
 
         <Label Content="Массив чисел:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <DataGrid x:Name="DataGridView" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="200" Width="400"/>
+        <DataGrid    ColumnWidth="*" x:Name="DataGridView" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="200" Width="400"/>
 
         <Label Content="Минимальный элемент:" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="MinNumber" HorizontalAlignment="Left" Margin="160,320,0,0" VerticalAlignment="Top" Width="120" FontSize="14" IsReadOnly="True"/>
+        <TextBox x:Name="MinNumber" HorizontalAlignment="Left" Margin="13,370,0,0" VerticalAlignment="Top" Width="120" FontSize="14" IsReadOnly="True"/>
 
-        <Label Content="Сумма между первым и вторым отрицательным числом:" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="Sum" HorizontalAlignment="Left" Margin="300,350,0,0" VerticalAlignment="Top" Width="120" FontSize="14" IsReadOnly="True"/>
+        <Label Content="Сумма между первым и вторым отрицательным числом:" HorizontalAlignment="Left" Margin="13,405,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="Sum" HorizontalAlignment="Left" Margin="13,454,0,0" VerticalAlignment="Top" Width="120" FontSize="14" IsReadOnly="True"/>
 
-        <Label Content="Преобразованный массив:" HorizontalAlignment="Left" Margin="10,380,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <DataGrid x:Name="TransformedDataGridView" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Height="200" Width="400"/>
+        <Label Content="Преобразованный массив:" HorizontalAlignment="Left" Margin="13,480,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <DataGrid    ColumnWidth="*" x:Name="TransformedDataGridView" HorizontalAlignment="Left" Margin="10,516,0,0" VerticalAlignment="Top" Height="200" Width="400"/>
+        <Image HorizontalAlignment="Left" Height="458" Margin="530,80,0,0" VerticalAlignment="Top" Width="920" Source="/Снимок экрана (3880).png"/>
     </Grid>
 </Window>
