@@ -1,4 +1,4 @@
-﻿
+﻿ 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace lab2_zadanie3
 {
     /// <summary>
@@ -27,24 +26,48 @@ namespace lab2_zadanie3
             InitializeComponent();
         }
 
-
         private void EvaluateButtonClick(object sender, RoutedEventArgs e)
         {
             try
             {
+         
+                if (TextBoxXMin.Text.Contains(",") || TextBoxXMax.Text.Contains(",") || TextBoxDx.Text.Contains(",") || TextBoxEpsilon.Text.Contains(","))
+                {
+                    MessageBox.Show("Числа должны быть введены через точку, а не через запятую.");
+                    return;
+                }
 
-                double xmin = Convert.ToDouble(TextBoxXMin.Text);
-                double xmax = Convert.ToDouble(TextBoxXMax.Text);
-                double dx = Convert.ToDouble(TextBoxDx.Text);
-                double epsilon = Convert.ToDouble(TextBoxEpsilon.Text);
+ 
+                if (!double.TryParse(TextBoxXMin.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double xmin))
+                {
+                    MessageBox.Show("Некорректный формат для xmin. Используйте точку для ввода дробных чисел.");
+                    return;
+                }
 
+                if (!double.TryParse(TextBoxXMax.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double xmax))
+                {
+                    MessageBox.Show("Некорректный формат для xmax. Используйте точку для ввода дробных чисел.");
+                    return;
+                }
 
+                if (!double.TryParse(TextBoxDx.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double dx))
+                {
+                    MessageBox.Show("Некорректный формат для dx. Используйте точку для ввода дробных чисел.");
+                    return;
+                }
+
+                if (!double.TryParse(TextBoxEpsilon.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double epsilon))
+                {
+                    MessageBox.Show("Некорректный формат для epsilon. Используйте точку для ввода дробных чисел.");
+                    return;
+                }
+
+            
                 if (xmax < xmin)
                 {
                     MessageBox.Show("xmax не может быть меньше xmin");
                     return;
                 }
-              
 
                 if (dx <= 0)
                 {
@@ -58,13 +81,12 @@ namespace lab2_zadanie3
                     return;
                 }
 
-
+        
                 valuesList.Items.Clear();
                 valuesList.Items.Add("Таблица результатов");
 
                 const int MaxIter = 500;
-
-
+ 
                 for (double x = xmin; x <= xmax; x += dx)
                 {
                     double sum = 0;
@@ -72,13 +94,11 @@ namespace lab2_zadanie3
                     double term;
                     int n;
 
-
+                    
                     for (n = 0; n < MaxIter; n++)
                     {
+                        term = Math.Pow(-1, n + 1) / ((2 * n + 1) * Math.Pow(x, (2 * n + 1)));
 
-
-                        term = Math.Pow(-1, n+1 )/((2*n+1)*Math.Pow(x, (2*n+1)));
-                    
                         sum += term;
 
                         if (Math.Abs(term) < epsilon)
@@ -87,11 +107,11 @@ namespace lab2_zadanie3
                             break;
                         }
                     }
-                    sum += Math.PI/2;
+                    sum += Math.PI / 2;
 
-               
                     double f = Math.Atan(x);
 
+                  
                     if (done)
                     {
                         valuesList.Items.Add($"x = {x:F4}, Сумма ряда = {sum:F6}, Точное значение = {f:F6}, Членов ряда = {n + 1}");
@@ -104,13 +124,13 @@ namespace lab2_zadanie3
             }
             catch (FormatException)
             {
-
-                MessageBox.Show("Некорректный формат вводимых данных. Дробные числа должны быть указаны через запятую. Поля не должны быть пустыми.");
+                MessageBox.Show("Некорректный формат вводимых данных. Используйте точку для ввода дробных чисел.");
             }
         }
-
     }
 }
+ 
+
 /*
 using System;
 using System.Collections.Generic;
@@ -157,7 +177,7 @@ namespace lab2_zadanie3
                     MessageBox.Show("xmax не может быть меньше xmin");
                     return;
                 }
-
+              
 
                 if (dx <= 0)
                 {
@@ -188,7 +208,10 @@ namespace lab2_zadanie3
 
                     for (n = 0; n < MaxIter; n++)
                     {
-                        term = Math.Pow(x - 1, 2 * n + 1) / ((2 * n + 1) * Math.Pow(x + 1, 2 * n + 1));
+
+
+                        term = Math.Pow(-1, n+1 )/((2*n+1)*Math.Pow(x, (2*n+1))); 
+                    
                         sum += term;
 
                         if (Math.Abs(term) < epsilon)
@@ -197,10 +220,10 @@ namespace lab2_zadanie3
                             break;
                         }
                     }
-                    sum *= 2;
+                    sum += Math.PI/2;
 
-                    double f = Math.Log(x);
-
+               
+                    double f = Math.Atan(x);
 
                     if (done)
                     {
@@ -214,11 +237,12 @@ namespace lab2_zadanie3
             }
             catch (FormatException)
             {
-              
+
                 MessageBox.Show("Некорректный формат вводимых данных. Дробные числа должны быть указаны через запятую. Поля не должны быть пустыми.");
             }
         }
 
     }
-}
+} 
+
 */
