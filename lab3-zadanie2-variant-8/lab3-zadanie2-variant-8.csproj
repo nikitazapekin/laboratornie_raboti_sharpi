@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <RootNamespace>lab3_zadanie2_variant_8</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Снимок экрана %283883%29.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Снимок экрана (3883).png" />
+  </ItemGroup>
+
+</Project>
