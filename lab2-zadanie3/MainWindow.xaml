@@ -5,22 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab2_zadanie3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1250" Width="1800">
     <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Button  Click="EvaluateButtonClick" Content="Calculate" HorizontalAlignment="Left" Margin="15,109,0,0" VerticalAlignment="Top" Width="91" Grid.Row="1" FontSize="20"/>
-        <Label Content="Введите Xmin" HorizontalAlignment="Left" Margin="15,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.421,0.733" FontSize="20"/>
-        <TextBox x:Name="TextBoxXMin" HorizontalAlignment="Left" Margin="15,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20"/>
-        <Label Content="Введите Xmax" HorizontalAlignment="Left" Margin="15,86,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Введите dx" HorizontalAlignment="Left" Margin="15,152,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Введите погрешность" HorizontalAlignment="Left" Margin="15,16,0,0" VerticalAlignment="Top" FontSize="20" Grid.Row="1"/>
+
+        <Button  Click="EvaluateButtonClick" Content="Calculate" HorizontalAlignment="Left" Margin="30,550,0,0" VerticalAlignment="Top" Width="90" FontSize="20" RenderTransformOrigin="0.824,1.472"/>
+        <Label Content="Введите Xmin" HorizontalAlignment="Left" Margin="33,158,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.421,0.733" FontSize="20"/>
+        <TextBox x:Name="TextBoxXMin" HorizontalAlignment="Left" Margin="33,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20"/>
+        <Label Content="Введите Xmax" HorizontalAlignment="Left" Margin="24,241,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Введите dx" HorizontalAlignment="Left" Margin="26,358,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.962,2.187"/>
+        <Label Content="Введите погрешность" HorizontalAlignment="Left" Margin="24,450,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Image HorizontalAlignment="Left" Height="68" Margin="214,31,0,0" VerticalAlignment="Top" Width="556" Source="/Снимок экрана (3801).png"/>
-        <TextBox  x:Name="TextBoxXMax" HorizontalAlignment="Left" Margin="15,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20"/>
-        <TextBox x:Name="TextBoxDx" HorizontalAlignment="Left" Margin="15,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.RowSpan="2" FontSize="20"/>
-        <TextBox x:Name="TextBoxEpsilon" HorizontalAlignment="Left" Margin="15,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Row="1" FontSize="20"/>
+        <TextBox  x:Name="TextBoxXMax" HorizontalAlignment="Left" Margin="33,298,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20"/>
+        <TextBox x:Name="TextBoxDx" HorizontalAlignment="Left" Margin="33,395,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20"/>
+        <TextBox x:Name="TextBoxEpsilon" HorizontalAlignment="Left" Margin="30,503,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20"/>
         <ListBox x:Name="valuesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="239,123,65,94" Grid.RowSpan="2" FontSize="20"/>
 
     </Grid>
