@@ -61,7 +61,10 @@ namespace lab3_zadanie2_variant_8
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка: " + ex.Message);
+                MessageBox.Show( ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                //     MessageBox.Show("Введите корректное положительное число.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                //    MessageBox.Show("Ошибка: " + ex.Message, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -142,7 +145,10 @@ namespace lab3_zadanie2_variant_8
             }
             else
             {
-                MessageBox.Show("Матрица пуста или не существует.");
+
+
+                MessageBox.Show("Ошибка:", "Матрица пуста или не существует.", MessageBoxButton.OK, MessageBoxImage.Error);
+             
             }
         }
 
