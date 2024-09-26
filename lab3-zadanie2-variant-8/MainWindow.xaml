@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab3_zadanie2_variant_8"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1150" Width="1800">
     <Grid>
-        <Grid>
-            <DataGrid Name="matrixGrid" AutoGenerateColumns="True" HorizontalAlignment="Left" VerticalAlignment="Top" Height="200" Width="343" Margin="20,28,0,0"/>
-            <Button Name="calculateButton" Content="Отсортировать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="124" Height="30" Margin="21,366,0,0" Click="CalculateButton_Click"/>
+       
+            <DataGrid Name="matrixGrid" AutoGenerateColumns="True" HorizontalAlignment="Left" VerticalAlignment="Top" Height="320" Width="549" Margin="42,143,0,0" FontSize="20"/>
+            <Button Name="calculateButton" Content="Отсортировать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="219" Height="53" Margin="42,821,0,0" Click="CalculateButton_Click" FontSize="20"/>
             <TextBlock Name="resultText" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,220,0,0" Width="300"/>
 
-            <TextBlock HorizontalAlignment="Left" Margin="20,249,0,0" TextWrapping="Wrap" Text="Количество строк" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left" Margin="21,285,0,0" TextWrapping="Wrap" Text="Количество колонок" VerticalAlignment="Top"/>
-            <TextBox x:Name="matrixRows" HorizontalAlignment="Left" Margin="141,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="matrixRows_TextChanged"/>
-            <TextBox x:Name="matrixColumns" HorizontalAlignment="Left" Margin="141,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+            <TextBlock HorizontalAlignment="Left" Margin="47,521,0,0" TextWrapping="Wrap" Text="Количество строк" VerticalAlignment="Top" FontSize="20"/>
+            <TextBlock HorizontalAlignment="Left" Margin="47,640,0,0" TextWrapping="Wrap" Text="Количество колонок" VerticalAlignment="Top" FontSize="20"/>
+            <TextBox x:Name="matrixRows" HorizontalAlignment="Left" Margin="300,521,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="matrixRows_TextChanged" FontSize="20"/>
+            <TextBox x:Name="matrixColumns" HorizontalAlignment="Left" Margin="300,639,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="20"/>
 
-            <Button Content="Сгенерировать" HorizontalAlignment="Left" Margin="20,318,0,0" VerticalAlignment="Top" Height="29" Width="125" Click="GenerateMatrix_Click"/>
-            <Image HorizontalAlignment="Left" Height="100" Margin="380,54,0,0" VerticalAlignment="Top" Width="410" Source="/Снимок экрана (3883).png"/>
+            <Button Content="Сгенерировать" HorizontalAlignment="Left" Margin="42,732,0,0" VerticalAlignment="Top" Height="54" Width="219" Click="GenerateMatrix_Click" FontSize="20"/>
+            <Image HorizontalAlignment="Left" Height="257" Margin="731,51,0,0" VerticalAlignment="Top" Width="1022" Source="/Снимок экрана (3883).png"/>
 
 
-        </Grid>
+      
     </Grid>
 </Window>
