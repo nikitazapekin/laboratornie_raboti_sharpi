@@ -18,7 +18,7 @@ namespace lab_3_variant_8_zadanie_1
             try
             {
                 Numbers = Array.ConvertAll(NumbersInput.Text.Split(','), s => double.Parse(s.Trim(), CultureInfo.InvariantCulture));
-                //   Numbers = Array.ConvertAll(NumbersInput.Text.Split(','), double.Parse);
+              
                 this.DialogResult = true;
             }
             catch (Exception)

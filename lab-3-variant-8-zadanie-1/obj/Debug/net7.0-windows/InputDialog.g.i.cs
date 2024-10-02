@@ -60,7 +60,7 @@ namespace lab_3_variant_8_zadanie_1 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/lab-3-variant-8-zadanie-1;component/inputdialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/lab-3-variant-8-zadanie-1;V1.0.0.0;component/inputdialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\InputDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
