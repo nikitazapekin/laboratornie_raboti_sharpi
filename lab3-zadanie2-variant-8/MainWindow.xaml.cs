@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Linq;
+using System.Printing;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -46,6 +47,42 @@ namespace lab3_zadanie2_variant_8
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+
+
+        private void InputButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            InputDialog inputDialog = new InputDialog();
+            if (inputDialog.ShowDialog() == true)
+            {
+
+            }
+                /*   if (int.TryParse(InputN.Text, out int n) && n > 0)
+                   {
+                       InputDialog inputDialog = new InputDialog();
+                       if (inputDialog.ShowDialog() == true)
+                       {
+                           randomNumbers = inputDialog.Numbers.Cast<double>().ToArray(); // Приведение к double
+                           if (randomNumbers.Length > n)
+                           {
+                               MessageBox.Show($"Вы ввели недопустимое количество чисел. Максимальное количество чисел: {n}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                           }
+                           else
+                           {
+                               FillDataGrid(randomNumbers, DataGridView);
+                               UpdateValues();
+                           }
+                       }
+                   }
+                   else
+                   {
+                       MessageBox.Show("Введите корректное положительное число.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                   } */
+
+            }
+
+
 
         private void CalculateButton_Click(object sender, RoutedEventArgs e)
         {
