@@ -6,6 +6,34 @@
         xmlns:local="clr-namespace:lab_3_variant_8_zadanie_1"
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1600">
+
+    <Grid>
+        <Label Content="Введите количество чисел (n):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="InputN" HorizontalAlignment="Left" Margin="13,47,0,0" VerticalAlignment="Top" Width="305" Height="26" FontSize="14"/>
+
+        <Button Content="Сгенерировать" Click="GenerateButton_Click" HorizontalAlignment="Left" Margin="13,101,0,0" VerticalAlignment="Top" Width="163" Height="30" FontSize="20"/>
+
+        <Label Content="Массив чисел:" HorizontalAlignment="Left" Margin="11,153,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <DataGrid ColumnWidth="*" x:Name="DataGridView" HorizontalAlignment="Left" Margin="11,183,0,0"
+          VerticalAlignment="Top" Height="200" Width="400" FontSize="20"
+          AutoGenerateColumns="False" CurrentCellChanged="DataGridView_CurrentCellChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Число, Mode=TwoWay}" Header="Число" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Минимальный элемент:" HorizontalAlignment="Left" Margin="10,386,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="MinNumber" HorizontalAlignment="Left" Margin="13,436,0,0" VerticalAlignment="Top" Width="120" FontSize="20" IsReadOnly="True"/>
+
+        <Label Content="Сумма между первым и вторым отрицательным числом:" HorizontalAlignment="Left" Margin="13,471,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="Sum" HorizontalAlignment="Left" Margin="13,520,0,0" VerticalAlignment="Top" Width="120" FontSize="20" IsReadOnly="True"/>
+
+        <Label Content="Преобразованный массив:" HorizontalAlignment="Left" Margin="13,546,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <DataGrid ColumnWidth="*" x:Name="TransformedDataGridView" HorizontalAlignment="Left" Margin="10,582,0,0" VerticalAlignment="Top" Height="200" Width="400" FontSize="20"/>
+        <Image HorizontalAlignment="Left" Height="458" Margin="545,224,0,0" VerticalAlignment="Top" Width="920" Source="/Снимок экрана (3880).png"/>
+        <Button Content="Ввод" Click="InputButton_Click" FontSize="20" HorizontalAlignment="Left" Margin="181,101,0,0" VerticalAlignment="Top" Height="30" Width="137"/>
+    </Grid>
+    <!--
     <Grid>
         <Label Content="Введите количество чисел (n):" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20"/>
         <TextBox x:Name="InputN" HorizontalAlignment="Left" Margin="13,47,0,0" VerticalAlignment="Top" Width="305" Height="26" FontSize="14"/>
@@ -26,4 +54,6 @@
         <Image HorizontalAlignment="Left" Height="458" Margin="545,224,0,0" VerticalAlignment="Top" Width="920" Source="/Снимок экрана (3880).png"/>
         <Button Content="Ввод"  Click="InputButton_Click" FontSize="20" HorizontalAlignment="Left" Margin="181,101,0,0" VerticalAlignment="Top" Height="30" Width="137"/>
     </Grid>
+    
+    -->
 </Window>
