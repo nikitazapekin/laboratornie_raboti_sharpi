@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;   
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Data;
@@ -15,6 +15,22 @@ namespace lab_3_variant_8_zadanie_1
             InitializeComponent();
         }
 
+
+        private void InputButton_Click(object sender, RoutedEventArgs e)
+        {
+            InputDialog inputDialog = new InputDialog();
+            if (inputDialog.ShowDialog() == true)
+            {
+                int[] inputNumbers = inputDialog.Numbers;
+
+                // Отображаем введенные числа в DataGrid
+                //    FillDataGrid(inputNumbers, DataGridView);
+
+                // Дополнительно можно обработать введенные числа, как необходимо
+            }
+        }
+
+
         private void GenerateButton_Click(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(InputN.Text, out int n) && n > 0)
@@ -26,16 +42,16 @@ namespace lab_3_variant_8_zadanie_1
                     randomNumbers[i] = random.Next(-20, 101);
                 }
 
-               
+
                 FillDataGrid(randomNumbers, DataGridView);
 
-             
+
                 int minElement = GetMinimalElement();
                 MinNumber.Text = minElement.ToString();
-                 
+
                 int sumBetweenNegatives = GetSumBetweenFirstTwoNegatives();
                 Sum.Text = sumBetweenNegatives.ToString();
-                 
+
                 int[] transformedArray = TransformArray();
                 FillDataGrid(transformedArray, TransformedDataGridView);
             }
@@ -58,7 +74,7 @@ namespace lab_3_variant_8_zadanie_1
 
         private int GetMinimalElement()
         {
-            return randomNumbers.Min(); 
+            return randomNumbers.Min();
         }
 
         private int GetSumBetweenFirstTwoNegatives()
@@ -79,4 +95,8 @@ namespace lab_3_variant_8_zadanie_1
             return lessThanOne.Concat(greaterThanOne).ToArray();
         }
     }
+
+
+
+
 }

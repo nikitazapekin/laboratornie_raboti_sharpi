@@ -18,3 +18,5 @@ C:\Users\wotbl\source\repos\lab-3-variant-8-zadanie-1\lab-3-variant-8-zadanie-1\
 C:\Users\wotbl\source\repos\lab-3-variant-8-zadanie-1\lab-3-variant-8-zadanie-1\obj\Debug\net7.0-windows\lab-3-variant-8-zadanie-1.pdb
 C:\Users\wotbl\source\repos\lab-3-variant-8-zadanie-1\lab-3-variant-8-zadanie-1\obj\Debug\net7.0-windows\lab-3-variant-8-zadanie-1.genruntimeconfig.cache
 C:\Users\wotbl\source\repos\lab-3-variant-8-zadanie-1\lab-3-variant-8-zadanie-1\obj\Debug\net7.0-windows\ref\lab-3-variant-8-zadanie-1.dll
+C:\Users\wotbl\source\repos\lab-3-variant-8-zadanie-1\lab-3-variant-8-zadanie-1\obj\Debug\net7.0-windows\InputDialog.baml
+C:\Users\wotbl\source\repos\lab-3-variant-8-zadanie-1\lab-3-variant-8-zadanie-1\obj\Debug\net7.0-windows\InputDialog.g.cs
