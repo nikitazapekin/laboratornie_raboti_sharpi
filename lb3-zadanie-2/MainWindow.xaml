@@ -40,5 +40,7 @@
                 Click="GenerateMatrix_Click" FontSize="20"/>
         <Button Content="Ввести свои значения"  Click="InputButton_Click"   FontSize="20" HorizontalAlignment="Left" Margin="266,732,0,0" VerticalAlignment="Top" Height="54" Width="248"/>
         <Image HorizontalAlignment="Left" Height="185" Margin="701,175,0,0" VerticalAlignment="Top" Width="1014" Source="/Снимок экрана (3883).png"/>
+        <ListBox x:Name="valuesList"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="732,504,299,145"/>
+        <Label Content="Сумма элементов столбцов у которых есть хотя бы 1 отрицательный элемент" HorizontalAlignment="Left" Margin="732,448,0,0" VerticalAlignment="Top" FontSize="20"/>
     </Grid>
 </Window>
