@@ -24,7 +24,7 @@ namespace lab_3_variant_8_zadanie_1
                 int[] inputNumbers = inputDialog.Numbers;
 
                 // Отображаем введенные числа в DataGrid
-                //    FillDataGrid(inputNumbers, DataGridView);
+                    FillDataGrid(inputNumbers, DataGridView);
 
                 // Дополнительно можно обработать введенные числа, как необходимо
             }

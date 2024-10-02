@@ -16,7 +16,7 @@ namespace lab_3_variant_8_zadanie_1
         {
             try
             {
-                // Преобразуем введенные значения в массив чисел
+               
                 Numbers = Array.ConvertAll(NumbersInput.Text.Split(','), int.Parse);
                 this.DialogResult = true;
             }
