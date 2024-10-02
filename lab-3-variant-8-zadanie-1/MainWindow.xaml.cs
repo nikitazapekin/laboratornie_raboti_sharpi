@@ -24,8 +24,15 @@ namespace lab_3_variant_8_zadanie_1
                 if (inputDialog.ShowDialog() == true)
                 {
                     randomNumbers = inputDialog.Numbers;
-                    FillDataGrid(randomNumbers, DataGridView);
-                    UpdateValues();
+                    if (randomNumbers.Length > n)
+                    {
+                        MessageBox.Show($"Вы ввели недопустимое количество чисел. Максимальное количество чисел: {n}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    } else
+                    {
+
+                        FillDataGrid(randomNumbers, DataGridView);
+                        UpdateValues();
+                    }
                 }
 
             }
@@ -55,6 +62,45 @@ namespace lab_3_variant_8_zadanie_1
             }
         }
 
+
+
+
+        private void FillDataGrid(int[] array, DataGrid dataGrid)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Число", typeof(int));
+            foreach (var num in array)
+            {
+              
+
+                    dt.Rows.Add(num);
+               
+            }
+            dataGrid.ItemsSource = dt.DefaultView;
+        }
+        /*
+        private void FillDataGrid(int?[] array, DataGrid dataGrid)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Число", typeof(int));
+
+            foreach (var num in array)
+            {
+                // Проверяем, что num не равно null
+                if (num.HasValue)
+                {
+                    dt.Rows.Add(num.Value); // Добавляем только если num не null
+                }
+                else
+                {
+                    dt.Rows.Add(DBNull.Value); // Можно добавить DBNull для пустых значений
+                }
+            }
+
+            dataGrid.ItemsSource = dt.DefaultView;
+        }
+    */
+        /*
         private void FillDataGrid(int[] array, DataGrid dataGrid)
         {
             DataTable dt = new DataTable();
@@ -65,8 +111,8 @@ namespace lab_3_variant_8_zadanie_1
             }
             dataGrid.ItemsSource = dt.DefaultView;
         }
+        */
 
-      
         private void DataGridView_CurrentCellChanged(object sender, EventArgs e)
         {
  
