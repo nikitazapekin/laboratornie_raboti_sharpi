@@ -14,19 +14,28 @@ namespace lab_3_variant_8_zadanie_1
         {
             InitializeComponent();
         }
-
-
         private void InputButton_Click(object sender, RoutedEventArgs e)
         {
             InputDialog inputDialog = new InputDialog();
             if (inputDialog.ShowDialog() == true)
             {
-                int[] inputNumbers = inputDialog.Numbers;
+             //   int[] inputNumbers = inputDialog.Numbers;
+//FillDataGrid(inputNumbers, DataGridView);
+randomNumbers = inputDialog.Numbers;
+                FillDataGrid(randomNumbers, DataGridView);
 
-                // Отображаем введенные числа в DataGrid
-                    FillDataGrid(inputNumbers, DataGridView);
 
-                // Дополнительно можно обработать введенные числа, как необходимо
+
+                    int minElement = GetMinimalElement();
+                    MinNumber.Text = minElement.ToString();
+
+                    int sumBetweenNegatives = GetSumBetweenFirstTwoNegatives();
+                  Sum.Text = sumBetweenNegatives.ToString();
+
+                  int[] transformedArray = TransformArray();
+                    FillDataGrid(transformedArray, TransformedDataGridView);
+
+
             }
         }
 
