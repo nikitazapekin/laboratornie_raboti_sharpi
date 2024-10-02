@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 
 namespace lab_3_variant_8_zadanie_1
 {
     public partial class InputDialog : Window
     {
-        public int[] Numbers { get; private set; }
+        public double[] Numbers { get; private set; }
 
         public InputDialog()
         {
@@ -16,8 +17,8 @@ namespace lab_3_variant_8_zadanie_1
         {
             try
             {
-               
-                Numbers = Array.ConvertAll(NumbersInput.Text.Split(','), int.Parse);
+                Numbers = Array.ConvertAll(NumbersInput.Text.Split(','), s => double.Parse(s.Trim(), CultureInfo.InvariantCulture));
+                //   Numbers = Array.ConvertAll(NumbersInput.Text.Split(','), double.Parse);
                 this.DialogResult = true;
             }
             catch (Exception)
