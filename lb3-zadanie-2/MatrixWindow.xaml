@@ -1,0 +1,13 @@
+﻿<Window x:Class="lb3_zadanie_2.MatrixInputWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ввод чисел" Height="250" Width="400">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel Name="InputFieldsPanel" />
+        </ScrollViewer>
+        <Button Content="Подтвердить" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="100" Height="30" Click="ConfirmButton_Click"/>
+    </Grid>
+</Window>
+
+ 
