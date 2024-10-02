@@ -58,6 +58,13 @@ namespace lb3_zadanie_2
             {
                 int rows = int.Parse(matrixRows.Text);
                 int columns = int.Parse(matrixColumns.Text);
+                 
+
+                if( rows<0 || columns<0 )
+                {
+                    MessageBox.Show("Пожалуйста введите положительные значения размерности", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }  else
+                {
 
                  
                 MatrixInputWindow inputWindow = new MatrixInputWindow(rows, columns);
@@ -91,6 +98,7 @@ namespace lb3_zadanie_2
                     matrixGrid.ItemsSource = table.DefaultView;
                 }
             }
+                }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
