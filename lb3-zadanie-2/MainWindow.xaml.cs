@@ -263,6 +263,9 @@ namespace lb3_zadanie_2
                     matrixGrid.BeginEdit();
                 }
             }
+
+
+            Sum();
         }
 
         private void matrixGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
