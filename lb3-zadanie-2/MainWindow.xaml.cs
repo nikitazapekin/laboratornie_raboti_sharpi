@@ -21,6 +21,14 @@ namespace lb3_zadanie_2
                 int rows = int.Parse(((TextBox)this.FindName("matrixRows")).Text);
                 int columns = int.Parse(((TextBox)this.FindName("matrixColumns")).Text);
 
+                if (rows < 0 || columns < 0)
+                {
+                    MessageBox.Show("Пожалуйста введите положительные значения размерности", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }  else
+                {
+
+
+
                 DataTable table = new DataTable();
 
                 for (int i = 0; i < columns; i++)
@@ -42,6 +50,7 @@ namespace lb3_zadanie_2
 
                 matrixGrid.ItemsSource = table.DefaultView;
             }
+                }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -184,7 +193,7 @@ namespace lb3_zadanie_2
 
         private void matrixRows_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Логика, связанная с изменением текста, если потребуется
+         
         }
 
         private void DataGrid_CurrentCellChanged(object sender, EventArgs e)

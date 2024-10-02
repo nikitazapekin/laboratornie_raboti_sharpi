@@ -38,9 +38,7 @@
                 Margin="42,732,0,0" VerticalAlignment="Top" 
                 Height="54" Width="219" 
                 Click="GenerateMatrix_Click" FontSize="20"/>
-        <Image HorizontalAlignment="Left" Height="257" 
-               Margin="731,51,0,0" VerticalAlignment="Top" 
-               Width="1022" Source="/Снимок экрана (3883).png"/>
         <Button Content="Ввести свои значения"  Click="InputButton_Click"   FontSize="20" HorizontalAlignment="Left" Margin="266,732,0,0" VerticalAlignment="Top" Height="54" Width="248"/>
+        <Image HorizontalAlignment="Left" Height="185" Margin="701,175,0,0" VerticalAlignment="Top" Width="1014" Source="/Снимок экрана (3883).png"/>
     </Grid>
 </Window>

@@ -60,7 +60,7 @@ namespace lb3_zadanie_2 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/lb3-zadanie-2;component/matrixwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/lb3-zadanie-2;V1.0.0.0;component/matrixwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\MatrixWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
