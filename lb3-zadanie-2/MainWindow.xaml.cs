@@ -50,15 +50,7 @@ namespace lb3_zadanie_2
 
 
 
-        /*
-
-        private void InputButton_Click(object sender, RoutedEventArgs e)
-        {
  
-
-        }
-        */
-
 
         private void InputButton_Click(object sender, RoutedEventArgs e)
         {
@@ -67,7 +59,7 @@ namespace lb3_zadanie_2
                 int rows = int.Parse(matrixRows.Text);
                 int columns = int.Parse(matrixColumns.Text);
 
-                // Открытие окна для ввода матрицы
+                 
                 MatrixInputWindow inputWindow = new MatrixInputWindow(rows, columns);
                 if (inputWindow.ShowDialog() == true)
                 {
@@ -82,7 +74,7 @@ namespace lb3_zadanie_2
                         DataRow newRow = table.NewRow();
                         for (int j = 0; j < columns; j++)
                         {
-                            // Получение введенного значения
+                      
                             string value = inputWindow.InputFields[i][j].Text;
                             if (int.TryParse(value, out int parsedValue))
                             {
@@ -90,7 +82,7 @@ namespace lb3_zadanie_2
                             }
                             else
                             {
-                                newRow[j] = 0; // Если не число, то установить 0
+                                newRow[j] = 0; 
                             }
                         }
                         table.Rows.Add(newRow);
