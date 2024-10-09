@@ -7,17 +7,35 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1250" Width="1800">
     <Grid>
-        <StackPanel Margin="20">
-            <TextBlock Text="Enter Date (DD.MM.YYYY):" />
-            <TextBox x:Name="DateInputTextBox" Width="200" Margin="0,5" />
-
-            <Button Content="Set Date" Click="SetDateButton_Click" Margin="0,10" />
-            <Button Content="Add Days" Click="AddDaysButton_Click" Margin="0,5" />
-            <Button Content="Add Months" Click="AddMonthsButton_Click" Margin="0,5" />
-            <Button Content="Add Years" Click="AddYearsButton_Click" Margin="0,5" />
-
-            <TextBlock Text="Current Date:" Margin="0,20" />
-            <TextBlock x:Name="CurrentDateTextBlock" FontWeight="Bold" />
-        </StackPanel>
+        <Image HorizontalAlignment="Left" Height="257" Margin="737,141,0,0" VerticalAlignment="Top" Width="993" Source="/screen.png"/>
+        <TextBox x:Name="DateInputTextBox" HorizontalAlignment="Left" FontSize="22" Margin="55,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224" Height="34"/>
+        <Label Content="Введите дату в формате DD.MM.YYYY" FontSize="22" HorizontalAlignment="Left" Margin="55,112,0,0" VerticalAlignment="Top" Height="40" Width="425"/>
+        <Button Content="Установить дату"  Click="SetDateButton_Click"  FontSize="22" HorizontalAlignment="Left" Margin="55,368,0,0" VerticalAlignment="Top" Height="47" Width="375"/>
+        <Button Content="Увеличить день" Click="AddDaysButton_Click" FontSize="22"  HorizontalAlignment="Left" Margin="55,433,0,0" VerticalAlignment="Top" Height="47" Width="375"/>
+        <Button Content="Увеличить месяц" Click="AddMonthsButton_Click"  FontSize="22" HorizontalAlignment="Left" Margin="55,499,0,0" VerticalAlignment="Top" Height="47" Width="375"/>
+        <Button Content="Увеличить год" Click="AddYearsButton_Click"  FontSize="22" HorizontalAlignment="Left" Margin="55,570,0,0" VerticalAlignment="Top" Height="47" Width="375"/>
+        <TextBlock x:Name="CurrentDateTextBlock" FontWeight="Bold" HorizontalAlignment="Left"    FontSize="22" Margin="55,310,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,259,0,0" TextWrapping="Wrap" Text="Установленная дата:" VerticalAlignment="Top"/>
     </Grid>
 </Window>
+
+
+<!-- 
+      <Image HorizontalAlignment="Left" Height="257" Margin="737,141,0,0" VerticalAlignment="Top" Width="993" Source="/screen.png"/>
+  <TextBox HorizontalAlignment="Left" Margin="32,122,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="224" Height="34"/>
+  <Label Content="Label" HorizontalAlignment="Left" Margin="271,122,0,0" VerticalAlignment="Top" Height="33" Width="49"/>
+    
+    
+    <StackPanel Margin="20">
+        <TextBlock Text="Enter Date (DD.MM.YYYY):" />
+        <TextBox x:Name="DateInputTextBox" Width="200" Margin="0,5" />
+
+        <Button Content="Set Date" Click="SetDateButton_Click" Margin="0,10" />
+        <Button Content="Add Days" Click="AddDaysButton_Click" Margin="0,5" />
+        <Button Content="Add Months" Click="AddMonthsButton_Click" Margin="0,5" />
+        <Button Content="Add Years" Click="AddYearsButton_Click" Margin="0,5" />
+
+        <TextBlock Text="Current Date:" Margin="0,20" />
+        <TextBlock x:Name="CurrentDateTextBlock" FontWeight="Bold" />
+    </StackPanel>
+    -->

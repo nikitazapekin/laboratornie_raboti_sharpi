@@ -33,12 +33,15 @@ namespace lab4_variant8
         {
             InitializeComponent();
         }
-
+    
         private void UpdateDateDisplay()
         {
             CurrentDateTextBlock.Text = myDate.ToString();
         }
 
+
+
+       
         private void SetDateButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -63,6 +66,7 @@ namespace lab4_variant8
             }
         }
 
+      
         private void AddDaysButton_Click(object sender, RoutedEventArgs e)
         {
             if (myDate == null)
@@ -71,10 +75,10 @@ namespace lab4_variant8
                 return;
             }
 
-            myDate.AddDays(1); // добавляем 1 день
+            myDate.AddDays(1);  
             UpdateDateDisplay();
         }
-
+   
         private void AddMonthsButton_Click(object sender, RoutedEventArgs e)
         {
             if (myDate == null)
@@ -83,7 +87,7 @@ namespace lab4_variant8
                 return;
             }
 
-            myDate.AddMonths(1); // добавляем 1 месяц
+            myDate.AddMonths(1); 
             UpdateDateDisplay();
         }
 
@@ -95,9 +99,11 @@ namespace lab4_variant8
                 return;
             }
 
-            myDate.AddYears(1); // добавляем 1 год
+            myDate.AddYears(1);  
             UpdateDateDisplay();
-        }
+        }  
+      
+ 
     }
 }
 

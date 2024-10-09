@@ -14,18 +14,23 @@ namespace lab4_variant8
             set
             {
                 if (value < 1)
+                {
+
                     throw new ArgumentException("Year must be greater than 0.");
+                } 
                 year = value;
             }
         }
-
         public int Month
         {
             get => month;
             set
             {
                 if (value < 1 || value > 12)
+                {
+
                     throw new ArgumentException("Month must be between 1 and 12.");
+                }
                 month = value;
             }
         }
@@ -36,7 +41,10 @@ namespace lab4_variant8
             set
             {
                 if (value < 1 || value > DaysInMonth(month, year))
+                {
+
                     throw new ArgumentException($"Day must be between 1 and {DaysInMonth(month, year)} for month {month}.");
+                }
                 day = value;
             }
         }
@@ -73,7 +81,7 @@ namespace lab4_variant8
 
         public void AddYears(int years)
         {
-            Year += years; // year is already validated in Year property
+            Year += years; 
         }
 
         public override string ToString()
