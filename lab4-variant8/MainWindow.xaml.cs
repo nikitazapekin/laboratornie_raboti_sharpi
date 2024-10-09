@@ -49,7 +49,7 @@ namespace lab4_variant8
                 var dateParts = DateInputTextBox.Text.Split('.');
                 if (dateParts.Length != 3)
                 {
-                    throw new ArgumentException("Invalid date format. Use DD.MM.YYYY.");
+                    throw new ArgumentException("Введите значения в виде DD.MM.YYYY.");
                 }
 
                 int day = int.Parse(dateParts[0]);
@@ -58,7 +58,7 @@ namespace lab4_variant8
 
                 myDate = new MyDate(year, month, day);
                 UpdateDateDisplay();
-                MessageBox.Show("Date set successfully.");
+                MessageBox.Show("Дата установлена!");
             }
             catch (Exception ex)
             {
@@ -71,7 +71,7 @@ namespace lab4_variant8
         {
             if (myDate == null)
             {
-                MessageBox.Show("Please set the date first.");
+                MessageBox.Show("Перед выполнением этой операции введите дату!");
                 return;
             }
 
@@ -83,7 +83,7 @@ namespace lab4_variant8
         {
             if (myDate == null)
             {
-                MessageBox.Show("Please set the date first.");
+                MessageBox.Show("Перед выполнением этой операции введите дату!");
                 return;
             }
 
@@ -95,7 +95,7 @@ namespace lab4_variant8
         {
             if (myDate == null)
             {
-                MessageBox.Show("Please set the date first.");
+                MessageBox.Show("Перед выполнением этой операции введите дату!");
                 return;
             }
 

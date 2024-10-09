@@ -15,7 +15,7 @@
         <Button Content="Увеличить месяц" Click="AddMonthsButton_Click"  FontSize="22" HorizontalAlignment="Left" Margin="55,499,0,0" VerticalAlignment="Top" Height="47" Width="375"/>
         <Button Content="Увеличить год" Click="AddYearsButton_Click"  FontSize="22" HorizontalAlignment="Left" Margin="55,570,0,0" VerticalAlignment="Top" Height="47" Width="375"/>
         <TextBlock x:Name="CurrentDateTextBlock" FontWeight="Bold" HorizontalAlignment="Left"    FontSize="22" Margin="55,310,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="55,259,0,0" TextWrapping="Wrap" Text="Установленная дата:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left"  FontSize="22" Margin="55,259,0,0" TextWrapping="Wrap" Text="Установленная дата:" VerticalAlignment="Top"/>
     </Grid>
 </Window>
 

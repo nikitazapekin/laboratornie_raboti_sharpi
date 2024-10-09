@@ -16,7 +16,7 @@ namespace lab4_variant8
                 if (value < 1)
                 {
 
-                    throw new ArgumentException("Year must be greater than 0.");
+                    throw new ArgumentException("Введите год больше 0.");
                 } 
                 year = value;
             }
@@ -29,7 +29,7 @@ namespace lab4_variant8
                 if (value < 1 || value > 12)
                 {
 
-                    throw new ArgumentException("Month must be between 1 and 12.");
+                    throw new ArgumentException("Месяц должен быть числом от 1 до 12.");
                 }
                 month = value;
             }
@@ -43,7 +43,7 @@ namespace lab4_variant8
                 if (value < 1 || value > DaysInMonth(month, year))
                 {
 
-                    throw new ArgumentException($"Day must be between 1 and {DaysInMonth(month, year)} for month {month}.");
+                    throw new ArgumentException($"Дней должно быть от 1 до {DaysInMonth(month, year)} для месяца {month}.");
                 }
                 day = value;
             }
@@ -90,18 +90,4 @@ namespace lab4_variant8
         }
     }
 }
-
-
-/*using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace lab4_variant8
-{
-    internal class MyDate
-    {
-    }
-}
-*/
+ 
