@@ -4,6 +4,7 @@ using System.Linq;
 using System.Printing;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace lb3_zadanie_2
 {
@@ -49,7 +50,7 @@ namespace lb3_zadanie_2
                 }
 
                 matrixGrid.ItemsSource = table.DefaultView;
-
+                    matrixGridCurrent.ItemsSource = table.DefaultView;
 
                     Sum();
             }
@@ -108,7 +109,7 @@ namespace lb3_zadanie_2
                     }
 
                     matrixGrid.ItemsSource = table.DefaultView;
-
+                        matrixGridCurrent.ItemsSource = table.DefaultView;
                         Sum();
                     }
             }
@@ -239,6 +240,7 @@ namespace lb3_zadanie_2
                 }
 
                 matrixGrid.ItemsSource = sortedTable.DefaultView;
+             //   matrixGridCurrent.ItemsSource = table.DefaultView;
             }
             else
             {
@@ -255,12 +257,19 @@ namespace lb3_zadanie_2
         {
             if (matrixGrid.CurrentCell != null)
             {
+            
+                matrixGridCurrent.ItemsSource = ((DataView)matrixGrid.ItemsSource).ToTable().DefaultView;
+            }
+
+            if (matrixGrid.CurrentCell != null)
+            {
                 var currentCell = matrixGrid.CurrentCell;
                 var dataRowView = currentCell.Item as DataRowView;
 
                 if (dataRowView != null)
                 {
                     matrixGrid.BeginEdit();
+                    matrixGridCurrent.BeginEdit();
                 }
             }
 
@@ -285,7 +294,10 @@ namespace lb3_zadanie_2
                     
                 }
             }
+
+            matrixGridCurrent.ItemsSource = ((DataView)matrixGrid.ItemsSource).ToTable().DefaultView;
         }
+
     }
 }
 

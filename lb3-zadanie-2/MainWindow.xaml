@@ -14,6 +14,17 @@
           CurrentCellChanged="DataGrid_CurrentCellChanged"
           CellEditEnding="matrixGrid_CellEditEnding"/>
 
+
+
+
+        <DataGrid Name="matrixGridCurrent" AutoGenerateColumns="True" 
+    HorizontalAlignment="Left" VerticalAlignment="Top" 
+    Height="320" Width="548" Margin="640,567,0,0" FontSize="20"
+    IsReadOnly="False" 
+    CurrentCellChanged="DataGrid_CurrentCellChanged"
+    CellEditEnding="matrixGrid_CellEditEnding"/>
+
+
         <Button Name="calculateButton" Content="Отсортировать" 
                 HorizontalAlignment="Left" VerticalAlignment="Top" 
                 Width="219" Height="53" Margin="42,821,0,0" 
@@ -40,7 +51,7 @@
                 Click="GenerateMatrix_Click" FontSize="20"/>
         <Button Content="Ввести свои значения"  Click="InputButton_Click"   FontSize="20" HorizontalAlignment="Left" Margin="266,732,0,0" VerticalAlignment="Top" Height="54" Width="248"/>
         <Image HorizontalAlignment="Left" Height="185" Margin="701,175,0,0" VerticalAlignment="Top" Width="1014" Source="/Снимок экрана (3883).png"/>
-        <ListBox x:Name="valuesList"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="732,504,299,145"/>
-        <Label Content="Сумма элементов столбцов у которых есть хотя бы 1 отрицательный элемент" HorizontalAlignment="Left" Margin="732,448,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <ListBox x:Name="valuesList"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="1237,567,279,183"/>
+        <Label Content="Сумма элементов столбцов у которых есть хотя бы 1 отрицательный элемент"   HorizontalAlignment="Left" Margin="732,448,0,0" VerticalAlignment="Top" FontSize="20"/>
     </Grid>
 </Window>
