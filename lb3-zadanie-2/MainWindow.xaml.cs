@@ -15,7 +15,7 @@ namespace lb3_zadanie_2
 
         private DataTable table;
 
-        private int[,] originalMatrix; // Матрица для хранения оригинальных значений
+        private int[,] originalMatrix; 
 
         private void GenerateMatrix_Click(object sender, RoutedEventArgs e)
         {
@@ -37,7 +37,7 @@ namespace lb3_zadanie_2
                     }
 
                     Random random = new Random();
-                    originalMatrix = new int[rows, columns]; // Инициализация оригинальной матрицы
+                    originalMatrix = new int[rows, columns]; 
                     for (int i = 0; i < rows; i++)
                     {
                         DataRow newRow = table.NewRow();
@@ -45,13 +45,13 @@ namespace lb3_zadanie_2
                         {
                             int value = random.Next(-10, 11);
                             newRow[j] = value;
-                            originalMatrix[i, j] = value; // Заполнение оригинальной матрицы
+                            originalMatrix[i, j] = value; 
                         }
                         table.Rows.Add(newRow);
                     }
 
                     matrixGrid.ItemsSource = table.DefaultView;
-                    matrixGridCurrent.ItemsSource = table.DefaultView; // Отображение начальных значений
+                    matrixGridCurrent.ItemsSource = table.DefaultView;  
                     Sum();
                 }
             }
@@ -83,7 +83,7 @@ namespace lb3_zadanie_2
                             table.Columns.Add("Col " + (i + 1));
                         }
 
-                        originalMatrix = new int[rows, columns]; // Инициализация оригинальной матрицы
+                        originalMatrix = new int[rows, columns];  
                         for (int i = 0; i < rows; i++)
                         {
                             DataRow newRow = table.NewRow();
@@ -93,7 +93,7 @@ namespace lb3_zadanie_2
                                 if (int.TryParse(value, out int parsedValue))
                                 {
                                     newRow[j] = parsedValue;
-                                    originalMatrix[i, j] = parsedValue; // Заполнение оригинальной матрицы
+                                    originalMatrix[i, j] = parsedValue;  
                                 }
                                 else
                                 {
@@ -156,12 +156,35 @@ namespace lb3_zadanie_2
                         {
                             columnSum += matrix[i, j];
                         }
-                        valuesList.Items.Add($"Сумма {j + 1} колонки: {columnSum}");
+                        valuesList.Items.Add($"Колонка {j + 1}, сумма: {columnSum}");
                     }
                 }
             }
         }
+        /*
+         private void MatrixGridCurrent_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+         {
+             if (e.EditAction == DataGridEditAction.Commit)
+             {
+                 DataRowView editedRow = e.Row.Item as DataRowView;
+                 int columnIndex = e.Column.DisplayIndex;
+                 int rowIndex = e.Row.GetIndex();
 
+                 if (editedRow != null)
+                 {
+                     var newValue = ((TextBox)e.EditingElement).Text;
+
+                     if (int.TryParse(newValue, out int parsedValue))
+                     {
+                         Sum();
+                         originalMatrix[rowIndex, columnIndex] = parsedValue;  
+                     }
+                 }
+             }
+         }
+        */
+
+        /*
         private void MatrixGridCurrent_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             if (e.EditAction == DataGridEditAction.Commit)
@@ -176,81 +199,75 @@ namespace lb3_zadanie_2
 
                     if (int.TryParse(newValue, out int parsedValue))
                     {
-                        originalMatrix[rowIndex, columnIndex] = parsedValue; // Обновление оригинальной матрицы
+                        editedRow[columnIndex] = parsedValue;  
+                        originalMatrix[rowIndex, columnIndex] = parsedValue;
                     }
+                    else
+                    {
+                      
+                        editedRow[columnIndex] = 0;
+                        originalMatrix[rowIndex, columnIndex] = 0;
+                        MessageBox.Show("Введите целое число. Значение установлено в 0.", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    Sum(); 
                 }
             }
         }
-        /*
-        private void CalculateButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataView dataViewCurrent = matrixGridCurrent.ItemsSource as DataView;
-
-            if (dataViewCurrent != null)
-            {
-                int rowCount = dataViewCurrent.Count;
-                int columnCount = dataViewCurrent.Table.Columns.Count;
-
-                int[,] matrix = new int[rowCount, columnCount];
-
-                for (int i = 0; i < rowCount; i++)
-                {
-                    DataRowView rowView = dataViewCurrent[i];
-                    for (int j = 0; j < columnCount; j++)
-                    {
-                        matrix[i, j] = Convert.ToInt32(rowView[j]);
-                    }
-                }
-
-                // Сортировка
-                  for (int i = 0; i < rowCount; i++)
-                   {
-                       for (int j = 0; j < columnCount - 1; j++)
-                       {
-                           for (int k = j + 1; k < columnCount; k++)
-                           {
-                               if (matrix[i, j] > matrix[i, k])
-                               {
-                                   int temp = matrix[i, j];
-                                   matrix[i, j] = matrix[i, k];
-                                   matrix[i, k] = temp;
-                               }
-                           }
-                       }
-                   }
-              
-
-              
-                    // Обновление matrixGrid
-                    DataTable sortedTable = new DataTable();
-                for (int i = 0; i < columnCount; i++)
-                {
-                    sortedTable.Columns.Add("Col " + (i + 1));
-                }
-
-                for (int i = 0; i < rowCount; i++)
-                {
-                    DataRow newRow = sortedTable.NewRow();
-                    for (int j = 0; j < columnCount; j++)
-                    {
-                        newRow[j] = matrix[i, j]; // Вставьте отсортированные значения
-                    }
-                    sortedTable.Rows.Add(newRow);
-                }
-
-                matrixGrid.ItemsSource = sortedTable.DefaultView; // Обновление matrixGrid с отсортированными значениями
-            }
-            else
-            {
-                MessageBox.Show("Матрица пуста или не существует.", "Ошибка:", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-
         */
+        /*
+        private void MatrixGridCurrent_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                var editingElement = e.EditingElement as TextBox;
+                if (editingElement != null)
+                {
+                    if (!int.TryParse(editingElement.Text, out int value))
+                    {
+                        MessageBox.Show("Пожалуйста, введите корректное целое число.", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
+                        editingElement.Text = "0";
+                        e.Cancel = true;
+                        return;
+                    } else
+                    {
+                        editingElement.Text = value.ToString();
+                    }
+
+                }
+            }
+
+            matrixGridCurrent.ItemsSource = ((DataView)matrixGrid.ItemsSource).ToTable().DefaultView;
+        }
+        */
+        private void MatrixGridCurrent_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                var editingElement = e.EditingElement as TextBox;
+                if (editingElement != null)
+                {
+                    if (!int.TryParse(editingElement.Text, out int value))
+                    {
+                        MessageBox.Show("Пожалуйста, введите корректное целое число.", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
+                        // Устанавливаем корректное значение в ячейку
+                        editingElement.Text = "0";
+                        e.Cancel = true;  // Останавливаем commit, если введены некорректные данные
+                    }
+                    else
+                    {
+                        // Если число корректное, ничего не отменяем и даем DataGrid завершить редактирование
+                        editingElement.Text = value.ToString();
+                    }
+                }
+            }
+        }
+
+
+
+
         private void CalculateButton_Click(object sender, RoutedEventArgs e)
         {
-            // Получаем данные из matrixGridCurrent
+      
             DataView currentDataView = matrixGridCurrent.ItemsSource as DataView;
             characteristicsValuesList.Items.Clear();
 
@@ -260,8 +277,7 @@ namespace lb3_zadanie_2
                 int columnCount = currentDataView.Table.Columns.Count;
 
                 int[,] matrix = new int[rowCount, columnCount];
-
-                // Заполнение матрицы из matrixGridCurrent
+ 
                 for (int i = 0; i < rowCount; i++)
                 {
                     DataRowView rowView = currentDataView[i];
@@ -273,30 +289,34 @@ namespace lb3_zadanie_2
 
                 double[] negativeSums = new double[columnCount];
 
-                // Подсчет суммы модулей отрицательных нечетных элементов
+             
                 for (int col = 0; col < columnCount; col++)
                 {
                     double sum = 0;
                     int countOfNegative = 0;
+                    int[] negativeNumbers = new int[rowCount];
+                    int negativeIndex = 0;
 
                     for (int row = 0; row < rowCount; row++)
                     {
-                        if (matrix[row, col] < 0 && (row + 1) % 2 != 0) // Индексация с 0
+                        if (matrix[row, col] < 0 && (row + 1) % 2 != 0) 
                         {
                             sum += Math.Abs(matrix[row, col]);
+                            negativeNumbers[negativeIndex++] = matrix[row, col];
                             countOfNegative++;
                         }
                     }
+                    string negativeNumbersStr = string.Join(", ", negativeNumbers.Take(negativeIndex));
 
-                    characteristicsValuesList.Items.Add($"Колонка {col + 1}, сумма модулей отрицательных нечетных элементов {sum}, количество {countOfNegative}");
+                    characteristicsValuesList.Items.Add($"Колонка {col + 1}, \n  сумма модулей отрицательных нечетных элементов {sum}, \n количество  отрицательных элементов {countOfNegative}, \n элементы: {negativeNumbersStr}  \n ========== ");
                     negativeSums[col] = sum;
                 }
 
-                // Индексы для сортировки
+               
                 int[] indices = Enumerable.Range(0, columnCount).ToArray();
                 Array.Sort(negativeSums, indices);
 
-                // Создание отсортированной матрицы
+              
                 int[,] sortedMatrix = new int[rowCount, columnCount];
 
                 for (int col = 0; col < columnCount; col++)
@@ -308,7 +328,7 @@ namespace lb3_zadanie_2
                     }
                 }
 
-                // Обновление DataTable и DataGrid
+              
                 DataTable sortedTable = new DataTable();
                 for (int i = 0; i < columnCount; i++)
                 {
@@ -325,8 +345,8 @@ namespace lb3_zadanie_2
                     sortedTable.Rows.Add(newRow);
                 }
 
-                // Обновление источника данных для matrixGrid
-                matrixGrid.ItemsSource = sortedTable.DefaultView; // Обновление grid
+                Sum();
+                matrixGrid.ItemsSource = sortedTable.DefaultView; 
             }
             else
             {
