@@ -36,7 +36,7 @@
         <TextBox x:Name="matrixRows" HorizontalAlignment="Left" 
                   Margin="270,521,0,0" TextWrapping="Wrap" 
                   VerticalAlignment="Top" Width="120" 
-                  TextChanged="matrixRows_TextChanged" FontSize="20"/>
+                 FontSize="20"/>
         <TextBox x:Name="matrixColumns" HorizontalAlignment="Left" 
                   Margin="270,639,0,0" TextWrapping="Wrap" 
                   VerticalAlignment="Top" Width="120" FontSize="20" RenderTransformOrigin="0.138,0.806"/>
