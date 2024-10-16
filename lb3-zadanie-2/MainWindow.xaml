@@ -46,12 +46,12 @@
                 Click="GenerateMatrix_Click" FontSize="20"/>
         <Button Content="Ввести свои значения"  Click="InputButton_Click"   FontSize="20" HorizontalAlignment="Left" Margin="42,814,0,0" VerticalAlignment="Top" Height="54" Width="248"/>
         <Image HorizontalAlignment="Left" Height="185" Margin="626,483,0,0" VerticalAlignment="Top" Width="1014" Source="/Снимок экрана (3883).png"/>
-        <ListBox x:Name="valuesList"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="553,734,963,15"/>
+        <ListBox  FontSize="20" x:Name="valuesList"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="553,734,963,15"/>
 
 
-        <ListBox x:Name="characteristicsValuesList"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="957,732,199,18"/>
+        <ListBox FontSize="20" x:Name="characteristicsValuesList"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="957,732,199,18"/>
         <Label Content="Сумма  столбцов где  есть хотя бы 1&#xD;&#xA;отрицательный элемент"   HorizontalAlignment="Left" Margin="553,665,0,0" VerticalAlignment="Top" FontSize="20" Width="347"/>
-        <Label Content="Рассчет характеристик"   HorizontalAlignment="Left" Margin="960,690,0,0" VerticalAlignment="Top" FontSize="20" Width="346"/>
+        <Label Content="Рассчет характеристик (модуль суммы нечетных отрицательных элементов колонки)"   HorizontalAlignment="Left" Margin="960,690,0,0" VerticalAlignment="Top" FontSize="20" Width="830"/>
         <Label  Opacity="0"  Content="Характеристики" FontSize="22" HorizontalAlignment="Left" Margin="1328,679,0,0" VerticalAlignment="Top"/>
         <Label Content="Заданная матрица" HorizontalAlignment="Left" FontSize="22" Margin="41,16,0,0" VerticalAlignment="Top"/>
         <Label Content="Упорядоченная матрица" FontSize="22" HorizontalAlignment="Left" Margin="695,16,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.869,0.464"/>
