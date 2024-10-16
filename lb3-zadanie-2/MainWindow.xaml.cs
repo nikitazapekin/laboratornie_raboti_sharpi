@@ -249,13 +249,13 @@ namespace lb3_zadanie_2
                     if (!int.TryParse(editingElement.Text, out int value))
                     {
                         MessageBox.Show("Пожалуйста, введите корректное целое число.", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
-                        // Устанавливаем корректное значение в ячейку
+                       
                         editingElement.Text = "0";
-                        e.Cancel = true;  // Останавливаем commit, если введены некорректные данные
+                        e.Cancel = true;   
                     }
                     else
                     {
-                        // Если число корректное, ничего не отменяем и даем DataGrid завершить редактирование
+                     
                         editingElement.Text = value.ToString();
                     }
                 }
