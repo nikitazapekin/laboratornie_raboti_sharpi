@@ -8,22 +8,17 @@
         Title="MainWindow"  Height="1150" Width="1800">
     <Grid>
         <DataGrid Name="matrixGrid" AutoGenerateColumns="True" 
-          HorizontalAlignment="Left" VerticalAlignment="Top" 
-          Height="320" Width="549" Margin="695,68,0,0" FontSize="20"
-          IsReadOnly="False" 
-          CurrentCellChanged="DataGrid_CurrentCellChanged"
-          CellEditEnding="matrixGrid_CellEditEnding"/>
-
-
-
+                  HorizontalAlignment="Left" VerticalAlignment="Top" 
+                  Height="320" Width="549" Margin="695,68,0,0" FontSize="20"
+                  IsReadOnly="False" 
+                  CellEditEnding="matrixGrid_CellEditEnding"
+                  />
 
         <DataGrid Name="matrixGridCurrent" AutoGenerateColumns="True" 
-    HorizontalAlignment="Left" VerticalAlignment="Top" 
-    Height="320" Width="548" Margin="56,68,0,0" FontSize="20"
-    IsReadOnly="False" 
-    CurrentCellChanged="DataGrid_CurrentCellChanged"
-    CellEditEnding="matrixGrid_CellEditEnding" RenderTransformOrigin="0.449,0.006"/>
-
+                  HorizontalAlignment="Left" VerticalAlignment="Top" 
+                  Height="320" Width="548" Margin="47,68,0,0" FontSize="20"
+                  IsReadOnly="False" 
+                  CellEditEnding="matrixGridCurrent_CellEditEnding" />
 
         <Button Name="calculateButton" Content="Отсортировать" 
                 HorizontalAlignment="Left" VerticalAlignment="Top" 
