@@ -122,6 +122,8 @@ namespace lb3_zadanie_2
 
         private void Sum( )
         {
+
+           
             valuesList.Items.Clear();
             DataView dataView = matrixGrid.ItemsSource as DataView;
           
@@ -147,6 +149,7 @@ namespace lb3_zadanie_2
                 {
                     double sum = 0;
                     int count = 0;
+
                     bool hasNegative = false;
                     for (int row = 0; row < rowCount; row++)
                     {
@@ -157,7 +160,9 @@ namespace lb3_zadanie_2
                         }
                             sum += matrix[row, col];
                     }
-                    if(hasNegative)
+
+                //    characteristicsValuesList.Items.Add($"Колонка {col + 1}, сумма модулей отрицательных нечетных элементов {sum}, количество  {count} ");
+                    if (hasNegative)
                     {
 
                     valuesList.Items.Add($"Колонка {col+1}, sum={sum}");
@@ -175,7 +180,7 @@ namespace lb3_zadanie_2
             private void CalculateButton_Click(object sender, RoutedEventArgs e)
         {
             DataView dataView = matrixGrid.ItemsSource as DataView;
-
+            characteristicsValuesList.Items.Clear();
             if (dataView != null)
             {
                 int rowCount = dataView.Count;
@@ -198,14 +203,18 @@ namespace lb3_zadanie_2
                 {
                     double sum = 0;
                     int count = 0;
+                    int countOfNegative=0;
                     for (int row = 0; row < rowCount; row++)
                     {
                         count++;
                         if (matrix[row, col] < 0 && count % 2 != 0)
                         {
                             sum += Math.Abs(matrix[row, col]);
+                            countOfNegative++;
                         }
                     }
+
+                    characteristicsValuesList.Items.Add($"Колонка {col + 1}, сумма модулей отрицательных нечетных элементов {sum}, количество  {countOfNegative} ");
                     negativeSums[col] = sum;
                 }
 
@@ -240,7 +249,7 @@ namespace lb3_zadanie_2
                 }
 
                 matrixGrid.ItemsSource = sortedTable.DefaultView;
-             //   matrixGridCurrent.ItemsSource = table.DefaultView;
+          
             }
             else
             {
@@ -298,6 +307,12 @@ namespace lb3_zadanie_2
             matrixGridCurrent.ItemsSource = ((DataView)matrixGrid.ItemsSource).ToTable().DefaultView;
         }
 
+
+
+        private void  displayCharacters()
+        {
+            characteristicsValuesList.Items.Clear();
+        }
     }
 }
 

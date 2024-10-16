@@ -9,7 +9,7 @@
     <Grid>
         <DataGrid Name="matrixGrid" AutoGenerateColumns="True" 
           HorizontalAlignment="Left" VerticalAlignment="Top" 
-          Height="320" Width="549" Margin="42,143,0,0" FontSize="20"
+          Height="320" Width="549" Margin="695,68,0,0" FontSize="20"
           IsReadOnly="False" 
           CurrentCellChanged="DataGrid_CurrentCellChanged"
           CellEditEnding="matrixGrid_CellEditEnding"/>
@@ -19,15 +19,15 @@
 
         <DataGrid Name="matrixGridCurrent" AutoGenerateColumns="True" 
     HorizontalAlignment="Left" VerticalAlignment="Top" 
-    Height="320" Width="548" Margin="640,567,0,0" FontSize="20"
+    Height="320" Width="548" Margin="56,68,0,0" FontSize="20"
     IsReadOnly="False" 
     CurrentCellChanged="DataGrid_CurrentCellChanged"
-    CellEditEnding="matrixGrid_CellEditEnding"/>
+    CellEditEnding="matrixGrid_CellEditEnding" RenderTransformOrigin="0.449,0.006"/>
 
 
         <Button Name="calculateButton" Content="Отсортировать" 
                 HorizontalAlignment="Left" VerticalAlignment="Top" 
-                Width="219" Height="53" Margin="42,821,0,0" 
+                Width="219" Height="53" Margin="42,900,0,0" 
                 Click="CalculateButton_Click" FontSize="20"/>
         <TextBlock Name="resultText" HorizontalAlignment="Left" 
                    VerticalAlignment="Top" Margin="120,220,0,0" 
@@ -39,19 +39,26 @@
                    TextWrapping="Wrap" Text="Количество колонок" 
                    VerticalAlignment="Top" FontSize="20"/>
         <TextBox x:Name="matrixRows" HorizontalAlignment="Left" 
-                  Margin="300,521,0,0" TextWrapping="Wrap" 
+                  Margin="270,521,0,0" TextWrapping="Wrap" 
                   VerticalAlignment="Top" Width="120" 
                   TextChanged="matrixRows_TextChanged" FontSize="20"/>
         <TextBox x:Name="matrixColumns" HorizontalAlignment="Left" 
-                  Margin="300,639,0,0" TextWrapping="Wrap" 
-                  VerticalAlignment="Top" Width="120" FontSize="20"/>
+                  Margin="270,639,0,0" TextWrapping="Wrap" 
+                  VerticalAlignment="Top" Width="120" FontSize="20" RenderTransformOrigin="0.138,0.806"/>
         <Button Content="Сгенерировать" HorizontalAlignment="Left" 
                 Margin="42,732,0,0" VerticalAlignment="Top" 
                 Height="54" Width="219" 
                 Click="GenerateMatrix_Click" FontSize="20"/>
-        <Button Content="Ввести свои значения"  Click="InputButton_Click"   FontSize="20" HorizontalAlignment="Left" Margin="266,732,0,0" VerticalAlignment="Top" Height="54" Width="248"/>
-        <Image HorizontalAlignment="Left" Height="185" Margin="701,175,0,0" VerticalAlignment="Top" Width="1014" Source="/Снимок экрана (3883).png"/>
-        <ListBox x:Name="valuesList"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="1237,567,279,183"/>
-        <Label Content="Сумма элементов столбцов у которых есть хотя бы 1 отрицательный элемент"   HorizontalAlignment="Left" Margin="732,448,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Button Content="Ввести свои значения"  Click="InputButton_Click"   FontSize="20" HorizontalAlignment="Left" Margin="42,814,0,0" VerticalAlignment="Top" Height="54" Width="248"/>
+        <Image HorizontalAlignment="Left" Height="185" Margin="626,483,0,0" VerticalAlignment="Top" Width="1014" Source="/Снимок экрана (3883).png"/>
+        <ListBox x:Name="valuesList"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="553,734,963,15"/>
+
+
+        <ListBox x:Name="characteristicsValuesList"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="957,732,199,18"/>
+        <Label Content="Сумма  столбцов где  есть хотя бы 1&#xD;&#xA;отрицательный элемент"   HorizontalAlignment="Left" Margin="553,665,0,0" VerticalAlignment="Top" FontSize="20" Width="347"/>
+        <Label Content="Рассчет характеристик"   HorizontalAlignment="Left" Margin="960,690,0,0" VerticalAlignment="Top" FontSize="20" Width="346"/>
+        <Label  Opacity="0"  Content="Характеристики" FontSize="22" HorizontalAlignment="Left" Margin="1328,679,0,0" VerticalAlignment="Top"/>
+        <Label Content="Заданная матрица" HorizontalAlignment="Left" FontSize="22" Margin="41,16,0,0" VerticalAlignment="Top"/>
+        <Label Content="Упорядоченная матрица" FontSize="22" HorizontalAlignment="Left" Margin="695,16,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.869,0.464"/>
     </Grid>
 </Window>
