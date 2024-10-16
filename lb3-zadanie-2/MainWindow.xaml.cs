@@ -16,64 +16,11 @@ namespace lb3_zadanie_2
         }
 
         private DataTable table;
-        /*
+   
+       
         private void GenerateMatrix_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                int rows = int.Parse(((TextBox)this.FindName("matrixRows")).Text);
-                int columns = int.Parse(((TextBox)this.FindName("matrixColumns")).Text);
-
-                if (rows < 0 || columns < 0)
-                {
-                    MessageBox.Show("Пожалуйста введите положительные значения размерности", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else
-                {
-
-
-
-                    DataTable table = new DataTable();
-
-                    for (int i = 0; i < columns; i++)
-                    {
-                        table.Columns.Add("Col " + (i + 1));
-                    }
-
-                    Random random = new Random();
-
-                    for (int i = 0; i < rows; i++)
-                    {
-                        DataRow newRow = table.NewRow();
-                        for (int j = 0; j < columns; j++)
-                        {
-                            newRow[j] = random.Next(-10, 11);
-                        }
-                        table.Rows.Add(newRow);
-                    }
-
-                    matrixGrid.ItemsSource = table.DefaultView;
-                    matrixGridCurrent.ItemsSource = table.DefaultView;
-
-                    Sum();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-
-
-
-        */
-
-
-        private void GenerateMatrix_Click(object sender, RoutedEventArgs e)
-        {
-           /* 
-            */
+           
             try
             {
                 int rows = int.Parse(matrixRows.Text);
@@ -104,6 +51,7 @@ namespace lb3_zadanie_2
 
                     matrixGrid.ItemsSource = table.DefaultView;
                     matrixGridCurrent.ItemsSource = table.DefaultView;
+                    Sum();
                 }
             }
             catch (Exception ex)
@@ -112,10 +60,9 @@ namespace lb3_zadanie_2
             }
         }
 
-
         private void InputButton_Click(object sender, RoutedEventArgs e)
         {
-         /*    try
+          try
             {
                 int rows = int.Parse(matrixRows.Text);
                 int columns = int.Parse(matrixColumns.Text);
@@ -168,8 +115,8 @@ namespace lb3_zadanie_2
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }  
 
-            */
         }
+     
 
         private void Sum()
         {
@@ -298,7 +245,7 @@ namespace lb3_zadanie_2
                     }
                     sortedTable.Rows.Add(newRow);
                 }
-
+                Sum();
                 matrixGrid.ItemsSource = sortedTable.DefaultView;
 
             }
@@ -313,9 +260,25 @@ namespace lb3_zadanie_2
 
         }
 
+
+
+        
+
+
+        private void displayCharacters()
+        {
+            characteristicsValuesList.Items.Clear();
+        }
+    }
+}
+
+
+
+
+        /*
         private void DataGrid_CurrentCellChanged(object sender, EventArgs e)
         {
-         if (matrixGrid.CurrentCell != null)
+          if (matrixGrid.CurrentCell != null)
             {
 
                 matrixGridCurrent.ItemsSource = ((DataView)matrixGrid.ItemsSource).ToTable().DefaultView;
@@ -334,7 +297,7 @@ namespace lb3_zadanie_2
             }  
 
 
-            Sum();
+            Sum(); 
         }
      
         private void matrixGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
@@ -350,12 +313,12 @@ namespace lb3_zadanie_2
                 }
             }
 
-            matrixGridCurrent.ItemsSource = table.DefaultView; 
+            matrixGridCurrent.ItemsSource = table.DefaultView;  
         }
         private void matrixGridCurrent_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             
-            if (e.EditAction == DataGridEditAction.Commit)
+           if (e.EditAction == DataGridEditAction.Commit)
             {
                 var editingElement = e.EditingElement as TextBox;
                 if (editingElement != null && !int.TryParse(editingElement.Text, out int value))
@@ -366,14 +329,7 @@ namespace lb3_zadanie_2
                 }
             }
 
-            matrixGrid.ItemsSource = table.DefaultView; 
+            matrixGrid.ItemsSource = table.DefaultView;  
             
         }
-
-        private void displayCharacters()
-        {
-            characteristicsValuesList.Items.Clear();
-        }
-    }
-}
-
+        */
