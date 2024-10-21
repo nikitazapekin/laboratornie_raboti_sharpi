@@ -25,11 +25,14 @@ namespace lab6
 
         private void RemoveStudentButton_Click(object sender, RoutedEventArgs e)
         {
-            string lastName = SearchTextBox.Text;
+            string lastName = SearchTextBoxRemove.Text;
             Student student = group.FindStudentByLastName(lastName);
             if (student != null)
             {
                 group.RemoveStudent(student);
+            } else
+            {
+                MessageBox.Show("Студент для удаления не найден!");
             }
             UpdateResult();
         }

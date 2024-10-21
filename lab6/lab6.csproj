@@ -7,4 +7,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Снимок экрана 2024-10-21 203549.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Снимок экрана 2024-10-21 203549.png" />
+  </ItemGroup>
+
 </Project>

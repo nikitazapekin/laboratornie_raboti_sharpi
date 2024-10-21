@@ -21,7 +21,7 @@ public class Student : IComparable<Student>
 
     public int CompareTo(Student other)
     {
-        return LastName.CompareTo(other.LastName); // Сравнение по фамилии
+        return LastName.CompareTo(other.LastName);  
     }
 
     public override string ToString()
