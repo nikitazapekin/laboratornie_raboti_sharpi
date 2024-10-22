@@ -17,10 +17,18 @@ namespace lab6
         {
             string firstName = FirstNameTextBox.Text;
             string lastName = LastNameTextBox.Text;
+            if(firstName.Length>0 && lastName.Length>0)
+            {
+
             DateTime dateOfBirth = DateOfBirthPicker.SelectedDate ?? DateTime.Now;
 
             group.AddStudent(new Student(firstName, lastName, dateOfBirth));
             UpdateResult();
+            } else
+            {
+                MessageBox.Show("Пожалуйста, введите имя и фамилию студента!");
+
+            }
         }
 
         private void RemoveStudentButton_Click(object sender, RoutedEventArgs e)
@@ -39,8 +47,16 @@ namespace lab6
 
         private void SortButton_Click(object sender, RoutedEventArgs e)
         {
+            //  if(group.Lenb)
+            if (group.Count > 0)
+            {
+
             group.SortByLastName();
             UpdateResult();
+            } else
+            {
+                MessageBox.Show("Недостаточно студентов для сортировки!");
+            }
         }
 
         private void FindButton_Click(object sender, RoutedEventArgs e)
@@ -59,38 +75,8 @@ namespace lab6
 
         private void UpdateResult()
         {
-            ResultTextBlock.Text = group.ToString();
+            ResultTextBlockAll.Text = "Студенты: \n" + group.ToString();
         }
     }
 }
-
-/*
- * using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace lab6
-{
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-    }
-}
-*/
+ 

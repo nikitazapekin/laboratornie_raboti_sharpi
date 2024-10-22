@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace lab6
 {
@@ -46,7 +47,9 @@ public class StudentGroup
 
     public Student FindStudentByLastName(string lastName)
     {
-        return students.FirstOrDefault(s => s.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase));
+
+         //   MessageBox.Show($"Search {lastName} ");
+            return students.FirstOrDefault(s => s.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase));
     }
 
     public void SortByLastName()
