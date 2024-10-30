@@ -27,23 +27,9 @@ namespace lab6
             {
                 MessageBox.Show("Пожалуйста, введите корректный формат даты (dd.mm.yy)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-             /*
-            if (DateTime.TryParse(e.Text, out newDate))
-            {
-              * if (datePickerObj.BlackoutDates.Contains(newDate))
-                {
-                    MessageBox.Show(String.Format("The date, {0}, cannot be selected.",
-                                                   e.Text));
-                }
-            }
-            else
-            {
-                MessageBox.Show("Пожалуйста, введите корректный формат даты (dd.mm.yy)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-             
-            }
-             */
+        
         }
-
+        
         private void AddStudentButton_Click(object sender, RoutedEventArgs e)
         {
             string firstName = FirstNameTextBox.Text;
@@ -78,8 +64,9 @@ namespace lab6
             group.AddStudent(new Student(firstName, lastName, dateOfBirth));
             UpdateResult();
         }
+    
 
-        
+
 
         private void RemoveStudentButton_Click(object sender, RoutedEventArgs e)
         {
@@ -167,4 +154,6 @@ namespace lab6
         }
     }
 }
+
+
  
