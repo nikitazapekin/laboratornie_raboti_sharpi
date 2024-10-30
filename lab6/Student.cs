@@ -38,29 +38,27 @@ namespace lab6
             students.Add(student);
         }
 
-        /*  public void RemoveStudent(Student student)
-          {
-              students.Remove(student);
-          }
-        */
+    
 
         public List<Student> FindStudentsByLastName(string lastName)
         {
-            return students.Where(s => s.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            return students.Where(s => s.LastName.StartsWith(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
+            // return students.Where(s => s.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        public List<Student> FindStudentsByLastNameFull(string lastName)
+        {
+
+           // return students.Where(s => s.LastName.StartsWith(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
+             return students.Where(s => s.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
         public void RemoveStudent(Student student)
         {
             students.Remove(student);
         }
-        /*
-        public List<Student> FindStudentsByLastName(string lastNamePart)
-        {
-            return students
-                .Where(s => s.LastName.StartsWith(lastNamePart, StringComparison.OrdinalIgnoreCase))
-                .ToList();
-        }
-        */
+       
 
         public List<Student> FindStudentsByFirstName(string firstNamePart)
         {
@@ -84,7 +82,7 @@ namespace lab6
             students = students.OrderBy(s => s.DateOfBirth).ToList();
         }
 
-        public override string ToString()
+        public   string ToString()
         {
             return string.Join("\n", students.Select(s => s.ToString()));
         }

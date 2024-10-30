@@ -56,7 +56,7 @@ namespace lab6
         private void RemoveStudentButton_Click(object sender, RoutedEventArgs e)
         {
             string lastName = SearchTextBoxRemove.Text;
-            var studentsToRemove = group.FindStudentsByLastName(lastName);
+            var studentsToRemove = group.FindStudentsByLastNameFull(lastName);
 
             if (studentsToRemove.Count > 0)
             {
@@ -102,22 +102,7 @@ namespace lab6
                 MessageBox.Show("Недостаточно студентов для сортировки!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        /*
-        private void FindButton_Click(object sender, RoutedEventArgs e)
-        {
-            string lastName = SearchTextBox.Text;
-            var foundStudents = group.FindStudentsByLastName(lastName);
-
-            if (foundStudents.Count > 0)
-            {
-                ResultTextBlock.Text = "Найденные студенты:\n" + string.Join("\n", foundStudents.Select(s => s.ToString()));
-            }
-            else
-            {
-                ResultTextBlock.Text = "Студенты не найдены.";
-            }
-        }
-        */
+      
         private void FindButton_Click(object sender, RoutedEventArgs e)
         {
             string searchText = SearchTextBox.Text;
