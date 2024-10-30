@@ -1,0 +1,20 @@
+﻿<Window x:Class="lab5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1250" Width="1800">
+    <Grid>
+        <Button FontSize="22" Name="btnLoad" Content="Загрузить текст" Click="btnLoad_Click" HorizontalAlignment="Left" Margin="119,96,0,0" VerticalAlignment="Top" Height="120" Width="239"/>
+        <TextBox IsReadOnly="True" Name="txtQuotes"  FontSize="22" HorizontalAlignment="Left" Margin="119,242,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="327"/>
+
+        <!--
+        <StackPanel Margin="10">
+            <Button Name="btnLoad" Content="Загрузить текст" Click="btnLoad_Click" Margin="0,0,0,10"/>
+            <TextBox Name="txtQuotes" Height="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" IsReadOnly="True"/>
+        </StackPanel>
+        -->
+    </Grid>
+</Window>
