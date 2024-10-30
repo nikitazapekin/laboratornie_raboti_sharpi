@@ -13,10 +13,10 @@
 
 
         <TextBox FontSize="22" x:Name="FirstNameTextBox" HorizontalAlignment="Left" Margin="42,72,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="340" Height="52"/>
-        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,51,0,0" TextWrapping="Wrap" Text="Введите имя студента" VerticalAlignment="Top"/>
+        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,38,0,0" TextWrapping="Wrap" Text="Введите имя студента" VerticalAlignment="Top"/>
         <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,145,0,0" TextWrapping="Wrap" Text="Введите фамилию студента" VerticalAlignment="Top"/>
         <TextBox  FontSize="22" x:Name="LastNameTextBox" HorizontalAlignment="Left" Margin="42,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="51"/>
-        <DatePicker FontSize="22"  x:Name="DateOfBirthPicker" HorizontalAlignment="Left" Margin="42,276,0,0" VerticalAlignment="Top" Height="59" Width="340"/>
+        <DatePicker  FontSize="22"  x:Name="DateOfBirthPicker" HorizontalAlignment="Left" Margin="42,276,0,0" VerticalAlignment="Top" Height="59" Width="340"/>
         <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,246,0,0" TextWrapping="Wrap" Text="Дата рождения студента" VerticalAlignment="Top"/>
         <Button FontSize="22" Content="Добавить студента"  Click="AddStudentButton_Click"  HorizontalAlignment="Left" Margin="42,354,0,0" VerticalAlignment="Top" Height="47" Width="340"/>
         <!--

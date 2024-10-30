@@ -1,5 +1,4 @@
 ﻿
-
 using lab6;
 using System;
 using System.Collections.Generic;
@@ -53,6 +52,8 @@ namespace lab6
             UpdateResult();
         }
 
+        
+
         private void RemoveStudentButton_Click(object sender, RoutedEventArgs e)
         {
             string lastName = SearchTextBoxRemove.Text;
@@ -102,7 +103,7 @@ namespace lab6
                 MessageBox.Show("Недостаточно студентов для сортировки!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-      
+
         private void FindButton_Click(object sender, RoutedEventArgs e)
         {
             string searchText = SearchTextBox.Text;
@@ -133,10 +134,10 @@ namespace lab6
             }
         }
 
-
         private void UpdateResult()
         {
             ResultTextBlockAll.Text = "Студенты: \n" + group.ToString();
         }
     }
-} 
+}
+ 
