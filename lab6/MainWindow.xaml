@@ -29,9 +29,9 @@
         </ComboBox>
         <Button FontSize="22" Content="Сортировать" Click="SortButton_Click" HorizontalAlignment="Left" Margin="42,501,0,0" VerticalAlignment="Top" Height="55" Width="340"/>
         <TextBox FontSize="22"  x:Name="SearchTextBox"  HorizontalAlignment="Left" Margin="42,617,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="52"/>
-        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,588,0,0" TextWrapping="Wrap" Text="Поиск студента" VerticalAlignment="Top" RenderTransformOrigin="0.284,0.692"/>
+        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.284,0.692"><Run Text="Поиск студента"/><Run Text="  "/><Run Text="по фамилии"/></TextBlock>
         <Button FontSize="22" Click="FindButton_Click"   Content="Найти" HorizontalAlignment="Left" Margin="42,698,0,0" VerticalAlignment="Top" Height="51" Width="340"/>
-        <TextBlock FontSize="22" x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="777,306,0,0" TextWrapping="Wrap" Text="Найдено" VerticalAlignment="Top"/>
+        <TextBlock FontSize="22" x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="1010,306,0,0" TextWrapping="Wrap" Text="Найдено" VerticalAlignment="Top"/>
         <TextBlock FontSize="22" x:Name="ResultTextBlockAll" HorizontalAlignment="Left" Margin="549,306,0,0" TextWrapping="Wrap" Text="Студенты" VerticalAlignment="Top"/>
         <Image HorizontalAlignment="Left" Height="199" Margin="440,92,0,0" VerticalAlignment="Top" Width="920" Source="/Снимок экрана 2024-10-21 203549.png"/>
         <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,770,0,0" TextWrapping="Wrap" Text="Удалить студента" VerticalAlignment="Top"/>
