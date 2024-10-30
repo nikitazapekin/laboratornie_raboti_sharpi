@@ -17,6 +17,29 @@ namespace lab6
             InitializeComponent();
         }
 
+
+        private void DatePicker_DateValidationError(object sender,
+                DatePickerDateValidationErrorEventArgs e)
+        {
+            DateTime newDate;
+            DatePicker datePickerObj = sender as DatePicker;
+
+            if (DateTime.TryParse(e.Text, out newDate))
+            {
+                if (datePickerObj.BlackoutDates.Contains(newDate))
+                {
+                    MessageBox.Show(String.Format("The date, {0}, cannot be selected.",
+                                                   e.Text));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, введите корректный формат даты (dd.mm.yy)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                //  MessageBox.Show(String.Format("Errr",  e.Text));
+                //   e.ThrowException = true;
+            }
+        }
+
         private void AddStudentButton_Click(object sender, RoutedEventArgs e)
         {
             string firstName = FirstNameTextBox.Text;

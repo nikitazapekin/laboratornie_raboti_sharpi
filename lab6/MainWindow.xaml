@@ -16,12 +16,26 @@
         <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,38,0,0" TextWrapping="Wrap" Text="Введите имя студента" VerticalAlignment="Top"/>
         <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,145,0,0" TextWrapping="Wrap" Text="Введите фамилию студента" VerticalAlignment="Top"/>
         <TextBox  FontSize="22" x:Name="LastNameTextBox" HorizontalAlignment="Left" Margin="42,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="51"/>
-        <DatePicker  FontSize="22"  x:Name="DateOfBirthPicker" HorizontalAlignment="Left" Margin="42,276,0,0" VerticalAlignment="Top" Height="59" Width="340"/>
+      <!--  <DatePicker  FontSize="22"  x:Name="DateOfBirthPicker" HorizontalAlignment="Left" Margin="42,276,0,0" VerticalAlignment="Top" Height="59" Width="340"/>
+        -->
+        <DatePicker      DateValidationError="DatePicker_DateValidationError" FontSize="22" x:Name="DateOfBirthPicker" HorizontalAlignment="Left" Margin="42,276,0,0" VerticalAlignment="Top" Height="59" Width="340">
+    <DatePicker.Resources>
+        <Style TargetType="DatePickerTextBox">
+            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+        </Style>
+    </DatePicker.Resources>
+    <DatePicker.Text>
+        <Binding Path="SelectedDate" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+            <Binding.ValidationRules>
+                <local:DateValidationRule />
+            </Binding.ValidationRules>
+        </Binding>
+    </DatePicker.Text>
+</DatePicker>
+
         <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,246,0,0" TextWrapping="Wrap" Text="Дата рождения студента" VerticalAlignment="Top"/>
         <Button FontSize="22" Content="Добавить студента"  Click="AddStudentButton_Click"  HorizontalAlignment="Left" Margin="42,354,0,0" VerticalAlignment="Top" Height="47" Width="340"/>
-        <!--
-        <Button FontSize="22" Content="Сортировать по фамилии" Click="SortButton_Click"  HorizontalAlignment="Left" Margin="42,422,0,0" VerticalAlignment="Top" Height="55" Width="340"/>
-        -->
+      
         <ComboBox x:Name="SortCriteriaComboBox" FontSize="22" HorizontalAlignment="Left" Margin="42,444,0,0" VerticalAlignment="Top" Width="340" Height="52">
             <ComboBoxItem Content="Сортировать по имени" />
             <ComboBoxItem Content="Сортировать по фамилии" />
