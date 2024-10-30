@@ -1,6 +1,7 @@
 ﻿using lab6;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace lab6
 {
@@ -44,7 +45,7 @@ namespace lab6
             }
             UpdateResult();
         }
-
+        /*
         private void SortButton_Click(object sender, RoutedEventArgs e)
         {
             //  if(group.Lenb)
@@ -55,9 +56,42 @@ namespace lab6
             UpdateResult();
             } else
             {
+                MessageBox.Show("Недостаточно студентов для сортировки по фамилии!");
+            }
+        }
+        */
+
+
+        private void SortButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (group.Count > 0)
+            {
+                string selectedCriteria = (SortCriteriaComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+                switch (selectedCriteria)
+                {
+                    case "Сортировать по имени":
+                        group.SortByFirstName();
+                        break;
+                    case "Сортировать по фамилии":
+                        group.SortByLastName();
+                        break;
+                    case "Сортировать по дате рождения":
+                        group.SortByDateOfBirth();
+                        break;
+                    default:
+                        MessageBox.Show("Пожалуйста, выберите критерий сортировки.");
+                        return;
+                }
+
+                UpdateResult();
+            }
+            else
+            {
                 MessageBox.Show("Недостаточно студентов для сортировки!");
             }
         }
+
 
         private void FindButton_Click(object sender, RoutedEventArgs e)
         {

@@ -52,12 +52,30 @@ public class StudentGroup
             return students.FirstOrDefault(s => s.LastName.Equals(lastName, StringComparison.OrdinalIgnoreCase));
     }
 
-    public void SortByLastName()
+
+        public void SortByFirstName()
+        {
+            students = students.OrderBy(s => s.FirstName).ToList();
+        }
+
+        public void SortByLastName()
+        {
+            students = students.OrderBy(s => s.LastName).ToList();
+        }
+
+        public void SortByDateOfBirth()
+        {
+            students = students.OrderBy(s => s.DateOfBirth).ToList();
+        }
+
+        /*
+
+        public void SortByLastName()
     {
         students.Sort();
     }
-
-    public override string ToString()
+*/
+    public  string ToString()
     {
         return string.Join("\n", students.Select(s => s.ToString()));
     }
@@ -71,18 +89,4 @@ public class StudentGroup
 }
 }
 
-
-/*
- * using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace lab6
-{
-    internal class Student
-    {
-    }
-}
-*/
+ 
