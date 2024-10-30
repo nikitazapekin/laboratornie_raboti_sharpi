@@ -22,47 +22,60 @@ namespace lab5
 
             if (openFileDialog.ShowDialog() == true)
             {
-                // Считываем текст из выбранного файла
+               
                 string text = File.ReadAllText(openFileDialog.FileName);
 
-                // Извлекаем цитаты
+              
                 string quotesUsingString = ExtractQuotesUsingString(text);
                 string quotesUsingStringBuilder = ExtractQuotesUsingStringBuilder(text);
 
-                // Выводим цитаты
+               
                 txtQuotes.Text = "Цитаты (используя методы String):\n" + quotesUsingString + "\n\n" +
                                  "Цитаты (используя StringBuilder):\n" + quotesUsingStringBuilder;
+            } else
+            {
+                MessageBox.Show("Ошибка чтения файла", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private string ExtractQuotesUsingString(string text)
         {
-            // Используем методы класса String для извлечения цитат
-            StringBuilder result = new StringBuilder();
-            int start = 0;
+            string result = ""; 
 
-            while ((start = text.IndexOf('"', start)) != -1)
+            for (int i = 0; i < text.Length; i++)
             {
-                int end = text.IndexOf('"', start + 1);
-                if (end == -1) break; // Если нет закрывающей кавычки
+              
+                if (text[i] == '"')
+                {
+              
+                    int end = text.IndexOf('"', i + 1);
 
-                result.AppendLine(text.Substring(start + 1, end - start - 1));
-                start = end + 1;
+               
+                    if (end == -1)
+                    {
+                        break;
+                    }
+
+            
+                    result += text.Substring(i + 1, end - i - 1) + Environment.NewLine; 
+ 
+                    i = end;
+                }
             }
 
-            return result.ToString();
+            return result;  
         }
 
         private string ExtractQuotesUsingStringBuilder(string text)
         {
-            // Используем StringBuilder для извлечения цитат
+          
             StringBuilder result = new StringBuilder();
             int start = 0;
 
             while ((start = text.IndexOf('"', start)) != -1)
             {
                 int end = text.IndexOf('"', start + 1);
-                if (end == -1) break; // Если нет закрывающей кавычки
+                if (end == -1) break;  
 
                 result.AppendLine(text.Substring(start + 1, end - start - 1));
                 start = end + 1;
@@ -72,35 +85,3 @@ namespace lab5
         }
     }
 }
-
-
-/*
- * using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace lab5
-{
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-    }
-}
-*/

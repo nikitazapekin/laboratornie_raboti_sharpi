@@ -7,14 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1250" Width="1800">
     <Grid>
-        <Button FontSize="22" Name="btnLoad" Content="Загрузить текст" Click="btnLoad_Click" HorizontalAlignment="Left" Margin="119,96,0,0" VerticalAlignment="Top" Height="120" Width="239"/>
-        <TextBox IsReadOnly="True" Name="txtQuotes"  FontSize="22" HorizontalAlignment="Left" Margin="119,242,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="327"/>
+        <Button FontSize="22" Name="btnLoad" Content="Загрузить текст" Click="btnLoad_Click" HorizontalAlignment="Left" Margin="119,168,0,0" VerticalAlignment="Top" Height="120" Width="239"/>
+        <TextBox IsReadOnly="True" Name="txtQuotes"  FontSize="22" HorizontalAlignment="Left" Margin="119,323,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="327"/>
+        <Image HorizontalAlignment="Left" Height="533" Margin="564,114,0,0" VerticalAlignment="Top" Width="1158" Source="/Снимок экрана 2024-10-30 135430.png"/>
 
-        <!--
-        <StackPanel Margin="10">
-            <Button Name="btnLoad" Content="Загрузить текст" Click="btnLoad_Click" Margin="0,0,0,10"/>
-            <TextBox Name="txtQuotes" Height="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" IsReadOnly="True"/>
-        </StackPanel>
-        -->
+       
     </Grid>
 </Window>
