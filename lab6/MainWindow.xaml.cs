@@ -1,4 +1,5 @@
-﻿using System;
+﻿ 
+  using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -58,7 +59,9 @@ namespace lab6
                 new Student("Alice", "Smith", new DateTime(2000, 1, 15)),
                 new Student("Bob", "Johnson", new DateTime(2001, 2, 20)),
                 new Student("Charlie", "Williams", new DateTime(2002, 3, 25)),
-                new Student("Diana", "Jones", new DateTime(2003, 4, 30))
+                new Student("Diana", "Jones", new DateTime(2003, 4, 30)),
+            new Student("Alex", "Bern", new DateTime(2002, 3, 25)),
+                new Student("Lia", "Charlz", new DateTime(2003, 4, 30))
             };
 
             group.AddStudents(newStudents);
@@ -152,23 +155,45 @@ namespace lab6
         void Compare_Click(object sender, RoutedEventArgs e)
         {
             Student student1 = new Student("Иван", "Иванов", new DateTime(2000, 1, 1));
-            Student student2 = new Student("Петр", "Петров", new DateTime(1999, 5, 5));
-
+            Student student2 = new Student("Петр", "Иванов", new DateTime(1999, 5, 5));
+            MessageBox.Show($"Студенты:\n1. {student1.FirstName} {student1.LastName},  {student2.FirstName} {student2.LastName}");
             if (student1 == student2)
             {
-                MessageBox.Show("Студенты равны по фамилии.");
+                MessageBox.Show($"Студенты {student1.LastName} и {student2.LastName}  равны по фамилии.");
+            }
+            else
+            {
+                MessageBox.Show($"Студенты {student1.LastName} и {student2.LastName} не равны по фамилии.");
             }
 
             if (student1 > student2)
             {
-                MessageBox.Show("Студент 1 старше студента 2 по фамилии.");
+                MessageBox.Show($"Студент {student1.LastName}  старше студента  {student2.LastName} ");
             }
             else
             {
-                MessageBox.Show("Студент 1 не старше студента 2 по фамилии.");
+                MessageBox.Show($"Студент {student1.LastName} младше студента  {student2.LastName}.");
             }
+        
+           
 
         }
+
+        void Indecsator_Click(object sender, RoutedEventArgs e)
+        {
+
+            
+   
+            for (int i = 0; i < group.Count; i++)
+            {
+                Student student = group[i];
+           
+                MessageBox.Show(student.FirstName);
+            }
+
+
+        }
+
         private void UpdateResult()
         {
             ResultTextBlockAll.Text = "Студенты: \n" + group.ToString();

@@ -56,10 +56,7 @@ namespace lab6
             return Equals(obj as Student);
         }
 
-        public override int GetHashCode()
-        {
-            return LastName.ToLower().GetHashCode();
-        }
+      
 
         public static bool operator ==(Student left, Student right)
         {
@@ -329,5 +326,29 @@ namespace lab6
         }
 
         public int Count => students.Length;
-    }
+
+
+        public Student this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= students.Length)
+                {
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
+                }
+                return students[index];
+            }
+            set
+            {
+                if (index < 0 || index >= students.Length)
+                {
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
+                }
+                students[index] = value;
+            }
+        }
+  
+
+
+}
 }

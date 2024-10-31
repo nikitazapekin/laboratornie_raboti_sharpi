@@ -58,7 +58,8 @@
 
             </ComboBox>
             <Button  Click="AddStudentsButton_Click"  FontSize="22" Content="Добавить студентов" HorizontalAlignment="Left" Margin="42,1013,0,0" VerticalAlignment="Top" Height="52" Width="340"/>
-            <Button Content="Сравнить студентов"  Click="Compare_Click"  HorizontalAlignment="Left" Margin="42,1105,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
+            <Button   FontSize="22" Content="Сравнить студентов"  Click="Compare_Click"  HorizontalAlignment="Left" Margin="42,1088,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
+            <Button  FontSize="22" Content="Индексаторы"  Click="Indecsator_Click"  HorizontalAlignment="Left" Margin="42,1167,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
         </Grid>
     </ScrollViewer>
 </Window>
