@@ -7,7 +7,9 @@ namespace lab6
     public class Student : IComparable<Student>
     {
         public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string LastName {
+            get; set;
+        }
         public DateTime DateOfBirth { get; set; }
 
         public Student(string firstName, string lastName, DateTime dateOfBirth)
@@ -33,11 +35,20 @@ namespace lab6
             int length = Math.Min(str1.Length, str2.Length);
             for (int i = 0; i < length; i++)
             {
-                if (str1[i] < str2[i]) return -1;
-                if (str1[i] > str2[i]) return 1;
+                if (str1[i] < str2[i]) {
+                    return -1;
+                        };
+                if (str1[i] > str2[i])
+                {
+                    return 1;
+                }
             }
-            if (str1.Length < str2.Length) return -1;
-            if (str1.Length > str2.Length) return 1;
+            if (str1.Length < str2.Length) {
+                return -1;
+                    };
+            if (str1.Length > str2.Length) {
+                return 1;
+                    };
             return 0;
         }
     }
@@ -135,12 +146,7 @@ namespace lab6
             }
             return result.TrimEnd();
         }
-
-        public Student this[int index]
-        {
-            get { return students[index]; }
-        }
-
+ 
         public int Count => students.Count;
  
         private void BubbleSort(Func<Student, Student, int> compare)
