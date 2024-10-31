@@ -6,56 +6,57 @@
         xmlns:local="clr-namespace:lab6"
         mc:Ignorable="d"
         Title="MainWindow" Height="1250" Width="1400">
-    <Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
 
 
 
 
 
-        <TextBox FontSize="22" x:Name="FirstNameTextBox" HorizontalAlignment="Left" Margin="42,72,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="340" Height="52"/>
-        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,38,0,0" TextWrapping="Wrap" Text="Введите имя студента" VerticalAlignment="Top"/>
-        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,145,0,0" TextWrapping="Wrap" Text="Введите фамилию студента" VerticalAlignment="Top"/>
-        <TextBox  FontSize="22" x:Name="LastNameTextBox" HorizontalAlignment="Left" Margin="42,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="51"/>
-      <!--  <DatePicker  FontSize="22"  x:Name="DateOfBirthPicker" HorizontalAlignment="Left" Margin="42,276,0,0" VerticalAlignment="Top" Height="59" Width="340"/>
-        -->
-        <DatePicker      DateValidationError="DatePicker_DateValidationError" FontSize="22" x:Name="DateOfBirthPicker" HorizontalAlignment="Left" Margin="42,276,0,0" VerticalAlignment="Top" Height="59" Width="340">
-    <DatePicker.Resources>
-        <Style TargetType="DatePickerTextBox">
-            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
-        </Style>
-    </DatePicker.Resources>
-    <DatePicker.Text>
-        <Binding Path="SelectedDate" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
-            <Binding.ValidationRules>
-                <local:DateValidationRule />
-            </Binding.ValidationRules>
-        </Binding>
-    </DatePicker.Text>
-</DatePicker>
+            <TextBox FontSize="22" x:Name="FirstNameTextBox" HorizontalAlignment="Left" Margin="42,72,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="340" Height="52"/>
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,38,0,0" TextWrapping="Wrap" Text="Введите имя студента" VerticalAlignment="Top"/>
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,145,0,0" TextWrapping="Wrap" Text="Введите фамилию студента" VerticalAlignment="Top"/>
+            <TextBox  FontSize="22" x:Name="LastNameTextBox" HorizontalAlignment="Left" Margin="42,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="51"/>
 
-        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,246,0,0" TextWrapping="Wrap" Text="Дата рождения студента" VerticalAlignment="Top"/>
-        <Button FontSize="22" Content="Добавить студента"  Click="AddStudentButton_Click"  HorizontalAlignment="Left" Margin="42,354,0,0" VerticalAlignment="Top" Height="47" Width="340"/>
-      
-        <ComboBox x:Name="SortCriteriaComboBox" FontSize="22" HorizontalAlignment="Left" Margin="42,444,0,0" VerticalAlignment="Top" Width="340" Height="52">
-            <ComboBoxItem Content="Сортировать по имени" />
-            <ComboBoxItem Content="Сортировать по фамилии" />
-            <ComboBoxItem Content="Сортировать по дате рождения" />
-        </ComboBox>
-        <Button FontSize="22" Content="Сортировать" Click="SortButton_Click" HorizontalAlignment="Left" Margin="42,501,0,0" VerticalAlignment="Top" Height="55" Width="340"/>
-        <TextBox FontSize="22"  x:Name="SearchTextBox"  HorizontalAlignment="Left" Margin="42,659,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="52"/>
-        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,556,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.284,0.692"><Run Text="Поиск студента"/><Run Text="  "/><Run Text="по фамилии"/></TextBlock>
-        <Button FontSize="22" Click="FindButton_Click"   Content="Найти" HorizontalAlignment="Left" Margin="42,711,0,0" VerticalAlignment="Top" Height="51" Width="340"/>
-        <TextBlock FontSize="22" x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="1010,306,0,0" TextWrapping="Wrap" Text="Найдено" VerticalAlignment="Top"/>
-        <TextBlock FontSize="22" x:Name="ResultTextBlockAll" HorizontalAlignment="Left" Margin="549,306,0,0" TextWrapping="Wrap" Text="Студенты" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="199" Margin="440,92,0,0" VerticalAlignment="Top" Width="920" Source="/Снимок экрана 2024-10-21 203549.png"/>
-        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,803,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Удалить студента"/><Run Text=" по фамилии"/><LineBreak/><Run/><Run Text=" "/></TextBlock>
-        <TextBox FontSize="22" x:Name="SearchTextBoxRemove" HorizontalAlignment="Left" Margin="42,867,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="51"/>
-        <Button FontSize="22" Click="RemoveStudentButton_Click" Content="Удалить" HorizontalAlignment="Left" Margin="42,932,0,0" VerticalAlignment="Top" Height="54" Width="340"/>
-        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,406,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.284,0.692"><Run Language="ru-ru" Text="Критерий сортировки"/></TextBlock>
-        <ComboBox x:Name="SortCriteriaComboBox_Copy" FontSize="22" HorizontalAlignment="Left" Margin="42,602,0,0" VerticalAlignment="Top" Width="340" Height="52">
-            <ComboBoxItem Content="Поиск по имени" />
-            <ComboBoxItem Content="Поиск по фамилии" />
-        
-        </ComboBox>
-    </Grid>
+            <DatePicker      DateValidationError="DatePicker_DateValidationError" FontSize="22" x:Name="DateOfBirthPicker" HorizontalAlignment="Left" Margin="42,276,0,0" VerticalAlignment="Top" Height="59" Width="340">
+                <DatePicker.Resources>
+                    <Style TargetType="DatePickerTextBox">
+                        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                    </Style>
+                </DatePicker.Resources>
+                <DatePicker.Text>
+                    <Binding Path="SelectedDate" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <local:DateValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.Text>
+            </DatePicker>
+
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,246,0,0" TextWrapping="Wrap" Text="Дата рождения студента" VerticalAlignment="Top"/>
+            <Button FontSize="22" Content="Добавить студента"  Click="AddStudentButton_Click"  HorizontalAlignment="Left" Margin="42,354,0,0" VerticalAlignment="Top" Height="47" Width="340"/>
+
+            <ComboBox x:Name="SortCriteriaComboBox" FontSize="22" HorizontalAlignment="Left" Margin="42,444,0,0" VerticalAlignment="Top" Width="340" Height="52">
+                <ComboBoxItem Content="Сортировать по имени" />
+                <ComboBoxItem Content="Сортировать по фамилии" />
+                <ComboBoxItem Content="Сортировать по дате рождения" />
+            </ComboBox>
+            <Button FontSize="22" Content="Сортировать" Click="SortButton_Click" HorizontalAlignment="Left" Margin="42,501,0,0" VerticalAlignment="Top" Height="55" Width="340"/>
+            <TextBox FontSize="22"  x:Name="SearchTextBox"  HorizontalAlignment="Left" Margin="42,659,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="52"/>
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,556,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.284,0.692"><Run Text="Поиск студента"/><Run Text="  "/><Run Text="по фамилии"/></TextBlock>
+            <Button FontSize="22" Click="FindButton_Click"   Content="Найти" HorizontalAlignment="Left" Margin="42,711,0,0" VerticalAlignment="Top" Height="51" Width="340"/>
+            <TextBlock FontSize="22" x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="1010,306,0,0" TextWrapping="Wrap" Text="Найдено" VerticalAlignment="Top"/>
+            <TextBlock FontSize="22" x:Name="ResultTextBlockAll" HorizontalAlignment="Left" Margin="549,306,0,0" TextWrapping="Wrap" Text="Студенты" VerticalAlignment="Top"/>
+            <Image HorizontalAlignment="Left" Height="199" Margin="440,92,0,0" VerticalAlignment="Top" Width="920" Source="/Снимок экрана 2024-10-21 203549.png"/>
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,803,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Удалить студента"/><Run Text=" по фамилии"/><LineBreak/><Run/><Run Text=" "/></TextBlock>
+            <TextBox FontSize="22" x:Name="SearchTextBoxRemove" HorizontalAlignment="Left" Margin="42,867,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="51"/>
+            <Button FontSize="22" Click="RemoveStudentButton_Click" Content="Удалить" HorizontalAlignment="Left" Margin="42,932,0,0" VerticalAlignment="Top" Height="54" Width="340"/>
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,406,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.284,0.692"><Run Language="ru-ru" Text="Критерий сортировки"/></TextBlock>
+            <ComboBox x:Name="SortCriteriaComboBox_Copy" FontSize="22" HorizontalAlignment="Left" Margin="42,602,0,0" VerticalAlignment="Top" Width="340" Height="52">
+                <ComboBoxItem Content="Поиск по имени" />
+                <ComboBoxItem Content="Поиск по фамилии" />
+
+            </ComboBox>
+        </Grid>
+    </ScrollViewer>
 </Window>
