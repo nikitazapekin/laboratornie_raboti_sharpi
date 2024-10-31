@@ -1,17 +1,11 @@
-﻿ 
-
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace lab6
 {
     public class Student : IComparable<Student>
     {
         public string FirstName { get; set; }
-        public string LastName
-        {
-            get; set;
-        }
+        public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
 
         public Student(string firstName, string lastName, DateTime dateOfBirth)
@@ -20,151 +14,308 @@ namespace lab6
             LastName = lastName;
             DateOfBirth = dateOfBirth;
         }
+        public Student()
+        {
+            FirstName = "";
+            LastName = "";
+            DateOfBirth = DateTime.Now;
+        }
 
         public int CompareTo(Student other)
         {
             return CompareStrings(LastName, other.LastName);
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return $"{FirstName} {LastName}, Дата рождения: {DateOfBirth.ToShortDateString()}";
         }
-
 
         public static int CompareStrings(string str1, string str2)
         {
             int length = Math.Min(str1.Length, str2.Length);
             for (int i = 0; i < length; i++)
             {
-                if (str1[i] < str2[i])
-                {
-                    return -1;
-                };
-                if (str1[i] > str2[i])
-                {
-                    return 1;
-                }
+                if (str1[i] < str2[i]) return -1;
+                if (str1[i] > str2[i]) return 1;
             }
-            if (str1.Length < str2.Length)
-            {
-                return -1;
-            };
-            if (str1.Length > str2.Length)
-            {
-                return 1;
-            };
+            if (str1.Length < str2.Length) return -1;
+            if (str1.Length > str2.Length) return 1;
             return 0;
+        }
+
+
+        public bool Equals(Student other)
+        {
+            if (other is null) return false;
+            return string.Equals(LastName, other.LastName, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Student);
+        }
+
+        public override int GetHashCode()
+        {
+            return LastName.ToLower().GetHashCode();
+        }
+
+        public static bool operator ==(Student left, Student right)
+        {
+            if (left is null) return right is null;
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Student left, Student right)
+        {
+            return !(left == right);
+        }
+
+        public static bool operator >(Student left, Student right)
+        {
+            return left.CompareTo(right) > 0;
+        }
+
+        public static bool operator <(Student left, Student right)
+        {
+            return left.CompareTo(right) < 0;
+        }
+
+        public static bool operator >=(Student left, Student right)
+        {
+            return left.CompareTo(right) >= 0;
+        }
+
+        public static bool operator <=(Student left, Student right)
+        {
+            return left.CompareTo(right) <= 0;
         }
     }
 
     public class StudentGroup
     {
-        private List<Student> students = new List<Student>();
-        public StudentGroup() { }
+        private Student[] students = new Student[0];
 
         public void AddStudent(Student student)
         {
-            students.Add(student);
-        }
-        public void AddStudent(params Student[] newStudents)
-        {
-            foreach (var student in newStudents)
+        
+            Student[] newStudents = new Student[students.Length + 1];
+
+            
+            for (int i = 0; i < students.Length; i++)
             {
-                students.Add(student);
+                newStudents[i] = students[i];
             }
+
+         
+            newStudents[newStudents.Length - 1] = student;
+
+          
+            students = newStudents;
         }
 
-        public List<Student> FindStudentsByLastName(string lastName)
+        public void AddStudents(Student[] newStudents)
         {
-            List<Student> result = new List<Student>();
-            foreach (Student student in students)
+          
+            Student[] combinedStudents = new Student[students.Length + newStudents.Length];
+ 
+            for (int i = 0; i < students.Length; i++)
             {
-                if (StartsWithIgnoreCase(student.LastName, lastName))
-                {
-                    result.Add(student);
-                }
+                combinedStudents[i] = students[i];
             }
-            return result;
+
+          
+            for (int i = 0; i < newStudents.Length; i++)
+            {
+                combinedStudents[students.Length + i] = newStudents[i];
+            }
+
+     
+            students = combinedStudents;
         }
 
-        public List<Student> FindStudentsByLastNameFull(string lastName)
+        public Student[] FindStudentsByLastName(string lastName)
         {
-            List<Student> result = new List<Student>();
-            foreach (Student student in students)
+       
+            int count = 0;
+            foreach (var student in students)
             {
-                if (EqualsIgnoreCase(student.LastName, lastName))
+                if (student.LastName.StartsWith(lastName, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.Add(student);
+                    count++;
                 }
             }
-            return result;
+             
+            Student[] results = new Student[count];
+            int index = 0;
+
+           
+            foreach (var student in students)
+            {
+                if (student.LastName.StartsWith(lastName, StringComparison.OrdinalIgnoreCase))
+                {
+                    results[index++] = student;
+                }
+            }
+
+            return results;
+        }
+
+        public Student[] FindStudentsByLastNameFull(string lastName)
+        { 
+            int count = 0;
+            foreach (var student in students)
+            {
+                if (string.Equals(student.LastName, lastName, StringComparison.OrdinalIgnoreCase))
+                {
+                    count++;
+                }
+            }
+
+           
+            Student[] results = new Student[count];
+            int index = 0;
+ 
+            foreach (var student in students)
+            {
+                if (string.Equals(student.LastName, lastName, StringComparison.OrdinalIgnoreCase))
+                {
+                    results[index++] = student;
+                }
+            }
+
+            return results;
         }
 
         public void RemoveStudent(Student student)
         {
-            int index = -1;
-            for (int i = 0; i < students.Count; i++)
+           
+            int count = 0;
+            foreach (var s in students)
             {
-                if (students[i] == student)
+                if (s != student)
                 {
-                    index = i;
-                    break;
+                    count++;
                 }
             }
-            if (index >= 0)
+
+          
+            Student[] newStudents = new Student[count];
+            int index = 0;
+
+           
+            foreach (var s in students)
             {
-                for (int i = index; i < students.Count - 1; i++)
+                if (s != student)
                 {
-                    students[i] = students[i + 1];
+                    newStudents[index++] = s;
                 }
-                students.RemoveAt(students.Count - 1);
             }
+
+          
+            students = newStudents;
         }
 
-        public List<Student> FindStudentsByFirstName(string firstNamePart)
+        public Student[] FindStudentsByFirstName(string firstNamePart)
         {
-            List<Student> result = new List<Student>();
-            foreach (Student student in students)
+           
+            int count = 0;
+            foreach (var student in students)
             {
-                if (StartsWithIgnoreCase(student.FirstName, firstNamePart))
+                if (student.FirstName.StartsWith(firstNamePart, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.Add(student);
+                    count++;
                 }
             }
-            return result;
+
+          
+            Student[] results = new Student[count];
+            int index = 0;
+ 
+            foreach (var student in students)
+            {
+                if (student.FirstName.StartsWith(firstNamePart, StringComparison.OrdinalIgnoreCase))
+                {
+                    results[index++] = student;
+                }
+            }
+
+            return results;
         }
+
+
         /*
-        public void SortByFirstName()
+           public void SortByFirstName()
         {
-            BubbleSort((s1, s2) => Student.CompareStrings(s1.FirstName, s2.FirstName));
+            Array.Sort(students, (s1, s2) => string.Compare(s1.FirstName, s2.FirstName, StringComparison.OrdinalIgnoreCase));
         }
 
         public void SortByLastName()
         {
-            BubbleSort((s1, s2) => Student.CompareStrings(s1.LastName, s2.LastName));
+            Array.Sort(students, (s1, s2) => string.Compare(s1.LastName, s2.LastName, StringComparison.OrdinalIgnoreCase));
         }
 
         public void SortByDateOfBirth()
         {
-            BubbleSort((s1, s2) => s1.DateOfBirth < s2.DateOfBirth ? -1 : (s1.DateOfBirth > s2.DateOfBirth ? 1 : 0));
+            Array.Sort(students, (s1, s2) => s1.DateOfBirth.CompareTo(s2.DateOfBirth));
         }
+
+
+
         */
-
-
         public void SortByFirstName()
         {
-            students.Sort((s1, s2) => string.Compare(s1.FirstName, s2.FirstName, StringComparison.OrdinalIgnoreCase));
+            
+            for (int i = 0; i < students.Length - 1; i++)
+            {
+                for (int j = i + 1; j < students.Length; j++)
+                {
+                    if (string.Compare(students[i].FirstName, students[j].FirstName, StringComparison.OrdinalIgnoreCase) > 0)
+                    {
+                    
+                        Student temp = students[i];
+                        students[i] = students[j];
+                        students[j] = temp;
+                    }
+                }
+            }
         }
 
         public void SortByLastName()
         {
-            students.Sort((s1, s2) => string.Compare(s1.LastName, s2.LastName, StringComparison.OrdinalIgnoreCase)); 
+           
+            for (int i = 0; i < students.Length - 1; i++)
+            {
+                for (int j = i + 1; j < students.Length; j++)
+                {
+                    if (string.Compare(students[i].LastName, students[j].LastName, StringComparison.OrdinalIgnoreCase) > 0)
+                    {
+                     
+                        Student temp = students[i];
+                        students[i] = students[j];
+                        students[j] = temp;
+                    }
+                }
+            }
         }
 
         public void SortByDateOfBirth()
         {
-            students.Sort((s1, s2) => s1.DateOfBirth.CompareTo(s2.DateOfBirth));
+           
+            for (int i = 0; i < students.Length - 1; i++)
+            {
+                for (int j = i + 1; j < students.Length; j++)
+                {
+                    if (students[i].DateOfBirth > students[j].DateOfBirth)
+                    {
+                        
+                        Student temp = students[i];
+                        students[i] = students[j];
+                        students[j] = temp;
+                    }
+                }
+            }
         }
 
         public override string ToString()
@@ -177,49 +328,6 @@ namespace lab6
             return result.TrimEnd();
         }
 
-        public int Count => students.Count;
-
-        private void BubbleSort(Func<Student, Student, int> compare)
-        {
-            for (int i = 0; i < students.Count - 1; i++)
-            {
-                for (int j = 0; j < students.Count - i - 1; j++)
-                {
-                    if (compare(students[j], students[j + 1]) > 0)
-                    {
-
-                        var temp = students[j];
-                        students[j] = students[j + 1];
-                        students[j + 1] = temp;
-                    }
-                }
-            }
-        }
-
-        private bool StartsWithIgnoreCase(string str, string prefix)
-        {
-            if (str.Length < prefix.Length) return false;
-            for (int i = 0; i < prefix.Length; i++)
-            {
-                if (char.ToLower(str[i]) != char.ToLower(prefix[i]))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private bool EqualsIgnoreCase(string str1, string str2)
-        {
-            if (str1.Length != str2.Length) return false;
-            for (int i = 0; i < str1.Length; i++)
-            {
-                if (char.ToLower(str1[i]) != char.ToLower(str2[i]))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        public int Count => students.Length;
     }
 }

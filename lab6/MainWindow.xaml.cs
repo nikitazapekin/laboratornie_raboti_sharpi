@@ -1,8 +1,4 @@
-﻿
-using lab6;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,13 +11,9 @@ namespace lab6
         public MainWindow()
         {
             InitializeComponent();
-
-            
         }
 
-
-        private void DatePicker_DateValidationError(object sender,
-                DatePickerDateValidationErrorEventArgs e)
+        private void DatePicker_DateValidationError(object sender, DatePickerDateValidationErrorEventArgs e)
         {
             DateTime newDate;
             DatePicker datePickerObj = sender as DatePicker;
@@ -29,17 +21,12 @@ namespace lab6
             {
                 MessageBox.Show("Пожалуйста, введите корректный формат даты (dd.mm.yy)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        
         }
- 
+
         private void AddStudentButton_Click(object sender, RoutedEventArgs e)
         {
-
-
-           
             string firstName = FirstNameTextBox.Text;
             string lastName = LastNameTextBox.Text;
-            string dateFormat = "dd.MM.yy";
 
             if (string.IsNullOrWhiteSpace(firstName))
             {
@@ -59,46 +46,31 @@ namespace lab6
                 return;
             }
 
-            DateTime dateOfBirth;
-            if (!DateTime.TryParseExact(DateOfBirthPicker.SelectedDate.Value.ToString(dateFormat), dateFormat, null, System.Globalization.DateTimeStyles.None, out dateOfBirth))
-            {
-                MessageBox.Show($"Некорректный формат даты. Ожидаемый формат: {dateFormat}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
+            DateTime dateOfBirth = DateOfBirthPicker.SelectedDate.Value;
             group.AddStudent(new Student(firstName, lastName, dateOfBirth));
             UpdateResult();
         }
 
-
-
-
         private void AddStudentsButton_Click(object sender, RoutedEventArgs e)
         {
-            // Создаем список студентов
-            var newStudents = new List<Student>
-    {
-        new Student("Alice", "Smith", new DateTime(2000, 1, 15)),
-        new Student("Bob", "Johnson", new DateTime(2001, 2, 20)),
-        new Student("Charlie", "Williams", new DateTime(2002, 3, 25)),
-        new Student("Diana", "Jones", new DateTime(2003, 4, 30))
-    };
+            var newStudents = new[]
+            {
+                new Student("Alice", "Smith", new DateTime(2000, 1, 15)),
+                new Student("Bob", "Johnson", new DateTime(2001, 2, 20)),
+                new Student("Charlie", "Williams", new DateTime(2002, 3, 25)),
+                new Student("Diana", "Jones", new DateTime(2003, 4, 30))
+            };
 
-            // Добавляем студентов в группу
-            group.AddStudent(newStudents.ToArray());
-
-            // Обновляем результат после добавления
+            group.AddStudents(newStudents);
             UpdateResult();
         }
-
-
 
         private void RemoveStudentButton_Click(object sender, RoutedEventArgs e)
         {
             string lastName = SearchTextBoxRemove.Text;
             var studentsToRemove = group.FindStudentsByLastNameFull(lastName);
 
-            if (studentsToRemove.Count > 0)
+            if (studentsToRemove.Length > 0)
             {
                 foreach (var student in studentsToRemove)
                 {
@@ -147,7 +119,7 @@ namespace lab6
         {
             string searchText = SearchTextBox.Text;
             string selectedCriteria = (SortCriteriaComboBox_Copy.SelectedItem as ComboBoxItem)?.Content.ToString();
-            List<Student> foundStudents;
+            Student[] foundStudents;
 
             if (selectedCriteria == "Поиск по имени")
             {
@@ -163,22 +135,44 @@ namespace lab6
                 return;
             }
 
-            if (foundStudents.Count > 0)
+            if (foundStudents.Length > 0)
             {
-                ResultTextBlock.Text = "Найденные студенты:\n" + string.Join("\n", foundStudents.Select(s => s.ToString()));
+                string str = "";
+                foreach (var student in foundStudents)
+                {
+                    str += $"{student.FirstName} {student.LastName} (Дата рождения: {student.DateOfBirth.ToShortDateString()})\n";
+                }
+                ResultTextBlock.Text = "Найденные студенты:\n" + str;
             }
             else
             {
                 ResultTextBlock.Text = "Студенты не найдены.";
             }
         }
+        void Compare_Click(object sender, RoutedEventArgs e)
+        {
+            Student student1 = new Student("Иван", "Иванов", new DateTime(2000, 1, 1));
+            Student student2 = new Student("Петр", "Петров", new DateTime(1999, 5, 5));
 
+            if (student1 == student2)
+            {
+                MessageBox.Show("Студенты равны по фамилии.");
+            }
+
+            if (student1 > student2)
+            {
+                MessageBox.Show("Студент 1 старше студента 2 по фамилии.");
+            }
+            else
+            {
+                MessageBox.Show("Студент 1 не старше студента 2 по фамилии.");
+            }
+
+        }
         private void UpdateResult()
         {
             ResultTextBlockAll.Text = "Студенты: \n" + group.ToString();
         }
     }
 }
-
-
  
