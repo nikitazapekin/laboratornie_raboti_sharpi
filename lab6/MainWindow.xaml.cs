@@ -15,6 +15,8 @@ namespace lab6
         public MainWindow()
         {
             InitializeComponent();
+
+            
         }
 
 
@@ -29,9 +31,12 @@ namespace lab6
             }
         
         }
-        
+ 
         private void AddStudentButton_Click(object sender, RoutedEventArgs e)
         {
+
+
+           
             string firstName = FirstNameTextBox.Text;
             string lastName = LastNameTextBox.Text;
             string dateFormat = "dd.MM.yy";
@@ -64,7 +69,27 @@ namespace lab6
             group.AddStudent(new Student(firstName, lastName, dateOfBirth));
             UpdateResult();
         }
-    
+
+
+
+
+        private void AddStudentsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Создаем список студентов
+            var newStudents = new List<Student>
+    {
+        new Student("Alice", "Smith", new DateTime(2000, 1, 15)),
+        new Student("Bob", "Johnson", new DateTime(2001, 2, 20)),
+        new Student("Charlie", "Williams", new DateTime(2002, 3, 25)),
+        new Student("Diana", "Jones", new DateTime(2003, 4, 30))
+    };
+
+            // Добавляем студентов в группу
+            group.AddStudent(newStudents.ToArray());
+
+            // Обновляем результат после добавления
+            UpdateResult();
+        }
 
 
 

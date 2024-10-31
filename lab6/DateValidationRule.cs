@@ -13,7 +13,7 @@ namespace lab6
                 return new ValidationResult(false, "Пожалуйста, выберите корректную дату.");
             }
 
-            // Дополнительные проверки можно добавить здесь
+        
             return ValidationResult.ValidResult;
         }
     }

@@ -57,6 +57,7 @@
                 <ComboBoxItem Content="Поиск по фамилии" />
 
             </ComboBox>
+            <Button  Click="AddStudentsButton_Click"  FontSize="22" Content="Добавить студентов" HorizontalAlignment="Left" Margin="42,1038,0,0" VerticalAlignment="Top" Height="52" Width="340"/>
         </Grid>
     </ScrollViewer>
 </Window>
