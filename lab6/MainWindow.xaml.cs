@@ -1,10 +1,8 @@
 ﻿ 
   using System;
- 
-
 using System.Linq; 
-using System.Windows; // For WPF functionalities
-using System.Windows.Controls; // For WPF controls
+using System.Windows; 
+using System.Windows.Controls;  
 
 namespace lab6
 {
@@ -157,19 +155,52 @@ namespace lab6
             }
         }
 
+
+
+
+        /*
         void Compare_Click(object sender, RoutedEventArgs e)
         {
-            var selectedStudents = ResultListBox.SelectedItems.OfType<string>().ToList();
 
+            var selectedStudents = ResultListBox.SelectedItems.OfType<Student>().ToList();
+            //  var selectedStudents = ResultListBox.SelectedItems.OfType<string>().ToList();
+            //    Student[] students  = selectedStudents.Split()
             if (selectedStudents.Count > 0)
             {
               
                 if (selectedStudents.Count >= 2)
                 {
-                    // Создаем сообщения о выбранных студентах
-                    string message = string.Join(", ", selectedStudents);
-                    MessageBox.Show("Выбранные студенты: " + message, "Выбранные студенты", MessageBoxButton.OK, MessageBoxImage.Information);
- 
+                    bool allEqualStudents = true;
+
+
+                   
+                //    string firstLastName = selectedStudents[0].LastName;
+
+                    for (int i = 0; i < selectedStudents.Count; i++)
+                    {
+                        //   string firstLastName = selectedStudents[i] ;
+                        Student student1 = selectedStudents[i];
+                        for (int j=i; j<selectedStudents.Count; j++)
+                        {
+                            Student student2 = selectedStudents[j];
+                            if (student1!=student2)
+                        {
+                            allEqualStudents = false;
+                   
+                        }
+
+                        }
+                    }
+
+                    if (allEqualStudents)
+                    {
+                        MessageBox.Show($"Все выбранные студенты имеют одинаковую фамилию.", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
+                    } else
+                    {
+                        MessageBox.Show($"Все выбранные студенты имеют разную фамилию.", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+
+
                 }
                 else
                 {
@@ -182,6 +213,73 @@ namespace lab6
             }
 
         }
+    */
+
+
+        void Compare_Click(object sender, RoutedEventArgs e)
+        {
+       
+            var selectedStudents = ResultListBox.SelectedItems.OfType<Student>().ToList();
+
+             if (selectedStudents.Count > 0)
+                {
+                  
+                    if (selectedStudents.Count >= 2)
+                    {
+
+                    //      string message = string.Join(", ", selectedStudents);
+                    //       MessageBox.Show("Выбранные студенты: " + message, "Выбранные студенты", MessageBoxButton.OK, MessageBoxImage.Information);
+                    bool allEqualStudents = true;
+
+
+
+                    //    string firstLastName = selectedStudents[0].LastName;
+
+                    for (int i = 0; i < selectedStudents.Count; i++)
+                    {
+                        //   string firstLastName = selectedStudents[i] ;
+                        Student student1 = selectedStudents[i];
+                        for (int j = i; j < selectedStudents.Count; j++)
+                        {
+                            Student student2 = selectedStudents[j];
+                            if (student1 != student2)
+                            {
+                                allEqualStudents = false;
+
+                            }
+
+                        }
+                    }
+
+                    if (allEqualStudents)
+                    {
+                        MessageBox.Show($"Все выбранные студенты имеют одинаковую фамилию.", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Все выбранные студенты имеют разную фамилию.", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+
+
+
+                }
+                    else
+                    {
+                        MessageBox.Show("Выберите как минимум двух студентов для сравнения.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Не выбрано ни одного студента.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                } 
+            /*
+            if (selectedStudents.Count == 0)
+            {
+
+            }
+            */
+        }
+
 
         void Indecsator_Click(object sender, RoutedEventArgs e)
         {
@@ -204,8 +302,10 @@ namespace lab6
          
           for (int i=0; i<group.Count; i++)
             {
-              
-                ResultListBox.Items.Add($"{group[i].FirstName} {group[i].LastName} (Дата рождения: {group[i].DateOfBirth.ToShortDateString()})");
+
+                //   ResultListBox.Items.Add($"{group[i].FirstName} {group[i].LastName} (Дата рождения: {group[i].DateOfBirth.ToShortDateString()})");
+                //ResultListBox.Items.Add(new Student("Имя", "Фамилия", DateTime.Parse("20.12.2002")));
+                ResultListBox.Items.Add(new Student($"{group[i].FirstName}", $"{group[i].LastName}", DateTime.Parse($"{group[i].DateOfBirth}")));
 
             }
         }
