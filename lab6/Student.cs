@@ -240,27 +240,7 @@ namespace lab6
 
             return results;
         }
-
-
-        /*
-           public void SortByFirstName()
-        {
-            Array.Sort(students, (s1, s2) => string.Compare(s1.FirstName, s2.FirstName, StringComparison.OrdinalIgnoreCase));
-        }
-
-        public void SortByLastName()
-        {
-            Array.Sort(students, (s1, s2) => string.Compare(s1.LastName, s2.LastName, StringComparison.OrdinalIgnoreCase));
-        }
-
-        public void SortByDateOfBirth()
-        {
-            Array.Sort(students, (s1, s2) => s1.DateOfBirth.CompareTo(s2.DateOfBirth));
-        }
-
-
-
-        */
+ 
         public void SortByFirstName()
         {
             
