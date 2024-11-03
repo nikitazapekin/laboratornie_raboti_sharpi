@@ -157,64 +157,7 @@ namespace lab6
 
 
 
-
-        /*
-        void Compare_Click(object sender, RoutedEventArgs e)
-        {
-
-            var selectedStudents = ResultListBox.SelectedItems.OfType<Student>().ToList();
-            //  var selectedStudents = ResultListBox.SelectedItems.OfType<string>().ToList();
-            //    Student[] students  = selectedStudents.Split()
-            if (selectedStudents.Count > 0)
-            {
-              
-                if (selectedStudents.Count >= 2)
-                {
-                    bool allEqualStudents = true;
-
-
-                   
-                //    string firstLastName = selectedStudents[0].LastName;
-
-                    for (int i = 0; i < selectedStudents.Count; i++)
-                    {
-                        //   string firstLastName = selectedStudents[i] ;
-                        Student student1 = selectedStudents[i];
-                        for (int j=i; j<selectedStudents.Count; j++)
-                        {
-                            Student student2 = selectedStudents[j];
-                            if (student1!=student2)
-                        {
-                            allEqualStudents = false;
-                   
-                        }
-
-                        }
-                    }
-
-                    if (allEqualStudents)
-                    {
-                        MessageBox.Show($"Все выбранные студенты имеют одинаковую фамилию.", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
-                    } else
-                    {
-                        MessageBox.Show($"Все выбранные студенты имеют разную фамилию.", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-
-
-                }
-                else
-                {
-                    MessageBox.Show("Выберите как минимум двух студентов для сравнения.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Не выбрано ни одного студента.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-
-        }
-    */
-
+ 
          
 
         void Compare_Click(object sender, RoutedEventArgs e)
@@ -245,14 +188,7 @@ namespace lab6
 
                             }
 
-                            /*       if(student1>student2)
-                                   {
-                                       MessageBox.Show($"Студент {student1.FirstName} {student1.LastName} имеет больший вес фамилии чем у   {student2.FirstName} {student2.LastName}. ", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
-                                   } else
-                                   {
-                                       MessageBox.Show($"Студент {student1.FirstName} {student1.LastName} имеет меньший вес фамилии чем у   {student2.FirstName} {student2.LastName}. ", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
-                                   }
-         */
+                         
 
                         }
                     }
@@ -261,6 +197,7 @@ namespace lab6
                     {
                         MessageBox.Show($"Все выбранные студенты имеют одинаковую фамилию.", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
+                   
                     else
                     {
                         MessageBox.Show($"Все выбранные студенты имеют разную фамилию.", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -278,6 +215,10 @@ namespace lab6
                             if (student1 > student2)
                             {
                                 MessageBox.Show($"Студент {student1.FirstName} {student1.LastName} имеет больший вес фамилии чем у   {student2.FirstName} {student2.LastName}. ", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                            else if (student1==student2)
+                            {
+                                MessageBox.Show($"Студент {student1.FirstName} {student1.LastName} имеет одинаковую фамилию как у   {student2.FirstName} {student2.LastName}. ", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
                             }
                             else
                             {
