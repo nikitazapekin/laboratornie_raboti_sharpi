@@ -118,44 +118,7 @@ namespace lab6
             }
         }
 
-        /*
-
-        private void FindButton_Click(object sender, RoutedEventArgs e)
-        {
-            string searchText = SearchTextBox.Text;
-            string selectedCriteria = (SortCriteriaComboBox_Copy.SelectedItem as ComboBoxItem)?.Content.ToString();
-            Student[] foundStudents;
-
-            if (selectedCriteria == "Поиск по имени")
-            {
-                foundStudents = group.FindStudentsByFirstName(searchText);
-            }
-            else if (selectedCriteria == "Поиск по фамилии")
-            {
-                foundStudents = group.FindStudentsByLastName(searchText);
-            }
-            else
-            {
-                MessageBox.Show("Пожалуйста, выберите критерий поиска.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            if (foundStudents.Length > 0)
-            {
-                string str = "";
-                foreach (var student in foundStudents)
-                {
-                    str += $"{student.FirstName} {student.LastName} (Дата рождения: {student.DateOfBirth.ToShortDateString()})\n";
-                }
-                ResultTextBlock.Text = "Найденные студенты:\n" + str;
-            }
-            else
-            {
-                ResultTextBlock.Text = "Студенты не найдены.";
-            }
-        }
-
-        */
+       
 
         private void FindButton_Click(object sender, RoutedEventArgs e)
         {
@@ -232,19 +195,14 @@ namespace lab6
 
 
         }
-        /*
-        private void UpdateResult()
-        {
-            ResultTextBlockAll.Text = "Студенты: \n" + group.ToString();
-        }
-        */
+        
         private void UpdateResult()
         {
             ResultListBox.Items.Clear();
-          //  foreach (var student in group)
+         
           for (int i=0; i<group.Count; i++)
             {
-                //  ResultListBox.Items.Add($"{student.FirstName} {student.LastName} (Дата рождения: {student.DateOfBirth.ToShortDateString()})");
+              
                 ResultListBox.Items.Add($"{group[i].FirstName} {group[i].LastName} (Дата рождения: {group[i].DateOfBirth.ToShortDateString()})");
 
             }

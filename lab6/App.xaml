@@ -4,6 +4,16 @@
              xmlns:local="clr-namespace:lab6"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+ 
+        <Style x:Key="myLBStyle" TargetType="{x:Type ListBoxItem}">
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                             Color="Transparent"/>
+            </Style.Resources>
+        </Style>
+  
          
     </Application.Resources>
+
 </Application>

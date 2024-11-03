@@ -6,12 +6,35 @@
         xmlns:local="clr-namespace:lab6"
         mc:Ignorable="d"
         Title="MainWindow" Height="1250" Width="1400">
+
+
+
+
+    <Window.Resources>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="_Border" Padding="2" SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="_Border" Property="Background" Value="Yellow"/>
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </Window.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid>
 
-
-
-
+ 
 
             <TextBox FontSize="22" x:Name="FirstNameTextBox" HorizontalAlignment="Left" Margin="42,72,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="340" Height="52"/>
             <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,38,0,0" TextWrapping="Wrap" Text="Введите имя студента" VerticalAlignment="Top"/>
@@ -45,9 +68,18 @@
             <TextBox FontSize="22"  x:Name="SearchTextBox"  HorizontalAlignment="Left" Margin="42,659,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="52"/>
             <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,556,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.284,0.692"><Run Text="Поиск студента"/><Run Text="  "/><Run Text="по фамилии"/></TextBlock>
             <Button FontSize="22" Click="FindButton_Click"   Content="Найти" HorizontalAlignment="Left" Margin="42,711,0,0" VerticalAlignment="Top" Height="51" Width="340"/>
-            <!-- <TextBlock FontSize="22" x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="1010,306,0,0" TextWrapping="Wrap" Text="Найдено" VerticalAlignment="Top"/>
-            -->
-            <ListBox FontSize="22" x:Name="ResultListBox" HorizontalAlignment="Left" Margin="504,378,0,0" Width="368" VerticalAlignment="Top" Height="472" />
+
+            <!--
+            <ListBox  FontSize="22" x:Name="ResultListBox" HorizontalAlignment="Left" Margin="504,378,0,0" Width="368" VerticalAlignment="Top" Height="472" />
+-->
+            <ListBox   SelectionMode="Multiple"  FontSize="22" x:Name="ResultListBox" HorizontalAlignment="Left" Margin="504,378,0,0" Width="368" VerticalAlignment="Top" Height="472">
+                <ListBoxItem>Hello</ListBoxItem>
+                <ListBoxItem>Hi</ListBoxItem>
+                <ListBoxItem>Hello</ListBoxItem>
+                <ListBoxItem>Hi</ListBoxItem>
+            </ListBox>
+
+
             <ListBox FontSize="22" x:Name="ResultListFindBox" HorizontalAlignment="Left" Margin="918,378,0,0" Width="368" VerticalAlignment="Top" Height="472" />
             <TextBlock FontSize="22" x:Name="ResultTextBlockAll" HorizontalAlignment="Left" Margin="504,330,0,0" TextWrapping="Wrap" Text="Студенты (Группа)" VerticalAlignment="Top"/>
             <Image HorizontalAlignment="Left" Height="199" Margin="440,92,0,0" VerticalAlignment="Top" Width="920" Source="/Снимок экрана 2024-10-21 203549.png"/>
