@@ -7,21 +7,36 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1450" Width="1800">
     <Grid>
-        <StackPanel Margin="10">
-            <TextBlock Text="Название пункта назначения:"/>
-            <TextBox x:Name="destinationTextBox" Width="200"/>
 
-            <TextBlock Text="Номер поезда:" Margin="0,10,0,0"/>
-            <TextBox x:Name="trainNumberTextBox" Width="200"/>
 
-            <TextBlock Text="Время отправления (yyyy-MM-dd HH:mm):" Margin="0,10,0,0"/>
-            <TextBox x:Name="departureTimeTextBox" Width="200"/>
 
-            <Button Content="Добавить поезд" Margin="0,10,0,0" Click="AddTrain_Click"/>
-            <Button Content="Вывести все поезда" Click="DisplayAllTrains_Click"/>
 
-            <TextBlock Text="Результат:" Margin="0,10,0,0"/>
-            <TextBox x:Name="outputTextBox" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" IsReadOnly="True" Height="200"/>
-        </StackPanel>
+
+
+        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="38,23,0,0" TextWrapping="Wrap" Text="Название пункта" VerticalAlignment="Top" RenderTransformOrigin="-1.413,-2.525"/>
+        <TextBox FontSize="22" x:Name="destinationTextBox"  HorizontalAlignment="Left" Margin="38,57,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="231"/>
+        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="38,93,0,0" TextWrapping="Wrap" Text="Номер поезда" VerticalAlignment="Top"/>
+        <TextBox FontSize="22"  x:Name="trainNumberTextBox" HorizontalAlignment="Left" Margin="38,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="231"/>
+        <TextBox FontSize="22"  x:Name="departureTimeTextBox" HorizontalAlignment="Left" Margin="35,205,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="234"/>
+        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="38,171,0,0" TextWrapping="Wrap" Text="Время" VerticalAlignment="Top"/>
+        <Button FontSize="22"  Click="AddTrain_Click" Content="Добавить" HorizontalAlignment="Left" Margin="35,251,0,0" VerticalAlignment="Top" Width="234" RenderTransformOrigin="0.683,1.324"/>
+        <Button FontSize="22" Click="DisplayAllTrains_Click" Content="Показать поезда" HorizontalAlignment="Left" Margin="35,386,0,0" VerticalAlignment="Top" Width="234"/>
+        <TextBox FontSize="22" x:Name="outputTextBox"  HorizontalAlignment="Left" Margin="35,823,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="741" Height="66"/>
+        <Button FontSize="22"  Content="Считать данные с файла" HorizontalAlignment="Left" Margin="38,308,0,0" VerticalAlignment="Top" Width="284"/>
+        <ComboBox x:Name="SortCriteriaComboBox" FontSize="22" HorizontalAlignment="Left" Margin="41,755,0,0" VerticalAlignment="Top" Width="340" Height="52">
+            <ComboBoxItem Content="Сортировать по номеру поезда" />
+            <ComboBoxItem Content="Сортировать по пунктам прибытия" />
+            <ComboBoxItem Content="Сортировать по времени отправки" />
+        </ComboBox>
+
+        <Button FontSize="22"  Content="Сохранить" HorizontalAlignment="Left" Margin="41,926,0,0" VerticalAlignment="Top" Width="284"/>
+        <TextBox FontSize="22" HorizontalAlignment="Left" Margin="40,686,0,0" TextWrapping="Wrap" Text="Сортировка" VerticalAlignment="Top" Width="228"/>
+        <TextBlock  FontSize="22" HorizontalAlignment="Left" Margin="36,443,0,0" TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top"/>
+        <ComboBox x:Name="SearchCriteriaComboBox" FontSize="22" HorizontalAlignment="Left" Margin="38,491,0,0" VerticalAlignment="Top" Width="340" Height="52">
+            <ComboBoxItem Content="По номеру поезда" />
+            <ComboBoxItem Content="По пунктам прибытия" />
+            <ComboBoxItem Content="По времени отправки" />
+        </ComboBox>
+        <Button   FontSize="22" Content="Найти" HorizontalAlignment="Left" Margin="38,590,0,0" VerticalAlignment="Top" Height="53" Width="340"/>
     </Grid>
 </Window>

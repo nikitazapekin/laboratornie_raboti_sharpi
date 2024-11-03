@@ -32,14 +32,25 @@ namespace lab7
 
 
 
+
+        private void DatePicker_DateValidationError(object sender, DatePickerDateValidationErrorEventArgs e)
+        {
+            DateTime newDate;
+            DatePicker datePickerObj = sender as DatePicker;
+            if (!DateTime.TryParse(e.Text, out newDate))
+            {
+                MessageBox.Show("Пожалуйста, введите корректный формат даты (dd.mm.yy)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
         private void AddTrain_Click(object sender, RoutedEventArgs e)
         {
-            // Получаем данные из текстовых полей
             string destination = destinationTextBox.Text;
             string trainNumber = trainNumberTextBox.Text;
             DateTime departureTime;
 
-            // Проверка корректности ввода времени
+            // 2024-11-03 15:30
             if (string.IsNullOrWhiteSpace(destination) || string.IsNullOrWhiteSpace(trainNumber) ||
                 !DateTime.TryParse(departureTimeTextBox.Text, out departureTime))
             {
@@ -47,11 +58,11 @@ namespace lab7
                 return;
             }
 
-            // Создаем новый поезд и добавляем его в коллекцию
+          
             TRAIN newTrain = new TRAIN(destination, trainNumber, departureTime);
             trainCollection.Add(newTrain);
 
-            // Очищаем текстовые поля
+         
             destinationTextBox.Clear();
             trainNumberTextBox.Clear();
             departureTimeTextBox.Clear();
@@ -70,14 +81,12 @@ namespace lab7
         }
         private void ReadFromFile_Click(object sender, RoutedEventArgs e)
         {
-            // Логика чтения данных из файла
-            // Например, использовать StreamReader для чтения и добавления в коллекцию
+            
         }
 
         private void WriteToFile_Click(object sender, RoutedEventArgs e)
         {
-            // Логика записи данных в файл
-            // Например, использовать StreamWriter для записи из коллекции
+          
         }
 
         private void SortByDepartureTime_Click(object sender, RoutedEventArgs e)
@@ -88,7 +97,7 @@ namespace lab7
 
         private void SearchByDestination_Click(object sender, RoutedEventArgs e)
         {
-            string destination = "Ваше направление"; // Здесь можно получить значение из TextBox
+            string destination = "Ваше направление";
             var results = trainCollection.FindByDestination(destination);
             outputTextBox.Clear();
             foreach (var train in results)
@@ -117,7 +126,6 @@ namespace lab7
             Application.Current.Shutdown();
         }
 
-
-
+       
     }
 }
