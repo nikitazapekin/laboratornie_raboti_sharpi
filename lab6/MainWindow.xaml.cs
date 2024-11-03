@@ -1,7 +1,10 @@
 ﻿ 
   using System;
-using System.Windows;
-using System.Windows.Controls;
+ 
+
+using System.Linq; 
+using System.Windows; // For WPF functionalities
+using System.Windows.Controls; // For WPF controls
 
 namespace lab6
 {
@@ -156,28 +159,27 @@ namespace lab6
 
         void Compare_Click(object sender, RoutedEventArgs e)
         {
-            Student student1 = new Student("Иван", "Иванов", new DateTime(2000, 1, 1));
-            Student student2 = new Student("Петр", "Иванов", new DateTime(1999, 5, 5));
-            MessageBox.Show($"Студенты:\n1. {student1.FirstName} {student1.LastName},  {student2.FirstName} {student2.LastName}");
-            if (student1 == student2)
-            {
-                MessageBox.Show($"Студенты {student1.LastName} и {student2.LastName}  равны по фамилии.");
-            }
-            else
-            {
-                MessageBox.Show($"Студенты {student1.LastName} и {student2.LastName} не равны по фамилии.");
-            }
+            var selectedStudents = ResultListBox.SelectedItems.OfType<string>().ToList();
 
-            if (student1 > student2)
+            if (selectedStudents.Count > 0)
             {
-                MessageBox.Show($"Студент {student1.LastName}  старше студента  {student2.LastName} ");
+              
+                if (selectedStudents.Count >= 2)
+                {
+                    // Создаем сообщения о выбранных студентах
+                    string message = string.Join(", ", selectedStudents);
+                    MessageBox.Show("Выбранные студенты: " + message, "Выбранные студенты", MessageBoxButton.OK, MessageBoxImage.Information);
+ 
+                }
+                else
+                {
+                    MessageBox.Show("Выберите как минимум двух студентов для сравнения.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
             else
             {
-                MessageBox.Show($"Студент {student1.LastName} младше студента  {student2.LastName}.");
+                MessageBox.Show("Не выбрано ни одного студента.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-        
-           
 
         }
 
