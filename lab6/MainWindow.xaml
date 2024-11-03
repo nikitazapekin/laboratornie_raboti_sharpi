@@ -72,16 +72,13 @@
             <!--
             <ListBox  FontSize="22" x:Name="ResultListBox" HorizontalAlignment="Left" Margin="504,378,0,0" Width="368" VerticalAlignment="Top" Height="472" />
 -->
-            <ListBox   SelectionMode="Multiple"  FontSize="22" x:Name="ResultListBox" HorizontalAlignment="Left" Margin="504,378,0,0" Width="368" VerticalAlignment="Top" Height="472">
-                <ListBoxItem>Hello</ListBoxItem>
-                <ListBoxItem>Hi</ListBoxItem>
-                <ListBoxItem>Hello</ListBoxItem>
-                <ListBoxItem>Hi</ListBoxItem>
+            <ListBox   SelectionMode="Multiple"  FontSize="22" x:Name="ResultListBox" HorizontalAlignment="Left" Margin="440,378,0,0" Width="414" VerticalAlignment="Top" Height="472">
+                
             </ListBox>
 
 
-            <ListBox FontSize="22" x:Name="ResultListFindBox" HorizontalAlignment="Left" Margin="918,378,0,0" Width="368" VerticalAlignment="Top" Height="472" />
-            <TextBlock FontSize="22" x:Name="ResultTextBlockAll" HorizontalAlignment="Left" Margin="504,330,0,0" TextWrapping="Wrap" Text="Студенты (Группа)" VerticalAlignment="Top"/>
+            <ListBox FontSize="22" x:Name="ResultListFindBox" HorizontalAlignment="Left" Margin="918,378,0,0" Width="442" VerticalAlignment="Top" Height="472" />
+            <TextBlock FontSize="22" x:Name="ResultTextBlockAll" HorizontalAlignment="Left" Margin="440,330,0,0" TextWrapping="Wrap" Text="Студенты (Группа)" VerticalAlignment="Top"/>
             <Image HorizontalAlignment="Left" Height="199" Margin="440,92,0,0" VerticalAlignment="Top" Width="920" Source="/Снимок экрана 2024-10-21 203549.png"/>
             <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,803,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Удалить студента"/><Run Text=" по фамилии"/><LineBreak/><Run/><Run Text=" "/></TextBlock>
             <TextBox FontSize="22" x:Name="SearchTextBoxRemove" HorizontalAlignment="Left" Margin="42,867,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="51"/>

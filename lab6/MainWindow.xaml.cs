@@ -215,6 +215,7 @@ namespace lab6
         }
     */
 
+         
 
         void Compare_Click(object sender, RoutedEventArgs e)
         {
@@ -223,21 +224,17 @@ namespace lab6
 
              if (selectedStudents.Count > 0)
                 {
-                  
-                    if (selectedStudents.Count >= 2)
-                    {
 
-                    //      string message = string.Join(", ", selectedStudents);
-                    //       MessageBox.Show("Выбранные студенты: " + message, "Выбранные студенты", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (selectedStudents.Count >= 2)
+                {
+
+
                     bool allEqualStudents = true;
 
-
-
-                    //    string firstLastName = selectedStudents[0].LastName;
-
+                    Student maxLastNameStudent = selectedStudents[0];
                     for (int i = 0; i < selectedStudents.Count; i++)
                     {
-                        //   string firstLastName = selectedStudents[i] ;
+
                         Student student1 = selectedStudents[i];
                         for (int j = i; j < selectedStudents.Count; j++)
                         {
@@ -247,6 +244,15 @@ namespace lab6
                                 allEqualStudents = false;
 
                             }
+
+                            /*       if(student1>student2)
+                                   {
+                                       MessageBox.Show($"Студент {student1.FirstName} {student1.LastName} имеет больший вес фамилии чем у   {student2.FirstName} {student2.LastName}. ", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
+                                   } else
+                                   {
+                                       MessageBox.Show($"Студент {student1.FirstName} {student1.LastName} имеет меньший вес фамилии чем у   {student2.FirstName} {student2.LastName}. ", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
+                                   }
+         */
 
                         }
                     }
@@ -260,6 +266,29 @@ namespace lab6
                         MessageBox.Show($"Все выбранные студенты имеют разную фамилию.", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
 
+                    for (int i = 0; i < selectedStudents.Count; i++)
+                    {
+                        if(i< selectedStudents.Count-1)
+                        {
+
+                        Student student1 = selectedStudents[i];
+                        Student student2 = selectedStudents[i+1];
+
+
+                            if (student1 > student2)
+                            {
+                                MessageBox.Show($"Студент {student1.FirstName} {student1.LastName} имеет больший вес фамилии чем у   {student2.FirstName} {student2.LastName}. ", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Студент {student1.FirstName} {student1.LastName} имеет меньший вес фамилии чем у   {student2.FirstName} {student2.LastName}. ", "Результат сравнения", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                        }
+
+                    }
+
+
+
 
 
                 }
@@ -272,13 +301,9 @@ namespace lab6
                 {
                     MessageBox.Show("Не выбрано ни одного студента.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 } 
-            /*
-            if (selectedStudents.Count == 0)
-            {
-
-            }
-            */
+          
         }
+       
 
 
         void Indecsator_Click(object sender, RoutedEventArgs e)
