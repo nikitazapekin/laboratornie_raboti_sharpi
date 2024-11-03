@@ -2,7 +2,8 @@
 
 namespace lab6
 {
-    public class Student : IComparable<Student>
+
+    public class Student : IComparable
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -14,6 +15,7 @@ namespace lab6
             LastName = lastName;
             DateOfBirth = dateOfBirth;
         }
+
         public Student()
         {
             FirstName = "";
@@ -21,11 +23,17 @@ namespace lab6
             DateOfBirth = DateTime.Now;
         }
 
-        public int CompareTo(Student other)
+        public int CompareTo(object obj)
         {
-            return CompareStrings(LastName, other.LastName);
+                if (obj is Student other)
+                {
+                    return CompareStrings(LastName, other.LastName);
+                }
+                throw new ArgumentException("Object is not a Student");
+       //     return 0;
         }
-
+            /*
+            */
         public override string ToString()
         {
             return $"{FirstName} {LastName}, Дата рождения: {DateOfBirth.ToShortDateString()}";
@@ -44,23 +52,20 @@ namespace lab6
             return 0;
         }
 
-
-        public bool Equals(Student other)
-        {
-            if (other is null) return false;
-            return string.Equals(LastName, other.LastName, StringComparison.OrdinalIgnoreCase);
-        }
-
         public override bool Equals(object obj)
         {
-            return Equals(obj as Student);
+            return obj is Student other && string.Equals(LastName, other.LastName, StringComparison.OrdinalIgnoreCase);
         }
 
-      
+        public override int GetHashCode()
+        {
+            return LastName.GetHashCode(StringComparison.OrdinalIgnoreCase);
+        }
 
         public static bool operator ==(Student left, Student right)
         {
-            if (left is null) return right is null;
+            if (ReferenceEquals(left, right)) return true;
+            if (left is null || right is null) return false;
             return left.Equals(right);
         }
 
@@ -90,6 +95,94 @@ namespace lab6
         }
     }
 
+    /*    public class Student : IComparable<Student>
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public DateTime DateOfBirth { get; set; }
+
+            public Student(string firstName, string lastName, DateTime dateOfBirth)
+            {
+                FirstName = firstName;
+                LastName = lastName;
+                DateOfBirth = dateOfBirth;
+            }
+            public Student()
+            {
+                FirstName = "";
+                LastName = "";
+                DateOfBirth = DateTime.Now;
+            }
+
+            public int CompareTo(Student other)
+            {
+                return CompareStrings(LastName, other.LastName);
+            }
+
+            public override string ToString()
+            {
+                return $"{FirstName} {LastName}, Дата рождения: {DateOfBirth.ToShortDateString()}";
+            }
+
+            public static int CompareStrings(string str1, string str2)
+            {
+                int length = Math.Min(str1.Length, str2.Length);
+                for (int i = 0; i < length; i++)
+                {
+                    if (str1[i] < str2[i]) return -1;
+                    if (str1[i] > str2[i]) return 1;
+                }
+                if (str1.Length < str2.Length) return -1;
+                if (str1.Length > str2.Length) return 1;
+                return 0;
+            }
+
+
+            public bool Equals(Student other)
+            {
+                if (other is null) return false;
+                return string.Equals(LastName, other.LastName, StringComparison.OrdinalIgnoreCase);
+            }
+
+            public override bool Equals(object obj)
+            {
+                return Equals(obj as Student);
+            }
+
+
+
+            public static bool operator ==(Student left, Student right)
+            {
+                if (left is null) return right is null;
+                return left.Equals(right);
+            }
+
+            public static bool operator !=(Student left, Student right)
+            {
+                return !(left == right);
+            }
+
+            public static bool operator >(Student left, Student right)
+            {
+                return left.CompareTo(right) > 0;
+            }
+
+            public static bool operator <(Student left, Student right)
+            {
+                return left.CompareTo(right) < 0;
+            }
+
+            public static bool operator >=(Student left, Student right)
+            {
+                return left.CompareTo(right) >= 0;
+            }
+
+            public static bool operator <=(Student left, Student right)
+            {
+                return left.CompareTo(right) <= 0;
+            }
+        }
+        */
     public class StudentGroup
     {
         private Student[] students = new Student[0];
