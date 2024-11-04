@@ -20,8 +20,8 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="true">
-                                <Setter TargetName="_Border" Property="Background" Value="Yellow"/>
-                                <Setter Property="Foreground" Value="Red"/>
+                                <Setter TargetName="_Border" Property="Background" Value="Gray"/>
+                                <Setter Property="Foreground" Value="Black"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
