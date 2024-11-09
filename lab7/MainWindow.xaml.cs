@@ -49,39 +49,12 @@ namespace lab7
 
         }
 
-        /*
-        private void AddTrain_Click(object sender, RoutedEventArgs e)
-        {
-            string destination = destinationTextBox.Text;
-            string trainNumber = trainNumberTextBox.Text;
-            DateTime departureTime;
-
-            
-            if (string.IsNullOrWhiteSpace(destination) || string.IsNullOrWhiteSpace(trainNumber) ||
-                !DateTime.TryParse(departureTimeTextBox.Text, out departureTime))
-            {
-                MessageBox.Show("Пожалуйста, введите корректные данные для всех полей.");
-                return;
-            }
-
-          
-            TRAIN newTrain = new TRAIN(destination, trainNumber, departureTime);
-            trainCollection.Add(newTrain);
-
-         
-            destinationTextBox.Clear();
-            trainNumberTextBox.Clear();
-            departureTimeTextBox.Clear();
-
-            MessageBox.Show("Поезд добавлен.");
-        }
-        */
-
+   
         private void AddTrain_Click(object sender, RoutedEventArgs e)
         {
             var addTrainDialog = new AddTrainDialog();
-            bool? result = addTrainDialog.ShowDialog();
-
+            //  bool? result = addTrainDialog.ShowDialog();
+            bool result = addTrainDialog.ShowDialog() == true;
             if (result == true)
             {
              
@@ -96,17 +69,39 @@ namespace lab7
                 MessageBox.Show("Поезд добавлен.");
             }
         }
+        /*
+               private void DisplayAllTrains_Click(object sender, RoutedEventArgs e)
+               {
+                   outputTextBox.Clear();
+                   var allTrains = trainCollection.GetAllTrains();
 
+                   if (allTrains.Count == 0)
+                   {
+                       MessageBox.Show("Нет поездов для отображения.");
+                   }
 
+                   foreach (var train in allTrains)
+                   {
+                       outputTextBox.AppendText(train.ToString() + Environment.NewLine);
+                   }
+               }
+        */
         private void DisplayAllTrains_Click(object sender, RoutedEventArgs e)
         {
-            outputTextBox.Clear();
+            outputListBox.Items.Clear();  // Clear previous list items
             var allTrains = trainCollection.GetAllTrains();
+
+            if (allTrains.Count == 0)
+            {
+                MessageBox.Show("Нет поездов для отображения.");
+            }
+
             foreach (var train in allTrains)
             {
-                outputTextBox.AppendText(train.ToString() + Environment.NewLine);
+                outputListBox.Items.Add(train.ToString());  // Add each train's string representation to the ListBox
             }
         }
+
         private void ReadFromFile_Click(object sender, RoutedEventArgs e)
         {
             
@@ -142,7 +137,7 @@ namespace lab7
 
         private void SearchByDestination_Click(object sender, RoutedEventArgs e)
         {
-            string destination = "Ваше направление";
+          /*  string destination = "Ваше направление";
             var results = trainCollection.FindByDestination(destination);
             outputTextBox.Clear();
             foreach (var train in results)
@@ -152,7 +147,7 @@ namespace lab7
             if (results.Count == 0)
             {
                 MessageBox.Show("Поезда не найдены.");
-            }
+            } */
         }
 
    

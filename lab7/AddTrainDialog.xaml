@@ -8,16 +8,16 @@
         Title="AddTrainDialog" Height="450" Width="800">
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock FontSize="18" Text="Введите данные поезда:" Margin="0,0,0,10"/>
+            <TextBlock FontSize="32" Text="Введите данные поезда:" Margin="0,0,0,10"/>
 
             <TextBlock FontSize="16" Text="Название пункта" Margin="0,5,0,0"/>
-            <TextBox x:Name="DestinationTextBox" FontSize="16"/>
+            <TextBox x:Name="DestinationTextBox" FontSize="22"/>
 
             <TextBlock FontSize="16" Text="Номер поезда" Margin="0,5,0,0"/>
-            <TextBox x:Name="TrainNumberTextBox" FontSize="16"/>
+            <TextBox x:Name="TrainNumberTextBox" FontSize="22"/>
 
             <TextBlock FontSize="16" Text="Время отправления" Margin="0,5,0,0"/>
-            <DatePicker x:Name="DepartureTimePicker" FontSize="16"/>
+            <DatePicker x:Name="DepartureTimePicker" FontSize="22"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                 <Button Content="OK" Width="100" Margin="5" Click="OkButton_Click"/>

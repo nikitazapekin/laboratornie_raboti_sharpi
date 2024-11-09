@@ -9,39 +9,30 @@
     <Grid>
         <!-- Menu -->
         <Menu VerticalAlignment="Top">
-            <MenuItem Header="Файл">
-                <MenuItem Header="Считать данные с файла" Click="ReadFromFile_Click"/>
-                <MenuItem Header="Сохранить" Click="Save_Click"/>
+            <MenuItem  FontSize="22" Header="Файл">
+                <MenuItem FontSize="22" Header="Считать данные с файла" Click="ReadFromFile_Click"/>
+                <MenuItem FontSize="22" Header="Сохранить" Click="Save_Click"/>
             </MenuItem>
-            <MenuItem Header="Поезд">
-                <MenuItem Header="Добавить" Click="AddTrain_Click"/>
-                <MenuItem Header="Показать все поезда" Click="DisplayAllTrains_Click"/>
+            <MenuItem FontSize="22"  Header="Поезд">
+                <MenuItem FontSize="22" Header="Добавить" Click="AddTrain_Click"/>
+                <MenuItem FontSize="22" Header="Показать все поезда" Click="DisplayAllTrains_Click"/>
             </MenuItem>
-            <MenuItem Header="Сортировка">
-                <MenuItem Header="Сортировать по номеру поезда" Click="SortByTrainNumber_Click"/>
-                <MenuItem Header="Сортировать по пунктам прибытия" Click="SortByDestination_Click"/>
-                <MenuItem Header="Сортировать по времени отправки" Click="SortByDepartureTime_Click"/>
+            <MenuItem FontSize="22" Header="Сортировка">
+                <MenuItem FontSize="22" Header="Сортировать по номеру поезда" Click="SortByTrainNumber_Click"/>
+                <MenuItem FontSize="22" Header="Сортировать по пунктам прибытия" Click="SortByDestination_Click"/>
+                <MenuItem FontSize="22" Header="Сортировать по времени отправки" Click="SortByDepartureTime_Click"/>
             </MenuItem>
-            <MenuItem Header="Поиск">
-                <MenuItem Header="По номеру поезда" Click="SearchByTrainNumber_Click"/>
-                <MenuItem Header="По пунктам прибытия" Click="SearchByDestination_Click"/>
-                <MenuItem Header="По времени отправки" Click="SearchByDepartureTime_Click"/>
+            <MenuItem  FontSize="22" Header="Поиск">
+                <MenuItem FontSize="22" Header="По номеру поезда" Click="SearchByTrainNumber_Click"/>
+                <MenuItem FontSize="22" Header="По пунктам прибытия" Click="SearchByDestination_Click"/>
+                <MenuItem FontSize="22" Header="По времени отправки" Click="SearchByDepartureTime_Click"/>
             </MenuItem>
         </Menu>
 
-        <!-- Input fields -->
-        <StackPanel Margin="20,50,0,0">
-            <TextBlock FontSize="22" Text="Название пункта" />
-            <TextBox FontSize="22" x:Name="destinationTextBox" Width="231"/>
 
-            <TextBlock FontSize="22" Text="Номер поезда" Margin="0,10,0,0" />
-            <TextBox FontSize="22" x:Name="trainNumberTextBox" Width="231"/>
-
-            <TextBlock FontSize="22" Text="Время" Margin="0,10,0,0" />
-            <TextBox FontSize="22" x:Name="departureTimeTextBox" Width="234"/>
-        </StackPanel>
-
-        <!-- Output TextBox -->
-        <TextBox FontSize="22" x:Name="outputTextBox" HorizontalAlignment="Left" Margin="35,250,0,0" Width="741" Height="66" TextWrapping="Wrap"/>
+        <TextBox   HorizontalAlignment="Left" Margin="201,238,0,1095" Width="459" TextWrapping="Wrap"/>
+        <Image HorizontalAlignment="Left" Height="1029" Margin="761,119,0,0" VerticalAlignment="Top" Width="1029" Source="/Снимок экрана 2024-11-09 153122.png"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="501,164,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="outputListBox" FontSize="22" HorizontalAlignment="Left" Margin="290,164,0,0" VerticalAlignment="Top" Width="459"/>
     </Grid>
 </Window>
