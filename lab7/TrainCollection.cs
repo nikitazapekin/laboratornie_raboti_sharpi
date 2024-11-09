@@ -42,7 +42,7 @@ public class TrainCollection
             {
                 if (trains[j].DepartureTime > trains[j + 1].DepartureTime)
                 {
-                    // Swap the trains
+                  
                     TRAIN temp = trains[j];
                     trains[j] = trains[j + 1];
                     trains[j + 1] = temp;

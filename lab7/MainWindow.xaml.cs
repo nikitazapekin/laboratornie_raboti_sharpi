@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -41,13 +41,66 @@ namespace lab7
             }
         }
 
-       
+        /*
+         private void Save_Click(object sender, RoutedEventArgs e)
+         {
+
+         }
+        */
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "trains.txt");
 
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    foreach (var item in outputListBox.Items)
+                    {
+                        writer.WriteLine(item.ToString());
+                    }
+                }
+                MessageBox.Show("Файл успешно сохранён по пути: " + filePath, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при сохранении файла: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void ReadFromFile_Click(object sender, RoutedEventArgs e)
+        {
+            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "trains.txt");
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("Файл trains.txt не найден.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            try
+            {
+                outputListBox.Items.Clear(); 
+
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        outputListBox.Items.Add(line); 
+                    }
+                }
+
+                MessageBox.Show("Данные успешно загружены из файла.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при чтении файла: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-   
+
+
         private void AddTrain_Click(object sender, RoutedEventArgs e)
         {
             var addTrainDialog = new AddTrainDialog();
@@ -83,11 +136,7 @@ namespace lab7
                 outputListBox.Items.Add(train.ToString());  
             }
         }
-
-        private void ReadFromFile_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
+ 
 
         private void WriteToFile_Click(object sender, RoutedEventArgs e)
         {
