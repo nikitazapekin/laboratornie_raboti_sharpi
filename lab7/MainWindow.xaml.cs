@@ -31,7 +31,7 @@ namespace lab7
         private TrainCollection trainCollection = new TrainCollection();
 
 
-
+      
 
         private void DatePicker_DateValidationError(object sender, DatePickerDateValidationErrorEventArgs e)
         {
@@ -43,14 +43,20 @@ namespace lab7
             }
         }
 
+       
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        /*
         private void AddTrain_Click(object sender, RoutedEventArgs e)
         {
             string destination = destinationTextBox.Text;
             string trainNumber = trainNumberTextBox.Text;
             DateTime departureTime;
 
-            // 2024-11-03 15:30
+            
             if (string.IsNullOrWhiteSpace(destination) || string.IsNullOrWhiteSpace(trainNumber) ||
                 !DateTime.TryParse(departureTimeTextBox.Text, out departureTime))
             {
@@ -69,6 +75,28 @@ namespace lab7
 
             MessageBox.Show("Поезд добавлен.");
         }
+        */
+
+        private void AddTrain_Click(object sender, RoutedEventArgs e)
+        {
+            var addTrainDialog = new AddTrainDialog();
+            bool? result = addTrainDialog.ShowDialog();
+
+            if (result == true)
+            {
+             
+                string destination = addTrainDialog.Destination;
+                string trainNumber = addTrainDialog.TrainNumber;
+                DateTime departureTime = addTrainDialog.DepartureTime;
+
+              
+                TRAIN newTrain = new TRAIN(destination, trainNumber, departureTime);
+                trainCollection.Add(newTrain);
+
+                MessageBox.Show("Поезд добавлен.");
+            }
+        }
+
 
         private void DisplayAllTrains_Click(object sender, RoutedEventArgs e)
         {
@@ -94,6 +122,23 @@ namespace lab7
             trainCollection.SortByDepartureTime();
             MessageBox.Show("Поезда отсортированы по времени отправления.");
         }
+        private void SortByTrainNumber_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void SortByDestination_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void SearchByTrainNumber_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void SearchByDepartureTime_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
         private void SearchByDestination_Click(object sender, RoutedEventArgs e)
         {
@@ -110,22 +155,13 @@ namespace lab7
             }
         }
 
-      /*  private void DisplayAllTrains_Click(object sender, RoutedEventArgs e)
-        {
-            outputTextBox.Clear();
-            var allTrains = trainCollection.GetAllTrains();
-            foreach (var train in allTrains)
-            {
-                outputTextBox.AppendText(train.ToString() + Environment.NewLine);
-            }
-        }
-      */
+   
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-
+      
        
     }
 }

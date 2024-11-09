@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\wotbl\source\repos\lab7\lab7\obj\Debug\net7.0-windows\
+C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.0-windows\
 lab7
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Users\wotbl\source\repos\lab7\lab7\App.xaml
-11407045341
+C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\App.xaml
+2-1574619775
 
-51636151478
+6-1778407314
 198-200740077
-MainWindow.xaml;
+AddTrainDialog.xaml;MainWindow.xaml;
 
 False
 

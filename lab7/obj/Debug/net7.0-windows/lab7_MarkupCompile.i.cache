@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\App.xaml
-11407045341
+2-1574619775
 
-7457005329
+81337413833
 198-200740077
-MainWindow.xaml;
+AddTrainDialog.xaml;MainWindow.xaml;
 
-False
+True
 
