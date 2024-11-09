@@ -131,11 +131,7 @@ namespace lab7
             }
         }
  
-
-        private void WriteToFile_Click(object sender, RoutedEventArgs e)
-        {
-          
-        }
+ 
 
         private void SortByDepartureTime_Click(object sender, RoutedEventArgs e)
         {
@@ -164,21 +160,124 @@ namespace lab7
 
         }
 
+        /*
+        private void SearchByDestination_Click(object sender, RoutedEventArgs e)
+        {
+
+
+
+
+            var searchDialog = new  SearchByDestination();
+
+            bool result = searchDialog.ShowDialog() == true;
+            if (result == true)
+            {
+
+                string destination = searchDialog.Destination;
+
+                List<TrainCollection> foundTrains = trainCollection.FindByDestination(destination)
+
+
+
+            
+                MessageBox.Show("Поезд добавлен.");
+            }
+            // string destination = DestinationTextBox.Text;
+        }
+        */
+
+        /*
+        private void SearchByDestination_Click(object sender, RoutedEventArgs e)
+        {
+            var searchDialog = new SearchByDestination();
+
+            bool result = searchDialog.ShowDialog() == true;
+            if (result == true)
+            {
+                string destination = searchDialog.Destination;
+ 
+                List<TRAIN> foundTrains = trainCollection.FindByDestination(destination);
+                MessageBox.Show("Поез " );
+                MessageBox.Show("Поезда  .", foundTrains.ToString());
+                if (foundTrains.Count == 0)
+                {
+                    MessageBox.Show("Поезда с таким пунктом назначения не найдены.");
+                }
+                else
+                {
+
+                    outputListBoxActions.Items.Clear();
+
+                    foreach (var train in foundTrains)
+                    {
+                        outputListBoxActions.Items.Add($"Поезд №{train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
+                    }
+                }
+            }
+        }
+        */
+        /*
 
         private void SearchByDestination_Click(object sender, RoutedEventArgs e)
         {
-          /*  string destination = "Ваше направление";
-            var results = trainCollection.FindByDestination(destination);
-            outputTextBox.Clear();
-            foreach (var train in results)
+            
+            var searchDialog = new SearchByDestination(trainCollection.GetAllTrains());
+      
+            bool result = searchDialog.ShowDialog() == true;
+
+            if (result)
             {
-                outputTextBox.AppendText(train.ToString() + Environment.NewLine);
+               
+                List<TRAIN> foundTrains = searchDialog.Destination;
+
+            
+                if (foundTrains.Count > 0)
+                {
+                    
+                    foreach (var train in foundTrains)
+                    {
+                     
+                        MessageBox.Show($"Найденnnnnn поезд: {train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Поезда не найдены.");
+                }
             }
-            if (results.Count == 0)
-            {
-                MessageBox.Show("Поезда не найдены.");
-            } */
         }
+        */
+
+
+        private void SearchByDestination_Click(object sender, RoutedEventArgs e)
+        {
+            var searchDialog = new SearchByDestination(trainCollection.GetAllTrains());
+
+           
+            bool result = searchDialog.ShowDialog() == true;
+
+            if (result)
+            {
+             
+                List<TRAIN> foundTrains = searchDialog.Destination;
+
+                if (foundTrains.Count > 0)
+                {
+                    outputListBoxActions.Items.Clear();
+                    foreach (var train in foundTrains)
+                    {
+                        outputListBoxActions.Items.Add($"Поезд №{train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
+                        //   MessageBox.Show($"Найденnnnn поезд: {train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Поезда не найдены.");
+                }
+            }
+        }
+
+
 
         private void UpdateListBox()
         {

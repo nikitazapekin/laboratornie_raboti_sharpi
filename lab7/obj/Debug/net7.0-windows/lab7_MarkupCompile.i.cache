@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\App.xaml
-2-1574619775
+5-318906850
 
-81337413833
+11-1525564180
 198-200740077
-AddTrainDialog.xaml;MainWindow.xaml;
+AddTrainDialog.xaml;MainWindow.xaml;SearchByDepartureTimeDialog.xaml;SearchByDestination.xaml;SearchByTrainNumber.xaml;
 
 True
 
