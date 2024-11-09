@@ -12,7 +12,27 @@ namespace lab7
 
         public AddTrainDialog()
         {
-            InitializeComponent();
+        InitializeComponent();
+            for (int i = 0; i < 24; i++)
+            {
+                HourComboBox.Items.Add(i.ToString("D2"));
+            }
+
+         
+            for (int i = 0; i < 60; i++)
+            {
+                MinuteComboBox.Items.Add(i.ToString("D2"));
+                SecondComboBox.Items.Add(i.ToString("D2"));
+            }
+
+          
+            HourComboBox.SelectedIndex = 0;
+            MinuteComboBox.SelectedIndex = 0;
+            SecondComboBox.SelectedIndex = 0;
+/*
+ */
+
+
         }
 
 
@@ -29,7 +49,7 @@ namespace lab7
             }
         }
 
-
+        /*
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
            
@@ -44,6 +64,38 @@ namespace lab7
             Destination = DestinationTextBox.Text;
             TrainNumber = TrainNumberTextBox.Text;
             DepartureTime = DepartureTimePicker.SelectedDate.Value;
+
+            DialogResult = true;
+            Close();
+        }
+        */
+
+
+        private void OkButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(DestinationTextBox.Text) ||
+                string.IsNullOrWhiteSpace(TrainNumberTextBox.Text) ||
+                !DepartureDatePicker.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля.");
+                return;
+            }
+
+            Destination = DestinationTextBox.Text;
+            TrainNumber = TrainNumberTextBox.Text;
+
+            DateTime selectedDate = DepartureDatePicker.SelectedDate.Value;
+            int hours = int.Parse(HourComboBox.SelectedItem.ToString());
+            int minutes = int.Parse(MinuteComboBox.SelectedItem.ToString());
+            int seconds = int.Parse(SecondComboBox.SelectedItem.ToString());
+            DepartureTime = new DateTime(
+                selectedDate.Year,
+                selectedDate.Month,
+                selectedDate.Day,
+                hours,
+                minutes,
+                seconds
+            );
 
             DialogResult = true;
             Close();
