@@ -44,20 +44,7 @@ public class TrainCollection
         trains.Sort((train1, train2) => string.Compare(train1.Destination, train2.Destination, StringComparison.OrdinalIgnoreCase));
     }
 
-    /*
-    public List<TRAIN> FindByDestination(string destination)
-    {
-        List<TRAIN> matchingTrains = new List<TRAIN>();
-        foreach (TRAIN train in trains)
-        {
-            if (string.Equals(train.Destination, destination, StringComparison.OrdinalIgnoreCase))
-            {
-                matchingTrains.Add(train);
-            }
-        }
-        return matchingTrains;
-    }
-    */
+ 
 
     public List<TRAIN> FindByDestination(string destination)
     {
