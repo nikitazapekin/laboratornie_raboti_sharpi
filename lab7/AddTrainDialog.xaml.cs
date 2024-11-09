@@ -29,9 +29,7 @@ namespace lab7
             HourComboBox.SelectedIndex = 0;
             MinuteComboBox.SelectedIndex = 0;
             SecondComboBox.SelectedIndex = 0;
-/*
- */
-
+ 
 
         }
 
@@ -49,27 +47,7 @@ namespace lab7
             }
         }
 
-        /*
-        private void OkButton_Click(object sender, RoutedEventArgs e)
-        {
-           
-            if (string.IsNullOrWhiteSpace(DestinationTextBox.Text) ||
-                string.IsNullOrWhiteSpace(TrainNumberTextBox.Text) ||
-                !DepartureTimePicker.SelectedDate.HasValue)
-            {
-                MessageBox.Show("Пожалуйста, заполните все поля.");
-                return;
-            }
-
-            Destination = DestinationTextBox.Text;
-            TrainNumber = TrainNumberTextBox.Text;
-            DepartureTime = DepartureTimePicker.SelectedDate.Value;
-
-            DialogResult = true;
-            Close();
-        }
-        */
-
+ 
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {

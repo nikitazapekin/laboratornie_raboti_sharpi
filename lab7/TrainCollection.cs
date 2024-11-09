@@ -36,59 +36,38 @@ public class TrainCollection
 
     public void SortByDepartureTime()
     {
-        for (int i = 0; i < trains.Count - 1; i++)
-        {
-            for (int j = 0; j < trains.Count - i - 1; j++)
+        /*  for (int i = 0; i < trains.Count - 1; i++)
             {
-                if (trains[j].DepartureTime > trains[j + 1].DepartureTime)
+                for (int j = 0; j < trains.Count - i - 1; j++)
                 {
-                  
-                    TRAIN temp = trains[j];
-                    trains[j] = trains[j + 1];
-                    trains[j + 1] = temp;
+                    if (trains[j].DepartureTime > trains[j + 1].DepartureTime)
+                    {
+
+                        TRAIN temp = trains[j];
+                        trains[j] = trains[j + 1];
+                        trains[j + 1] = temp;
+                    }
                 }
             }
-        }
+
+            */
+
+
+        trains.Sort((train1, train2) => train1.DepartureTime.CompareTo(train2.DepartureTime));
+
+    }
+
+
+
+
+    public void SortByTrainNumber()
+    {
+        trains.Sort((train1, train2) => string.Compare(train1.TrainNumber, train2.TrainNumber, StringComparison.Ordinal));
+    }
+
+    public void SortByDestination()
+    {
+        trains.Sort((train1, train2) => string.Compare(train1.Destination, train2.Destination, StringComparison.OrdinalIgnoreCase));
     }
 }
-
-
-/*
- * using lab7;
-using System.Collections.Generic;
-using System.Linq;
  
-
-public class TrainCollection
-{
-    private List<TRAIN> trains = new List<TRAIN>();
-
-    public void Add(TRAIN train)
-    {
-        trains.Add(train);
-    }
-
-    public void Remove(TRAIN train)
-    {
-        trains.Remove(train);
-    }
-
-    public List<TRAIN> GetAllTrains()
-    {
-        return trains;
-    }
-
-    public List<TRAIN> FindByDestination(string destination)
-    {
-        return trains.Where(t => t.Destination.Equals(destination, System.StringComparison.OrdinalIgnoreCase)).ToList();
-    }
-
-    public void SortByDepartureTime()
-    {
-        trains.Sort((t1, t2) => t1.DepartureTime.CompareTo(t2.DepartureTime));
-    }
-
-  
-
-}
- */

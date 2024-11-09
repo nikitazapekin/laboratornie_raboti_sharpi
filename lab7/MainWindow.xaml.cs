@@ -41,13 +41,7 @@ namespace lab7
             }
         }
 
-        /*
-         private void Save_Click(object sender, RoutedEventArgs e)
-         {
-
-         }
-        */
-
+ 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "trains.txt");
@@ -147,14 +141,19 @@ namespace lab7
         {
             trainCollection.SortByDepartureTime();
             MessageBox.Show("Поезда отсортированы по времени отправления.");
+            UpdateListBox();
         }
         private void SortByTrainNumber_Click(object sender, RoutedEventArgs e)
         {
-
+            trainCollection.SortByTrainNumber();
+            MessageBox.Show("Поезда отсортированы по номеру поезда.");
+            UpdateListBox();
         }
         private void SortByDestination_Click(object sender, RoutedEventArgs e)
         {
-
+            trainCollection.SortByDestination();
+            MessageBox.Show("Поезда отсортированы пунктам назначения.");
+            UpdateListBox();
         }
         private void SearchByTrainNumber_Click(object sender, RoutedEventArgs e)
         {
@@ -181,7 +180,16 @@ namespace lab7
             } */
         }
 
-   
+        private void UpdateListBox()
+        {
+            outputListBoxActions.Items.Clear();
+
+            foreach (TRAIN train in trainCollection.GetAllTrains())
+            {
+                outputListBoxActions.Items.Add($"Поезд №{train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
+            }
+        }
+
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {

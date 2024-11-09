@@ -6,32 +6,35 @@
         xmlns:local="clr-namespace:lab7"
         mc:Ignorable="d"
         Title="MainWindow" Height="1450" Width="1800">
-    <Grid>
-        <!-- Menu -->
-        <Menu VerticalAlignment="Top">
-            <MenuItem  FontSize="22" Header="Файл">
-                <MenuItem FontSize="22" Header="Считать данные с файла" Click="ReadFromFile_Click"/>
-                <MenuItem FontSize="22" Header="Сохранить" Click="Save_Click"/>
-            </MenuItem>
-            <MenuItem FontSize="22"  Header="Поезд">
-                <MenuItem FontSize="22" Header="Добавить" Click="AddTrain_Click"/>
-                <MenuItem FontSize="22" Header="Показать все поезда" Click="DisplayAllTrains_Click"/>
-            </MenuItem>
-            <MenuItem FontSize="22" Header="Сортировка">
-                <MenuItem FontSize="22" Header="Сортировать по номеру поезда" Click="SortByTrainNumber_Click"/>
-                <MenuItem FontSize="22" Header="Сортировать по пунктам прибытия" Click="SortByDestination_Click"/>
-                <MenuItem FontSize="22" Header="Сортировать по времени отправки" Click="SortByDepartureTime_Click"/>
-            </MenuItem>
-            <MenuItem  FontSize="22" Header="Поиск">
-                <MenuItem FontSize="22" Header="По номеру поезда" Click="SearchByTrainNumber_Click"/>
-                <MenuItem FontSize="22" Header="По пунктам прибытия" Click="SearchByDestination_Click"/>
-                <MenuItem FontSize="22" Header="По времени отправки" Click="SearchByDepartureTime_Click"/>
-            </MenuItem>
-        </Menu>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
 
+            <Menu VerticalAlignment="Top">
+                <MenuItem  FontSize="22" Header="Файл">
+                    <MenuItem FontSize="22" Header="Считать данные с файла" Click="ReadFromFile_Click"/>
+                    <MenuItem FontSize="22" Header="Сохранить" Click="Save_Click"/>
+                </MenuItem>
+                <MenuItem FontSize="22"  Header="Поезд">
+                    <MenuItem FontSize="22" Header="Добавить" Click="AddTrain_Click"/>
+                    <MenuItem FontSize="22" Header="Показать все поезда" Click="DisplayAllTrains_Click"/>
+                </MenuItem>
+                <MenuItem FontSize="22" Header="Сортировка">
+                    <MenuItem FontSize="22" Header="Сортировать по номеру поезда" Click="SortByTrainNumber_Click"/>
+                    <MenuItem FontSize="22" Header="Сортировать по пунктам прибытия" Click="SortByDestination_Click"/>
+                    <MenuItem FontSize="22" Header="Сортировать по времени отправки" Click="SortByDepartureTime_Click"/>
+                </MenuItem>
+                <MenuItem  FontSize="22" Header="Поиск">
+                    <MenuItem FontSize="22" Header="По номеру поезда" Click="SearchByTrainNumber_Click"/>
+                    <MenuItem FontSize="22" Header="По пунктам прибытия" Click="SearchByDestination_Click"/>
+                    <MenuItem FontSize="22" Header="По времени отправки" Click="SearchByDepartureTime_Click"/>
+                </MenuItem>
+            </Menu>
+            <Image HorizontalAlignment="Left" Height="1029" Margin="761,119,0,0" VerticalAlignment="Top" Width="1029" Source="/Снимок экрана 2024-11-09 153122.png"/>
+            <TextBlock HorizontalAlignment="Left" FontSize="22" Margin="60,85,0,0" TextWrapping="Wrap" Text="Поезда " VerticalAlignment="Top"/>
+            <ListBox x:Name="outputListBox" FontSize="22" HorizontalAlignment="Left" Margin="60,119,0,0" VerticalAlignment="Top" Width="619" Height="719"/>
 
-        <TextBox   HorizontalAlignment="Left" Margin="51,896,0,437" Width="459" TextWrapping="Wrap"/>
-        <Image HorizontalAlignment="Left" Height="1029" Margin="761,119,0,0" VerticalAlignment="Top" Width="1029" Source="/Снимок экрана 2024-11-09 153122.png"/>
-        <ListBox x:Name="outputListBox" FontSize="22" HorizontalAlignment="Left" Margin="60,119,0,0" VerticalAlignment="Top" Width="619" Height="719"/>
-    </Grid>
+            <ListBox x:Name="outputListBoxActions" FontSize="22" HorizontalAlignment="Left" Margin="60,912,0,0" VerticalAlignment="Top" Width="619" Height="719"/>
+            <TextBlock HorizontalAlignment="Left" FontSize="22" Margin="60,878,0,0" TextWrapping="Wrap" Text="Операции " VerticalAlignment="Top"/>
+        </Grid>
+    </ScrollViewer>
 </Window>
