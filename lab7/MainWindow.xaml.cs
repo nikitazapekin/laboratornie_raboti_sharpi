@@ -18,9 +18,7 @@ using System.Windows;
 using System.Collections.Generic;
 namespace lab7
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+ 
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -53,7 +51,7 @@ namespace lab7
         private void AddTrain_Click(object sender, RoutedEventArgs e)
         {
             var addTrainDialog = new AddTrainDialog();
-            //  bool? result = addTrainDialog.ShowDialog();
+         
             bool result = addTrainDialog.ShowDialog() == true;
             if (result == true)
             {
@@ -69,26 +67,10 @@ namespace lab7
                 MessageBox.Show("Поезд добавлен.");
             }
         }
-        /*
-               private void DisplayAllTrains_Click(object sender, RoutedEventArgs e)
-               {
-                   outputTextBox.Clear();
-                   var allTrains = trainCollection.GetAllTrains();
-
-                   if (allTrains.Count == 0)
-                   {
-                       MessageBox.Show("Нет поездов для отображения.");
-                   }
-
-                   foreach (var train in allTrains)
-                   {
-                       outputTextBox.AppendText(train.ToString() + Environment.NewLine);
-                   }
-               }
-        */
+      
         private void DisplayAllTrains_Click(object sender, RoutedEventArgs e)
         {
-            outputListBox.Items.Clear();  // Clear previous list items
+            outputListBox.Items.Clear();  
             var allTrains = trainCollection.GetAllTrains();
 
             if (allTrains.Count == 0)
@@ -98,7 +80,7 @@ namespace lab7
 
             foreach (var train in allTrains)
             {
-                outputListBox.Items.Add(train.ToString());  // Add each train's string representation to the ListBox
+                outputListBox.Items.Add(train.ToString());  
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace lab7
 {
@@ -13,6 +14,21 @@ namespace lab7
         {
             InitializeComponent();
         }
+
+
+
+
+
+        private void DatePicker_DateValidationError(object sender, DatePickerDateValidationErrorEventArgs e)
+        {
+            DateTime newDate;
+            DatePicker datePickerObj = sender as DatePicker;
+            if (!DateTime.TryParse(e.Text, out newDate))
+            {
+                MessageBox.Show("Пожалуйста, введите корректный формат даты (dd.mm.yy)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {

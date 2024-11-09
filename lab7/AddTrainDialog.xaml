@@ -17,7 +17,24 @@
             <TextBox x:Name="TrainNumberTextBox" FontSize="22"/>
 
             <TextBlock FontSize="16" Text="Время отправления" Margin="0,5,0,0"/>
-            <DatePicker x:Name="DepartureTimePicker" FontSize="22"/>
+
+            <DatePicker        DateValidationError="DatePicker_DateValidationError" x:Name="DepartureTimePicker" FontSize="22"/>
+            <!--
+            <DatePicker      DateValidationError="DatePicker_DateValidationError" FontSize="22"  x:Name="DepartureTimePicker" HorizontalAlignment="Left" Margin="42,276,0,0" VerticalAlignment="Top" Height="59" Width="340">
+                <DatePicker.Resources>
+                    <Style TargetType="DatePickerTextBox">
+                        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                    </Style>
+                </DatePicker.Resources>
+                <DatePicker.Text>
+                    <Binding Path="SelectedDate" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <local:DateValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.Text>
+            </DatePicker>
+            -->
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                 <Button Content="OK" Width="100" Margin="5" Click="OkButton_Click"/>
