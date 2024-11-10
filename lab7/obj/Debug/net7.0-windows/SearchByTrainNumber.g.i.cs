@@ -61,7 +61,7 @@ namespace lab7 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/lab7;V1.0.0.0;component/searchbytrainnumber.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/lab7;component/searchbytrainnumber.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\SearchByTrainNumber.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

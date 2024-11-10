@@ -41,7 +41,105 @@ namespace lab7
             }
         }
 
- 
+        /*
+               private void Save_Click(object sender, RoutedEventArgs e)
+               {
+                   string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "trains.txt");
+
+                   try
+                   {
+                       using (StreamWriter writer = new StreamWriter(filePath))
+                       {
+
+                           foreach (var item in  trainCollection.GetAllTrains())
+                           {
+                               string stroke = "";
+                               stroke = $"{item.TrainNumber}, {item.Destination}, {item.DepartureTime}";
+                               writer.WriteLine(stroke);
+                           }
+                       }
+                       MessageBox.Show("Файл успешно сохранён по пути: " + filePath, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                   }
+                   catch (Exception ex)
+                   {
+                       MessageBox.Show("Ошибка при сохранении файла: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                   }
+               }
+
+
+
+               private void ReadFromFile_Click(object sender, RoutedEventArgs e)
+               {
+                   string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "trains.txt");
+
+                   if (!File.Exists(filePath))
+                   {
+                       MessageBox.Show("Файл trains.txt не найден.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                       return;
+                   }
+
+                   try
+                   {
+                       outputListBox.Items.Clear();  
+
+                       TrainCollection trainCollection = new TrainCollection();  
+
+                       using (StreamReader reader = new StreamReader(filePath))
+                       {
+                           string line;
+                           while ((line = reader.ReadLine()) != null)
+                           {
+                               string[] parts = line.Split(',');  
+
+                               if (parts.Length == 3) 
+                               {
+                                   string trainNumber = parts[0].Trim();
+                                   string destination = parts[1].Trim();
+                                   DateTime departureTime;
+
+
+                                   if (DateTime.TryParse(parts[2].Trim(), out departureTime))
+                                   {
+
+                                       TRAIN train = new TRAIN
+                                       {
+                                           TrainNumber = trainNumber,
+                                           Destination = destination,
+                                           DepartureTime = departureTime
+                                       };
+
+
+                                       TRAIN newTrain = new TRAIN(destination, trainNumber, departureTime);
+                                       trainCollection.Add(newTrain);
+
+                                       trainCollection.Add(train);
+                                       outputListBox.Items.Add(train.ToString());
+
+                                   }
+                                   else
+                                   {
+                                       MessageBox.Show($"Ошибка в формате времени для поезда {trainNumber}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                   }
+                               }
+                               else
+                               {
+                                   MessageBox.Show($"Неверный формат данных в строке: {line}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                               }
+                           }
+                       }
+
+                       MessageBox.Show("Данные успешно загружены из файла.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                   }
+                   catch (Exception ex)
+                   {
+                       MessageBox.Show("Ошибка при чтении файла: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                   }
+               }
+
+
+               */
+
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "trains.txt");
@@ -50,16 +148,11 @@ namespace lab7
             {
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
-                    /*  foreach (var item in outputListBox.Items)
-                      {
-                          writer.WriteLine(item.ToString());
-                      }
-                    */
-                    foreach (var item in  trainCollection.GetAllTrains())
+                    foreach (var item in trainCollection.GetAllTrains())
                     {
-                        string stroke = "";
-                        stroke = $"{item.TrainNumber}, {item.Destination}, {item.DepartureTime}";
-                        writer.WriteLine(stroke);
+                        // Записываем данные, используя "|" как разделитель
+                        string line = $"{item.TrainNumber}|{item.Destination}|{item.DepartureTime:dd.MM.yyyy HH:mm}";
+                        writer.WriteLine(line);
                     }
                 }
                 MessageBox.Show("Файл успешно сохранён по пути: " + filePath, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -70,38 +163,6 @@ namespace lab7
             }
         }
 
-        /*
-        private void ReadFromFile_Click(object sender, RoutedEventArgs e)
-        {
-            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "trains.txt");
-
-            if (!File.Exists(filePath))
-            {
-                MessageBox.Show("Файл trains.txt не найден.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            try
-            {
-                outputListBox.Items.Clear(); 
-
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        outputListBox.Items.Add(line); 
-                    }
-                }
-
-                MessageBox.Show("Данные успешно загружены из файла.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка при чтении файла: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-        */
 
         private void ReadFromFile_Click(object sender, RoutedEventArgs e)
         {
@@ -115,41 +176,27 @@ namespace lab7
 
             try
             {
-                outputListBox.Items.Clear();  
-
-                TrainCollection trainCollection = new TrainCollection();  
+                outputListBox.Items.Clear();
+                trainCollection = new TrainCollection();
 
                 using (StreamReader reader = new StreamReader(filePath))
                 {
                     string line;
                     while ((line = reader.ReadLine()) != null)
                     {
-                        string[] parts = line.Split(',');  
+                        string[] parts = line.Split('|'); // Используем | как разделитель
 
-                        if (parts.Length == 3) 
+                        if (parts.Length == 3)
                         {
                             string trainNumber = parts[0].Trim();
                             string destination = parts[1].Trim();
                             DateTime departureTime;
 
-                        
-                            if (DateTime.TryParse(parts[2].Trim(), out departureTime))
+                            if (DateTime.TryParseExact(parts[2].Trim(), "dd.MM.yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out departureTime))
                             {
-                            
-                                TRAIN train = new TRAIN
-                                {
-                                    TrainNumber = trainNumber,
-                                    Destination = destination,
-                                    DepartureTime = departureTime
-                                };
-
-
-                                TRAIN newTrain = new TRAIN(destination, trainNumber, departureTime);
-                                trainCollection.Add(newTrain);
-
+                                TRAIN train = new TRAIN(destination, trainNumber, departureTime);
                                 trainCollection.Add(train);
                                 outputListBox.Items.Add(train.ToString());
-                          
                             }
                             else
                             {
@@ -170,8 +217,6 @@ namespace lab7
                 MessageBox.Show("Ошибка при чтении файла: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-
 
 
         private void AddTrain_Click(object sender, RoutedEventArgs e)
@@ -259,7 +304,7 @@ namespace lab7
                     foreach (var train in foundTrains)
                     {
                         outputListBoxActions.Items.Add($"Поезд №{train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
-                        //   MessageBox.Show($"Найденnnnn поезд: {train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
+                  
                     }
                 }
                 else
