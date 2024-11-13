@@ -15,7 +15,7 @@ namespace lab7
             _trainCollection = trainCollection;
         }
 
-        public List<TRAIN> MatchingTrains { get; private set; } = new List<TRAIN>();
+        public List<TRAIN> MatchingTrains { get;  set; } = new List<TRAIN>();
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -26,7 +26,7 @@ namespace lab7
             }
 
             DateTime selectedDate = DepartureDatePicker.SelectedDate.Value;
-            //    MatchingTrains = FindByDepartureDate(selectedDate);
+            
             MatchingTrains = _trainCollection.FindByDepartureDate(selectedDate);
             if (MatchingTrains.Count == 0)
             {
@@ -42,19 +42,7 @@ namespace lab7
             Close();
         }
 
-      /*  private List<TRAIN> FindByDepartureDate(DateTime date)
-        {
-            List<TRAIN> matchingTrains = new List<TRAIN>();
-            foreach (TRAIN train in _trains)
-            {
-                if (train.DepartureTime.Date == date.Date)
-                {
-                    matchingTrains.Add(train);
-                }
-            }
-            return matchingTrains;
-        }
-      */
+      
     }
 }
  

@@ -6,9 +6,9 @@ namespace lab7
 {
     public partial class AddTrainDialog : Window
     {
-        public string Destination { get; private set; }
-        public string TrainNumber { get; private set; }
-        public DateTime DepartureTime { get; private set; }
+        public string Destination { get;  set; }
+        public string TrainNumber { get;   set; }
+        public DateTime DepartureTime { get;  set; }
 
         public AddTrainDialog()
         {

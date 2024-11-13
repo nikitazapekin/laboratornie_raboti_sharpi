@@ -15,8 +15,8 @@ namespace lab7
             _trainCollection = trainCollection;
         }
 
-        public List<TRAIN> MatchingTrains { get; private set; } = new List<TRAIN>();
-    //    public List<TRAIN> Destination { get; private set; } = new List<TRAIN>();
+        public List<TRAIN> MatchingTrains { get;  set; } = new List<TRAIN>();
+ 
         
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -30,7 +30,7 @@ namespace lab7
                 return;
             }
             MatchingTrains = _trainCollection.FindByDestination(destination);
-            //   Destination = FindByDestination(destination);
+          
 
             if (MatchingTrains.Count == 0)
             {
@@ -48,21 +48,7 @@ namespace lab7
         {
             Close();
         }
-
-    
-     /*   private List<TRAIN> FindByDestination(string destination)
-        {
-            List<TRAIN> matchingTrains = new List<TRAIN>();
-            foreach (TRAIN train in _trains)
-            {
-                if (string.Equals(train.Destination, destination, StringComparison.OrdinalIgnoreCase))
-                {
-                    matchingTrains.Add(train);
-                }
-            }
-            return matchingTrains;
-        }
-     */
+         
     }
 }
  
