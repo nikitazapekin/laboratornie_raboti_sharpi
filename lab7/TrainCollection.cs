@@ -41,10 +41,6 @@ public class TrainCollection
             trains.Remove(train);
         }
     }
-
-
-
-
     public List<TRAIN> FindByTrainNumber(int trainNumber)
     {
         List<TRAIN> matchingTrains = new List<TRAIN>();

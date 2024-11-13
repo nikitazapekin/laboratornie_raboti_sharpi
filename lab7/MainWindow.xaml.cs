@@ -192,7 +192,7 @@ namespace lab7
         }
         private void SearchByDepartureTime_Click(object sender, RoutedEventArgs e)
         {
-            // var searchDialog = new SearchByDepartureTimeDialog(trainCollection.GetAllTrains());
+           
             var searchDialog = new SearchByDepartureTimeDialog(trainCollection);
 
             bool result = searchDialog.ShowDialog() == true;
@@ -255,7 +255,7 @@ namespace lab7
 
         private void SearchByDestination_Click(object sender, RoutedEventArgs e)
         {
-            //  var searchDialog = new SearchByDestination(trainCollection.GetAllTrains());
+          
             var searchDialog = new SearchByDestination(trainCollection);
 
             bool result = searchDialog.ShowDialog() == true;
@@ -323,10 +323,5 @@ namespace lab7
                 }
             }
         }
-
-
-
-
-
     }
 }
