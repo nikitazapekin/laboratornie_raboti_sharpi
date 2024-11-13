@@ -11,7 +11,7 @@ namespace lab7
         public SearchByDepartureTimeDialog(List<TRAIN> trains)
         {
             InitializeComponent();
-            _trains = trains;
+         //   _trains = trains;
         }
 
         public List<TRAIN> MatchingTrains { get; private set; } = new List<TRAIN>();

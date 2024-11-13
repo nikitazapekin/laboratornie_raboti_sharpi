@@ -223,8 +223,8 @@ namespace lab7
       
         private void SearchByTrainNumber_Click(object sender, RoutedEventArgs e)
         {
-            var searchDialog = new SearchByTrainId(trainCollection.GetAllTrains());
-
+            //     var searchDialog = new SearchByTrainId(trainCollection.GetAllTrains());
+            var searchDialog = new SearchByTrainId(trainCollection);
 
             bool result = searchDialog.ShowDialog() == true;
 
@@ -293,109 +293,27 @@ namespace lab7
             }
         }
 
-
-        /*  
-      private void HandleDelete_Click(object sender, RoutedEventArgs e)
-      {
-          var selectedTrains = outputListBox.SelectedItems.OfType<String>().ToList();
-
-        foreach ( var selectedTrain in selectedTrains)
-          {
-              MessageBox.Show(selectedTrain);
-          }
-         *  if (selectedTrains.Count == 0 )
-          {
-              MessageBox.Show("Поезда не выбраны для удаления.");
-          } else
-          {
-              trainCollection.RemoveSelectedTrains(selectedTrains);
+ 
 
 
-              foreach (var train in selectedTrains)
-              {
-                  outputListBox.Items.Remove(train);
-              }
-
-              MessageBox.Show("Выбранные поезда удалены.");
-          }
-
-
-              }
-     */
-
-        /*
         private void HandleDelete_Click(object sender, RoutedEventArgs e)
-        {
-            // Получаем выбранные строки
+        { 
             var selectedTrains = outputListBox.SelectedItems.OfType<string>().ToList();
 
             foreach (var selectedTrain in selectedTrains)
             {
-                // Находим индекс символа "№"
-                int indexOfNumberSign = selectedTrain.IndexOf("№");
-
-                if (indexOfNumberSign != -1)
-                {
-                    // Вырезаем строку, начиная с символа после "№" и до конца строки
-                    string numberString = selectedTrain.Substring(indexOfNumberSign + 1).Trim();
-
-                    // Преобразуем извлеченную строку в число (номер поезда)
-                    if (int.TryParse(numberString, out int trainNumber))
-                    {
-                        // Ищем поезд в коллекции по номеру
-                        var trainToRemove = trainCollection.GetAllTrains().FirstOrDefault(train => train.TrainNumber == trainNumber);
-
-                    //    if (trainToRemove != null)
-                      //  {
-                            // Удаляем поезд из коллекции и ListBox
-                            trainCollection.Remove(trainToRemove);
-                            outputListBox.Items.Remove(selectedTrain); // Удаляем строку из ListBox
-                            MessageBox.Show($"Поезд с номером {trainNumber} удален.");
-                  //      }
-                    //    else
-                      //  {
-                       //     MessageBox.Show($"Поезд с номером {trainNumber} не найден.");
-                       // }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Не удалось извлечь номер поезда.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Не найден символ '№' в строке.");
-                }
-            }
-        }
-        */
-
-
-
-        private void HandleDelete_Click(object sender, RoutedEventArgs e)
-        {
-            // Получаем выбранные строки
-            var selectedTrains = outputListBox.SelectedItems.OfType<string>().ToList();
-
-            foreach (var selectedTrain in selectedTrains)
-            {
-                // Используем регулярное выражение для поиска первого числа в строке
+             
                 var match = System.Text.RegularExpressions.Regex.Match(selectedTrain, @"\d+");
 
                 if (match.Success)
                 {
-                    // Извлекаем номер поезда как целое число
+                  
                     int trainNumber = int.Parse(match.Value);
-
-                    // Ищем поезд в коллекции по номеру
-                    var trainToRemove = trainCollection.GetAllTrains().FirstOrDefault(train => train.TrainNumber == trainNumber);
-
-                    // Удаляем поезд из коллекции и ListBox, если найден
+                    var trainToRemove = trainCollection.GetAllTrains().FirstOrDefault(train => train.TrainNumber == trainNumber);  
                     trainCollection.Remove(trainToRemove);
                     outputListBox.Items.Remove(selectedTrain);
-
-                    // Обновляем ListBox, если нужно
-                    outputListBox.Items.Refresh();  // Если Source обновляется через binding
+ 
+                    outputListBox.Items.Refresh();  
 
                     MessageBox.Show($"Поезд с номером {trainNumber} удален.");
                 }

@@ -12,7 +12,7 @@ namespace lab7
         public SearchByDestination(List<TRAIN> trains)
         {
             InitializeComponent();
-            _trains = trains;
+       //     _trains = trains;
         }
  
         public List<TRAIN> Destination { get; private set; } = new List<TRAIN>();
