@@ -5,10 +5,11 @@ namespace lab7
     public struct TRAIN
     {
         public string Destination { get; set; }
-        public string TrainNumber { get; set; }
+        public int TrainNumber { get; set; }
+       // public string TrainNumber { get; set; }
         public DateTime DepartureTime { get; set; }
 
-        public TRAIN(string destination, string trainNumber, DateTime departureTime)
+        public TRAIN(string destination, int trainNumber, DateTime departureTime)
         {
             Destination = destination;
             TrainNumber = trainNumber;

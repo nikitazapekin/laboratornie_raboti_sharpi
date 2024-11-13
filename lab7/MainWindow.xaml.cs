@@ -86,11 +86,13 @@ namespace lab7
                     string line;
                     while ((line = reader.ReadLine()) != null)
                     {
-                        string[] parts = line.Split('|');  
-
+                        string[] parts = line.Split('|');
+                        int trainNumber;
                         if (parts.Length == 3)
                         {
-                            string trainNumber = parts[0].Trim();
+
+                           int.TryParse(parts[0].Trim(), out trainNumber);
+                          //  string trainNumber = parts[0].Trim();
                             string destination = parts[1].Trim();
                             DateTime departureTime;
 
@@ -130,7 +132,11 @@ namespace lab7
             {
              
                 string destination = addTrainDialog.Destination;
-                string trainNumber = addTrainDialog.TrainNumber;
+                //  string trainNumber = addTrainDialog.TrainNumber;
+            int trainNumber = int.Parse(addTrainDialog.TrainNumber.Trim());
+                //int trainNumber = int.Parse(parts[0].Trim());
+
+                //     int  trainNumberInt = int.TryParse(trainNumber.Trim(), out trainNumber);
                 DateTime departureTime = addTrainDialog.DepartureTime;
 
               

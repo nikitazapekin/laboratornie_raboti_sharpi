@@ -36,7 +36,7 @@ public class TrainCollection
 
     public void SortByTrainNumber()
     {
-        trains.Sort((train1, train2) => string.Compare(train1.TrainNumber, train2.TrainNumber, StringComparison.Ordinal));
+     //   trains.Sort((train1, train2) => string.Compare(train1.TrainNumber, train2.TrainNumber, StringComparison.Ordinal));
     }
 
     public void SortByDestination()
@@ -67,10 +67,10 @@ public class TrainCollection
         List<TRAIN> matchingTrains = new List<TRAIN>();
         foreach (TRAIN train in trains)
         {
-            if (string.Equals(train.TrainNumber,trainNumner, StringComparison.Ordinal))
+        /*    if (string.Equals(train.TrainNumber,trainNumner, StringComparison.Ordinal))
             {
                 matchingTrains.Add(train);
-            }
+            } */
         }
         return matchingTrains;
     }
