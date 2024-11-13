@@ -42,9 +42,7 @@ C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.
 C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.0-windows\AddTrainDialog.baml
 C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.0-windows\SearchByDepartureTimeDialog.g.cs
 C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.0-windows\SearchByDestination.g.cs
-C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.0-windows\SearchByTrainNumber.g.cs
 C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.0-windows\SearchByDepartureTimeDialog.baml
 C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.0-windows\SearchByDestination.baml
-C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.0-windows\SearchByTrainNumber.baml
 C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.0-windows\SearchByTrainId.g.cs
 C:\Users\wotbl\source\repos\lab7\laboratornie_raboti_sharpi\lab7\obj\Debug\net7.0-windows\SearchByTrainId.baml

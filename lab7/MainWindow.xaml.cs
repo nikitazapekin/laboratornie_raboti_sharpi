@@ -192,7 +192,32 @@ namespace lab7
         }
         private void SearchByDepartureTime_Click(object sender, RoutedEventArgs e)
         {
+            var searchDialog = new SearchByDepartureTimeDialog(trainCollection.GetAllTrains());
 
+
+            bool result = searchDialog.ShowDialog() == true;
+
+
+            if (result)
+            {
+                List<TRAIN> foundTrains = searchDialog.MatchingTrains;
+
+                if (foundTrains.Count > 0)
+                {
+                    outputListBoxActions.Items.Clear();
+                    foreach (var train in foundTrains)
+                    {
+                        outputListBoxActions.Items.Add($"Поезд №{train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Поезда не найдены.");
+                }
+
+
+            }
         }
 
       
