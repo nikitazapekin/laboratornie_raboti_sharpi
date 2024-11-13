@@ -323,5 +323,36 @@ namespace lab7
                 }
             }
         }
+
+
+
+
+
+        private void AddSixTrains_Click(object sender, RoutedEventArgs e)
+        {
+          
+            var trainsToAdd = new List<TRAIN>
+    {
+        new TRAIN("Москва", 101, new DateTime(2024, 11, 13, 15, 30, 0)),
+        new TRAIN("Санкт-Петербург", 102, new DateTime(2024, 11, 13, 16, 00, 0)),
+        new TRAIN("Владивосток", 103, new DateTime(2024, 11, 13, 17, 30, 0)),
+        new TRAIN("Калуга", 104, new DateTime(2024, 11, 13, 18, 00, 0)),
+        new TRAIN("Нижний Новгород", 105, new DateTime(2024, 11, 13, 19, 15, 0)),
+        new TRAIN("Ярославль", 106, new DateTime(2024, 11, 13, 20, 45, 0))
+    };
+
+          
+            foreach (var train in trainsToAdd)
+            {
+                trainCollection.Add(train);
+            }
+
+            MessageBox.Show("Шесть поездов успешно добавлены в коллекцию.");
+        }
+
+
+
+
+
     }
 }

@@ -61,6 +61,7 @@
             <ListBox x:Name="outputListBoxActions" FontSize="22" HorizontalAlignment="Left" Margin="60,912,0,0" VerticalAlignment="Top" Width="619" Height="719"/>
             <TextBlock HorizontalAlignment="Left" FontSize="22" Margin="60,878,0,0" TextWrapping="Wrap" Text="Операции " VerticalAlignment="Top"/>
             <Button Content="Удалить" FontSize="22" HorizontalAlignment="Left" Margin="508,74,0,0" VerticalAlignment="Top" Width="171"  Click="HandleDelete_Click" />
+            <Button Content="6 поездов" FontSize="22" HorizontalAlignment="Left" Margin="316,74,0,0" VerticalAlignment="Top" Width="171"  Click="AddSixTrains_Click" />
         </Grid>
     </ScrollViewer>
 </Window>
