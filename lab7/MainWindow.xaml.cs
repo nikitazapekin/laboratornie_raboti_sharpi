@@ -132,18 +132,37 @@ namespace lab7
             {
              
                 string destination = addTrainDialog.Destination;
-                //  string trainNumber = addTrainDialog.TrainNumber;
-            int trainNumber = int.Parse(addTrainDialog.TrainNumber.Trim());
-                //int trainNumber = int.Parse(parts[0].Trim());
-
-                //     int  trainNumberInt = int.TryParse(trainNumber.Trim(), out trainNumber);
-                DateTime departureTime = addTrainDialog.DepartureTime;
+          
+        //    int trainNumber = int.Parse(addTrainDialog.TrainNumber.Trim());
+            
+             /*   DateTime departureTime = addTrainDialog.DepartureTime;
 
               
                 TRAIN newTrain = new TRAIN(destination, trainNumber, departureTime);
                 trainCollection.Add(newTrain);
 
                 MessageBox.Show("Поезд добавлен.");
+
+                */
+
+
+
+                if (int.TryParse(addTrainDialog.TrainNumber.Trim(), out int trainNumber))
+                {
+                    DateTime departureTime = addTrainDialog.DepartureTime;
+
+                    TRAIN newTrain = new TRAIN(destination, trainNumber, departureTime);
+                    trainCollection.Add(newTrain);
+
+                    MessageBox.Show("Поезд добавлен.");
+                }
+                else
+                {
+                    // Сообщение об ошибке, если TrainNumber не является числом
+                    MessageBox.Show("Ошибка: номер поезда должен быть целым числом.");
+                }
+
+
             }
         }
       

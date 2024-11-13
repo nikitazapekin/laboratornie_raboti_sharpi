@@ -36,7 +36,8 @@ public class TrainCollection
 
     public void SortByTrainNumber()
     {
-     //   trains.Sort((train1, train2) => string.Compare(train1.TrainNumber, train2.TrainNumber, StringComparison.Ordinal));
+        trains.Sort((train1, train2) => train1.TrainNumber.CompareTo(train2.TrainNumber));
+         
     }
 
     public void SortByDestination()
