@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace lab7
 {
-    /// <summary>
-    /// Interaction logic for SearchDialog.xaml
-    /// </summary>
+  
     public partial class SearchDialog : Window
     {
         public SearchDialog()
