@@ -190,16 +190,43 @@ namespace lab7
             MessageBox.Show("Поезда отсортированы пунктам назначения.");
             UpdateListBox();
         }
-        private void SearchByTrainNumber_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void SearchByDepartureTime_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
       
+        private void SearchByTrainNumber_Click(object sender, RoutedEventArgs e)
+        {
+            var searchDialog = new SearchByTrainId(trainCollection.GetAllTrains());
+
+
+            bool result = searchDialog.ShowDialog() == true;
+
+
+            if (result)
+            {
+
+                List<TRAIN> foundTrains = searchDialog.MatchingTrains;
+
+                if (foundTrains.Count > 0)
+                {
+                    outputListBoxActions.Items.Clear();
+                    foreach (var train in foundTrains)
+                    {
+                        outputListBoxActions.Items.Add($"Поезд №{train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Поезда не найдены.");
+                }
+
+
+
+            }
+        }
 
         private void SearchByDestination_Click(object sender, RoutedEventArgs e)
         {

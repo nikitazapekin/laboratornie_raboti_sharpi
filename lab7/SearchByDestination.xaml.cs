@@ -22,12 +22,7 @@ namespace lab7
         {
             string destination = DestinationTextBox.Text;
  
-        /*    MessageBox.Show("Поезда:");
-            foreach (var train in _trains)
-            {
-                MessageBox.Show($"Поезд: {train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
-            } */
-
+        
             if (string.IsNullOrWhiteSpace(destination))
             {
                 MessageBox.Show("Введите пункт назначения.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -41,15 +36,7 @@ namespace lab7
             {
                 MessageBox.Show("Ничего не найдено!");
             }
-          /*  else
-            {
-             
-                foreach (var train in Destination)
-                {
-                    MessageBox.Show($"Найден поезд: {train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
-                }
-            }
-          */
+        
          
             this.DialogResult = true;  
             Close(); 

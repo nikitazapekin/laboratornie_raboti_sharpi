@@ -45,15 +45,13 @@ public class TrainCollection
         trains.Sort((train1, train2) => string.Compare(train1.Destination, train2.Destination, StringComparison.OrdinalIgnoreCase));
     }
 
- 
-
     public List<TRAIN> FindByDestination(string destination)
     {
         List<TRAIN> matchingTrains = new List<TRAIN>();
         string trimmedDestination = destination?.Trim().ToLower(); 
         foreach (TRAIN train in trains)
         {
-            string trainDestination = train.Destination?.Trim().ToLower(); 
+            string trainDestination = train.Destination.Trim().ToLower(); 
             if (string.Equals(trainDestination, trimmedDestination, StringComparison.OrdinalIgnoreCase))
             {
                 matchingTrains.Add(train);
@@ -62,18 +60,17 @@ public class TrainCollection
         return matchingTrains;
     }
 
-
-    public List<TRAIN> FindByTrainNumber(string trainNumner)
+    public List<TRAIN> FindByTrainNumber(int trainNumber)
     {
         List<TRAIN> matchingTrains = new List<TRAIN>();
         foreach (TRAIN train in trains)
         {
-        /*    if (string.Equals(train.TrainNumber,trainNumner, StringComparison.Ordinal))
+            if (train.TrainNumber == trainNumber)
             {
                 matchingTrains.Add(train);
-            } */
+            }
         }
         return matchingTrains;
     }
+
 }
- 
