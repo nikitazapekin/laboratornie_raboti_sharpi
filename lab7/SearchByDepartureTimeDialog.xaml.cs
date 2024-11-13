@@ -6,12 +6,13 @@ namespace lab7
 {
     public partial class SearchByDepartureTimeDialog : Window
     {
-        private List<TRAIN> _trains;
+  
+        private TrainCollection _trainCollection;
 
-        public SearchByDepartureTimeDialog(List<TRAIN> trains)
+        public SearchByDepartureTimeDialog(TrainCollection trainCollection)
         {
             InitializeComponent();
-         //   _trains = trains;
+            _trainCollection = trainCollection;
         }
 
         public List<TRAIN> MatchingTrains { get; private set; } = new List<TRAIN>();
@@ -25,8 +26,8 @@ namespace lab7
             }
 
             DateTime selectedDate = DepartureDatePicker.SelectedDate.Value;
-            MatchingTrains = FindByDepartureDate(selectedDate);
-
+            //    MatchingTrains = FindByDepartureDate(selectedDate);
+            MatchingTrains = _trainCollection.FindByDepartureDate(selectedDate);
             if (MatchingTrains.Count == 0)
             {
                 MessageBox.Show("Ничего не найдено!");
@@ -41,7 +42,7 @@ namespace lab7
             Close();
         }
 
-        private List<TRAIN> FindByDepartureDate(DateTime date)
+      /*  private List<TRAIN> FindByDepartureDate(DateTime date)
         {
             List<TRAIN> matchingTrains = new List<TRAIN>();
             foreach (TRAIN train in _trains)
@@ -53,60 +54,7 @@ namespace lab7
             }
             return matchingTrains;
         }
+      */
     }
 }
-
-
-/*
- * using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-namespace lab7
-{
  
-    public partial class SearchByDepartureTimeDialog : Window
-    {
-
-        private List<TRAIN> _trains;
-        public SearchByDepartureTimeDialog(List<TRAIN> trains)
-        {
-            InitializeComponent();
-            _trains = trains;
-        }
-        public List<TRAIN> DepartureTime { get; private set; } = new List<TRAIN>();
-
-
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            DateTime? departureDate = DepartureDatePicker.SelectedDate;
-
-            if (!departureDate.HasValue)
-            {
-                MessageBox.Show("Выберите время отправления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-        
-            MessageBox.Show($"Поиск по времени отправления {departureDate.Value}...", "Результаты поиска", MessageBoxButton.OK, MessageBoxImage.Information);
-         Close();  
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-         Close();  
-        }
-    }
-}
-*/

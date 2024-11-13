@@ -6,15 +6,7 @@ namespace lab7
 {
     public partial class SearchByDestination : Window
     {
-        /* private List<TRAIN> _trains;
 
-
-         public SearchByDestination(List<TRAIN> trains)
-         {
-             InitializeComponent();
-             _trains = trains;
-         }
-  */
         private TrainCollection _trainCollection;
 
         public SearchByDestination(TrainCollection trainCollection)

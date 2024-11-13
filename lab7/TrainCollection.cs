@@ -72,6 +72,17 @@ public class TrainCollection
         }
         return matchingTrains;
     }
-
+   public List<TRAIN> FindByDepartureDate(DateTime date)
+    {
+        List<TRAIN> matchingTrains = new List<TRAIN>();
+        foreach (TRAIN train in trains)
+        {
+            if (train.DepartureTime.Date == date.Date)
+            {
+                matchingTrains.Add(train);
+            }
+        }
+        return matchingTrains;
+    }
 
 }

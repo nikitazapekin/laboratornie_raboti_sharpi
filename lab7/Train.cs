@@ -6,7 +6,7 @@ namespace lab7
     {
         public string Destination { get; set; }
         public int TrainNumber { get; set; }
-       // public string TrainNumber { get; set; }
+   
         public DateTime DepartureTime { get; set; }
 
         public TRAIN(string destination, int trainNumber, DateTime departureTime)
