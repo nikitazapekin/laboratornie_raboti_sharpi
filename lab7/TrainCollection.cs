@@ -44,7 +44,17 @@ public class TrainCollection
     {
         trains.Sort((train1, train2) => string.Compare(train1.Destination, train2.Destination, StringComparison.OrdinalIgnoreCase));
     }
+    public void RemoveSelectedTrains(List<TRAIN> selectedTrains)
+    {
+        foreach (var train in selectedTrains)
+        {
+            trains.Remove(train);
+        }
+    }
 
+
+
+    /*
     public List<TRAIN> FindByDestination(string destination)
     {
         List<TRAIN> matchingTrains = new List<TRAIN>();
@@ -72,5 +82,6 @@ public class TrainCollection
         }
         return matchingTrains;
     }
+    */
 
 }
