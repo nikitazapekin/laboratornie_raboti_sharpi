@@ -223,7 +223,7 @@ namespace lab7
       
         private void SearchByTrainNumber_Click(object sender, RoutedEventArgs e)
         {
-            //     var searchDialog = new SearchByTrainId(trainCollection.GetAllTrains());
+          
             var searchDialog = new SearchByTrainId(trainCollection);
 
             bool result = searchDialog.ShowDialog() == true;
@@ -255,15 +255,15 @@ namespace lab7
 
         private void SearchByDestination_Click(object sender, RoutedEventArgs e)
         {
-            var searchDialog = new SearchByDestination(trainCollection.GetAllTrains());
+            //  var searchDialog = new SearchByDestination(trainCollection.GetAllTrains());
+            var searchDialog = new SearchByDestination(trainCollection);
 
-           
             bool result = searchDialog.ShowDialog() == true;
 
             if (result)
             {
              
-                List<TRAIN> foundTrains = searchDialog.Destination;
+                List<TRAIN> foundTrains = searchDialog.MatchingTrains;
 
                 if (foundTrains.Count > 0)
                 {

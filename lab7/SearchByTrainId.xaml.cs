@@ -8,14 +8,8 @@ namespace lab7
 {
     public partial class SearchByTrainId : Window
     {
-        /*  private List<TRAIN> _trains;
-
-          public SearchByTrainId(List<TRAIN> trains)
-          {
-              InitializeComponent();
-              _trains = trains;
-          }
-        */
+     
+       
         private TrainCollection _trainCollection;
 
         public SearchByTrainId(TrainCollection trainCollection)

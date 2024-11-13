@@ -1,8 +1,7 @@
 ﻿using lab7;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-
+ 
 public class TrainCollection
 {
     private List<TRAIN> trains = new List<TRAIN>();
@@ -48,9 +47,31 @@ public class TrainCollection
 
     public List<TRAIN> FindByTrainNumber(int trainNumber)
     {
-        return trains.Where(train => train.TrainNumber == trainNumber).ToList();
+        List<TRAIN> matchingTrains = new List<TRAIN>();
+
+        foreach (TRAIN train in trains)
+        {
+            if (train.TrainNumber == trainNumber)
+            {
+                matchingTrains.Add(train);
+            }
+        }
+
+        return matchingTrains;
     }
 
+    public List<TRAIN> FindByDestination(string destination)
+    {
+        List<TRAIN> matchingTrains = new List<TRAIN>();
+        foreach (TRAIN train in trains)
+        {
+            if (string.Equals(train.Destination, destination, StringComparison.OrdinalIgnoreCase))
+            {
+                matchingTrains.Add(train);
+            }
+        }
+        return matchingTrains;
+    }
 
 
 }

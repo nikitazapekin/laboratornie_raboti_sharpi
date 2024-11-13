@@ -6,16 +6,25 @@ namespace lab7
 {
     public partial class SearchByDestination : Window
     {
-        private List<TRAIN> _trains;
+        /* private List<TRAIN> _trains;
 
- 
-        public SearchByDestination(List<TRAIN> trains)
+
+         public SearchByDestination(List<TRAIN> trains)
+         {
+             InitializeComponent();
+             _trains = trains;
+         }
+  */
+        private TrainCollection _trainCollection;
+
+        public SearchByDestination(TrainCollection trainCollection)
         {
             InitializeComponent();
-       //     _trains = trains;
+            _trainCollection = trainCollection;
         }
- 
-        public List<TRAIN> Destination { get; private set; } = new List<TRAIN>();
+
+        public List<TRAIN> MatchingTrains { get; private set; } = new List<TRAIN>();
+    //    public List<TRAIN> Destination { get; private set; } = new List<TRAIN>();
         
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -28,11 +37,10 @@ namespace lab7
                 MessageBox.Show("Введите пункт назначения.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            MatchingTrains = _trainCollection.FindByDestination(destination);
+            //   Destination = FindByDestination(destination);
 
-       
-            Destination = FindByDestination(destination);
-
-            if (Destination.Count == 0)
+            if (MatchingTrains.Count == 0)
             {
                 MessageBox.Show("Ничего не найдено!");
             }
@@ -50,7 +58,7 @@ namespace lab7
         }
 
     
-        private List<TRAIN> FindByDestination(string destination)
+     /*   private List<TRAIN> FindByDestination(string destination)
         {
             List<TRAIN> matchingTrains = new List<TRAIN>();
             foreach (TRAIN train in _trains)
@@ -62,6 +70,7 @@ namespace lab7
             }
             return matchingTrains;
         }
+     */
     }
 }
  
