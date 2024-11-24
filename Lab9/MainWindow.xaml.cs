@@ -92,6 +92,11 @@ namespace Lab9
                 ElementInfo.Text = "Нет выбранного элемента.";
             }
         }
+
+        private void ElementNameInput_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
     }
 
     // Пример реализации класса Комбинационного элемента

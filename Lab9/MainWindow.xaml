@@ -5,10 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab9"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="10">
-        <StackPanel>
-            <!-- Управление элементами -->
+        Title="MainWindow" Height="800" Width="1700">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid Margin="10">
+            <TextBlock  FontSize="22" Text="Введите имя элемента:"  Width="300" Height="30"  Margin="42,31,1338,803"/>
+            <TextBox  FontSize="22" Width="300" Height="30"  x:Name="ElementNameInput" Margin="42,76,1338,758" TextChanged="ElementNameInput_TextChanged"/>
+            <TextBox  FontSize="22"   Width="300" Height="30" x:Name="InputsCountInput" Margin="42,182,1338,652" TextChanged="ElementNameInput_TextChanged"/>
+            <TextBlock  FontSize="22" Text="Количество входов:"  Width="300" Height="30"  Margin="42,137,1338,697"/>
+            <TextBox  FontSize="22"  Width="300" Height="30" x:Name="OutputsCountInput" Margin="42,272,1338,562" TextChanged="ElementNameInput_TextChanged"/>
+            <TextBlock  FontSize="22"  Text="Количество входов:"  Width="300" Height="30"  Margin="42,137,1338,697"/>
+            <TextBlock   FontSize="22" Text="Количество выходов:"  Width="300" Height="30"   Margin="42,237,1338,597"/>
+
+            <Button  FontSize="22" Width="300" Height="30" Content="Добавить элемент" Click="AddElement_Click" Margin="42,325,1338,509"/>
+
+
+
+            <TextBlock  FontSize="22" Width="300" Height="30" Text="Список элементов:"  Margin="42,392,1338,442"/>
+            <ListBox  FontSize="22" Width="300" x:Name="ElementsList"  Margin="42,443,1338,297"/>
+
+            <TextBlock  FontSize="22" Width="300" Height="30"  Text="Бинарные операции:"  Margin="431,402,949,432"/>
+
+
+            <Button  FontSize="22"  Width="300" Height="30" Content="Инвертировать" Click="InvertBinary_Click" Margin="441,458,939,376"/>
+            <Button  FontSize="22"  Width="300" Height="30" Content="Сдвиг влево" Click="ShiftLeft_Click" Margin="441,505,939,329"/>
+            <Button   FontSize="22"  Width="300" Height="30" Content="Сдвиг вправо" Click="ShiftRight_Click" Margin="441,564,939,270"/>
+
+
+
+            <TextBlock  FontSize="22" Width="300" Height="30" Text="Информация об элементе:"  Margin="927,417,453,417"/>
+            <TextBlock FontSize="22" Width="300" Height="30" x:Name="ElementInfo"   TextWrapping="Wrap" Margin="927,464,453,370"/>
+            <!-- <StackPanel>
+          
             <TextBlock Text="Введите имя элемента:" FontSize="14" Margin="0,0,0,5"/>
             <TextBox x:Name="ElementNameInput" Margin="0,0,0,10"/>
 
@@ -20,11 +47,10 @@
 
             <Button Content="Добавить элемент" Click="AddElement_Click" Margin="0,10,0,10"/>
 
-            <!-- Список элементов -->
+            
             <TextBlock Text="Список элементов:" FontSize="16" Margin="0,10,0,5"/>
             <ListBox x:Name="ElementsList" Height="100" Margin="0,0,0,10"/>
-
-            <!-- Управление бинарными операциями -->
+ 
             <TextBlock Text="Бинарные операции:" FontSize="16" Margin="0,10,0,5"/>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <Button Content="Инвертировать" Click="InvertBinary_Click" Margin="5"/>
@@ -32,9 +58,11 @@
                 <Button Content="Сдвиг вправо" Click="ShiftRight_Click" Margin="5"/>
             </StackPanel>
 
-            <!-- Вывод информации -->
+         
             <TextBlock Text="Информация об элементе:" FontSize="16" Margin="0,10,0,5"/>
             <TextBlock x:Name="ElementInfo" FontSize="14" TextWrapping="Wrap"/>
         </StackPanel>
-    </Grid>
+        -->
+        </Grid>
+    </ScrollViewer>
 </Window>
