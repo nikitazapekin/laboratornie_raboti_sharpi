@@ -36,7 +36,7 @@ namespace lab9Itog
             combinationalElement = new Combinational(5);
             memoryElement = new Memory();
             UpdateTriggersInfo();
-            //    registerElement = new Register(10);
+               registerElement = new Register(8);
         }
 
         private void ElementSelector_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -54,12 +54,12 @@ namespace lab9Itog
                     ShiftPanel.Visibility = Visibility.Collapsed;
                     RegisterState.Visibility = Visibility.Collapsed;
                     break;
-          /*      case "Register":
+             case "Register":
                     currentElement = registerElement;
                     ShiftPanel.Visibility = Visibility.Visible;
                     RegisterState.Visibility = Visibility.Visible;
                     break;
-          */
+          
 
             }
             UpdateTriggersInfo();

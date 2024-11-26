@@ -138,19 +138,7 @@ using System.Linq;
             get => resetInput;
             set => resetInput = value;
         }
-    /*
-    public override void Invert()
-    {
-        if (inputValues[1] == 1)
-        {
-            inputValues[0] = inputValues[0] == 0 ? 1 : 0;
-            directOutput = directOutput == 0 ? 1 : 0;
-          //  invertedOutput = invertedOutput
-          //  inverеtedOutput = inverseOutput == 0 ? 1 : 0;
-        }
-    }
-    */
-
+ 
 
     public override void Invert()
     {
