@@ -56,25 +56,7 @@ using System.Xml.Linq;
         {
             throw new NotImplementedException("This element type does not support setting inputs.");
         }
-
-      /*  public override bool Equals(object obj)
-    {
-      
-        if (ReferenceEquals(this, obj))
-            return true;
-
-        
-        if (obj == null || GetType() != obj.GetType())
-            return false;
-
-        
-        Element other = (Element)obj;
-        return name == other.name &&
-               inputCount == other.inputCount &&
-               outputCount == other.outputCount;
-    }
-
-        */
+ 
         public virtual void Invert()
         {
             throw new NotImplementedException("Invert not implemented for this element.");

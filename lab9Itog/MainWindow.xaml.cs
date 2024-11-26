@@ -88,6 +88,12 @@ namespace lab9Itog
                 combinational.SetInputs(inputs);
                 UpdateTriggersInfo(); 
             }
+
+            if (currentElement is Memory memory)
+            {
+             memory.SetInputs(inputs);
+                UpdateTriggersInfo();
+            }
         }
 
 
@@ -124,13 +130,13 @@ namespace lab9Itog
         }
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            //   registerElement.SetSetState(1);
+           
             UpdateTriggersInfo();
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            //  registerElement.SetSetState(0);
+        
             UpdateTriggersInfo();
         }
 
@@ -149,18 +155,21 @@ namespace lab9Itog
                 }
                 else if (currentElement is Combinational combinational)
                 {
-                    // Update inputs string only if inputs are valid
+                   
                     string inputsString = string.Join(", ", combinational.GetInputs());
                     setInputsValues.Text = "Inputs: " + inputsString;
                 }
                 else
                 {
-                    setInputsValues.Text = "Inputs: " + currentElement.ToString();
+                    setInputsValues.Text = "Inputs: " + string.Join(", ", memoryElement.GetAllInputs());
+
+                    //   setInputsValues.Text = "Inputs: " + memoryElement.getState();
+                    //  setInputsValues.Text = "Inputs: " + currentElement.ToString();
                 }
             }
             catch (NullReferenceException)
             {
-                // Handle the error if currentElement is null
+            
             }
         }
     }

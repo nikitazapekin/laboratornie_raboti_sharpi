@@ -17,9 +17,9 @@ using System.Linq;
 
         // Конструктор по умолчанию
         public Memory(int inputCount = 1)
-            : base("Memory", inputCount + 2, 2) // +2 для учета входов установки и сброса
+            : base("Memory", inputCount + 1, 1) // +2 для учета входов установки и сброса
         {
-            inputValues = new int[inputCount + 2]; // Включая входы для установки и сброса
+            inputValues = new int[inputCount + 1]; // Включая входы для установки и сброса
             directOutput = 0;
             invertedOutput = 1;
             setInput = 0;
@@ -54,23 +54,8 @@ using System.Linq;
             }
         }
 
-      /*  public override void SetInputs(int[] inputs)
-        {
-            if (inputs.Length != InputCount)
-                throw new ArgumentException($"Expected {InputCount} inputs.");
-            if (inputs[1] == 0)
-            {
-                inputValues[1] = 0;
-            }
-            else
-            {
-                inputValues = inputs;
-            }
-            SetOutputs();
-        }
-      */
+        
 
-        // Метод для опроса состояния отдельного входа
         public int GetInputState(int index)
         {
             if (index >= 0 && index < inputValues.Length)
@@ -121,8 +106,12 @@ using System.Linq;
             }
             return false;
         }
+    public int[] GetAllInputs()
+    {
+        return inputValues;
+    }
 
-        public override int ComputeOutput()
+    public override int ComputeOutput()
         {
             return directOutput;
         }
@@ -149,6 +138,33 @@ using System.Linq;
             get => resetInput;
             set => resetInput = value;
         }
-
+    /*
+    public override void Invert()
+    {
+        if (inputValues[1] == 1)
+        {
+            inputValues[0] = inputValues[0] == 0 ? 1 : 0;
+            directOutput = directOutput == 0 ? 1 : 0;
+          //  invertedOutput = invertedOutput
+          //  inverеtedOutput = inverseOutput == 0 ? 1 : 0;
+        }
     }
- 
+    */
+
+
+    public override void Invert()
+    {
+        if (inputValues[1] == 1)  
+        {
+             
+            inputValues[0] = inputValues[0] == 0 ? 1 : 0;
+
+           
+            directOutput = directOutput == 0 ? 1 : 0;
+
+        
+            invertedOutput = invertedOutput == 0 ? 1 : 0;
+        }
+    }
+
+}
