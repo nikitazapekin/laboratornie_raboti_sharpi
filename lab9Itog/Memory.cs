@@ -17,9 +17,9 @@ using System.Linq;
 
         // Конструктор по умолчанию
         public Memory(int inputCount = 1)
-            : base("Memory", inputCount + 1, 1) // +2 для учета входов установки и сброса
+            : base("Memory", inputCount + 1, 1)
         {
-            inputValues = new int[inputCount + 1]; // Включая входы для установки и сброса
+            inputValues = new int[inputCount + 1]; 
             directOutput = 0;
             invertedOutput = 1;
             setInput = 0;
