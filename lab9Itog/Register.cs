@@ -1,4 +1,128 @@
-﻿using System.Linq;
+﻿using System;
+
+public class Register : Element
+{
+    // Входы "Сброс" и "Установка"
+    private int resetInput;
+    private int setInput;
+
+    // Массив типа Память
+    private Memory[] memoryArray; // triggers
+
+    // Массив входных значений для элементов типа Память
+    private int[][] memoryInputs;
+    private int inputsNumber;
+
+    // Конструктор, создающий Register с заданным количеством элементов типа Memory
+    public Register(int memorySize, int inputCount)
+    {
+        resetInput = 0;
+        setInput = 0;
+        memoryArray = new Memory[memorySize];
+        memoryInputs = new int[memorySize][];
+
+        for (int i = 0; i < memorySize; i++)
+        {
+            memoryArray[i] = new Memory(inputCount);
+            memoryInputs[i] = new int[inputCount];
+        }
+    }
+
+    public Register(int v)
+    {
+        this.inputsNumber = v;
+    }
+
+    public int getCurrentState()
+    {
+        return memoryArray[0].getState();
+    }
+
+    // Метод для задания значений на входах экземпляра класса
+    public void SetInputs(int reset, int set, int[][] inputs)
+    {
+        this.resetInput = reset;
+        this.setInput = set;
+
+        for (int i = 0; i < memoryArray.Length; i++)
+        {
+            memoryInputs[i] = inputs[i];
+            memoryArray[i].SetInputs(memoryInputs[i]);
+        }
+    }
+
+    // Метод для опроса состояния отдельного входа экземпляра класса
+    public int GetInputState(int index, int inputIndex)
+    {
+        if (index >= 0 && index < memoryArray.Length && inputIndex >= 0 && inputIndex < memoryArray[index].InputCount)
+        {
+            return memoryArray[index].GetInputState(inputIndex);
+        }
+        else
+        {
+            throw new ArgumentOutOfRangeException("Неверный индекс входа или элемента");
+        }
+    }
+
+    // Метод для вычисления состояния экземпляра класса
+    public void ComputeState()
+    {
+        for (int i = 0; i < memoryArray.Length; i++)
+        {
+            memoryArray[i].SetInput = setInput;
+            memoryArray[i].ResetInput = resetInput;
+            memoryArray[i].ComputeState();
+        }
+    }
+
+    public int[] GetDirectOutputs()
+    {
+        int[] outputs = new int[memoryArray.Length];
+        int index = 0;
+
+        for (int i = 0; i < memoryArray.Length; i++)
+        {
+            if (memoryArray[i] != null)
+            {
+                outputs[index++] = memoryArray[i].DirectOutput;
+            }
+        }
+
+        // Отрезаем лишние элементы
+        Array.Resize(ref outputs, index);
+        return outputs;
+    }
+
+    // Метод для получения состояния инверсного выхода
+    public int[] GetInvertedOutputs()
+    {
+        int[] outputs = new int[memoryArray.Length];
+
+        for (int i = 0; i < memoryArray.Length; i++)
+        {
+            outputs[i] = memoryArray[i].InvertedOutput;
+        }
+
+        return outputs;
+    }
+
+    // Реализация абстрактного метода ComputeOutput
+    public override int ComputeOutput()
+    {
+        int result = 0;
+
+        foreach (var mem in memoryArray)
+        {
+            result |= mem.DirectOutput;
+        }
+
+        return result;
+    }
+}
+
+
+/*
+ * using System.Linq;
 using System;
 
 public class Register : Element
@@ -76,13 +200,7 @@ public class Register : Element
         }
     }
 
-    // Метод для получения состояния прямого выхода
-    /*
-    public int[] GetDirectOutputs()
-    {
-        return memoryArray.Select(mem => mem.DirectOutput).ToArray();
-    }
-    */
+ 
     public int[] GetDirectOutputs()
     {
         return memoryArray?.Where(mem => mem != null)
@@ -104,4 +222,4 @@ public class Register : Element
         return memoryArray.Aggregate(0, (acc, mem) => acc | mem.DirectOutput);
     }
 }
- 
+ */
