@@ -55,6 +55,22 @@ namespace lab9Itog.Classes
             }
         }
 
+      /*  public override void SetInputs(int[] inputs)
+        {
+            if (inputs.Length != InputCount)
+                throw new ArgumentException($"Expected {InputCount} inputs.");
+            if (inputs[1] == 0)
+            {
+                inputValues[1] = 0;
+            }
+            else
+            {
+                inputValues = inputs;
+            }
+            SetOutputs();
+        }
+      */
+
         // Метод для опроса состояния отдельного входа
         public int GetInputState(int index)
         {

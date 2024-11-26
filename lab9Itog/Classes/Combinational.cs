@@ -36,6 +36,8 @@ namespace lab9Itog.Classes
             inputs = inputValues;
         }
 
+       
+
         // Метод, позволяющий опрашивать состояние отдельного входа экземпляра класса
         public int GetInputState(int index)
         {

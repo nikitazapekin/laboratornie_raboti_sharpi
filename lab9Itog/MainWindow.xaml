@@ -11,7 +11,7 @@
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20">
             <!-- Комбо-бокс для выбора элемента -->
             <ComboBox Name="ElementSelector" SelectionChanged="ElementSelector_SelectionChanged" Width="200" Height="40">
-                <ComboBoxItem Content="COMBINED ELEMENT MOD2"/>
+                <ComboBoxItem Content="Комбинированный элемент MOD2"/>
                 <ComboBoxItem Content="D-Trigger"/>
                 <ComboBoxItem Content="Register"/>
             </ComboBox>
@@ -21,7 +21,7 @@
             <TextBox x:Name="InputValues" FontSize="20" Width="200" Height="35"/>
 
             <!-- Кнопки для установки значений и вычисления -->
-            <Button Name="SetInputsButton" Content="Set Inputs" FontSize="20" Height="40"/>
+            <Button Click="SetInputsButton_Click"  Name="SetInputsButton" Content="Set Inputs" FontSize="20" Height="40"/>
             <Button Name="ComputeButton" Content="Get Output" FontSize="20" Height="40"/>
             <Button Name="InvertButton" Content="Invert Result" FontSize="20" Height="40"/>
 

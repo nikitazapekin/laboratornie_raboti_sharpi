@@ -54,23 +54,14 @@ namespace lab9Itog.Classes
             }
         }
 
+ 
 
         public virtual void SetInputs(int[] inputs)
         {
             throw new NotImplementedException("This element type does not support setting inputs.");
         }
-        //  public   int ComputeOutput();
 
-      /*  public int ComputeOutput()
-        {
-            // Здесь может быть логика для вычисления выхода. Например:
-            return 0;  // Это заглушка, замените на свою логику
-        } 
-
-        */
-
-
-        public override bool Equals(object obj)
+      /*  public override bool Equals(object obj)
     {
       
         if (ReferenceEquals(this, obj))
@@ -86,6 +77,8 @@ namespace lab9Itog.Classes
                inputCount == other.inputCount &&
                outputCount == other.outputCount;
     }
+
+        */
         public virtual void Invert()
         {
             throw new NotImplementedException("Invert not implemented for this element.");
