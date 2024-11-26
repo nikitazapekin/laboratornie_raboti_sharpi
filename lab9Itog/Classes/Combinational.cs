@@ -10,7 +10,7 @@ using System.IO;
 namespace lab9Itog.Classes
 {
     
-    class Combinational : Element
+   public  class Combinational : Element
     {
         // Поле для хранения значений входов
         private int[] inputs;

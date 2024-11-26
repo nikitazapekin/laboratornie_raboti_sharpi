@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace lab9Itog.Classes
 {
-    class Memory : Element
+   public class Memory : Element
     {
         // Массив входных значений
         private int[] inputValues;
@@ -105,6 +105,11 @@ namespace lab9Itog.Classes
                        this.inputValues.SequenceEqual(other.inputValues);
             }
             return false;
+        }
+
+        public override int ComputeOutput()
+        {
+            return directOutput;
         }
 
         public override int GetHashCode()

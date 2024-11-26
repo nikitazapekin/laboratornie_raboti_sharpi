@@ -1,6 +1,7 @@
-﻿ 
+﻿
 
- using System;
+using Lab9Itog.Interfaces;
+using System;
 using System.Collections.Generic;
  
 using System.Text;
@@ -12,7 +13,7 @@ namespace lab9Itog.Classes
 
 
 
-  public  class Element
+    public abstract class Element : IInvertible
 
     {
         private string name;
@@ -60,11 +61,13 @@ namespace lab9Itog.Classes
         }
         //  public   int ComputeOutput();
 
-        public int ComputeOutput()
+      /*  public int ComputeOutput()
         {
             // Здесь может быть логика для вычисления выхода. Например:
             return 0;  // Это заглушка, замените на свою логику
-        }
+        } 
+
+        */
 
 
         public override bool Equals(object obj)
@@ -88,9 +91,12 @@ namespace lab9Itog.Classes
             throw new NotImplementedException("Invert not implemented for this element.");
         }
 
+        public abstract int  ComputeOutput();
 
 
-       
+
+
+
 
     }
 
