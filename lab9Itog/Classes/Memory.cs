@@ -26,6 +26,11 @@ namespace lab9Itog.Classes
             setInput = 0;
             resetInput = 0;
         }
+        public int getState()
+        {
+            return inputValues[1];
+        }
+
 
         // Конструктор копирования
         public Memory(Memory other) : base(other.Name, other.InputCount, other.OutputCount)
@@ -112,6 +117,20 @@ namespace lab9Itog.Classes
         public int InvertedOutput => invertedOutput;
 
         // Свойства для установки и сброса
+        /*   public int SetInput
+           {
+               get => setInput;
+               set => setInput = value;
+           }
+
+           public int ResetInput
+           {
+               get => resetInput;
+               set => resetInput = value;
+           }
+
+           */
+
         public int SetInput
         {
             get => setInput;
@@ -123,6 +142,7 @@ namespace lab9Itog.Classes
             get => resetInput;
             set => resetInput = value;
         }
+
     }
 }
  

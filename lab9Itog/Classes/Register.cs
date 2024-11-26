@@ -13,7 +13,7 @@ namespace lab9Itog.Classes
         private int setInput;
 
         // Массив типа Память
-        private Memory[] memoryArray;
+        private Memory[] memoryArray; // triggers
 
         // Массив входных значений для элементов типа Память
         private int[][] memoryInputs;
@@ -33,6 +33,10 @@ namespace lab9Itog.Classes
             }
         }
 
+        public int getCurrentState()
+        {
+            return memoryArray[0].getState();
+        }
         // Метод для задания значений на входах экземпляра класса
         public void SetInputs(int reset, int set, int[][] inputs)
         {
@@ -62,9 +66,17 @@ namespace lab9Itog.Classes
         // Метод для вычисления состояния экземпляра класса
         public void ComputeState()
         {
+            /*   foreach (var mem in memoryArray)
+               {
+                   mem.SetInput(resetInput, setInput);  // Установка значений на входах сброса и установки
+                   mem.ComputeState();
+               }
+            */
+
             foreach (var mem in memoryArray)
             {
-                mem.SetInput(resetInput, setInput);  // Установка значений на входах сброса и установки
+                mem.SetInput = setInput;  
+                mem.ResetInput = resetInput; 
                 mem.ComputeState();
             }
         }

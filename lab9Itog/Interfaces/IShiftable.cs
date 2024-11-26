@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
- 
-
-namespace Lab9Itog.Interfaces;
- 
-public interface IInvertible
+namespace lab9Itog.Interfaces
 {
-    void Invert();
 
-
+public interface IShiftable
+{
+    void Shift(int bits);
+}
 }
