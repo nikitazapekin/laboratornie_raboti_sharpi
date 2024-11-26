@@ -8,11 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace lab9Itog.Classes
-{
-
-
-
+ 
     public abstract class Element : IInvertible
 
     {
@@ -93,6 +89,4 @@ namespace lab9Itog.Classes
 
     }
 
-
-
-}
+ 

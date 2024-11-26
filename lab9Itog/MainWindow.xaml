@@ -36,6 +36,9 @@
             <CheckBox Name="RegisterState" FontSize="20" Content="Set State" Width="200" Height="40" Visibility="Collapsed"/>
 
             <!-- Блок для отображения результата -->
+
+
+            <TextBlock Name="setInputsValues" Text="Inputs: " FontSize="20"/>
             <TextBlock Name="OutputResult" Text="Output: " FontSize="20"/>
 
             <!-- Блок для отображения триггеров -->

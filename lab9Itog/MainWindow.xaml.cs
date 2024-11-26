@@ -4,9 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows;
  
-using lab9Itog.Classes;
-
-using lab9Itog.Classes;
+ 
+ 
 using System;
 using System.Linq;
 using System.Windows;
@@ -36,6 +35,7 @@ namespace lab9Itog
         {
             combinationalElement = new Combinational(5);
             memoryElement = new Memory();
+            UpdateTriggersInfo();
             //    registerElement = new Register(10);
         }
 
@@ -63,24 +63,24 @@ namespace lab9Itog
 
             }
             UpdateTriggersInfo();
-            DisplayElementProperties();
+         DisplayElementProperties();
         }
 
         private void DisplayElementProperties()
         {
            
         }
-
+        /*
         private void SetInputsButton_Click(object sender, RoutedEventArgs e)
         {
 
 
-            /* var inputs = InputValues.Text.Split(',')
-                  .Select(int.Parse)
-                  .ToArray();
-            */
-            //   var inputs = [1, 1, 1, 1, 1]; 
-            var inputs = new int[] { 1, 1, 1, 1, 1 };
+            
+
+            var inputs = InputValues.Text.Split(',')
+                 .Select(int.Parse)
+                 .ToArray();
+           // var inputs = new int[] { 1, 1, 1, 1, 1 };
             if (currentElement == null)
             {
                 MessageBox.Show($"Выберите элемент");
@@ -89,12 +89,36 @@ namespace lab9Itog
             // currentElement.SetInputs(inputs);
             if (currentElement is Combinational combinational)
             {
-                combinational.SetInputs(new int[] { 1, 1, 1, 1, 1 });
+                combinational.SetInputs(inputs);
+                //    combinational.SetInputs(new int[] { 1, 1, 1, 1, 1 });
             }
-
+          //  setInputsValues.Text = 
 
 
         }
+
+        */
+
+
+        private void SetInputsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var inputs = InputValues.Text.Split(',')
+                .Select(int.Parse)
+                .ToArray();
+
+            if (currentElement == null)
+            {
+                MessageBox.Show($"Выберите элемент");
+                return;
+            }
+
+            if (currentElement is Combinational combinational)
+            {
+                combinational.SetInputs(inputs);
+                UpdateTriggersInfo();  // Update UI after setting inputs
+            }
+        }
+
 
         private void ComputeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -138,6 +162,42 @@ namespace lab9Itog
             //  registerElement.SetSetState(0);
             UpdateTriggersInfo();
         }
+
+
+
+        /*
+         private void UpdateTriggersInfo()
+        {
+            try
+            {
+                if (currentElement is Register)
+                {
+                    OutputAllTriggersInRegister.Text = "Triggers: " + currentElement.ToString();
+                    RegisterState.IsChecked = registerElement.getCurrentState() == 0 ? false : true;
+                }
+                else if (currentElement is Combinational combinational)
+                {
+                    // Здесь мы показываем значения входов как строку
+                    string inputsString = string.Join(", ", combinational.GetInputs());
+                //    OutputAllTriggersInRegister.Text = "Inputs: " + inputsString;
+                setInputsValues.Text= "Inputs: " + inputsString;
+                }
+                else
+                {
+
+                    setInputsValues.Text = "Inputs: " + currentElement.ToString();
+                    //   OutputAllTriggersInRegister.Text = "Inputs: " + currentElement.ToString();
+                }
+            }
+            catch (NullReferenceException)
+            {
+                // Обработка ошибок, если currentElement равен null
+            }
+        }
+        */
+
+
+
         private void UpdateTriggersInfo()
         {
             try
@@ -146,47 +206,23 @@ namespace lab9Itog
                 {
                     OutputAllTriggersInRegister.Text = "Triggers: " + currentElement.ToString();
                     RegisterState.IsChecked = registerElement.getCurrentState() == 0 ? false : true;
-
+                }
+                else if (currentElement is Combinational combinational)
+                {
+                    // Update inputs string only if inputs are valid
+                    string inputsString = string.Join(", ", combinational.GetInputs());
+                    setInputsValues.Text = "Inputs: " + inputsString;
                 }
                 else
                 {
-                    OutputAllTriggersInRegister.Text = "Inputs: " + currentElement.ToString();
+                    setInputsValues.Text = "Inputs: " + currentElement.ToString();
                 }
             }
             catch (NullReferenceException)
             {
-
+                // Handle the error if currentElement is null
             }
-
         }
     }
 }
-/*
-         try
-         {
-             var inputs = InputValues.Text.Split(',')
-                 .Select(int.Parse)
-                 .ToArray();
-             if (currentElement == null)
-             {
-                 MessageBox.Show($"Выберите элемент");
-                 return;
-             }
-             //  currentElement.SetInputs(inputs);
-             if (currentElement is Combinational || currentElement is Register)
-             {
-                 currentElement.SetInputs(inputs);
-             }
-             else
-             {
-                 MessageBox.Show("This element type does not support setting inputs.");
-             }
-
-             UpdateTriggersInfo();
-             OutputResult.Text = "Inputs set successfully.";
-         }
-         catch (Exception ex)
-         {
-             MessageBox.Show($"Error setting inputs: {ex.Message}");
-         }
-         */
+ 

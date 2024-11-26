@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace lab9Itog.Classes
-{
+ 
    public class Memory : Element
     {
         // Массив входных значений
@@ -152,5 +151,4 @@ namespace lab9Itog.Classes
         }
 
     }
-}
  

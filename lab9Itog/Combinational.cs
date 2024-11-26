@@ -7,8 +7,7 @@ using System;
 using System.Linq;
 using System.IO;
 
-namespace lab9Itog.Classes
-{
+ 
     
    public  class Combinational : Element
     {
@@ -35,11 +34,15 @@ namespace lab9Itog.Classes
             }
             inputs = inputValues;
         }
+    public int[] GetInputs()
+    {
+        return inputs;
+    }
 
-       
 
-        // Метод, позволяющий опрашивать состояние отдельного входа экземпляра класса
-        public int GetInputState(int index)
+
+    // Метод, позволяющий опрашивать состояние отдельного входа экземпляра класса
+    public int GetInputState(int index)
         {
             if (index < 0 || index >= InputCount)
             {
@@ -65,7 +68,4 @@ namespace lab9Itog.Classes
 
 
 
-     
-
-
-}
+ 
