@@ -22,8 +22,8 @@
 
             <!-- Кнопки для установки значений и вычисления -->
             <Button Click="SetInputsButton_Click"  Name="SetInputsButton" Content="Set Inputs" FontSize="20" Height="40"/>
-            <Button Name="ComputeButton" Content="Get Output" FontSize="20" Height="40"/>
-            <Button Name="InvertButton" Content="Invert Result" FontSize="20" Height="40"/>
+            <Button  Click="ComputeButton_Click"  Name="ComputeButton" Content="Get Output" FontSize="20" Height="40"/>
+            <Button Name="InvertButton" Click="InvertButton_Click" Content="Invert Result" FontSize="20" Height="40"/>
 
             <!-- Панель для сдвига в регистре, скрытая по умолчанию -->
             <StackPanel x:Name="ShiftPanel" Visibility="Collapsed">

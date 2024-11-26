@@ -38,6 +38,10 @@ using System.IO;
     {
         return inputs;
     }
+    public override void Invert()
+    {
+       inputs = inputs.Select(value => value == 0 ? 1 : 0).ToArray();
+    }
 
 
 

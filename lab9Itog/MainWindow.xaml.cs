@@ -70,36 +70,7 @@ namespace lab9Itog
         {
            
         }
-        /*
-        private void SetInputsButton_Click(object sender, RoutedEventArgs e)
-        {
-
-
-            
-
-            var inputs = InputValues.Text.Split(',')
-                 .Select(int.Parse)
-                 .ToArray();
-           // var inputs = new int[] { 1, 1, 1, 1, 1 };
-            if (currentElement == null)
-            {
-                MessageBox.Show($"Выберите элемент");
-                return;
-            }
-            // currentElement.SetInputs(inputs);
-            if (currentElement is Combinational combinational)
-            {
-                combinational.SetInputs(inputs);
-                //    combinational.SetInputs(new int[] { 1, 1, 1, 1, 1 });
-            }
-          //  setInputsValues.Text = 
-
-
-        }
-
-        */
-
-
+      
         private void SetInputsButton_Click(object sender, RoutedEventArgs e)
         {
             var inputs = InputValues.Text.Split(',')
@@ -115,7 +86,7 @@ namespace lab9Itog
             if (currentElement is Combinational combinational)
             {
                 combinational.SetInputs(inputs);
-                UpdateTriggersInfo();  // Update UI after setting inputs
+                UpdateTriggersInfo(); 
             }
         }
 
@@ -164,38 +135,7 @@ namespace lab9Itog
         }
 
 
-
-        /*
-         private void UpdateTriggersInfo()
-        {
-            try
-            {
-                if (currentElement is Register)
-                {
-                    OutputAllTriggersInRegister.Text = "Triggers: " + currentElement.ToString();
-                    RegisterState.IsChecked = registerElement.getCurrentState() == 0 ? false : true;
-                }
-                else if (currentElement is Combinational combinational)
-                {
-                    // Здесь мы показываем значения входов как строку
-                    string inputsString = string.Join(", ", combinational.GetInputs());
-                //    OutputAllTriggersInRegister.Text = "Inputs: " + inputsString;
-                setInputsValues.Text= "Inputs: " + inputsString;
-                }
-                else
-                {
-
-                    setInputsValues.Text = "Inputs: " + currentElement.ToString();
-                    //   OutputAllTriggersInRegister.Text = "Inputs: " + currentElement.ToString();
-                }
-            }
-            catch (NullReferenceException)
-            {
-                // Обработка ошибок, если currentElement равен null
-            }
-        }
-        */
-
+ 
 
 
         private void UpdateTriggersInfo()
