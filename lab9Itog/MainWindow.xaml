@@ -7,43 +7,43 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="950" Width="1800">
     <Grid>
-        <ComboBox Name="ElementSelector" SelectionChanged="ElementSelector_SelectionChanged"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="23,31,0,0" >
-            <ComboBoxItem Content="Комбинированный элемент MOD2"/>
-            <ComboBoxItem Content="D-Trigger"/>
-            <ComboBoxItem Content="Register"/>
-        </ComboBox>
+        <!-- Контейнер для вертикального расположения всех элементов -->
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20">
+            <!-- Комбо-бокс для выбора элемента -->
+            <ComboBox Name="ElementSelector" SelectionChanged="ElementSelector_SelectionChanged" Width="200" Height="40">
+                <ComboBoxItem Content="COMBINED ELEMENT MOD2"/>
+                <ComboBoxItem Content="D-Trigger"/>
+                <ComboBoxItem Content="Register"/>
+            </ComboBox>
 
-        <!--  <StackPanel Orientation="Vertical" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right">
-            <TextBlock Text="Properties:" FontWeight="Bold" FontSize="20" Margin="0,10,0,5"/>
-            <TextBlock Name="ElementName" Text="Name: " FontSize="20" Margin="5"/>
-            <TextBlock Name="InputCount" Text="Input Count: " FontSize="20" Margin="5"/>
-            <TextBlock Name="OutputCount" Text="Output Count: " FontSize="20" Margin="5"/>
+            <!-- Текстовое поле для ввода значений -->
+            <TextBlock Text="Input Values:" FontSize="20"/>
+            <TextBox x:Name="InputValues" FontSize="20" Width="200" Height="35"/>
+
+            <!-- Кнопки для установки значений и вычисления -->
+            <Button Name="SetInputsButton" Content="Set Inputs" FontSize="20" Height="40"/>
+            <Button Name="ComputeButton" Content="Get Output" FontSize="20" Height="40"/>
+            <Button Name="InvertButton" Content="Invert Result" FontSize="20" Height="40"/>
+
+            <!-- Панель для сдвига в регистре, скрытая по умолчанию -->
+            <StackPanel x:Name="ShiftPanel" Visibility="Collapsed">
+                <Label Content="Shift count:" FontSize="20"/>
+                <TextBox Name="ShiftValue" Width="200" FontSize="20"/>
+                <Button Name="ShiftButton" Content="Shift Register" FontSize="20" Width="150" Height="40"/>
+            </StackPanel>
+
+            <!-- Чекбокс для состояния регистра -->
+            <CheckBox Name="RegisterState" FontSize="20" Content="Set State" Width="200" Height="40" Visibility="Collapsed"/>
+
+            <!-- Блок для отображения результата -->
+            <TextBlock Name="OutputResult" Text="Output: " FontSize="20"/>
+
+            <!-- Блок для отображения триггеров -->
+            <TextBlock Name="OutputAllTriggersInRegister" Text="Triggers: " FontSize="20"/>
+
+            <!-- Кнопки для сохранения и загрузки состояния -->
+            <Button Name="SaveButton" Content="Save State" FontSize="20" Height="40"/>
+            <Button Name="LoadButton" Content="Load State" FontSize="20" Height="40"/>
         </StackPanel>
-      
-        <StackPanel Orientation="Vertical" Margin="10,100,10,10">
--->
-        <TextBlock Text="Входные значения:"  FontSize="20" Margin="23,76,1577,818"/>
-        <TextBox x:Name="InputValues" FontSize="20" Margin="307,31,1273,868"/>
-
-        <Button Name="SetInputsButton" Content="Установить входные элементы"   FontSize="20" Margin="23,164,1451,0" Height="35" VerticalAlignment="Top"/>
-        <Button Name="ComputeButton" Content="Получить выход"   FontSize="20" Margin="787,149,647,701"/>
-        <Button Name="InvertButton" Content="Инвептировать результат"  FontSize="20" Margin="348,801,1104,29"/>
-        <StackPanel x:Name="ShiftPanel" Visibility="Collapsed">
-            <Label Content="Shift count:" Margin="5" FontSize="20" Width="100"/>
-            <TextBox Name="ShiftValue" Width="200" FontSize="20" Margin="5"/>
-            <Button Name="ShiftButton" Content="Shift Register"  FontSize="20" Width="150" Margin="5" />
-        </StackPanel>
-
-        <CheckBox Name="RegisterState" Margin="5" Width="150" Visibility="Collapsed" FontSize="20" Content="Set State" 
-            />
-
-        <TextBlock Name="OutputResult" Text="Выход: "   FontSize="20" Margin="758,20,455,633" RenderTransformOrigin="0.441,0.804"/>
-        <TextBlock Name="OutputAllTriggersInRegister" Text="Триггеры: "  FontSize="20" Margin="42,763,1621,118"/>
-
-        <Button Name="SaveButton" Content="Save State"   FontSize="20" Margin="1374,806,168,34"/>
-        <Button Name="LoadButton" Content="Load State"   FontSize="20" Margin="970,801,585,29"/>
-        <!--
-        </StackPanel>
-    -->
     </Grid>
 </Window>

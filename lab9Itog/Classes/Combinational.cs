@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System;
 using System.Linq;
+using System.IO;
 
 namespace lab9Itog.Classes
 {
@@ -48,10 +49,21 @@ namespace lab9Itog.Classes
         // Метод, вычисляющий значение выхода (по логике элемента)
          
         //ОПЕРАЦИЯ МОД2 ДЛЯ ДВОИЧНЫХ ЭЛЕМЕНТОВ
-        public  int ComputeOutput()
+        public override  int ComputeOutput()
         {
             return inputs.Aggregate((a, b) => a ^ b);
         }
 
     }
+
+
+
+
+
+
+
+
+     
+
+
 }

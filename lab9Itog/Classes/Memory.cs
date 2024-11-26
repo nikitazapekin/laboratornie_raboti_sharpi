@@ -116,20 +116,7 @@ namespace lab9Itog.Classes
         public int DirectOutput => directOutput;
         public int InvertedOutput => invertedOutput;
 
-        // Свойства для установки и сброса
-        /*   public int SetInput
-           {
-               get => setInput;
-               set => setInput = value;
-           }
-
-           public int ResetInput
-           {
-               get => resetInput;
-               set => resetInput = value;
-           }
-
-           */
+       
 
         public int SetInput
         {

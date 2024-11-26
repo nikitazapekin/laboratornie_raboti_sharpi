@@ -66,12 +66,7 @@ namespace lab9Itog.Classes
         // Метод для вычисления состояния экземпляра класса
         public void ComputeState()
         {
-            /*   foreach (var mem in memoryArray)
-               {
-                   mem.SetInput(resetInput, setInput);  // Установка значений на входах сброса и установки
-                   mem.ComputeState();
-               }
-            */
+           
 
             foreach (var mem in memoryArray)
             {

@@ -1,62 +1,4 @@
-﻿/*using System;
-
-namespace lab9Itog.Classes
-{
-    class Element
-    {
-        
-        private string name;
-        private int inputCount;
-        private int outputCount;
-
-    
-        public Element()
-        {
-            name = "Default Element";
-            inputCount = 1;
-            outputCount = 1;
-        }
- 
-        public Element(string name)
-        {
-            this.name = name;
-            inputCount = 1;
-            outputCount = 1;
-        }
-
-       
-        public Element(string name, int inputCount, int outputCount)
-        {
-            this.name = name;
-            this.inputCount = inputCount;
-            this.outputCount = outputCount;
-        }
-
-        
-        public string Name => name;  
-        public int InputCount
-        {
-            get => inputCount;
-            set
-            {
-                if (value < 0)
-                    throw new ArgumentException("Количество входов не может быть отрицательным.");
-                inputCount = value;
-            }
-        }
-        public int OutputCount
-        {
-            get => outputCount;
-            set
-            {
-                if (value < 0)
-                    throw new ArgumentException("Количество выходов не может быть отрицательным.");
-                outputCount = value;
-            }
-        }
-    }
-}
-*/
+﻿ 
 
  using System;
 using System.Collections.Generic;
@@ -70,7 +12,7 @@ namespace lab9Itog.Classes
 
 
 
-    class Element
+  public  class Element
 
     {
         private string name;
@@ -85,10 +27,7 @@ namespace lab9Itog.Classes
             this.inputCount = inputCount;
             this.outputCount = outputCount;
         }
-
-      //  public string Name => name;
-       // public int InputCount => inputCount;
-       // public int OutputCount => outputCount;
+ 
 
 
 
@@ -115,10 +54,20 @@ namespace lab9Itog.Classes
         }
 
 
+        public virtual void SetInputs(int[] inputs)
+        {
+            throw new NotImplementedException("This element type does not support setting inputs.");
+        }
+        //  public   int ComputeOutput();
+
+        public int ComputeOutput()
+        {
+            // Здесь может быть логика для вычисления выхода. Например:
+            return 0;  // Это заглушка, замените на свою логику
+        }
 
 
-
-    public override bool Equals(object obj)
+        public override bool Equals(object obj)
     {
       
         if (ReferenceEquals(this, obj))
@@ -134,21 +83,17 @@ namespace lab9Itog.Classes
                inputCount == other.inputCount &&
                outputCount == other.outputCount;
     }
+        public virtual void Invert()
+        {
+            throw new NotImplementedException("Invert not implemented for this element.");
+        }
 
- /*
-    public override int GetHashCode()
-    {
-        // Используем поля для создания хеш-кода
-        return HashCode.Combine(name, inputCount, outputCount);
+
+
+       
+
     }
- */
+
+
+
 }
-
-
-
-  
-
-   // }
-}
-/*
-*/
