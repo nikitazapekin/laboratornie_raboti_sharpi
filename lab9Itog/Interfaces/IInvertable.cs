@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab9Itog.Interfaces
+ 
+
+namespace Lab9Itog.Interfaces;
+
+public interface IInvertible
 {
-    interface IInvertable
-    {
-    }
+    void Invert();
 }

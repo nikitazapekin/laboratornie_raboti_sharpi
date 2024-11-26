@@ -1,5 +1,5 @@
 ﻿lab9Itog
-1.0.0.0
+
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\App.xaml
 11407045341
 
-10-1021195137
+8646640650
 198-200740077
 MainWindow.xaml;
 
-False
+True
 

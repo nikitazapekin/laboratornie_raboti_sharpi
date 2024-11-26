@@ -1,0 +1,4 @@
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\MainWindow.g.cs
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\App.g.cs
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog_MarkupCompile.cache
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog_MarkupCompile.lref
