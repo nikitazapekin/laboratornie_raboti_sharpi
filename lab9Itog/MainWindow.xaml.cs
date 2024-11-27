@@ -54,8 +54,8 @@ namespace lab9Itog
        
         }
 
-     
 
+        /*
         private void SetInputsButton_Click(object sender, RoutedEventArgs e)
         {
           
@@ -159,6 +159,115 @@ namespace lab9Itog
           
             UpdateTriggersInfo();
         }
+        */
+
+
+        private void SetInputsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var inputs = InputValues.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (currentElement == null)
+            {
+                MessageBox.Show("Выберите элемент");
+                return;
+            }
+
+            if (inputs.Length == 0 && currentElement is not Register)
+            {
+                MessageBox.Show("Введите хотя бы один элемент.");
+                return;
+            }
+
+            if (currentElement is Register register)
+            {
+                try
+                {
+                    int[][] parsedInputs;
+
+                    // Если ввод отсутствует, добавляем предопределенные значения
+                    if (inputs.Length == 0)
+                    {
+                        parsedInputs = new int[8][];
+                        parsedInputs[0] = new int[] { 1, 1 };
+                        parsedInputs[1] = new int[] { 1, 1 };
+                        parsedInputs[2] = new int[] { 1, 0 };
+                        parsedInputs[3] = new int[] { 1, 1 };
+                        parsedInputs[4] = new int[] { 0, 0 };
+                        parsedInputs[5] = new int[] { 0, 1 };
+                        parsedInputs[6] = new int[] { 1, 0 };
+                        parsedInputs[7] = new int[] { 1, 1 };
+                    }
+                    else
+                    {
+                        // Обработка пользовательского ввода
+                        parsedInputs = new int[inputs.Length][];
+                        for (int i = 0; i < inputs.Length; i++)
+                        {
+                            var values = inputs[i].Split(',');
+                            if (values.Length != 2 || !int.TryParse(values[0], out var first) || !int.TryParse(values[1], out var second))
+                            {
+                                MessageBox.Show("Каждый элемент для Register должен быть парой чисел, разделенных запятой.");
+                                return;
+                            }
+
+                            parsedInputs[i] = new int[] { first, second };
+                        }
+                    }
+
+                    register.SetInputs(parsedInputs);
+                    MessageBox.Show("Входные значения успешно установлены для Register.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при установке входных значений: {ex.Message}");
+                }
+            }
+            else if (currentElement is Combinational combinational)
+            {
+                if (inputs.Length != 5)
+                {
+                    MessageBox.Show("Для Combinational должно быть введено ровно 5 элементов.");
+                    return;
+                }
+
+                int[] parsedInputs = new int[inputs.Length];
+
+                for (int i = 0; i < inputs.Length; i++)
+                {
+                    if (!int.TryParse(inputs[i], out parsedInputs[i]))
+                    {
+                        MessageBox.Show("Все значения должны быть числами.");
+                        return;
+                    }
+                }
+
+                combinational.SetInputs(parsedInputs);
+            }
+            else if (currentElement is Memory memory)
+            {
+                if (inputs.Length != 2)
+                {
+                    MessageBox.Show("Для Memory должно быть введено ровно 2 элемента.");
+                    return;
+                }
+
+                int[] parsedInputs = new int[inputs.Length];
+
+                for (int i = 0; i < inputs.Length; i++)
+                {
+                    if (!int.TryParse(inputs[i], out parsedInputs[i]))
+                    {
+                        MessageBox.Show("Все значения должны быть числами.");
+                        return;
+                    }
+                }
+
+                memory.SetInputs(parsedInputs);
+            }
+
+            UpdateTriggersInfo();
+        }
+
 
         private void ComputeButton_Click(object sender, RoutedEventArgs e)
         {
