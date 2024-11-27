@@ -35,8 +35,9 @@
                 </StackPanel>
 
 
-                <CheckBox  FontSize="22" x:Name="RegisterState" Content="Set State" Width="200" Height="40" Visibility="Collapsed"/>
+                <CheckBox  FontSize="22" x:Name="RegisterStateFirst" Content="Set State first" Width="200" Height="40" Visibility="Collapsed"/>
 
+                <CheckBox  FontSize="22" x:Name="RegisterStateSecond" Content="Set State second" Width="200" Height="40" Visibility="Collapsed"/>
 
 
 

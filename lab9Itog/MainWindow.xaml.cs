@@ -34,122 +34,27 @@ namespace lab9Itog
                 case "Комбинированный элемент MOD2":
                     currentElement = combinationalElement;
                     ShiftPanel.Visibility = Visibility.Collapsed;
-                    RegisterState.Visibility = Visibility.Collapsed;
+                    RegisterStateFirst.Visibility = Visibility.Collapsed;
+                    RegisterStateSecond.Visibility = Visibility.Collapsed;
                     break;
                 case "D-Trigger":
                     currentElement = memoryElement;
                     ShiftPanel.Visibility = Visibility.Collapsed;
-                    RegisterState.Visibility = Visibility.Collapsed;
+                    RegisterStateFirst.Visibility = Visibility.Collapsed;
+                    RegisterStateSecond.Visibility = Visibility.Collapsed;
                     break;
                 case "Register":
                     currentElement = registerElement;
                     ShiftPanel.Visibility = Visibility.Visible;
-                    RegisterState.Visibility = Visibility.Visible;
+                    RegisterStateFirst.Visibility = Visibility.Visible;
+                    RegisterStateSecond.Visibility = Visibility.Visible;
                     break;
             }
             UpdateTriggersInfo();
-            DisplayElementProperties();
+       
         }
 
-        private void DisplayElementProperties()
-        {
-           
-        }
-        /*
-        private void SetInputsButton_Click(object sender, RoutedEventArgs e)
-        {
-          
-            var inputs = InputValues.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-            if (currentElement == null)
-            {
-                MessageBox.Show("Выберите элемент");
-                return;
-            }
-
-            if (inputs.Length == 0)
-            {
-                MessageBox.Show("Введите хотя бы один элемент.");
-                return;
-            }
- 
-            if (currentElement is Register register)
-            {
-                if (inputs.Length != 8)
-                {
-                    MessageBox.Show("Для Register должно быть введено ровно 8 элементов.");
-                    return;
-                }
-                int[] parsedInputs = new int[inputs.Length];
-
-                for (int i = 0; i < inputs.Length; i++)
-                {
-               
-                    if (!int.TryParse(inputs[i], out parsedInputs[i]))
-                    {
-                        MessageBox.Show("Все значения должны быть числами.");
-                        return;
-                    }
-                }
-
-              
-                register.SetInputs(parsedInputs);
-            }
-            else if (currentElement is Combinational combinational)
-            {
-                if (inputs.Length != 5)
-                {
-                    MessageBox.Show("Для Combinational должно быть введено ровно 5 элементов.");
-                    return;
-                }
-          
-
-                int[] parsedInputs = new int[inputs.Length];
-
-                for (int i = 0; i < inputs.Length; i++)
-                {
-                  
-                    if (!int.TryParse(inputs[i], out parsedInputs[i]))
-                    {
-                        MessageBox.Show("Все значения должны быть числами.");
-                        return;
-                    }
-                }
-
-             
-                combinational.SetInputs(parsedInputs);
-
-
-            }
-            else if (currentElement is Memory memory)
-            {
-                if (inputs.Length != 2)
-                {
-                    MessageBox.Show("Для Memory должно быть введено ровно 2 элемента.");
-                    return;
-                }
-              
-                int[] parsedInputs = new int[inputs.Length];
-
-                for (int i = 0; i < inputs.Length; i++)
-                {
-                   
-                    if (!int.TryParse(inputs[i], out parsedInputs[i]))
-                    {
-                        MessageBox.Show("Все значения должны быть числами.");
-                        return;
-                    }
-                }
-
-              
-                memory.SetInputs(parsedInputs);
-
-            }
-
-            UpdateTriggersInfo();
-        }
-        */
-
+     
 
         private void SetInputsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -180,32 +85,60 @@ namespace lab9Itog
                     return;
                 }
 
-              
-                try
-                {
-                    /*   int[][] parsedInputs = new int[8][];
-                       parsedInputs = [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]];
-                          register.SetInputs(parsedInputs);
-                       MessageBox.Show("Входные значения успешно установлены для Register.");
-                    */
 
-                    int[][] parsedInputs = new int[8][];
-                    parsedInputs[0] = new int[] { 1, 1 };
-                    parsedInputs[1] = new int[] { 1, 1 };
-                    parsedInputs[2] = new int[] { 1, 1 };
-                    parsedInputs[3] = new int[] { 1, 1 };
-                    parsedInputs[4] = new int[] { 1, 1 };
-                    parsedInputs[5] = new int[] { 1, 1 };
-                    parsedInputs[6] = new int[] { 1, 1 };
-                    parsedInputs[7] = new int[] { 1, 1 };
-                    register.SetInputs(parsedInputs);
+
+
+
+              /*  try
+                {
+                    int[] parsedInputs = inputs.Select(int.Parse).ToArray();
+
+                    var oddNumbers = parsedInputs.Where(x => x % 2 != 0).ToList();
+                    var evenNumbers = parsedInputs.Where(x => x % 2 == 0).ToList();
+
+                    if (oddNumbers.Count != 4 || evenNumbers.Count != 4)
+                    {
+                        MessageBox.Show("Введите ровно 4 четных и 4 нечетных числа.");
+                        return;
+                    }
+
+                    // Формируем пары: [odd, even]
+                    int[][] formattedInputs = new int[4][];
+                    for (int i = 0; i < 4; i++)
+                    {
+                        formattedInputs[i] = new[] { oddNumbers[i], evenNumbers[i] };
+                    }
+
+                    register.SetInputs(formattedInputs);
                     MessageBox.Show("Входные значения успешно установлены для Register.");
-
                 }
-                catch (Exception ex)
+                catch (FormatException)
                 {
-                    MessageBox.Show($"Ошибка при установке входных значений: {ex.Message}");
+                    MessageBox.Show("Все значения должны быть целыми числами.");
                 }
+                */
+
+                 try
+                  {
+
+
+                      int[][] parsedInputs = new int[8][];
+                      parsedInputs[0] = new int[] { 1, 1 };
+                      parsedInputs[1] = new int[] { 1, 0 };
+                      parsedInputs[2] = new int[] { 0, 1 };
+                      parsedInputs[3] = new int[] { 0, 0 };
+                  
+                      register.SetInputs(parsedInputs);
+                      MessageBox.Show("Входные значения успешно установлены для Register.");
+
+                  }
+                  catch (Exception ex)
+                  {
+                      MessageBox.Show($"Ошибка при установке входных значений: {ex.Message}");
+                  } 
+
+
+
             }
             else if (currentElement is Combinational combinational)
             {
@@ -313,17 +246,27 @@ namespace lab9Itog
 
 
 
- 
 
 
+
+                  /*   
+                        var states = register.GetRegisterState(); // Предположим, что это возвращает int[]
+
+
+                        string formattedInputs = "";
+                        for (int i = 0; i < states.Length; i += 2)
+                        {
+                            formattedInputs += $"[{states[i]},{states[i + 1]}] ";
+                        }
+                        // Отображаем в TextBox (или другом контроле)
+                        setInputsValues.Text = "Inputs: " + formattedInputs;
+   */
+
+                    var states = register.GetInputs();
+
+                    string formattedInputs = string.Join(" ", states.Select(pair => $"[{pair[0]}, {pair[1]}]"));
+                    setInputsValues.Text = "Inputs: " + formattedInputs;
                  
-
-
-                    var states = register.GetRegisterState(); // Предположим, что этот метод возвращает состояние регистра
-
-                    // Отображаем текущие значения
-                    //    setInputsValues.Text = "Inputs: " + string.Join(", ", states);
-                    setInputsValues.Text = "Triggers: [0,0] [0,0] [0,0] [0,0] [0,0] [0,0] [0,0] [0,0]";
 
                 }
                 else if (currentElement is Combinational combinational)
@@ -376,20 +319,6 @@ namespace lab9Itog
                 MessageBox.Show($"Ошибка при сохранении: {ex.Message}");
             }
         }
-
-
-
-        
-
-
-
-
-
-
-
     }
-
-
-
 }
  

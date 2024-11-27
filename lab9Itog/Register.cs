@@ -37,6 +37,13 @@ public class Register : Element, IShiftable
         }
     }
 
+
+    public int[][] GetInputs()
+    {
+        return inputs;
+    }
+
+
     public int GetInputState(int memoryIndex, int inputIndex)
     {
         if (memoryIndex < 0 || memoryIndex >= memories.Length)
@@ -104,27 +111,7 @@ public class Register : Element, IShiftable
     }
 
 
-    /*
-        public void Shift(int bits)
-        {
-            if (bits < 0)
-            {
-                throw new ArgumentException("Bit shift count cannot be negative.");
-            }
-
-            for (int i = 0; i < bits; i++)
-            {
-                var buff = memories[memories.Length - 1].getInputValues();
-                for (int j = triggers.Length - 1; j > 0; j--)
-                {
-                    triggers[j].SetInputsNoState(triggers[j - 1].getInputValues());
-                }
-                triggers[0].SetInputsNoState(buff);
-            }
-            setState = triggers[0].getState();
-        }
-    */
-
+ 
     public void Shift(int bits)
     {
         if (bits < 0)
