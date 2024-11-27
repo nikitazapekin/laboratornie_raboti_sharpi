@@ -191,36 +191,83 @@ namespace lab7
             UpdateListBox();
         }
         private void SearchByDepartureTime_Click(object sender, RoutedEventArgs e)
+           {
+
+               var searchDialog = new SearchByDepartureTimeDialog(trainCollection);
+
+               bool result = searchDialog.ShowDialog() == true;
+
+
+               if (result)
+               {
+                   List<TRAIN> foundTrains = searchDialog.MatchingTrains;
+
+                   if (foundTrains.Count > 0)
+                   {
+                       outputListBoxActions.Items.Clear();
+                       foreach (var train in foundTrains)
+                       {
+                           outputListBoxActions.Items.Add($"Поезд №{train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
+
+                       }
+                   }
+                   else
+                   {
+                       MessageBox.Show("Поезда не найдены.");
+                   }
+
+
+               }
+           }
+
+     
+        /*
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-           
-            var searchDialog = new SearchByDepartureTimeDialog(trainCollection);
-
-            bool result = searchDialog.ShowDialog() == true;
-
-
-            if (result)
+            if (DepartureDatePicker.SelectedDate == null)
             {
-                List<TRAIN> foundTrains = searchDialog.MatchingTrains;
-
-                if (foundTrains.Count > 0)
-                {
-                    outputListBoxActions.Items.Clear();
-                    foreach (var train in foundTrains)
-                    {
-                        outputListBoxActions.Items.Add($"Поезд №{train.TrainNumber} - {train.Destination} - {train.DepartureTime}");
-
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Поезда не найдены.");
-                }
-
-
+                MessageBox.Show("Выберите дату отправления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-        }
 
-      
+            if (string.IsNullOrWhiteSpace(StartTimeTextBox.Text) || string.IsNullOrWhiteSpace(EndTimeTextBox.Text))
+            {
+                MessageBox.Show("Введите диапазон времени.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!TimeSpan.TryParse(StartTimeTextBox.Text, out TimeSpan startTime) ||
+                !TimeSpan.TryParse(EndTimeTextBox.Text, out TimeSpan endTime))
+            {
+                MessageBox.Show("Некорректный формат времени. Используйте формат ЧЧ:ММ.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (startTime > endTime)
+            {
+                MessageBox.Show("Время начала должно быть меньше времени конца.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            DateTime selectedDate = DepartureDatePicker.SelectedDate.Value;
+            DateTime startDateTime = selectedDate.Date + startTime;
+            DateTime endDateTime = selectedDate.Date + endTime;
+
+            MatchingTrains = _trainCollection.FindByDepartureTimeRange(startDateTime, endDateTime);
+
+            if (MatchingTrains.Count == 0)
+            {
+                MessageBox.Show("Ничего не найдено!");
+            }
+            else
+            {
+                this.DialogResult = true;
+            }
+
+            Close();
+        }
+        */
+
         private void SearchByTrainNumber_Click(object sender, RoutedEventArgs e)
         {
           

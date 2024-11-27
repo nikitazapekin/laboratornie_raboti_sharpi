@@ -8,8 +8,19 @@
         Title="SearchByDepartureTimeDialog" Height="450" Width="800">
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock FontSize="16" Text="Выберите время отправления:" Margin="0,5,0,0"/>
+            <TextBlock FontSize="16" Text="Выберите дату и время отправления:" Margin="0,5,0,0"/>
             <DatePicker x:Name="DepartureDatePicker" FontSize="22" Margin="0,10"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <StackPanel Margin="10">
+                    <TextBlock FontSize="14" Text="Время от:" Margin="0,0,0,5"/>
+                    <TextBox x:Name="StartTimeTextBox" FontSize="22" Width="150"  />
+                </StackPanel>
+                <StackPanel Margin="10">
+                    <TextBlock FontSize="14" Text="Время до:" Margin="0,0,0,5"/>
+                    <TextBox x:Name="EndTimeTextBox" FontSize="22" Width="150"  />
+                </StackPanel>
+            </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                 <Button FontSize="22" Content="Поиск" Width="100" Margin="5" Click="SearchButton_Click"/>
