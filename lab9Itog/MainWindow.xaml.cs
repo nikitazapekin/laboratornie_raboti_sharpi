@@ -89,35 +89,7 @@ namespace lab9Itog
 
 
 
-              /*  try
-                {
-                    int[] parsedInputs = inputs.Select(int.Parse).ToArray();
-
-                    var oddNumbers = parsedInputs.Where(x => x % 2 != 0).ToList();
-                    var evenNumbers = parsedInputs.Where(x => x % 2 == 0).ToList();
-
-                    if (oddNumbers.Count != 4 || evenNumbers.Count != 4)
-                    {
-                        MessageBox.Show("Введите ровно 4 четных и 4 нечетных числа.");
-                        return;
-                    }
-
-                    // Формируем пары: [odd, even]
-                    int[][] formattedInputs = new int[4][];
-                    for (int i = 0; i < 4; i++)
-                    {
-                        formattedInputs[i] = new[] { oddNumbers[i], evenNumbers[i] };
-                    }
-
-                    register.SetInputs(formattedInputs);
-                    MessageBox.Show("Входные значения успешно установлены для Register.");
-                }
-                catch (FormatException)
-                {
-                    MessageBox.Show("Все значения должны быть целыми числами.");
-                }
-                */
-
+              
                  try
                   {
 
@@ -127,8 +99,12 @@ namespace lab9Itog
                       parsedInputs[1] = new int[] { 1, 0 };
                       parsedInputs[2] = new int[] { 0, 1 };
                       parsedInputs[3] = new int[] { 0, 0 };
-                  
-                      register.SetInputs(parsedInputs);
+                    parsedInputs[4] = new int[] { 1, 1 };
+                    parsedInputs[5] = new int[] { 1, 0 };
+                    parsedInputs[6] = new int[] { 0, 1 };
+                    parsedInputs[7] = new int[] { 0, 0 };
+
+                    register.SetInputs(parsedInputs);
                       MessageBox.Show("Входные значения успешно установлены для Register.");
 
                   }
