@@ -52,12 +52,12 @@ namespace lab9Itog
 
         private void DisplayElementProperties()
         {
-            // Здесь можно добавить вывод свойств текущего элемента, если нужно.
+           
         }
 
         private void SetInputsButton_Click(object sender, RoutedEventArgs e)
         {
-            // Разделяем ввод по пробелам, используя StringSplitOptions.RemoveEmptyEntries для устранения пустых элементов
+          
             var inputs = InputValues.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             if (currentElement == null)
@@ -71,8 +71,7 @@ namespace lab9Itog
                 MessageBox.Show("Введите хотя бы один элемент.");
                 return;
             }
-
-            // Проверка на количество элементов для каждого типа
+ 
             if (currentElement is Register register)
             {
                 if (inputs.Length != 8)
@@ -102,23 +101,13 @@ namespace lab9Itog
                     MessageBox.Show("Для Combinational должно быть введено ровно 5 элементов.");
                     return;
                 }
-                /*    for (int i = 0; i < inputs.Length; i++)
-                    {
-                        if (!int.TryParse(inputs[i], out _))
-                        {
-                            MessageBox.Show("Все значения должны быть числами.");
-                            return;
-                        }
-                    }
-                    combinational.SetInputs(inputs);
-                */
-
+          
 
                 int[] parsedInputs = new int[inputs.Length];
 
                 for (int i = 0; i < inputs.Length; i++)
                 {
-                    // Преобразуем строковое значение в число
+                  
                     if (!int.TryParse(inputs[i], out parsedInputs[i]))
                     {
                         MessageBox.Show("Все значения должны быть числами.");
@@ -126,7 +115,7 @@ namespace lab9Itog
                     }
                 }
 
-                // Передаем преобразованный массив в метод SetInputs
+             
                 combinational.SetInputs(parsedInputs);
 
 
@@ -138,21 +127,12 @@ namespace lab9Itog
                     MessageBox.Show("Для Memory должно быть введено ровно 2 элемента.");
                     return;
                 }
-                /*   for (int i = 0; i < inputs.Length; i++)
-                   {
-                       if (!int.TryParse(inputs[i], out _))
-                       {
-                           MessageBox.Show("Все значения должны быть числами.");
-                           return;
-                       }
-                   }
-                   memory.SetInputs(inputs);
-                */
+              
                 int[] parsedInputs = new int[inputs.Length];
 
                 for (int i = 0; i < inputs.Length; i++)
                 {
-                    // Преобразуем строковое значение в число
+                   
                     if (!int.TryParse(inputs[i], out parsedInputs[i]))
                     {
                         MessageBox.Show("Все значения должны быть числами.");
@@ -160,7 +140,7 @@ namespace lab9Itog
                     }
                 }
 
-                // Передаем преобразованный массив в метод SetInputs
+              
                 memory.SetInputs(parsedInputs);
 
             }
@@ -184,18 +164,10 @@ namespace lab9Itog
         {
             UpdateTriggersInfo();
         }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            using (var writer = new StreamWriter("save.txt"))
-            {
-                // Здесь можно добавить сохранение данных в файл
-            }
-        }
-
+ 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            // Загрузка данных из файла
+        
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -230,9 +202,46 @@ namespace lab9Itog
             }
             catch (NullReferenceException)
             {
-                // Обработка ошибки, если нужно
+             
             }
         }
+
+       
+        private void SaveButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (currentElement == null)
+            {
+                MessageBox.Show("Нет выбранного элемента для сохранения.");
+                return;
+            }
+
+            try
+            {
+                string fileName = $"{currentElement.GetType().Name}_save.bin";
+
+                if (currentElement is Combinational combinational)
+                {
+                    combinational.SaveToFile(fileName);
+                    MessageBox.Show($"Комбинированный элемент сохранен в файл: {fileName}");
+                }
+                else if (currentElement is Register register)
+                {
+                  
+                    MessageBox.Show($"Регистр сохранен в файл: {fileName}");
+                }
+                else if (currentElement is Memory memory)
+                {
+                    memory.SaveToFile(fileName);
+                    MessageBox.Show($"Память сохранена в файл: {fileName}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении: {ex.Message}");
+            }
+        }
+
+
     }
 }
  

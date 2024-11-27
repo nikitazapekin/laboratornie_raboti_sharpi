@@ -5,10 +5,23 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+	  <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Снимок экрана 2024-11-27 110358.png" />
+    <None Remove="Снимок экрана 2024-11-27 110521.png" />
+    <None Remove="Снимок экрана 2024-11-27 110624.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Classes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Снимок экрана 2024-11-27 110358.png" />
+    <Resource Include="Снимок экрана 2024-11-27 110521.png" />
+    <Resource Include="Снимок экрана 2024-11-27 110624.png" />
   </ItemGroup>
 
 </Project>

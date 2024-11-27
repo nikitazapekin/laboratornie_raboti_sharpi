@@ -66,9 +66,16 @@ using System.Threading.Tasks;
 
 
 
-
-
-
+    public virtual string ToBinaryString()
+    {
+        throw new NotImplementedException();
     }
+    public virtual void FromBinaryString(string dataString)
+    {
+        throw new NotImplementedException();
+    }
+
+
+}
 
  
