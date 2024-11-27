@@ -31,7 +31,7 @@
                 <StackPanel x:Name="ShiftPanel" Visibility="Collapsed">
                     <Label FontSize="22"  Content="Shift count:"  />
                     <TextBox FontSize="22" x:Name="ShiftValue" Width="200" />
-                    <Button  FontSize="22" x:Name="ShiftButton" Content="Shift Register"   Width="150" Height="40"/>
+                    <Button Click="ShiftButton_Click"  FontSize="22" x:Name="ShiftButton" Content="Shift Register"   Width="150" Height="40"/>
                 </StackPanel>
 
 

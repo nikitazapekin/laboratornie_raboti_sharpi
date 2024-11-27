@@ -181,36 +181,89 @@ namespace lab9Itog
             UpdateTriggersInfo();
         }
 
+        /*  private void ShiftButton_Click(object sender, RoutedEventArgs e)
+          {
+
+              UpdateTriggersInfo();
+          }
+
+          */
+
+
+
         private void ShiftButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!int.TryParse(ShiftValue.Text, out var shift) || shift < 0)
-            {
-                OutputResult.Text = $"Output (ERROR): Enter a correct shift value";
-                return;
-            }
             if (currentElement is Register register)
             {
-                register.Shift(shift);
-                OutputResult.Text = "Shifted Register";
+                // Проверка значения, введенного пользователем
+                if (int.TryParse(ShiftValue.Text, out int shiftBits))
+                {
+                    try
+                    {
+                        // Вызов метода Shift
+                        register.Shift(shiftBits);
+
+                        // Обновление состояния после сдвига
+                        UpdateTriggersInfo();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при сдвиге: {ex.Message}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Введите корректное число для сдвига.");
+                }
             }
-
-            UpdateTriggersInfo();
+            else
+            {
+                MessageBox.Show("Сдвиг доступен только для Register.");
+            }
         }
 
-        private void LoadButton_Click(object sender, RoutedEventArgs e)
-        {
-        
-        }
+        /* private void ShiftButton_Click(object sender, RoutedEventArgs e)
+         {
+             if (currentElement is Register register)
+             {
+                 try
+                 {
+                     // Извлечение первого элемента из входных данных
+                     var states = register.GetInputs();
+                     if (states.Length == 0)
+                     {
+                         MessageBox.Show("Нет данных для сдвига.");
+                         return;
+                     }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            UpdateTriggersInfo();
-        }
+                     var firstElement = states[0]; // Первый элемент, например [1, 0]
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            UpdateTriggersInfo();
-        }
+                     // Получение значения сдвига из TextBox
+                     if (!int.TryParse(ShiftValue.Text, out int shiftBits) || shiftBits < 0)
+                     {
+                         MessageBox.Show("Введите корректное неотрицательное значение для сдвига.");
+                         return;
+                     }
+
+                     // Выполнение сдвига
+                     register.Shift(shiftBits);
+
+                     // Обновление интерфейса
+                     UpdateTriggersInfo();
+                     MessageBox.Show($"Первый элемент ({firstElement[0]}, {firstElement[1]}) был сдвинут на {shiftBits} бит.");
+                 }
+                 catch (Exception ex)
+                 {
+                     MessageBox.Show($"Ошибка при выполнении сдвига: {ex.Message}");
+                 }
+             }
+             else
+             {
+                 MessageBox.Show("Сдвиг доступен только для элемента Register.");
+             }
+         }
+         */
+
 
         private void UpdateTriggersInfo()
         {
@@ -218,26 +271,6 @@ namespace lab9Itog
             {
                 if (currentElement is Register register)
                 {
-
-
-
-
-
-
-
-                  /*   
-                        var states = register.GetRegisterState(); // Предположим, что это возвращает int[]
-
-
-                        string formattedInputs = "";
-                        for (int i = 0; i < states.Length; i += 2)
-                        {
-                            formattedInputs += $"[{states[i]},{states[i + 1]}] ";
-                        }
-                        // Отображаем в TextBox (или другом контроле)
-                        setInputsValues.Text = "Inputs: " + formattedInputs;
-   */
-
                     var states = register.GetInputs();
 
                     string formattedInputs = string.Join(" ", states.Select(pair => $"[{pair[0]}, {pair[1]}]"));

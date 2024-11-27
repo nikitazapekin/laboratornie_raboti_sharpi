@@ -111,27 +111,60 @@ public class Register : Element, IShiftable
     }
 
 
- 
-    public void Shift(int bits)
-    {
-        if (bits < 0)
+    /*
+        public void Shift(int bits)
         {
-            throw new ArgumentException("Bit shift count cannot be negative.");
-        }
-
-        for (int i = 0; i < bits; i++)
-        {
-           
-            var buff = memories[memories.Length - 1].GetAllInputs();
-
-          
-            for (int j = memories.Length - 1; j > 0; j--)
+            if (bits < 0)
             {
-                memories[j].SetInputs(memories[j - 1].GetAllInputs());
+                throw new ArgumentException("Bit shift count cannot be negative.");
             }
 
-           
-            memories[0].SetInputs(buff);
+            for (int i = 0; i < bits; i++)
+            {
+
+                var buff = memories[memories.Length - 1].GetAllInputs();
+
+
+                for (int j = memories.Length - 1; j > 0; j--)
+                {
+                    memories[j].SetInputs(memories[j - 1].GetAllInputs());
+                }
+
+
+                memories[0].SetInputs(buff);
+            }
+        }
+    */
+    public void Shift(int positions)
+    {
+        if (positions <= 0)
+            throw new ArgumentException("Количество позиций для сдвига должно быть положительным числом.");
+
+        // Нормализация количества сдвигов (если больше длины строк)
+        positions %= inputs[0].Length;
+        if (positions == 0) return;
+
+        // Создаём новый массив для хранения результата
+        int[][] shiftedInputs = new int[inputs.Length][];
+        for (int i = 0; i < inputs.Length; i++)
+        {
+            shiftedInputs[i] = new int[inputs[i].Length]; // Инициализируем подмассивы
+            for (int j = 0; j < inputs[i].Length; j++)
+            {
+                // Вычисляем новый индекс для текущего элемента
+                int newIndex = (j + positions) % inputs[i].Length;
+                shiftedInputs[i][newIndex] = inputs[i][j];
+            }
+        }
+
+        // Присваиваем новый массив
+        inputs = shiftedInputs;
+
+        // Отладочная информация
+        Console.WriteLine("Результат сдвига:");
+        foreach (var row in inputs)
+        {
+            Console.WriteLine(string.Join(" ", row));
         }
     }
 
