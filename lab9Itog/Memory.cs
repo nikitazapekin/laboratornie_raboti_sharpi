@@ -176,5 +176,7 @@ public class Memory : Element
             writer.Write(resetInput);
         }
     }
-    }
+
+    
+}
  

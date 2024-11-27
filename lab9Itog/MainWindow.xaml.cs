@@ -187,26 +187,26 @@ namespace lab9Itog
             {
                 if (currentElement is Register register)
                 {
-                    /*     var triggerStates = register.GetDirectOutputs() ?? Array.Empty<int>();
-                         setInputsValues.Text = "Triggers: " + string.Join(", ", triggerStates);
-                         RegisterState.IsChecked = register.getCurrentState() != 0;
-                    */
+                    register.SetInputs(new[]
+     {
+    new[] { 1, 1 }, new[] { 1, 1 }, new[] { 0, 1 },
+    new[] { 1, 1 }, new[] { 0, 1 }, new[] { 1, 0 },
+    new[] { 0, 0 }, new[] { 1, 1 }
+});
 
-                    try
-                    {
-                    //    if (currentElement is Register register)
-                      //  {
-                            var triggerStates = register.GetDirectOutputs()?.Where(x => x != null).ToArray() ?? Array.Empty<int>();
+                    // Вычисление состояния
+                 //   register.ComputeState();
 
-                            setInputsValues.Text = "Triggers: " + string.Join(", ", triggerStates);
+                    // Получение текущих выходов регистра
+                    var states = register.GetRegisterState();
+                   // Console.WriteLine(string.Join(", ", states));
 
-                            RegisterState.IsChecked = register.getCurrentState() != 0;
-                      //  }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Ошибка при обновлении информации о триггерах: {ex.Message}");
-                    }
+                    // Инвертирование состояния
+                  //  register.Invert();
+                 //   states = register.GetRegisterState();
+                 // Console.WriteLine("Inverted: " + string.Join(", ", states));
+                    setInputsValues.Text = "Inputs: " + string.Join(", ", states);
+
 
                 }
                 else if (currentElement is Combinational combinational)
@@ -261,6 +261,15 @@ namespace lab9Itog
         }
 
 
+ 
+
+
+
+
+
     }
+
+
+
 }
  
