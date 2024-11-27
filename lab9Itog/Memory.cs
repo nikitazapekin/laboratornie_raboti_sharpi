@@ -99,10 +99,7 @@ public class Memory : Element
         if (obj is Memory other)
         {
             if (this.directOutput != other.directOutput) return false;
-            if (this.invertedOutput != other.invertedOutput) return false;
-            if (this.setInput != other.setInput) return false;
-            if (this.resetInput != other.resetInput) return false;
-            if (this.inputValues.Length != other.inputValues.Length) return false;
+      
 
             for (int i = 0; i < inputValues.Length; i++)
             {

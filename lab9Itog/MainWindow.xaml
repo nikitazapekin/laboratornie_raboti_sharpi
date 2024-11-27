@@ -34,12 +34,12 @@
                     <Button Click="ShiftButton_Click"  FontSize="22" x:Name="ShiftButton" Content="Shift Register"   Width="150" Height="40"/>
                 </StackPanel>
 
-
+<!--
                 <CheckBox  FontSize="22" x:Name="RegisterStateFirst" Content="Set State first" Width="200" Height="40" Visibility="Collapsed"/>
 
                 <CheckBox  FontSize="22" x:Name="RegisterStateSecond" Content="Set State second" Width="200" Height="40" Visibility="Collapsed"/>
 
-
+-->
 
                 <TextBlock FontSize="22"  x:Name="setInputsValues" Text="Inputs: "  Height="44" Width="624"/>
                 <TextBlock FontSize="22"  x:Name="OutputResult" Text="Output: "  Height="40" Width="624"/>
@@ -47,6 +47,18 @@
 
                 <TextBlock FontSize="22" x:Name="OutputAllTriggersInRegister" Text="Triggers: "  Height="44" Width="624"/>
 
+
+                <StackPanel  x:Name="ShiftPanelSettings" Visibility="Collapsed" Orientation="Vertical" Margin="0,10,0,10">
+                    <TextBlock FontSize="22" Text="Trigger Index:" />
+                    <TextBox FontSize="22" x:Name="TriggerIndex" Width="100" Height="30" />
+
+                    <TextBlock FontSize="22" Text="Trigger Values (e.g., 1 0):" />
+                    <TextBox FontSize="22" x:Name="TriggerValues" Width="200" Height="30" />
+
+                    <Button FontSize="22" x:Name="SetTriggerButton" Content="Set Trigger" Click="SetTriggerButton_Click" Width="150" Height="40" />
+                </StackPanel>
+                
+                
 
                 <Button FontSize="22" x:Name="SaveButton" Content="Save State" Height="40" Click="SaveButton_Click_1"/>
                 <Button FontSize="22" x:Name="LoadButton" Content="Load State"  Height="62" Width="624"/>

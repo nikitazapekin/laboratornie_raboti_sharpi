@@ -34,20 +34,20 @@ namespace lab9Itog
                 case "Комбинированный элемент MOD2":
                     currentElement = combinationalElement;
                     ShiftPanel.Visibility = Visibility.Collapsed;
-                    RegisterStateFirst.Visibility = Visibility.Collapsed;
-                    RegisterStateSecond.Visibility = Visibility.Collapsed;
+                    ShiftPanelSettings.Visibility = Visibility.Collapsed;
+               
                     break;
                 case "D-Trigger":
                     currentElement = memoryElement;
                     ShiftPanel.Visibility = Visibility.Collapsed;
-                    RegisterStateFirst.Visibility = Visibility.Collapsed;
-                    RegisterStateSecond.Visibility = Visibility.Collapsed;
+                    ShiftPanelSettings.Visibility = Visibility.Collapsed;
+                    
                     break;
                 case "Register":
                     currentElement = registerElement;
                     ShiftPanel.Visibility = Visibility.Visible;
-                    RegisterStateFirst.Visibility = Visibility.Visible;
-                    RegisterStateSecond.Visibility = Visibility.Visible;
+                    ShiftPanelSettings.Visibility = Visibility.Visible;
+                 
                     break;
             }
             UpdateTriggersInfo();
@@ -78,16 +78,7 @@ namespace lab9Itog
          
             if (currentElement is Register register)
             {
-/*
-                if (inputs.Length != 8)
-                {
-                    MessageBox.Show("Для Register должно быть введено ровно 8 элементов.");
-                    return;
-                }
-*/
-
-
-
+ 
 
               
                  try
@@ -187,7 +178,7 @@ namespace lab9Itog
         {
             if (currentElement is Register register)
             {
-                // Проверка значения, введенного пользователем
+                
                 if (int.TryParse(ShiftValue.Text, out int shiftBits))
                 {
                     try
@@ -277,6 +268,56 @@ namespace lab9Itog
                 MessageBox.Show($"Ошибка при сохранении: {ex.Message}");
             }
         }
+
+
+
+
+
+        private void SetTriggerButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentElement is Register register)
+            {
+             
+                if (!int.TryParse(TriggerIndex.Text, out int index) || index < 0 || index >= register.GetInputs().Length)
+                {
+                    MessageBox.Show("Введите корректный индекс.");
+                    return;
+                }
+
+ 
+                var values = TriggerValues.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                if (values.Length != 2 ||
+                    !int.TryParse(values[0], out int value1) ||
+                    !int.TryParse(values[1], out int value2) ||
+                    (value1 != 0 && value1 != 1) ||
+                    (value2 != 0 && value2 != 1))
+                {
+                    MessageBox.Show("Введите два значения (0 или 1) через пробел.");
+                    return;
+                }
+
+              
+                try
+                {
+                    var inputs = register.GetInputs();
+                    inputs[index] = new[] { value1, value2 };
+                    register.SetInputs(inputs);
+                    MessageBox.Show($"Триггер на индексе {index} обновлен: [{value1}, {value2}]");
+
+                  
+                    UpdateTriggersInfo();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при обновлении триггера: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Триггеры можно обновить только для Register.");
+            }
+        }
+
     }
 }
  
