@@ -27,9 +27,16 @@ public class Register : Element
         }
     }
 
+ 
+
     public Register(int v)
     {
         this.inputsNumber = v;
+        memoryArray = new Memory[v];  
+        for (int i = 0; i < v; i++)
+        {
+            memoryArray[i] = new Memory(1);  
+        }
     }
 
     public int getCurrentState()
@@ -72,26 +79,29 @@ public class Register : Element
             memoryArray[i].ComputeState();
         }
     }
+ 
 
     public int[] GetDirectOutputs()
     {
-        int[] outputs = new int[memoryArray.Length];
-        int index = 0;
+        if (memoryArray == null)
+        {
+            throw new InvalidOperationException("Memory array is not initialized.");
+        }
 
+        int[] outputs = new int[memoryArray.Length];
         for (int i = 0; i < memoryArray.Length; i++)
         {
             if (memoryArray[i] != null)
             {
-                outputs[index++] = memoryArray[i].DirectOutput;
+                outputs[i] = memoryArray[i].DirectOutput;
             }
         }
 
-    
-        Array.Resize(ref outputs, index);
         return outputs;
     }
 
- 
+
+
     public int[] GetInvertedOutputs()
     {
         int[] outputs = new int[memoryArray.Length];

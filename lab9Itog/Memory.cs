@@ -41,13 +41,17 @@ public class Memory : Element
    
     public void SetInputs(int[] inputs)
     {
-        if (inputs.Length == inputValues.Length)
+    
+
+        if (inputs.Length != InputCount)
+            throw new ArgumentException($"Expected {InputCount} inputs.");
+        if (inputs[1] == 0)
         {
-            inputValues = inputs;
+            inputValues[1] = 0;
         }
         else
         {
-            throw new ArgumentException("Количество входных значений не совпадает с ожидаемым");
+            inputValues = inputs;
         }
     }
     
@@ -136,7 +140,7 @@ public class Memory : Element
         set => resetInput = value;
     }
 
-    // Метод инвертирования
+  
     public override void Invert()
     {
         if (inputValues[1] == 1)
@@ -154,20 +158,20 @@ public class Memory : Element
     {
         using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
         {
-            // Сохраняем количество входов (InputCount)
+         
             writer.Write(InputCount);
 
-            // Сохраняем все входные значения
+            
             for (int i = 0; i < inputValues.Length; i++)
             {
                 writer.Write(inputValues[i]);
             }
 
-            // Сохраняем значения прямого и инверсного выходов
+          
             writer.Write(directOutput);
             writer.Write(invertedOutput);
 
-            // Сохраняем значения входов установки и сброса
+          
             writer.Write(setInput);
             writer.Write(resetInput);
         }

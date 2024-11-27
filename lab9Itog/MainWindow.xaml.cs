@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace lab9Itog
@@ -186,9 +187,27 @@ namespace lab9Itog
             {
                 if (currentElement is Register register)
                 {
-                    var triggerStates = register.GetDirectOutputs() ?? Array.Empty<int>();
-                    setInputsValues.Text = "Triggers: " + string.Join(", ", triggerStates);
-                    RegisterState.IsChecked = register.getCurrentState() != 0;
+                    /*     var triggerStates = register.GetDirectOutputs() ?? Array.Empty<int>();
+                         setInputsValues.Text = "Triggers: " + string.Join(", ", triggerStates);
+                         RegisterState.IsChecked = register.getCurrentState() != 0;
+                    */
+
+                    try
+                    {
+                    //    if (currentElement is Register register)
+                      //  {
+                            var triggerStates = register.GetDirectOutputs()?.Where(x => x != null).ToArray() ?? Array.Empty<int>();
+
+                            setInputsValues.Text = "Triggers: " + string.Join(", ", triggerStates);
+
+                            RegisterState.IsChecked = register.getCurrentState() != 0;
+                      //  }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при обновлении информации о триггерах: {ex.Message}");
+                    }
+
                 }
                 else if (currentElement is Combinational combinational)
                 {
