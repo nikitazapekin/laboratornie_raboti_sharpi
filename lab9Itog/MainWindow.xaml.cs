@@ -69,7 +69,7 @@ namespace lab9Itog
             }
 
          
-            if (inputs.Length == 0)
+            if (inputs.Length == 0 )
             {
                 MessageBox.Show("Введите хотя бы один элемент.");
                 return;
@@ -78,13 +78,13 @@ namespace lab9Itog
          
             if (currentElement is Register register)
             {
-
+/*
                 if (inputs.Length != 8)
                 {
                     MessageBox.Show("Для Register должно быть введено ровно 8 элементов.");
                     return;
                 }
-
+*/
 
 
 
@@ -96,13 +96,13 @@ namespace lab9Itog
 
                       int[][] parsedInputs = new int[8][];
                       parsedInputs[0] = new int[] { 1, 1 };
-                      parsedInputs[1] = new int[] { 1, 0 };
-                      parsedInputs[2] = new int[] { 0, 1 };
-                      parsedInputs[3] = new int[] { 0, 0 };
-                    parsedInputs[4] = new int[] { 1, 1 };
-                    parsedInputs[5] = new int[] { 1, 0 };
-                    parsedInputs[6] = new int[] { 0, 1 };
-                    parsedInputs[7] = new int[] { 0, 0 };
+                      parsedInputs[1] = new int[] { 1, 1 };
+                      parsedInputs[2] = new int[] { 1, 0 };
+                      parsedInputs[3] = new int[] { 1, 1 };
+                    parsedInputs[4] = new int[] { 0, 0 };
+                    parsedInputs[5] = new int[] { 0, 1 };
+                    parsedInputs[6] = new int[] { 1, 0 };
+                    parsedInputs[7] = new int[] { 1, 1 };
 
                     register.SetInputs(parsedInputs);
                       MessageBox.Show("Входные значения успешно установлены для Register.");
@@ -181,15 +181,7 @@ namespace lab9Itog
             UpdateTriggersInfo();
         }
 
-        /*  private void ShiftButton_Click(object sender, RoutedEventArgs e)
-          {
-
-              UpdateTriggersInfo();
-          }
-
-          */
-
-
+   
 
         private void ShiftButton_Click(object sender, RoutedEventArgs e)
         {
@@ -200,10 +192,10 @@ namespace lab9Itog
                 {
                     try
                     {
-                        // Вызов метода Shift
+                  
                         register.Shift(shiftBits);
 
-                        // Обновление состояния после сдвига
+                  
                         UpdateTriggersInfo();
                     }
                     catch (Exception ex)
@@ -221,50 +213,7 @@ namespace lab9Itog
                 MessageBox.Show("Сдвиг доступен только для Register.");
             }
         }
-
-        /* private void ShiftButton_Click(object sender, RoutedEventArgs e)
-         {
-             if (currentElement is Register register)
-             {
-                 try
-                 {
-                     // Извлечение первого элемента из входных данных
-                     var states = register.GetInputs();
-                     if (states.Length == 0)
-                     {
-                         MessageBox.Show("Нет данных для сдвига.");
-                         return;
-                     }
-
-                     var firstElement = states[0]; // Первый элемент, например [1, 0]
-
-                     // Получение значения сдвига из TextBox
-                     if (!int.TryParse(ShiftValue.Text, out int shiftBits) || shiftBits < 0)
-                     {
-                         MessageBox.Show("Введите корректное неотрицательное значение для сдвига.");
-                         return;
-                     }
-
-                     // Выполнение сдвига
-                     register.Shift(shiftBits);
-
-                     // Обновление интерфейса
-                     UpdateTriggersInfo();
-                     MessageBox.Show($"Первый элемент ({firstElement[0]}, {firstElement[1]}) был сдвинут на {shiftBits} бит.");
-                 }
-                 catch (Exception ex)
-                 {
-                     MessageBox.Show($"Ошибка при выполнении сдвига: {ex.Message}");
-                 }
-             }
-             else
-             {
-                 MessageBox.Show("Сдвиг доступен только для элемента Register.");
-             }
-         }
-         */
-
-
+ 
         private void UpdateTriggersInfo()
         {
             try
