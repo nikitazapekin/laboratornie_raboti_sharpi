@@ -1,6 +1,8 @@
-﻿using System;
+﻿using lab9Itog.Interfaces;
+using System;
+using System.Windows;
 
-public class Register : Element
+public class Register : Element, IShiftable
 {
     private static int ResetState = 0; // Состояние сброса
     private static int SetState = 0;   // Состояние установки
@@ -18,6 +20,8 @@ public class Register : Element
             inputs[i] = new int[2];     // У каждой ячейки два входа: data и clock
         }
     }
+
+ 
 
     public void SetInputs(int[][] inputValues)
     {
@@ -98,129 +102,53 @@ public class Register : Element
         SetState = set;
         ResetState = reset;
     }
-}
 
 
-/*
- * using System;
-using System.Linq;
-using System.Windows;
-
-public class Register : Element
-{
- 
-    private int resetInput;
-    private int setInput;
- 
-    private Memory[] memoryArray; 
-
- 
-    private int[][] memoryInputs;
-    private int inputsNumber;
-
-  
-    public Register(int memorySize, int inputCount)
-    {
-        resetInput = 0;
-        setInput = 0;
-        memoryArray = new Memory[memorySize];
-        memoryInputs = new int[memorySize][];
-
-        for (int i = 0; i < memorySize; i++)
+    /*
+        public void Shift(int bits)
         {
-            memoryArray[i] = new Memory(inputCount);
-            memoryInputs[i] = new int[inputCount];
+            if (bits < 0)
+            {
+                throw new ArgumentException("Bit shift count cannot be negative.");
+            }
+
+            for (int i = 0; i < bits; i++)
+            {
+                var buff = memories[memories.Length - 1].getInputValues();
+                for (int j = triggers.Length - 1; j > 0; j--)
+                {
+                    triggers[j].SetInputsNoState(triggers[j - 1].getInputValues());
+                }
+                triggers[0].SetInputsNoState(buff);
+            }
+            setState = triggers[0].getState();
         }
-    }
+    */
 
-  
-
-
-    public int getCurrentState()
+    public void Shift(int bits)
     {
-        return memoryArray[0].getState();
-    }
- 
-
-
-    public int GetInputState(int index, int inputIndex)
-    {
-        if (index >= 0 && index < memoryArray.Length && inputIndex >= 0 && inputIndex < memoryArray[index].InputCount)
+        if (bits < 0)
         {
-            return memoryArray[index].GetInputState(inputIndex);
-        }
-        else
-        {
-            throw new ArgumentOutOfRangeException("Неверный индекс входа или элемента");
-        }
-    }
- 
-    public void ComputeState()
-    {
-        for (int i = 0; i < memoryArray.Length; i++)
-        {
-            memoryArray[i].SetInput = setInput;
-            memoryArray[i].ResetInput = resetInput;
-            memoryArray[i].ComputeState();
-        }
-    }
- 
- 
-
-
-    public int[] GetInvertedOutputs()
-    {
-        int[] outputs = new int[memoryArray.Length];
-
-        for (int i = 0; i < memoryArray.Length; i++)
-        {
-            outputs[i] = memoryArray[i].InvertedOutput;
+            throw new ArgumentException("Bit shift count cannot be negative.");
         }
 
-        return outputs;
-    }
-
- 
-    //===================================
-    public Register(int v)
-    {
-        inputsNumber = v;
-        memoryArray = new Memory[v];
-        memoryInputs = new int[v][];
-
-        for (int i = 0; i < v; i++)
+        for (int i = 0; i < bits; i++)
         {
-            memoryArray[i] = new Memory(2); // Например, память с двумя входами
-            memoryInputs[i] = new int[2];   // Инициализация массива входов
+           
+            var buff = memories[memories.Length - 1].GetAllInputs();
+
+          
+            for (int j = memories.Length - 1; j > 0; j--)
+            {
+                memories[j].SetInputs(memories[j - 1].GetAllInputs());
+            }
+
+           
+            memories[0].SetInputs(buff);
         }
-    }
-
- 
-    public override void SetInputs(int[] inputs)
-    {
-        if (inputs.Length != InputCount)
-            throw new ArgumentException($"Expected {InputCount} inputs.");
-
-        for (int i = 0; i < memoryArray.Length; i++)
-        {
-            memoryArray[i].SetInputs(new int[] { inputs[i], 1 });
-        }
-    }
-
-
-    public int[] GetDirectOutputs()
-    {
-        return memoryArray.Select(mem => mem.DirectOutput).ToArray();
-    }
-
-    public override int ComputeOutput()
-    {
-        return memoryArray.Aggregate(0, (acc, mem) => (acc << 1) | mem.DirectOutput);
     }
 
 
 
 
 }
-
-*/
