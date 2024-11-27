@@ -1,13 +1,14 @@
 ﻿using lab9Itog.Interfaces;
 using System;
+using System.IO;
 using System.Windows;
 
 public class Register : Element, IShiftable
 {
-    private static int ResetState = 0; // Состояние сброса
-    private static int SetState = 0;   // Состояние установки
-    private Memory[] memories;        // Массив памяти
-    private int[][] inputs;           // Массивы входов для каждой ячейки памяти
+    private static int ResetState = 0; 
+    private static int SetState = 0;  
+    private Memory[] memories;       
+    private int[][] inputs;           
 
     public Register(int size) : base("Register", size, size)
     {
@@ -16,8 +17,8 @@ public class Register : Element, IShiftable
 
         for (int i = 0; i < size; i++)
         {
-            memories[i] = new Memory(); // Инициализируем каждую ячейку памяти
-            inputs[i] = new int[2];     // У каждой ячейки два входа: data и clock
+            memories[i] = new Memory(); 
+            inputs[i] = new int[2];   
         }
     }
 
@@ -77,7 +78,7 @@ public class Register : Element, IShiftable
 
     public override int ComputeOutput()
     {
-        // Пример: возвращаем "сумму" выходов всех триггеров
+     
         int output = 0;
         for (int i = 0; i < memories.Length; i++)
         {
@@ -111,30 +112,7 @@ public class Register : Element, IShiftable
     }
 
 
-    /*
-        public void Shift(int bits)
-        {
-            if (bits < 0)
-            {
-                throw new ArgumentException("Bit shift count cannot be negative.");
-            }
-
-            for (int i = 0; i < bits; i++)
-            {
-
-                var buff = memories[memories.Length - 1].GetAllInputs();
-
-
-                for (int j = memories.Length - 1; j > 0; j--)
-                {
-                    memories[j].SetInputs(memories[j - 1].GetAllInputs());
-                }
-
-
-                memories[0].SetInputs(buff);
-            }
-        }
-    */
+ 
     public void Shift(int positions)
     {
         if (positions <= 0)
@@ -159,6 +137,25 @@ public class Register : Element, IShiftable
         inputs = shiftedInputs;
 
        
+    }
+
+
+
+    public override string ToBinaryString()
+    {
+        using (var ms = new MemoryStream())
+        using (var writer = new BinaryWriter(ms))
+        {
+            writer.Write(inputs.Length);
+            foreach (var value in inputs)
+            {
+                writer.Write(value.ToString());
+            }
+
+           
+
+            return Convert.ToBase64String(ms.ToArray());
+        }
     }
 
 

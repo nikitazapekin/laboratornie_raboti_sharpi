@@ -63,34 +63,6 @@ public class Combinational : Element
 
  
 
-    public void SaveToFile(string fileName)
-    {
-        try
-        {
-            var binaryData = ToBinaryData();  
-            File.WriteAllBytes(fileName, binaryData); 
-        }
-        catch (Exception ex)
-        {
-            throw new IOException($"Ошибка при сохранении файла: {ex.Message}", ex);
-        }
-    }
-
-
-    public override string ToString()
-    {
-        string result = "[";
-        for (int i = 0; i < inputs.Length; i++)
-        {
-            result += inputs[i];
-            if (i < inputs.Length - 1)
-            {
-                result += ", ";
-            }
-        }
-        result += "]";
-        return result;
-    }
 
 
 
@@ -98,61 +70,19 @@ public class Combinational : Element
 
 
 
-
-
-
-
-    public byte[] ToBinaryData()
+ 
+    public override string ToBinaryString()
     {
         using (var ms = new MemoryStream())
         using (var writer = new BinaryWriter(ms))
         {
             writer.Write(inputs.Length);
-            for (int i = 0; i < inputs.Length; i++)
+            foreach (var value in inputs)
             {
-                writer.Write(inputs[i]);
+                writer.Write(value);
             }
 
-            writer.Flush();
-            return ms.ToArray();
+            return Convert.ToBase64String(ms.ToArray());
         }
     }
-
-    public static Combinational FromBinaryData(byte[] data)
-    {
-        using (var ms = new MemoryStream(data))
-        using (var reader = new BinaryReader(ms))
-        {
-            int inputValuesLength = reader.ReadInt32();
-            var combinational = new Combinational(inputValuesLength);
-            for (int i = 0; i < inputValuesLength; i++)
-            {
-                combinational.inputs[i] = reader.ReadInt32();
-            }
-
-            return combinational;
-        }
-    }
-
-    public override string ToBinaryString()
-    {
-        return Convert.ToBase64String(ToBinaryData());
-    }
-
-    public override void FromBinaryString(string dataString)
-    {
-        var data = Convert.FromBase64String(dataString);
-        using (var ms = new MemoryStream(data))
-        using (var reader = new BinaryReader(ms))
-        {
-            int inputValuesLength = reader.ReadInt32();
-            inputs = new int[inputValuesLength];
-            for (int i = 0; i < inputValuesLength; i++)
-            {
-                inputs[i] = reader.ReadInt32();
-            }
-        }
-    }
-    
-
 }

@@ -45,7 +45,7 @@
                 <TextBlock FontSize="22"  x:Name="OutputResult" Text="Output: "  Height="40" Width="624"/>
 
 
-                <TextBlock FontSize="22" x:Name="OutputAllTriggersInRegister" Text="Triggers: "  Height="44" Width="624"/>
+                <TextBlock Visibility="Collapsed" FontSize="22" x:Name="OutputAllTriggersInRegister" Text="Triggers: "  Height="44" Width="624"/>
 
 
                 <StackPanel  x:Name="ShiftPanelSettings" Visibility="Collapsed" Orientation="Vertical" Margin="0,10,0,10">

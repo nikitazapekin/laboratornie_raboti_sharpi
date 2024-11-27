@@ -151,6 +151,8 @@ public class Memory : Element
     }
 
 
+
+    /*
     public void SaveToFile(string fileName)
     {
         using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
@@ -173,7 +175,31 @@ public class Memory : Element
             writer.Write(resetInput);
         }
     }
+    */
 
-    
+
+
+
+    public override string ToBinaryString()
+    {
+        using (var ms = new MemoryStream())
+        using (var writer = new BinaryWriter(ms))
+        {
+            writer.Write(inputValues.Length);
+            foreach (var value in inputValues)
+            {
+                writer.Write(value);
+            }
+
+            writer.Write(directOutput);
+            writer.Write(invertedOutput);
+
+            return Convert.ToBase64String(ms.ToArray());
+        }
+    }
+
+
+
+
 }
  
