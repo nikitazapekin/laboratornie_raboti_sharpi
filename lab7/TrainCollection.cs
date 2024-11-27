@@ -1,5 +1,5 @@
 ﻿ 
- /*
+ 
 using lab7;
 using System;
 using System.Collections.Generic;
@@ -84,9 +84,9 @@ public class TrainCollection
     }
 
 }
- */
-
  
+
+ /*
  using lab7;
 using System;
 using System.Collections.Generic;
@@ -146,4 +146,4 @@ public class TrainCollection
         return trains.Where(train => train.DepartureTime.Date == date.Date).ToList();
     }
 }
- 
+ */

@@ -63,12 +63,12 @@ namespace lab7
                 }
 
           
-                if (!int.TryParse(TrainNumberTextBox.Text.Trim(), out _))
+          /*      if (!int.TryParse(TrainNumberTextBox.Text.Trim(), out _))
                 {
                     MessageBox.Show("Ошибка: номер поезда должен быть целым числом.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-
+          */
                 
                 if (!int.TryParse(HourComboBox.SelectedItem?.ToString(), out int hours) ||
                     !int.TryParse(MinuteComboBox.SelectedItem?.ToString(), out int minutes) ||
