@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -262,29 +263,16 @@ namespace lab9Itog
                 }
                 else if (currentElement is Register register)
                 {
-
-                    using (var writer = new StreamWriter(fileName))
-                    {
-
-                        writer.WriteLine(memoryElement.ToBinaryString());
-                    }
+                    register.SaveToBinary(fileName);
                     MessageBox.Show($"Регистр сохранен в файл: {fileName}");
+                   
                 }
                 else if (currentElement is Memory memory)
                 {
-
-                    /*   using (var writer = new StreamWriter(fileName))
-                       {
-
-                           writer.WriteLine(registerElement.ToBinaryString());
-                       }
-
-                       MessageBox.Show($"Память сохранена в файл: {fileName}");
-                    */
-                 
+ 
                         try
                         {
-                          //  string fileNamee = "MemoryData.bin";
+                         
                             memory.SaveToBinary(fileName);
                             MessageBox.Show("Данные успешно сохранены в бинарный файл.");
                         }
@@ -381,12 +369,10 @@ namespace lab9Itog
                 }
                 else if (currentElement is Memory memory)
                 {
-                    //   memory.FromBinaryString(binaryData);
-                    //   UpdateTriggersInfo();
-                    //   MessageBox.Show("Данные для Memory успешно загружены.");
+                
                     try
                     {
-                     //   string fileNamee = "MemoryData.bin";
+                 
                         memory.LoadFromBinary(fileName);
                         UpdateTriggersInfo();
                         MessageBox.Show("Данные успешно загружены из бинарного файла.");
@@ -403,7 +389,12 @@ namespace lab9Itog
        
 
 
-            }
+            } else if(currentElement is Register register)
+                {
+                    register.LoadFromBinary(filePath);
+                    UpdateTriggersInfo();
+                    MessageBox.Show("Регистр успешно загружен из бинарного файла.");
+                }
                 else
                 {
                     MessageBox.Show("Неизвестный тип элемента.");

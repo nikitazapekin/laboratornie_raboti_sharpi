@@ -199,8 +199,8 @@ public class Memory : Element
         using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
         using (var writer = new BinaryWriter(fs))
         {
-            writer.Write(inputValues[0]); // Первое число
-            writer.Write(inputValues[1]); // Второе число
+            writer.Write(inputValues[0]);  
+            writer.Write(inputValues[1]);  
         }
     }
     public void LoadFromBinary(string fileName)
@@ -211,8 +211,8 @@ public class Memory : Element
         using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
         using (var reader = new BinaryReader(fs))
         {
-            inputValues[0] = reader.ReadInt32(); // Первое число
-            inputValues[1] = reader.ReadInt32(); // Второе число
+            inputValues[0] = reader.ReadInt32(); 
+            inputValues[1] = reader.ReadInt32();  
         }
     }
 
