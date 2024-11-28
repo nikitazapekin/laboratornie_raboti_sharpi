@@ -72,6 +72,17 @@ namespace lab9Itog
                 return;
             }
 
+            
+            foreach (var input in inputs)
+            {
+                if (input != "1" && input != "0")
+                {
+                    MessageBox.Show("Все введенные значения должны быть либо 1, либо 0.");
+                    return;
+                }
+            }
+
+
             if (currentElement is Register register)
             {
                 try
