@@ -24,9 +24,9 @@
                 <TextBox FontSize="22"  Margin="0,0,0,20" x:Name="InputValues" Width="200" Height="35"/>
 
 
-                <Button FontSize="22"  Click="SetInputsButton_Click"  Margin="0,0,0,20"   x:Name="SetInputsButton" Content="Set Inputs" Height="63" Width="624"/>
-                <Button FontSize="22" Click="ComputeButton_Click"  x:Name="ComputeButton"  Margin="0,0,0,20"  Content="Get Output"  Height="61" Width="624"/>
-                <Button FontSize="22"  x:Name="InvertButton" Click="InvertButton_Click" Content="Invert Result"  Height="63" Width="624"/>
+                <Button FontSize="22"  Click="SetInputsButton_Click"  Margin="0,0,0,20"   x:Name="SetInputsButton" Content="Set inputs values " Height="63" Width="624"/>
+                <Button FontSize="22" Click="ComputeButton_Click"  x:Name="ComputeButton"  Margin="0,0,0,20"  Content="Get output values"  Height="61" Width="624"/>
+                <Button FontSize="22"  x:Name="InvertButton" Click="InvertButton_Click" Content="Invert"  Height="63" Width="624"/>
 
                 <StackPanel x:Name="ShiftPanel" Visibility="Collapsed">
                     <Label FontSize="22"  Content="Shift count:"  />
@@ -55,8 +55,8 @@
 
 
 
-                <Button FontSize="22"  Margin="0,0,0,20" x:Name="SaveButton" Content="Save State" Height="40" Click="SaveButton_Click_1"/>
-                <Button   FontSize="22" x:Name="LoadButton" Content="Load State"  Height="62" Width="624" Click="LoadButton_Click"/>
+                <Button FontSize="22"  Margin="0,0,0,20" x:Name="SaveButton" Content="Save data into file" Height="40" Click="SaveButton_Click_1"/>
+                <Button   FontSize="22" x:Name="LoadButton" Content="Load data from file"  Height="62" Width="624" Click="LoadButton_Click"/>
             </StackPanel>
             <Image HorizontalAlignment="Left" Height="591" Margin="809,101,0,0" VerticalAlignment="Top" Width="937" Source="/Снимок экрана 2024-11-27 110624.png"/>
         </Grid>
