@@ -62,7 +62,7 @@ public class Combinational : Element
         return result;
     }
 
- 
+
 
 
 
@@ -88,7 +88,6 @@ public class Combinational : Element
     }
 
 
-
     public override void FromBinaryString(string dataString)
     {
         var data = Convert.FromBase64String(dataString);
@@ -104,8 +103,8 @@ public class Combinational : Element
             }
         }
     }
-
-
+ 
+   
 
     public override bool Equals(object obj)
     {
