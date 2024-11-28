@@ -162,11 +162,22 @@ namespace lab9Itog
 
         private void ComputeButton_Click(object sender, RoutedEventArgs e)
         {
+            if (currentElement == null)
+            {
+                MessageBox.Show("Выберите элемент");
+                return;
+            }
             OutputResult.Text = $"Output: {currentElement.ComputeOutput()}";
         }
 
         private void InvertButton_Click(object sender, RoutedEventArgs e)
         {
+
+            if (currentElement == null)
+            {
+                MessageBox.Show("Выберите элемент");
+                return;
+            }
             currentElement.Invert();
             OutputResult.Text = $"Output (Inverted): {currentElement.ComputeOutput()}";
             UpdateTriggersInfo();
@@ -326,6 +337,14 @@ namespace lab9Itog
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
+
+            if (currentElement == null)
+            {
+                MessageBox.Show("Выберите элемент");
+                return;
+            }
+
+
             string fileName = $"{currentElement.GetType().Name}_save";
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
 

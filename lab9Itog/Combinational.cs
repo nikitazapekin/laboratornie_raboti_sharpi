@@ -15,7 +15,8 @@ public class Combinational : Element
     {
         inputs = new int[inputCount];
     }
-     
+ 
+
     public void SetInputs(int[] inputValues)
     {
         if (inputValues.Length != InputCount)
@@ -105,4 +106,22 @@ public class Combinational : Element
     }
 
 
+
+    public override bool Equals(object obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+            return false;
+
+        var other = (Combinational)obj;
+
+     
+        if (Name != other.Name || InputCount != other.InputCount)
+            return false;
+
+       
+        return true;
     }
+
+
+
+}

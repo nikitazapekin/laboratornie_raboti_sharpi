@@ -191,7 +191,20 @@ public class Register : Element, IShiftable
 
 
 
+    public override bool Equals(object obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+            return false;
 
+        var other = (Combinational)obj;
+
+
+        if (Name != other.Name || InputCount != other.InputCount)
+            return false;
+
+
+        return true;
+    }
 
 
 }

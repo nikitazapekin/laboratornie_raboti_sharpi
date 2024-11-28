@@ -20,12 +20,12 @@
                 </ComboBox>
 
 
-                <TextBlock FontSize="22"  Text="Input Values:"   Height="42" Width="624"/>
-                <TextBox FontSize="22" x:Name="InputValues" Width="200" Height="35"/>
+                <TextBlock FontSize="22"  Margin="0,0,0,20"  Text="Input Values:"   Height="42" Width="624"/>
+                <TextBox FontSize="22"  Margin="0,0,0,20" x:Name="InputValues" Width="200" Height="35"/>
 
 
-                <Button FontSize="22"  Click="SetInputsButton_Click"  x:Name="SetInputsButton" Content="Set Inputs" Height="63" Width="624"/>
-                <Button FontSize="22" Click="ComputeButton_Click"  x:Name="ComputeButton" Content="Get Output"  Height="61" Width="624"/>
+                <Button FontSize="22"  Click="SetInputsButton_Click"  Margin="0,0,0,20"   x:Name="SetInputsButton" Content="Set Inputs" Height="63" Width="624"/>
+                <Button FontSize="22" Click="ComputeButton_Click"  x:Name="ComputeButton"  Margin="0,0,0,20"  Content="Get Output"  Height="61" Width="624"/>
                 <Button FontSize="22"  x:Name="InvertButton" Click="InvertButton_Click" Content="Invert Result"  Height="63" Width="624"/>
 
                 <StackPanel x:Name="ShiftPanel" Visibility="Collapsed">
@@ -34,10 +34,10 @@
                     <Button Click="ShiftButton_Click"  FontSize="22" x:Name="ShiftButton" Content="Shift Register"   Width="150" Height="40"/>
                 </StackPanel>
 
- 
 
-                <TextBlock FontSize="22"  x:Name="setInputsValues" Text="Inputs: "  Height="44" Width="624"/>
-                <TextBlock FontSize="22"  x:Name="OutputResult" Text="Output: "  Height="40" Width="624"/>
+
+                <TextBlock FontSize="22"  Margin="0,0,0,20"  x:Name="setInputsValues" Text="Inputs: "  Height="44" Width="624"/>
+                <TextBlock FontSize="22"  Margin="0,0,0,20"  x:Name="OutputResult" Text="Output: "  Height="40" Width="624"/>
 
 
                 <TextBlock Visibility="Collapsed" FontSize="22" x:Name="OutputAllTriggersInRegister" Text="Triggers: "  Height="44" Width="624"/>
@@ -52,10 +52,10 @@
 
                     <Button FontSize="22" x:Name="SetTriggerButton" Content="Set Trigger" Click="SetTriggerButton_Click" Width="150" Height="40" />
                 </StackPanel>
-                
-                
 
-                <Button FontSize="22" x:Name="SaveButton" Content="Save State" Height="40" Click="SaveButton_Click_1"/>
+
+
+                <Button FontSize="22"  Margin="0,0,0,20" x:Name="SaveButton" Content="Save State" Height="40" Click="SaveButton_Click_1"/>
                 <Button   FontSize="22" x:Name="LoadButton" Content="Load State"  Height="62" Width="624" Click="LoadButton_Click"/>
             </StackPanel>
             <Image HorizontalAlignment="Left" Height="591" Margin="809,101,0,0" VerticalAlignment="Top" Width="937" Source="/Снимок экрана 2024-11-27 110624.png"/>

@@ -98,12 +98,17 @@ public class Memory : Element
     {
         if (obj is Memory other)
         {
-            if (this.directOutput != other.directOutput) return false;
-      
+            if (this.directOutput != other.directOutput)
+            {
+                return false;
+            }
 
             for (int i = 0; i < inputValues.Length; i++)
             {
-                if (this.inputValues[i] != other.inputValues[i]) return false;
+                if (this.inputValues[i] != other.inputValues[i])
+                {
+                    return false;
+                }
             }
 
             return true;
