@@ -151,33 +151,7 @@ public class Memory : Element
     }
 
 
-
-    /*
-    public void SaveToFile(string fileName)
-    {
-        using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
-        {
-         
-            writer.Write(InputCount);
-
-            
-            for (int i = 0; i < inputValues.Length; i++)
-            {
-                writer.Write(inputValues[i]);
-            }
-
-          
-            writer.Write(directOutput);
-            writer.Write(invertedOutput);
-
-          
-            writer.Write(setInput);
-            writer.Write(resetInput);
-        }
-    }
-    */
-
-
+ 
 
 
     public override string ToBinaryString()

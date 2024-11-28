@@ -337,6 +337,105 @@ namespace lab9Itog
             }
         }
 
+
+
+
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentElement is Combinational combinational)
+            {
+                string fileName = $"{currentElement.GetType().Name}_save";
+
+                try
+                {
+                    // Полный путь к файлу
+                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+
+                    // Проверяем, существует ли файл
+                    if (!File.Exists(filePath))
+                    {
+                        MessageBox.Show("Файл сохранения не найден.");
+                        return;
+                    }
+
+                    // Чтение бинарного формата из файла
+                    string binaryData = File.ReadAllText(filePath);
+
+                    // Установка значений в элемент
+                    combinational.FromBinaryString(binaryData);
+
+                    // Обновление отображения входных данных
+                    UpdateTriggersInfo();
+                    MessageBox.Show("Данные успешно загружены.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Загрузка доступна только для Combinational.");
+            }
+        }
+
+
+
+        /*
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentElement is Combinational combinational)
+            {
+                try
+                {
+                    // Открываем диалог для выбора файла
+                    var openFileDialog = new Microsoft.Win32.OpenFileDialog
+                    {
+                        Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                        Title = "Выберите файл с входными данными"
+                    };
+
+                    if (openFileDialog.ShowDialog() == true)
+                    {
+                        // Читаем содержимое файла
+                        var fileContent = File.ReadAllText(openFileDialog.FileName);
+
+                        // Преобразуем содержимое файла в массив чисел
+                        var inputValues = fileContent
+                            .Split(new[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries)
+                            .Select(int.Parse)
+                            .ToArray();
+
+                        // Проверяем, что количество входных данных совпадает с ожидаемым
+                        if (inputValues.Length != combinational.GetInputs().Length)
+                        {
+                            MessageBox.Show("Количество данных в файле не совпадает с количеством входов элемента.");
+                            return;
+                        }
+
+                        // Устанавливаем входные данные
+                        combinational.SetInputs(inputValues);
+                        MessageBox.Show("Входные значения успешно загружены из файла.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при загрузке входных данных: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Загрузка данных доступна только для Combinational.");
+            }
+
+            // Обновляем отображение данных
+            UpdateTriggersInfo();
+        }
+        */
+
+
+
+
     }
 }
  

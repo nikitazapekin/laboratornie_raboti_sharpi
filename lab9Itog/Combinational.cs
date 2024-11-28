@@ -85,4 +85,24 @@ public class Combinational : Element
             return Convert.ToBase64String(ms.ToArray());
         }
     }
-}
+
+
+
+    public override void FromBinaryString(string dataString)
+    {
+        var data = Convert.FromBase64String(dataString);
+        using (var ms = new MemoryStream(data))
+        using (var reader = new BinaryReader(ms))
+        {
+
+
+            int inputValuesLength = reader.ReadInt32();
+            for (int i = 0; i < inputValuesLength; i++)
+            {
+                inputs[i] = reader.ReadInt32();
+            }
+        }
+    }
+
+
+    }

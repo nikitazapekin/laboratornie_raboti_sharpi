@@ -62,16 +62,7 @@ using System;
 
 
 
-    /*  public virtual string ToBinaryString()
-      {
-          throw new NotImplementedException();
-      }
-      public virtual void FromBinaryString(string dataString)
-      {
-          throw new NotImplementedException();
-      }
-    */
-
+ 
 
     public virtual string ToBinaryString()
     {
