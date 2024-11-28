@@ -273,14 +273,33 @@ namespace lab9Itog
                 else if (currentElement is Memory memory)
                 {
 
-                    using (var writer = new StreamWriter(fileName))
-                    {
+                    /*   using (var writer = new StreamWriter(fileName))
+                       {
 
-                        writer.WriteLine(registerElement.ToBinaryString());
+                           writer.WriteLine(registerElement.ToBinaryString());
+                       }
+
+                       MessageBox.Show($"Память сохранена в файл: {fileName}");
+                    */
+                 
+                        try
+                        {
+                          //  string fileNamee = "MemoryData.bin";
+                            memory.SaveToBinary(fileName);
+                            MessageBox.Show("Данные успешно сохранены в бинарный файл.");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка при сохранении: {ex.Message}");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Только Memory поддерживает бинарное сохранение.");
                     }
 
-                    MessageBox.Show($"Память сохранена в файл: {fileName}");
-                }
+
+ 
             }
             catch (Exception ex)
             {
@@ -339,99 +358,63 @@ namespace lab9Itog
 
 
 
-
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            if (currentElement is Combinational combinational)
+            string fileName = $"{currentElement.GetType().Name}_save";
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+
+            if (!File.Exists(filePath))
             {
-                string fileName = $"{currentElement.GetType().Name}_save";
+                MessageBox.Show("Файл сохранения не найден.");
+                return;
+            }
 
-                try
+            try
+            {
+                string binaryData = File.ReadAllText(filePath);
+
+                if (currentElement is Combinational combinational)
                 {
-                    // Полный путь к файлу
-                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-
-                    // Проверяем, существует ли файл
-                    if (!File.Exists(filePath))
-                    {
-                        MessageBox.Show("Файл сохранения не найден.");
-                        return;
-                    }
-
-                    // Чтение бинарного формата из файла
-                    string binaryData = File.ReadAllText(filePath);
-
-                    // Установка значений в элемент
                     combinational.FromBinaryString(binaryData);
-
-                    // Обновление отображения входных данных
                     UpdateTriggersInfo();
-                    MessageBox.Show("Данные успешно загружены.");
+                    MessageBox.Show("Данные для Combinational успешно загружены.");
                 }
-                catch (Exception ex)
+                else if (currentElement is Memory memory)
                 {
-                    MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Загрузка доступна только для Combinational.");
-            }
-        }
-
-
-
-        /*
-        private void LoadButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (currentElement is Combinational combinational)
-            {
-                try
-                {
-                    // Открываем диалог для выбора файла
-                    var openFileDialog = new Microsoft.Win32.OpenFileDialog
+                    //   memory.FromBinaryString(binaryData);
+                    //   UpdateTriggersInfo();
+                    //   MessageBox.Show("Данные для Memory успешно загружены.");
+                    try
                     {
-                        Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
-                        Title = "Выберите файл с входными данными"
-                    };
-
-                    if (openFileDialog.ShowDialog() == true)
-                    {
-                        // Читаем содержимое файла
-                        var fileContent = File.ReadAllText(openFileDialog.FileName);
-
-                        // Преобразуем содержимое файла в массив чисел
-                        var inputValues = fileContent
-                            .Split(new[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries)
-                            .Select(int.Parse)
-                            .ToArray();
-
-                        // Проверяем, что количество входных данных совпадает с ожидаемым
-                        if (inputValues.Length != combinational.GetInputs().Length)
-                        {
-                            MessageBox.Show("Количество данных в файле не совпадает с количеством входов элемента.");
-                            return;
-                        }
-
-                        // Устанавливаем входные данные
-                        combinational.SetInputs(inputValues);
-                        MessageBox.Show("Входные значения успешно загружены из файла.");
+                     //   string fileNamee = "MemoryData.bin";
+                        memory.LoadFromBinary(fileName);
+                        UpdateTriggersInfo();
+                        MessageBox.Show("Данные успешно загружены из бинарного файла.");
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка при загрузке входных данных: {ex.Message}");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Загрузка данных доступна только для Combinational.");
-            }
+                    catch (FileNotFoundException)
+                    {
+                        MessageBox.Show("Файл не найден. Сначала сохраните данные.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при загрузке: {ex.Message}");
+                   }
+                
+       
 
-            // Обновляем отображение данных
-            UpdateTriggersInfo();
+
+            }
+                else
+                {
+                    MessageBox.Show("Неизвестный тип элемента.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
+            }
         }
-        */
+ 
 
 
 
