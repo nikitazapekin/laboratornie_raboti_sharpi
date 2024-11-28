@@ -1,7 +1,7 @@
 ﻿using lab9Itog.Interfaces;
 using System;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+
 using System.Windows;
 
 public class Register : Element, IShiftable
@@ -150,11 +150,11 @@ public class Register : Element, IShiftable
             using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             using (var reader = new BinaryReader(fs))
             {
-                // Загружаем двумерный массив
+            
                 for (int i = 0; i < inputs.Length; i++)
                 {
-                    inputs[i][0] = reader.ReadInt32();  // Читаем первое число пары
-                    inputs[i][1] = reader.ReadInt32();  // Читаем второе число пары
+                    inputs[i][0] = reader.ReadInt32(); 
+                    inputs[i][1] = reader.ReadInt32(); 
                 }
             }
 
@@ -174,11 +174,11 @@ public class Register : Element, IShiftable
             using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
             using (var writer = new BinaryWriter(fs))
             {
-                // Сохраняем двумерный массив длиной 8 элементов, по 2 числа в каждом
+              
                 for (int i = 0; i < inputs.Length; i++)
                 {
-                    writer.Write(inputs[i][0]);  // Сохраняем первое число пары
-                    writer.Write(inputs[i][1]);  // Сохраняем второе число пары
+                    writer.Write(inputs[i][0]);   
+                    writer.Write(inputs[i][1]);  
                 }
             }
             MessageBox.Show($"Данные успешно сохранены в файл: {fileName}");

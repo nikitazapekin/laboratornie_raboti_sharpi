@@ -150,50 +150,6 @@ public class Memory : Element
         }
     }
 
-    /*
-
-    public override string ToBinaryString()
-    {
-        using (var ms = new MemoryStream())
-        using (var writer = new BinaryWriter(ms))
-        {
-            writer.Write(inputValues.Length); // Записываем длину массива
-            foreach (var value in inputValues)
-            {
-                writer.Write(value); // Записываем каждый элемент массива
-            }
-
-            writer.Write(directOutput); // Записываем прямой вывод
-            writer.Write(invertedOutput); // Записываем инверсный вывод
-
-            return Convert.ToBase64String(ms.ToArray()); // Конвертируем в строку Base64
-        }
-    }
-
-    public override void FromBinaryString(string dataString)
-    {
-        var data = Convert.FromBase64String(dataString);
-        using (var ms = new MemoryStream(data))
-        using (var reader = new BinaryReader(ms))
-        {
-            int inputValuesLength = reader.ReadInt32();
-            inputValues = new int[inputValuesLength];
-
-            for (int i = 0; i < inputValuesLength; i++)
-            {
-                inputValues[i] = reader.ReadInt32();
-            }
-
-            directOutput = reader.ReadInt32();
-            invertedOutput = reader.ReadInt32();
-
-        //    ValidateInputValues(); // Проверяем значения
-        }
-    }
-
-    */
-
-
     public void SaveToBinary(string fileName)
     {
         using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
