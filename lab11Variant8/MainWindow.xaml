@@ -9,12 +9,14 @@
         Height="1250" Width="1800"
         >
     <Grid>
-        <Button FontSize="22" Name="btnLoad" Content="Загрузить текст" Click="btnLoad_Click" HorizontalAlignment="Left" Margin="55,275,0,0" VerticalAlignment="Top" Height="120" Width="239"/>
-        <TextBox  IsReadOnly="True" Name="txtQuotes"  FontSize="22" HorizontalAlignment="Left" Margin="394,275,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="506" Height="342"/>
-        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="394,213,0,0" TextWrapping="Wrap" Text="Чтение файла" VerticalAlignment="Top" Width="380"/>
-        <TextBox  IsReadOnly="True" Name="task"  FontSize="22" HorizontalAlignment="Left" Margin="394,743,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="506" Height="406"/>
-        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="394,689,0,0" TextWrapping="Wrap" Text="Операция вторичного потока" VerticalAlignment="Top" Width="380"/>
-        <Button Content="Прервать вывод" Click="cancel_Click" FontSize="22" HorizontalAlignment="Left" Margin="56,743,0,0" VerticalAlignment="Top" Height="120" Width="238"/>
+        <Button FontSize="22" Name="btnLoad" Content="Загрузить текст" Click="btnLoad_Click" HorizontalAlignment="Left" Margin="30,149,0,0" VerticalAlignment="Top" Height="120" Width="240"/>
+        <TextBox  IsReadOnly="True" Name="txtQuotes"  FontSize="22" HorizontalAlignment="Left" Margin="370,91,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="506" Height="342"/>
+        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="370,48,0,0" TextWrapping="Wrap" Text="Чтение файла" VerticalAlignment="Top" Width="380"/>
+        <TextBox  IsReadOnly="True" Name="task"  FontSize="22" HorizontalAlignment="Left" Margin="370,502,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="506" Height="406"/>
+        <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="370,454,0,0" TextWrapping="Wrap" Text="Операция вторичного потока" VerticalAlignment="Top" Width="380"/>
+        <Button Content="Прервать вывод" Click="cancel_Click" FontSize="22" HorizontalAlignment="Left" Margin="32,617,0,0" VerticalAlignment="Top" Height="120" Width="238"/>
+        <Image HorizontalAlignment="Left" Height="448" Margin="918,484,0,0" VerticalAlignment="Top" Width="854" Source="/Снимок экрана 2024-12-03 194112.png"/>
+        <Image HorizontalAlignment="Left" Height="180" Margin="918,127,0,0" VerticalAlignment="Top" Width="890" Source="/Снимок экрана 2024-12-03 194316.png"/>
 
     </Grid>
 </Window>

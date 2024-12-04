@@ -31,7 +31,7 @@ namespace lab11Variant8
             {
                 string filePath = openFileDialog.FileName;
 
-                txtQuotes.Text = "Чтение и обработка текста...";
+       
                 StartBackgroundTask();
 
                 string text = await File.ReadAllTextAsync(filePath);
@@ -65,9 +65,12 @@ namespace lab11Variant8
                 if (text[i] == '"')
                 {
                     int end = text.IndexOf('"', i + 1);
-                    if (end == -1) break;
+                    if (end == -1)
+                    {
+                        break;
+                    }
 
-                    result += text.Substring(i + 1, end - i - 1) + Environment.NewLine;
+                    result += text.Substring(i + 1, end - i - 1)+" "; 
                     i = end;
                 }
             }
@@ -82,7 +85,9 @@ namespace lab11Variant8
             while ((start = text.IndexOf('"', start)) != -1)
             {
                 int end = text.IndexOf('"', start + 1);
-                if (end == -1) break;
+                if (end == -1) {
+                    break;
+                        };
 
                 result.AppendLine(text.Substring(start + 1, end - start - 1));
                 start = end + 1;
@@ -106,22 +111,27 @@ namespace lab11Variant8
                 if (IsPrime(i))
                 {
                     Dispatcher.Invoke(() =>
-                    {
+                   {
                         task.Text += $"Простое число: {i}\n";
                     });
-                    Thread.Sleep(100);  
+                    Thread.Sleep(400);  
                 }
             }
         }
 
         private bool IsPrime(int number)
         {
-            if (number < 2) return false;
+            if (number < 2) {
+                return false;
+                    }
 
             for (int i = 2; i <= Math.Sqrt(number); i++)
             {
                 if (number % i == 0)
+                {
+
                     return false;
+                }
             }
 
             return true;
