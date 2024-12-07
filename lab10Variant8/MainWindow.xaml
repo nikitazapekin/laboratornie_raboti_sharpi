@@ -16,28 +16,31 @@
         </Menu>
 
         <!-- Прокручиваемая область -->
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,40,300,0">
-            <Canvas Background="LightGray" />
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,40,0,0">
+            <Canvas x:Name="MainCanvas" Background="LightGray" />
         </ScrollViewer>
 
-        <!-- Панель редактирования -->
-        <StackPanel x:Name="EditPanel" Width="300" Background="LightGray" 
-                    Visibility="Collapsed" HorizontalAlignment="Right" Margin="0,40,0,0">
-            <TextBlock FontSize="18" FontWeight="Bold" Margin="10">Параметры</TextBlock>
-            <StackPanel x:Name="GraphEditor" Visibility="Collapsed">
-                <TextBlock Text="Выбор цвета:" Margin="10" />
-                <TextBlock Text="Масштабирование (%):" Margin="10" />
-                <TextBox x:Name="GraphScaleTextBox" Margin="10" />
+        <!-- Обертка панели редактирования -->
+        <Canvas>
+            <StackPanel x:Name="EditPanel" Width="300" Background="LightGray" 
+                        Visibility="Collapsed" Canvas.Top="50" Canvas.Left="50"
+                        MouseDown="EditPanel_MouseDown" MouseMove="EditPanel_MouseMove" MouseUp="EditPanel_MouseUp">
+                <TextBlock FontSize="18" FontWeight="Bold" Margin="10">Параметры</TextBlock>
+                <StackPanel x:Name="GraphEditor" Visibility="Collapsed">
+                    <TextBlock Text="Выбор цвета:" Margin="10" />
+                    <TextBlock Text="Масштабирование (%):" Margin="10" />
+                    <TextBox x:Name="GraphScaleTextBox" Margin="10" />
+                </StackPanel>
+                <StackPanel x:Name="TextEditor" Visibility="Collapsed">
+                    <TextBlock Text="Выбор цвета:" Margin="10" />
+                    <TextBlock Text="Размер шрифта:" Margin="10" />
+                    <TextBox x:Name="FontSizeTextBox" Margin="10" />
+                    <TextBlock Text="Шрифт:" Margin="10" />
+                    <ComboBox x:Name="FontFamilyComboBox" Margin="10" />
+                    <TextBlock Text="Начертание:" Margin="10" />
+                    <ComboBox x:Name="FontWeightComboBox" Margin="10" />
+                </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="TextEditor" Visibility="Collapsed">
-                <TextBlock Text="Выбор цвета:" Margin="10" />
-                <TextBlock Text="Размер шрифта:" Margin="10" />
-                <TextBox x:Name="FontSizeTextBox" Margin="10" />
-                <TextBlock Text="Шрифт:" Margin="10" />
-                <ComboBox x:Name="FontFamilyComboBox" Margin="10" />
-                <TextBlock Text="Начертание:" Margin="10" />
-                <ComboBox x:Name="FontWeightComboBox" Margin="10" />
-            </StackPanel>
-        </StackPanel>
+        </Canvas>
     </Grid>
 </Window>
