@@ -3,23 +3,41 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:lab10Variant8"
         mc:Ignorable="d"
         Title="MainWindow" Height="1250" Width="1800">
     <Grid>
-       
-        <Menu VerticalAlignment="Top"  Background="LightGray" Panel.ZIndex="2">
+        <!-- Основное меню -->
+        <Menu VerticalAlignment="Top" Background="LightGray" Panel.ZIndex="2">
             <MenuItem FontSize="22" Header="Файл">
-                <MenuItem FontSize="22" Header="Считать данные с файла" />
                 <MenuItem FontSize="22" Header="Сохранить" />
             </MenuItem>
+            <MenuItem FontSize="22" Header="Редактировать график" Click="EditGraphMenuItem_Click" />
+            <MenuItem FontSize="22" Header="Редактировать текст" Click="EditTextMenuItem_Click" />
         </Menu>
 
-     
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
-            <Canvas    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                       Background="LightGray" />
+        <!-- Прокручиваемая область -->
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,40,300,0">
+            <Canvas Background="LightGray" />
         </ScrollViewer>
+
+        <!-- Панель редактирования -->
+        <StackPanel x:Name="EditPanel" Width="300" Background="LightGray" 
+                    Visibility="Collapsed" HorizontalAlignment="Right" Margin="0,40,0,0">
+            <TextBlock FontSize="18" FontWeight="Bold" Margin="10">Параметры</TextBlock>
+            <StackPanel x:Name="GraphEditor" Visibility="Collapsed">
+                <TextBlock Text="Выбор цвета:" Margin="10" />
+                <TextBlock Text="Масштабирование (%):" Margin="10" />
+                <TextBox x:Name="GraphScaleTextBox" Margin="10" />
+            </StackPanel>
+            <StackPanel x:Name="TextEditor" Visibility="Collapsed">
+                <TextBlock Text="Выбор цвета:" Margin="10" />
+                <TextBlock Text="Размер шрифта:" Margin="10" />
+                <TextBox x:Name="FontSizeTextBox" Margin="10" />
+                <TextBlock Text="Шрифт:" Margin="10" />
+                <ComboBox x:Name="FontFamilyComboBox" Margin="10" />
+                <TextBlock Text="Начертание:" Margin="10" />
+                <ComboBox x:Name="FontWeightComboBox" Margin="10" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

@@ -1,28 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
+﻿using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace lab10Variant8
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            // Заполнение значений для выбора шрифта
+            FontFamilyComboBox.ItemsSource = Fonts.SystemFontFamilies;
+            FontWeightComboBox.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold, FontWeights.Bold };
+        }
+
+        private void EditGraphMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            EditPanel.Visibility = Visibility.Visible;
+            GraphEditor.Visibility = Visibility.Visible;
+            TextEditor.Visibility = Visibility.Collapsed;
+        }
+
+        private void EditTextMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            EditPanel.Visibility = Visibility.Visible;
+            GraphEditor.Visibility = Visibility.Collapsed;
+            TextEditor.Visibility = Visibility.Visible;
         }
     }
 }

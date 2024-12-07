@@ -1,7 +1,6 @@
 C:\Users\wotbl\source\repos\lab10Variant8\lab10Variant8\obj\Debug\net7.0-windows\MainWindow.g.cs
 C:\Users\wotbl\source\repos\lab10Variant8\lab10Variant8\obj\Debug\net7.0-windows\App.g.cs
 C:\Users\wotbl\source\repos\lab10Variant8\lab10Variant8\obj\Debug\net7.0-windows\lab10Variant8_MarkupCompile.cache
-C:\Users\wotbl\source\repos\lab10Variant8\lab10Variant8\obj\Debug\net7.0-windows\lab10Variant8_MarkupCompile.lref
 C:\Users\wotbl\source\repos\lab10Variant8\lab10Variant8\bin\Debug\net7.0-windows\lab10Variant8.exe
 C:\Users\wotbl\source\repos\lab10Variant8\lab10Variant8\bin\Debug\net7.0-windows\lab10Variant8.deps.json
 C:\Users\wotbl\source\repos\lab10Variant8\lab10Variant8\bin\Debug\net7.0-windows\lab10Variant8.runtimeconfig.json
