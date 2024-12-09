@@ -1,42 +1,44 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Shapes;
-using System;
 
 namespace lab10Variant8
 {
     public partial class MainWindow : Window
     {
-        private bool isDragging;
-        private Point startPoint;
+        private bool isDraggingPanel = false;
+        private Point panelStartPoint;
 
+        private bool isDraggingGraph = false;
+        private Point graphStartPoint;
+        private Polyline selectedGraph;
+        private TranslateTransform graphTransform = new TranslateTransform();
 
         private const double c = 0.5; // Константа для лемнискаты
         private double scale = 100;  // Масштабирование в процентах
         private Brush lineColor = Brushes.Blue; // Цвет линии
         private double lineWidth = 2; // Ширина линии
 
-
         public MainWindow()
         {
             InitializeComponent();
 
-        
             FontFamilyComboBox.ItemsSource = Fonts.SystemFontFamilies;
             FontWeightComboBox.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold };
         }
-        /*
+
         private void EditGraphMenuItem_Click(object sender, RoutedEventArgs e)
         {
             EditPanel.Visibility = Visibility.Visible;
             GraphEditor.Visibility = Visibility.Visible;
             TextEditor.Visibility = Visibility.Collapsed;
+
+            DrawBernoulliLemniscate();
         }
-        */
+
         private void EditTextMenuItem_Click(object sender, RoutedEventArgs e)
         {
             EditPanel.Visibility = Visibility.Visible;
@@ -48,45 +50,38 @@ namespace lab10Variant8
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                isDragging = true;
-                startPoint = e.GetPosition(this);  
+                isDraggingPanel = true;
+                panelStartPoint = e.GetPosition(this);
                 EditPanel.CaptureMouse();
             }
         }
 
         private void EditPanel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isDragging)
+            if (isDraggingPanel)
             {
                 Point currentPoint = e.GetPosition(this);
-                double offsetX = currentPoint.X - startPoint.X;
-                double offsetY = currentPoint.Y - startPoint.Y;
+                double offsetX = currentPoint.X - panelStartPoint.X;
+                double offsetY = currentPoint.Y - panelStartPoint.Y;
 
-              
                 double currentLeft = Canvas.GetLeft(EditPanel);
                 double currentTop = Canvas.GetTop(EditPanel);
 
-            
                 Canvas.SetLeft(EditPanel, currentLeft + offsetX);
                 Canvas.SetTop(EditPanel, currentTop + offsetY);
 
-               
-                startPoint = currentPoint;
+                panelStartPoint = currentPoint;
             }
         }
 
         private void EditPanel_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (isDragging)
+            if (isDraggingPanel)
             {
-                isDragging = false;
+                isDraggingPanel = false;
                 EditPanel.ReleaseMouseCapture();
             }
         }
-
-
-
-
 
         private void DrawBernoulliLemniscate()
         {
@@ -100,17 +95,17 @@ namespace lab10Variant8
             Polyline lemniscate = new Polyline
             {
                 Stroke = lineColor,
-                StrokeThickness = lineWidth
+                StrokeThickness = lineWidth,
+                RenderTransform = graphTransform,
+                Cursor = Cursors.SizeAll
             };
 
-            double maxRadius = Math.Sqrt(2) * c * scale / 100; // Учитываем масштаб
             int numPoints = 1000;
-
             for (int i = 0; i <= numPoints; i++)
             {
                 double phi = 2 * Math.PI * i / numPoints;
                 double cos2phi = Math.Cos(2 * phi);
-                if (cos2phi < 0) continue; // Исключаем недопустимые значения
+                if (cos2phi < 0) continue;
 
                 double radius = Math.Sqrt(2 * c * c * cos2phi);
                 double x = radius * Math.Cos(phi) * scale + centerX;
@@ -119,7 +114,48 @@ namespace lab10Variant8
                 lemniscate.Points.Add(new Point(x, y));
             }
 
+            lemniscate.MouseDown += Graph_MouseDown;
+            lemniscate.MouseMove += Graph_MouseMove;
+            lemniscate.MouseUp += Graph_MouseUp;
+
+            selectedGraph = lemniscate;
             MainCanvas.Children.Add(lemniscate);
+            MainCanvas.Children.Add(BackgroundImage);
+            MainCanvas.Children.Add(GraphTitle);
+        }
+
+        private void Graph_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                isDraggingGraph = true;
+                graphStartPoint = e.GetPosition(MainCanvas);
+                selectedGraph.CaptureMouse();
+            }
+        }
+
+        private void Graph_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDraggingGraph)
+            {
+                Point currentPoint = e.GetPosition(MainCanvas);
+                double offsetX = currentPoint.X - graphStartPoint.X;
+                double offsetY = currentPoint.Y - graphStartPoint.Y;
+
+                graphTransform.X += offsetX;
+                graphTransform.Y += offsetY;
+
+                graphStartPoint = currentPoint;
+            }
+        }
+
+        private void Graph_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (isDraggingGraph)
+            {
+                isDraggingGraph = false;
+                selectedGraph.ReleaseMouseCapture();
+            }
         }
 
         private void GraphScaleTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -130,16 +166,6 @@ namespace lab10Variant8
                 DrawBernoulliLemniscate();
             }
         }
-
-        private void EditGraphMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            EditPanel.Visibility = Visibility.Visible;
-            GraphEditor.Visibility = Visibility.Visible;
-            TextEditor.Visibility = Visibility.Collapsed;
-
-            DrawBernoulliLemniscate();
-        }
-
 
         private void LineColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -163,7 +189,85 @@ namespace lab10Variant8
             }
         }
 
+        private void BuildGraphMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            DrawBernoulliLemniscate();
+        }
+        private void TextColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedColor = (TextColorComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+            GraphTitle.Foreground = selectedColor switch
+            {
+                "Черный" => Brushes.Black,
+                "Синий" => Brushes.Blue,
+                "Красный" => Brushes.Red,
+                _ => Brushes.Black
+            };
+        }
+
+        private void FontSizeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (double.TryParse(FontSizeTextBox.Text, out double newSize))
+            {
+                GraphTitle.FontSize = newSize;
+            }
+        }
+
+        private void GraphTitleTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            GraphTitle.Text = GraphTitleTextBox.Text;
+        }
+
+
+        /*
+        private void AddBackgroundMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog
+            {
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var imageSource = new ImageSourceConverter().ConvertFromString(openFileDialog.FileName) as ImageSource;
+                BackgroundImage.Source = imageSource;
+                BackgroundImage.Visibility = Visibility.Visible;
+            }
+        }
+        */
+
+
+        private void AddBackgroundMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog
+            {
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    var imageSource = new ImageSourceConverter().ConvertFromString(openFileDialog.FileName) as ImageSource;
+                    if (imageSource != null)
+                    {
+                        BackgroundImage.Source = imageSource;
+                        BackgroundImage.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка загрузки изображения.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка: {ex.Message}");
+                }
+            }
+        }
+
 
 
     }
 }
+

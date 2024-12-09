@@ -6,20 +6,34 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1250" Width="1800">
     <Grid>
-   
+
         <Menu VerticalAlignment="Top" Background="LightGray" Panel.ZIndex="2">
             <MenuItem FontSize="22" Header="Файл">
                 <MenuItem FontSize="22" Header="Сохранить" />
             </MenuItem>
             <MenuItem FontSize="22" Header="Редактировать график" Click="EditGraphMenuItem_Click" />
             <MenuItem FontSize="22" Header="Редактировать текст" Click="EditTextMenuItem_Click" />
+            <MenuItem FontSize="22" Header="Построить график"  Click="BuildGraphMenuItem_Click" />
+            <MenuItem FontSize="22" Header="Добавить фон" Click="AddBackgroundMenuItem_Click" />
         </Menu>
- 
+
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
-            <Canvas x:Name="MainCanvas" Background="#F0F0F8" />
+            <Canvas x:Name="MainCanvas" Background="#F0F0F8"
+                    
+            Cursor="SizeAll"
+                    >
+                <Image x:Name="BackgroundImage"  
+                       Stretch="Fill"
+       Canvas.Left="0" Canvas.Top="0"
+       Width="{Binding ActualWidth, ElementName=MainCanvas}"
+       Height="{Binding ActualHeight, ElementName=MainCanvas}"
+                       />
+                <TextBlock  Panel.ZIndex="3" x:Name="GraphTitle"  Canvas.Left="811" FontSize="22" TextWrapping="Wrap" Text="Лемниската Бернулли  p^2 =2c^2*cos(2φ)" Canvas.Top="81"/>
+                <TextBlock  Canvas.Left="1636"  FontSize="22" TextWrapping="Wrap" Canvas.Top="53" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="en-gb" Text="X: 0, Y: 0"/></TextBlock>
+            </Canvas>
         </ScrollViewer>
 
-      
+
         <Canvas>
             <StackPanel x:Name="EditPanel" Width="300" Background="LightGray"  Cursor="Hand"
                         Visibility="Collapsed" Canvas.Top="50" Canvas.Left="50"
@@ -39,13 +53,20 @@
                 </StackPanel>
                 <StackPanel x:Name="TextEditor" Visibility="Collapsed">
                     <TextBlock Text="Выбор цвета:" Margin="10" />
-                  
-                    <TextBlock Text="Размер шрифта:" Margin="10" />
-                    <TextBox x:Name="FontSizeTextBox" Margin="10" />
+                    <ComboBox x:Name="TextColorComboBox" SelectionChanged="TextColorComboBox_SelectionChanged" Margin="10">
+                        <ComboBoxItem Content="Черный" />
+                        <ComboBoxItem Content="Синий" />
+                        <ComboBoxItem Content="Красный" />
+                    </ComboBox>
                     <TextBlock Text="Шрифт:" Margin="10" />
                     <ComboBox x:Name="FontFamilyComboBox" Margin="10" />
+
                     <TextBlock Text="Начертание:" Margin="10" />
                     <ComboBox x:Name="FontWeightComboBox" Margin="10" />
+                    <TextBlock Text="Размер шрифта:" Margin="10" />
+                    <TextBox x:Name="FontSizeTextBox" Margin="10" TextChanged="FontSizeTextBox_TextChanged" />
+                    <TextBlock Text="Текст надписи:" Margin="10" />
+                    <TextBox x:Name="GraphTitleTextBox" Margin="10" TextChanged="GraphTitleTextBox_TextChanged" />
                 </StackPanel>
             </StackPanel>
         </Canvas>
