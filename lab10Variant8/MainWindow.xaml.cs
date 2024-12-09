@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace lab10Variant8
@@ -81,6 +83,22 @@ namespace lab10Variant8
                 isDraggingPanel = false;
                 EditPanel.ReleaseMouseCapture();
             }
+        }
+       
+        public delegate void GraphBuiltEventHandler(object sender, EventArgs e);
+
+        private void BuildGraphButton_Click(object sender, RoutedEventArgs e)
+        {
+            DrawBernoulliLemniscate();
+            OnGraphBuilt();  
+
+        }
+        public event GraphBuiltEventHandler GraphBuilt;
+
+        private void OnGraphBuilt()
+        {
+          
+            GraphBuilt?.Invoke(this, EventArgs.Empty);
         }
 
         private void DrawBernoulliLemniscate()
@@ -268,6 +286,63 @@ namespace lab10Variant8
         }
 
 
+
+        private void SaveToPngMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            SaveCanvasAsPng(MainCanvas);
+        }
+
+        private void SaveCanvasAsPng(Canvas canvas)
+        {
+           
+            RenderTargetBitmap renderTarget = new RenderTargetBitmap(
+                (int)canvas.ActualWidth, (int)canvas.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            renderTarget.Render(canvas);
+
+           
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog
+            {
+                Filter = "PNG Files|*.png",
+                FileName = "Graph.png"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                {
+                    PngBitmapEncoder encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(renderTarget));
+                    encoder.Save(fs);
+                }
+
+                MessageBox.Show("График сохранен как PNG", "Сохранение завершено", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+
+
     }
 }
 
+
+     /*   private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            RenderTargetBitmap renderBitmap = new RenderTargetBitmap((int)GraphCanvas.ActualWidth, (int)GraphCanvas.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            renderBitmap.Render(GraphCanvas);
+
+            PngBitmapEncoder pngEncoder = new PngBitmapEncoder();
+            pngEncoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            saveFileDialog.Filter = "PNG Image|*.png";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                using (var fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                {
+                    pngEncoder.Save(fileStream);
+                }
+            }
+        }
+     */

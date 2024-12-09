@@ -9,7 +9,7 @@
 
         <Menu VerticalAlignment="Top" Background="LightGray" Panel.ZIndex="2">
             <MenuItem FontSize="22" Header="Файл">
-                <MenuItem FontSize="22" Header="Сохранить" />
+                <MenuItem FontSize="22" Header="Сохранить" Click="SaveToPngMenuItem_Click" />
             </MenuItem>
             <MenuItem FontSize="22" Header="Редактировать график" Click="EditGraphMenuItem_Click" />
             <MenuItem FontSize="22" Header="Редактировать текст" Click="EditTextMenuItem_Click" />
@@ -34,6 +34,7 @@
             </Canvas>
         </ScrollViewer>
 
+        <Button x:Name="BuildGraphButton" Content="Построить график" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="40" Click="BuildGraphButton_Click" Margin="34,210,0,0"/>
 
         <Canvas>
             <StackPanel x:Name="EditPanel" Width="300" Background="LightGray"  Cursor="Hand"
