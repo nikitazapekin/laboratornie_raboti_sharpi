@@ -119,8 +119,8 @@ namespace lab10Variant8
             lemniscate.MouseUp += Graph_MouseUp;
 
             selectedGraph = lemniscate;
-            MainCanvas.Children.Add(lemniscate);
             MainCanvas.Children.Add(BackgroundImage);
+            MainCanvas.Children.Add(lemniscate);
             MainCanvas.Children.Add(GraphTitle);
         }
 
@@ -218,23 +218,7 @@ namespace lab10Variant8
             GraphTitle.Text = GraphTitleTextBox.Text;
         }
 
-
-        /*
-        private void AddBackgroundMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog
-            {
-                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp"
-            };
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                var imageSource = new ImageSourceConverter().ConvertFromString(openFileDialog.FileName) as ImageSource;
-                BackgroundImage.Source = imageSource;
-                BackgroundImage.Visibility = Visibility.Visible;
-            }
-        }
-        */
+ 
 
 
         private void AddBackgroundMenuItem_Click(object sender, RoutedEventArgs e)
