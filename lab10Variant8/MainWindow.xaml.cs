@@ -154,6 +154,16 @@ namespace lab10Variant8
             DrawBernoulliLemniscate();
         }
 
+        private void LineWidthTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (double.TryParse(LineWidthTextBox.Text, out double newLineWidth))
+            {
+                lineWidth = newLineWidth;
+                DrawBernoulliLemniscate();
+            }
+        }
+
+
 
     }
 }
