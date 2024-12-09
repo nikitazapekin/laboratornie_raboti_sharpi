@@ -252,6 +252,22 @@ namespace lab10Variant8
 
 
 
+        private void FontFamilyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FontFamilyComboBox.SelectedItem is FontFamily selectedFont)
+            {
+                GraphTitle.FontFamily = selectedFont;
+            }
+        }
+        private void FontWeightComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FontWeightComboBox.SelectedItem is FontWeight selectedWeight)
+            {
+                GraphTitle.FontWeight = selectedWeight;
+            }
+        }
+
+
     }
 }
 

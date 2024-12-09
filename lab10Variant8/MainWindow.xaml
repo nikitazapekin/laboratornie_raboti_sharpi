@@ -60,10 +60,10 @@
                         <ComboBoxItem Content="Красный" />
                     </ComboBox>
                     <TextBlock Text="Шрифт:" Margin="10" />
-                    <ComboBox x:Name="FontFamilyComboBox" Margin="10" />
+                    <ComboBox x:Name="FontFamilyComboBox" Margin="10" SelectionChanged="FontFamilyComboBox_SelectionChanged" />
 
                     <TextBlock Text="Начертание:" Margin="10" />
-                    <ComboBox x:Name="FontWeightComboBox" Margin="10" />
+                    <ComboBox x:Name="FontWeightComboBox" Margin="10"   SelectionChanged="FontWeightComboBox_SelectionChanged"  />
                     <TextBlock Text="Размер шрифта:" Margin="10" />
                     <TextBox x:Name="FontSizeTextBox" Margin="10" TextChanged="FontSizeTextBox_TextChanged" />
                     <TextBlock Text="Текст надписи:" Margin="10" />
