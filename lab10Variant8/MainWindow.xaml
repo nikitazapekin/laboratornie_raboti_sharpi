@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1250" Width="1800">
     <Grid>
-        <!-- Основное меню -->
+   
         <Menu VerticalAlignment="Top" Background="LightGray" Panel.ZIndex="2">
             <MenuItem FontSize="22" Header="Файл">
                 <MenuItem FontSize="22" Header="Сохранить" />
@@ -14,15 +14,14 @@
             <MenuItem FontSize="22" Header="Редактировать график" Click="EditGraphMenuItem_Click" />
             <MenuItem FontSize="22" Header="Редактировать текст" Click="EditTextMenuItem_Click" />
         </Menu>
-
-        <!-- Прокручиваемая область -->
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,40,0,0">
-            <Canvas x:Name="MainCanvas" Background="LightGray" />
+ 
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
+            <Canvas x:Name="MainCanvas" Background="#F0F0F8" />
         </ScrollViewer>
 
-        <!-- Обертка панели редактирования -->
+      
         <Canvas>
-            <StackPanel x:Name="EditPanel" Width="300" Background="LightGray" 
+            <StackPanel x:Name="EditPanel" Width="300" Background="LightGray"  Cursor="Hand"
                         Visibility="Collapsed" Canvas.Top="50" Canvas.Left="50"
                         MouseDown="EditPanel_MouseDown" MouseMove="EditPanel_MouseMove" MouseUp="EditPanel_MouseUp">
                 <TextBlock FontSize="18" FontWeight="Bold" Margin="10">Параметры</TextBlock>
@@ -33,6 +32,11 @@
                 </StackPanel>
                 <StackPanel x:Name="TextEditor" Visibility="Collapsed">
                     <TextBlock Text="Выбор цвета:" Margin="10" />
+                    <ComboBox x:Name="LineColorComboBox" SelectionChanged="LineColorComboBox_SelectionChanged" Margin="10">
+                        <ComboBoxItem Content="Синий" />
+                        <ComboBoxItem Content="Красный" />
+                        <ComboBoxItem Content="Зеленый" />
+                    </ComboBox>
                     <TextBlock Text="Размер шрифта:" Margin="10" />
                     <TextBox x:Name="FontSizeTextBox" Margin="10" />
                     <TextBlock Text="Шрифт:" Margin="10" />
