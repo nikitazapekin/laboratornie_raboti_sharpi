@@ -15,6 +15,9 @@
             <MenuItem FontSize="22" Header="Редактировать текст" Click="EditTextMenuItem_Click" />
             <MenuItem FontSize="22" Header="Построить график"  Click="BuildGraphMenuItem_Click" />
             <MenuItem FontSize="22" Header="Добавить фон" Click="AddBackgroundMenuItem_Click" />
+
+
+            <MenuItem FontSize="22" Header="Выход" Click="ExitMenuItem_Click" HorizontalAlignment="Right"   Margin="820,0,0,0"/>
         </Menu>
 
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
@@ -29,8 +32,14 @@
        Width="{Binding ActualWidth, ElementName=MainCanvas}"
        Height="{Binding ActualHeight, ElementName=MainCanvas}"
                        />
-                <TextBlock  Panel.ZIndex="3" x:Name="GraphTitle"  Canvas.Left="811" FontSize="22" TextWrapping="Wrap" Text="Лемниската Бернулли  p^2 =2c^2*cos(2φ)" Canvas.Top="81"/>
-                <TextBlock  Canvas.Left="1636"  FontSize="22" TextWrapping="Wrap" Canvas.Top="53" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="en-gb" Text="X: 0, Y: 0"/></TextBlock>
+                <TextBlock  Panel.ZIndex="3" x:Name="GraphTitle"  Canvas.Left="620" FontSize="22" TextWrapping="Wrap" Text="Лемниската Бернулли  p^2 =2c^2*cos(2φ)" Canvas.Top="94"/>
+                <TextBlock  Visibility="Hidden"   Canvas.Left="1636"  FontSize="22" TextWrapping="Wrap" Canvas.Top="53" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="en-gb" Text="X: 0, Y: 0"/></TextBlock>
+
+
+                <Polyline x:Name="LemniscateGraph" Stroke="Blue" StrokeThickness="2" RenderTransformOrigin="0.5,0.5">
+                    <!-- Лемниската будет добавлена динамически -->
+                </Polyline>
+
             </Canvas>
         </ScrollViewer>
 

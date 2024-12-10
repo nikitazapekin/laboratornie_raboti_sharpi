@@ -19,10 +19,10 @@ namespace lab10Variant8
         private Polyline selectedGraph;
         private TranslateTransform graphTransform = new TranslateTransform();
 
-        private const double c = 0.5; // Константа для лемнискаты
-        private double scale = 100;  // Масштабирование в процентах
-        private Brush lineColor = Brushes.Blue; // Цвет линии
-        private double lineWidth = 2; // Ширина линии
+        private const double c = 0.5; 
+        private double scale = 100;   
+        private Brush lineColor = Brushes.Blue;  
+        private double lineWidth = 2; 
 
         public MainWindow()
         {
@@ -84,20 +84,21 @@ namespace lab10Variant8
                 EditPanel.ReleaseMouseCapture();
             }
         }
-       
+
         public delegate void GraphBuiltEventHandler(object sender, EventArgs e);
 
         private void BuildGraphButton_Click(object sender, RoutedEventArgs e)
         {
             DrawBernoulliLemniscate();
-            OnGraphBuilt();  
+            OnGraphBuilt();
+            MessageBox.Show("График построен успешно!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
         public event GraphBuiltEventHandler GraphBuilt;
 
         private void OnGraphBuilt()
         {
-          
+
             GraphBuilt?.Invoke(this, EventArgs.Empty);
         }
 
@@ -140,12 +141,21 @@ namespace lab10Variant8
             MainCanvas.Children.Add(BackgroundImage);
             MainCanvas.Children.Add(lemniscate);
             MainCanvas.Children.Add(GraphTitle);
+          
         }
+      
+        private Brush originalGraphColor;  
 
         private void Graph_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
+              
+                originalGraphColor = selectedGraph.Stroke;
+
+              
+                selectedGraph.Stroke = Brushes.Red;
+
                 isDraggingGraph = true;
                 graphStartPoint = e.GetPosition(MainCanvas);
                 selectedGraph.CaptureMouse();
@@ -164,6 +174,9 @@ namespace lab10Variant8
                 graphTransform.Y += offsetY;
 
                 graphStartPoint = currentPoint;
+
+             
+                selectedGraph.Stroke = Brushes.Green; 
             }
         }
 
@@ -171,10 +184,14 @@ namespace lab10Variant8
         {
             if (isDraggingGraph)
             {
+            
+                selectedGraph.Stroke = originalGraphColor;
+
                 isDraggingGraph = false;
                 selectedGraph.ReleaseMouseCapture();
             }
         }
+
 
         private void GraphScaleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -204,6 +221,7 @@ namespace lab10Variant8
             {
                 lineWidth = newLineWidth;
                 DrawBernoulliLemniscate();
+                MessageBox.Show("График построен успешно!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -236,7 +254,7 @@ namespace lab10Variant8
             GraphTitle.Text = GraphTitleTextBox.Text;
         }
 
- 
+
 
 
         private void AddBackgroundMenuItem_Click(object sender, RoutedEventArgs e)
@@ -294,12 +312,12 @@ namespace lab10Variant8
 
         private void SaveCanvasAsPng(Canvas canvas)
         {
-           
+
             RenderTargetBitmap renderTarget = new RenderTargetBitmap(
                 (int)canvas.ActualWidth, (int)canvas.ActualHeight, 96, 96, PixelFormats.Pbgra32);
             renderTarget.Render(canvas);
 
-           
+
             Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog
             {
                 Filter = "PNG Files|*.png",
@@ -323,26 +341,15 @@ namespace lab10Variant8
 
 
 
+
+        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+
+
+
     }
 }
-
-
-     /*   private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            RenderTargetBitmap renderBitmap = new RenderTargetBitmap((int)GraphCanvas.ActualWidth, (int)GraphCanvas.ActualHeight, 96, 96, PixelFormats.Pbgra32);
-            renderBitmap.Render(GraphCanvas);
-
-            PngBitmapEncoder pngEncoder = new PngBitmapEncoder();
-            pngEncoder.Frames.Add(BitmapFrame.Create(renderBitmap));
-
-            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
-            saveFileDialog.Filter = "PNG Image|*.png";
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                using (var fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
-                {
-                    pngEncoder.Save(fileStream);
-                }
-            }
-        }
-     */
+ 
