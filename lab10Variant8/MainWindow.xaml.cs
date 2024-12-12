@@ -34,7 +34,7 @@ namespace lab10Variant8
             FontFamilyComboBox.ItemsSource = Fonts.SystemFontFamilies;
             FontWeightComboBox.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold };
 
-            // Подписываем делегат на событие GraphBuilt
+            
             GraphBuilt += (sender, args) => DrawBernoulliLemniscate();
         }
 
@@ -93,7 +93,7 @@ namespace lab10Variant8
 
         private void BuildGraphButton_Click(object sender, RoutedEventArgs e)
         {
-            OnGraphBuilt(); // Генерация события, которое вызывает DrawBernoulliLemniscate()
+            OnGraphBuilt(); 
             MessageBox.Show("График построен успешно!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -193,6 +193,14 @@ namespace lab10Variant8
                 scale = newScale;
                 DrawBernoulliLemniscate();
             }
+            else
+            {
+                if(GraphScaleTextBox.Text.Length>0)
+                {
+
+                MessageBox.Show("Введите корректное значение!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
 
         private void LineColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -219,7 +227,9 @@ namespace lab10Variant8
 
         private void BuildGraphMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            OnGraphBuilt();
+           
+            DrawBernoulliLemniscate();
+            MessageBox.Show("График построен успешно!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void TextColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -239,6 +249,12 @@ namespace lab10Variant8
             if (double.TryParse(FontSizeTextBox.Text, out double newSize))
             {
                 GraphTitle.FontSize = newSize;
+            } else
+            {
+                if (FontSizeTextBox.Text.Length > 0)
+                {
+                    MessageBox.Show("Введите корректное значение!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
