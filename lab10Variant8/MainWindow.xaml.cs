@@ -120,6 +120,13 @@ namespace lab10Variant8
             };
 
             int numPoints = 1000;
+            double maxX = double.MinValue;
+            double maxY = double.MinValue;
+
+        
+            double minX = double.MaxValue;
+            double minY = double.MaxValue;
+
             for (int i = 0; i <= numPoints; i++)
             {
                 double phi = 2 * Math.PI * i / numPoints;
@@ -129,6 +136,14 @@ namespace lab10Variant8
                 double radius = Math.Sqrt(2 * c * c * cos2phi);
                 double x = radius * Math.Cos(phi) * scale + centerX;
                 double y = -radius * Math.Sin(phi) * scale + centerY;
+
+             
+                maxX = Math.Max(maxX, x);
+                maxY = Math.Max(maxY, y);
+
+               
+                minX = Math.Min(minX, x);
+                minY = Math.Min(minY, y);
 
                 lemniscate.Points.Add(new Point(x, y));
             }
@@ -142,11 +157,15 @@ namespace lab10Variant8
             MainCanvas.Children.Add(lemniscate);
             MainCanvas.Children.Add(GraphTitle);
 
-          //  AddDiagonalPoints();
+     
+          
+
+
+             AddDiagonalPoints(maxX, maxY, minX, minY);
         }
 
-
-        private void AddDiagonalPoints()
+    
+        private void AddDiagonalPoints(double maxX, double maxY, double minX, double minY)
         {
             double canvasWidth = MainCanvas.ActualWidth;
             double canvasHeight = MainCanvas.ActualHeight;
@@ -159,24 +178,22 @@ namespace lab10Variant8
                 Height = 10,
                 Fill = Brushes.Red
             };
-            Canvas.SetLeft(point1, 100);   
-            Canvas.SetTop(point1, 100);   
+            Canvas.SetLeft(point1, maxX + 0);    
+            Canvas.SetTop(point1, maxY + 0);    
             MainCanvas.Children.Add(point1);
 
-          
             Ellipse point2 = new Ellipse
             {
                 Width = 10,
                 Height = 10,
                 Fill = Brushes.Blue
             };
-            //     Canvas.SetLeft(point2, canvasWidth - 100);   
-            //    Canvas.SetTop(point2, canvasHeight - 100);  
-            Canvas.SetLeft(point2,centerX - 100);
-            Canvas.SetTop(point2,centerY - 100);
+            Canvas.SetLeft(point2, minX - 10);   
+            Canvas.SetTop(point2, minY - 10);    
             MainCanvas.Children.Add(point2);
         }
         */
+
 
         private void DrawBernoulliLemniscate()
         {
@@ -199,7 +216,6 @@ namespace lab10Variant8
             double maxX = double.MinValue;
             double maxY = double.MinValue;
 
-            // Initialize minX and minY as maximum possible values
             double minX = double.MaxValue;
             double minY = double.MaxValue;
 
@@ -213,11 +229,9 @@ namespace lab10Variant8
                 double x = radius * Math.Cos(phi) * scale + centerX;
                 double y = -radius * Math.Sin(phi) * scale + centerY;
 
-                // Update maxX and maxY
                 maxX = Math.Max(maxX, x);
                 maxY = Math.Max(maxY, y);
 
-                // Correct the logic for minX and minY
                 minX = Math.Min(minX, x);
                 minY = Math.Min(minY, y);
 
@@ -233,25 +247,24 @@ namespace lab10Variant8
             MainCanvas.Children.Add(lemniscate);
             MainCanvas.Children.Add(GraphTitle);
 
-            // Now pass correct minX and minY values to AddDiagonalPoints
+            // Добавляем точки
             AddDiagonalPoints(maxX, maxY, minX, minY);
         }
 
+
         private void AddDiagonalPoints(double maxX, double maxY, double minX, double minY)
         {
-            double canvasWidth = MainCanvas.ActualWidth;
-            double canvasHeight = MainCanvas.ActualHeight;
-            double centerX = canvasWidth / 2;
-            double centerY = canvasHeight / 2;
-
             Ellipse point1 = new Ellipse
             {
                 Width = 10,
                 Height = 10,
                 Fill = Brushes.Red
             };
-            Canvas.SetLeft(point1, maxX + 0);   // Adjust the position of the point
-            Canvas.SetTop(point1, maxY + 0);    // Adjust the position of the point
+
+            // Привязываем координаты maxX и maxY
+            Canvas.SetLeft(point1, maxX - point1.Width / 2);
+            Canvas.SetTop(point1, maxY - point1.Height / 2);
+            point1.RenderTransform = graphTransform; // Применяем ту же трансформацию
             MainCanvas.Children.Add(point1);
 
             Ellipse point2 = new Ellipse
@@ -260,10 +273,16 @@ namespace lab10Variant8
                 Height = 10,
                 Fill = Brushes.Blue
             };
-            Canvas.SetLeft(point2, minX - 10);   // Corrected calculation for minX
-            Canvas.SetTop(point2, minY - 10);    // Corrected calculation for minY
+
+            // Привязываем координаты minX и minY
+            Canvas.SetLeft(point2, minX - point2.Width / 2);
+            Canvas.SetTop(point2, minY - point2.Height / 2);
+            point2.RenderTransform = graphTransform; // Применяем ту же трансформацию
             MainCanvas.Children.Add(point2);
         }
+
+
+
 
 
         private Brush originalGraphColor;
