@@ -101,98 +101,7 @@ namespace lab10Variant8
         {
             GraphBuilt?.Invoke(this, EventArgs.Empty);
         }
-        /*
-        private void DrawBernoulliLemniscate()
-        {
-            MainCanvas.Children.Clear();
-
-            double canvasWidth = MainCanvas.ActualWidth;
-            double canvasHeight = MainCanvas.ActualHeight;
-            double centerX = canvasWidth / 2;
-            double centerY = canvasHeight / 2;
-
-            Polyline lemniscate = new Polyline
-            {
-                Stroke = lineColor,
-                StrokeThickness = lineWidth,
-                RenderTransform = graphTransform,
-                Cursor = Cursors.SizeAll
-            };
-
-            int numPoints = 1000;
-            double maxX = double.MinValue;
-            double maxY = double.MinValue;
-
         
-            double minX = double.MaxValue;
-            double minY = double.MaxValue;
-
-            for (int i = 0; i <= numPoints; i++)
-            {
-                double phi = 2 * Math.PI * i / numPoints;
-                double cos2phi = Math.Cos(2 * phi);
-                if (cos2phi < 0) continue;
-
-                double radius = Math.Sqrt(2 * c * c * cos2phi);
-                double x = radius * Math.Cos(phi) * scale + centerX;
-                double y = -radius * Math.Sin(phi) * scale + centerY;
-
-             
-                maxX = Math.Max(maxX, x);
-                maxY = Math.Max(maxY, y);
-
-               
-                minX = Math.Min(minX, x);
-                minY = Math.Min(minY, y);
-
-                lemniscate.Points.Add(new Point(x, y));
-            }
-
-            lemniscate.MouseDown += Graph_MouseDown;
-            lemniscate.MouseMove += Graph_MouseMove;
-            lemniscate.MouseUp += Graph_MouseUp;
-
-            selectedGraph = lemniscate;
-            MainCanvas.Children.Add(BackgroundImage);
-            MainCanvas.Children.Add(lemniscate);
-            MainCanvas.Children.Add(GraphTitle);
-
-     
-          
-
-
-             AddDiagonalPoints(maxX, maxY, minX, minY);
-        }
-
-    
-        private void AddDiagonalPoints(double maxX, double maxY, double minX, double minY)
-        {
-            double canvasWidth = MainCanvas.ActualWidth;
-            double canvasHeight = MainCanvas.ActualHeight;
-            double centerX = canvasWidth / 2;
-            double centerY = canvasHeight / 2;
-
-            Ellipse point1 = new Ellipse
-            {
-                Width = 10,
-                Height = 10,
-                Fill = Brushes.Red
-            };
-            Canvas.SetLeft(point1, maxX + 0);    
-            Canvas.SetTop(point1, maxY + 0);    
-            MainCanvas.Children.Add(point1);
-
-            Ellipse point2 = new Ellipse
-            {
-                Width = 10,
-                Height = 10,
-                Fill = Brushes.Blue
-            };
-            Canvas.SetLeft(point2, minX - 10);   
-            Canvas.SetTop(point2, minY - 10);    
-            MainCanvas.Children.Add(point2);
-        }
-        */
 
 
         private void DrawBernoulliLemniscate()
@@ -252,36 +161,7 @@ namespace lab10Variant8
         private bool isScalingTopRight = false;
         private bool isScalingBottomLeft = false;
         private Point previousMousePosition;
-        /*
-        private void AddDiagonalPoints(double maxX, double maxY, double minX, double minY)
-        {
-            Ellipse point1 = new Ellipse
-            {
-                Width = 10,
-                Height = 10,
-                Fill = Brushes.Red
-            };
-
-            // Привязываем координаты maxX и maxY
-            Canvas.SetLeft(point1, maxX - point1.Width / 2);
-            Canvas.SetTop(point1, maxY - point1.Height / 2);
-            point1.RenderTransform = graphTransform; 
-            MainCanvas.Children.Add(point1);
-
-            Ellipse point2 = new Ellipse
-            {
-                Width = 10,
-                Height = 10,
-                Fill = Brushes.Blue
-            };
-
-            // Привязываем координаты minX и minY
-            Canvas.SetLeft(point2, minX - point2.Width / 2);
-            Canvas.SetTop(point2, minY - point2.Height / 2);
-            point2.RenderTransform = graphTransform;  
-            MainCanvas.Children.Add(point2);
-        }
-        */
+       
         private void AddDiagonalPoints(double maxX, double maxY, double minX, double minY)
         {
             Ellipse point1 = new Ellipse
@@ -326,57 +206,58 @@ namespace lab10Variant8
 
 
 
-        private Ellipse currentScalingPoint = null; // Текущая активная точка
-       // private Point previousMousePosition;
+        private Ellipse currentScalingPoint = null;  
+       
 
         private void StartScaling(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton != MouseButtonState.Pressed) return;
 
-            // Запоминаем активную точку и начальное положение мыши
+          
             currentScalingPoint = sender as Ellipse;
             previousMousePosition = e.GetPosition(MainCanvas);
 
-            // Захватываем управление мышью только для активной точки
+           
             currentScalingPoint?.CaptureMouse();
         }
-
+      
         private void PerformScaling(object sender, MouseEventArgs e)
         {
             if (currentScalingPoint == null || e.LeftButton != MouseButtonState.Pressed) return;
 
-            // Вычисляем смещение мыши
+           
             Point currentMousePosition = e.GetPosition(MainCanvas);
             double deltaY = currentMousePosition.Y - previousMousePosition.Y;
+ 
+            double scaleFactor = 1.0 + (deltaY / 25);  
 
-            // Определяем, какая точка активна
-            bool isTopRight = currentScalingPoint.Fill == Brushes.Red; // Проверяем по цвету
-            double scaleDelta = 1 + (deltaY / 100); // Настройка чувствительности
-
-            // Ограничиваем изменение масштаба
-            scaleDelta = Math.Max(0.9, Math.Min(1.1, scaleDelta));
-
-            if (isTopRight)
+            if (Math.Abs(deltaY) > 0.1)  
             {
-                scale *= scaleDelta;
-            }
-            else
-            {
-                scale /= scaleDelta;
-            }
+                
+                bool isTopRight = currentScalingPoint.Fill == Brushes.Red;
+                if (isTopRight)
+                {
+                    scale *= scaleFactor;
+                }
+                else
+                {
+                    scale /= scaleFactor;
+                }
 
-            // Обновляем положение мыши
-            previousMousePosition = currentMousePosition;
+             
+                DrawBernoulliLemniscate();
 
-            // Перерисовка графика
-            DrawBernoulliLemniscate();
+             
+                previousMousePosition = currentMousePosition;
+            }
         }
+
 
         private void StopScaling(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton != MouseButtonState.Released) return;
 
-            // Освобождаем управление мышью
+          
             currentScalingPoint?.ReleaseMouseCapture();
             currentScalingPoint = null;
         }
