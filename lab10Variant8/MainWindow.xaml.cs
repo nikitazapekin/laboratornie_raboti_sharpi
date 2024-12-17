@@ -27,6 +27,23 @@ namespace lab10Variant8
         public delegate void GraphBuiltEventHandler(object sender, EventArgs e);
         public event GraphBuiltEventHandler GraphBuilt;
 
+
+
+
+
+
+
+
+
+        private bool isDragging = false;
+        private bool isScaling = false;
+        private Point lastMousePosition;
+        private Point previousMousePosition;
+      //  private Polyline selectedGraph;
+
+
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,8 +51,9 @@ namespace lab10Variant8
             FontFamilyComboBox.ItemsSource = Fonts.SystemFontFamilies;
             FontWeightComboBox.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold };
 
-            
+
             GraphBuilt += (sender, args) => DrawBernoulliLemniscate();
+
         }
 
         private void EditGraphMenuItem_Click(object sender, RoutedEventArgs e)
@@ -93,7 +111,7 @@ namespace lab10Variant8
 
         private void BuildGraphButton_Click(object sender, RoutedEventArgs e)
         {
-            OnGraphBuilt(); 
+            OnGraphBuilt();
             MessageBox.Show("График построен успешно!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -101,9 +119,9 @@ namespace lab10Variant8
         {
             GraphBuilt?.Invoke(this, EventArgs.Empty);
         }
-        
 
 
+        /*
         private void DrawBernoulliLemniscate()
         {
             MainCanvas.Children.Clear();
@@ -155,13 +173,13 @@ namespace lab10Variant8
             MainCanvas.Children.Add(BackgroundImage);
             MainCanvas.Children.Add(lemniscate);
             MainCanvas.Children.Add(GraphTitle);
- 
+
             AddDiagonalPoints(maxX, maxY, minX, minY);
         }
         private bool isScalingTopRight = false;
         private bool isScalingBottomLeft = false;
         private Point previousMousePosition;
-       
+
         private void AddDiagonalPoints(double maxX, double maxY, double minX, double minY)
         {
             Ellipse point1 = new Ellipse
@@ -206,34 +224,34 @@ namespace lab10Variant8
 
 
 
-        private Ellipse currentScalingPoint = null;  
-       
+        private Ellipse currentScalingPoint = null;
+
 
         private void StartScaling(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton != MouseButtonState.Pressed) return;
 
-          
+
             currentScalingPoint = sender as Ellipse;
             previousMousePosition = e.GetPosition(MainCanvas);
 
-           
+
             currentScalingPoint?.CaptureMouse();
         }
-      
+
         private void PerformScaling(object sender, MouseEventArgs e)
         {
             if (currentScalingPoint == null || e.LeftButton != MouseButtonState.Pressed) return;
 
-           
+
             Point currentMousePosition = e.GetPosition(MainCanvas);
             double deltaY = currentMousePosition.Y - previousMousePosition.Y;
- 
-            double scaleFactor = 1.0 + (deltaY / 25);  
 
-            if (Math.Abs(deltaY) > 0.1)  
+            double scaleFactor = 1.0 + (deltaY / 25);
+
+            if (Math.Abs(deltaY) > 0.1)
             {
-                
+
                 bool isTopRight = currentScalingPoint.Fill == Brushes.Red;
                 if (isTopRight)
                 {
@@ -244,10 +262,10 @@ namespace lab10Variant8
                     scale /= scaleFactor;
                 }
 
-             
+
                 DrawBernoulliLemniscate();
 
-             
+
                 previousMousePosition = currentMousePosition;
             }
         }
@@ -257,12 +275,170 @@ namespace lab10Variant8
         {
             if (e.LeftButton != MouseButtonState.Released) return;
 
-          
+
             currentScalingPoint?.ReleaseMouseCapture();
             currentScalingPoint = null;
         }
 
+        */
 
+
+        private void OnWindowSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            DrawBernoulliLemniscate(); // Обновление графика при изменении размеров окна
+        }
+
+        private void DrawBernoulliLemniscate()
+        {
+            MainCanvas.Children.Clear();
+
+            double canvasWidth = MainCanvas.ActualWidth;
+            double canvasHeight = MainCanvas.ActualHeight;
+            double centerX = canvasWidth / 2;
+            double centerY = canvasHeight / 2;
+
+            Polyline lemniscate = new Polyline
+            {
+                Stroke = Brushes.Black,
+                StrokeThickness = 2,
+                RenderTransform = new ScaleTransform(1, 1),
+                Cursor = Cursors.SizeAll
+            };
+
+            int numPoints = 1000;
+            double scale = 1; // Масштабирование графика
+            double c = 50; // Константа лемнискаты
+
+            for (int i = 0; i <= numPoints; i++)
+            {
+                double phi = 2 * Math.PI * i / numPoints;
+                double cos2phi = Math.Cos(2 * phi);
+                if (cos2phi < 0) continue;
+
+                double radius = Math.Sqrt(2 * c * c * cos2phi);
+                double x = radius * Math.Cos(phi) * scale + centerX;
+                double y = -radius * Math.Sin(phi) * scale + centerY;
+
+                lemniscate.Points.Add(new Point(x, y));
+            }
+
+            lemniscate.MouseDown += Graph_MouseDown;
+            lemniscate.MouseMove += Graph_MouseMove;
+            lemniscate.MouseUp += Graph_MouseUp;
+
+            selectedGraph = lemniscate;
+            MainCanvas.Children.Add(lemniscate);
+
+            AddControlPoints(lemniscate);
+        }
+
+        private void AddControlPoints(Polyline graph)
+        {
+            if (graph.Points.Count == 0) return;
+
+            Point topRight = graph.Points[0];
+            Point bottomLeft = graph.Points[graph.Points.Count / 2];
+
+            Ellipse point1 = CreateControlPoint(topRight, Brushes.Red);
+            point1.MouseDown += StartScaling;
+            point1.MouseMove += PerformScaling;
+            point1.MouseUp += StopScaling;
+
+            Ellipse point2 = CreateControlPoint(bottomLeft, Brushes.Blue);
+            point2.MouseDown += StartScaling;
+            point2.MouseMove += PerformScaling;
+            point2.MouseUp += StopScaling;
+
+            MainCanvas.Children.Add(point1);
+            MainCanvas.Children.Add(point2);
+        }
+
+        private Ellipse CreateControlPoint(Point position, Brush color)
+        {
+            Ellipse point = new Ellipse
+            {
+                Width = 20,
+                Height = 20,
+                Fill = color
+            };
+
+            Canvas.SetLeft(point, position.X - point.Width / 2);
+            Canvas.SetTop(point, position.Y - point.Height / 2);
+
+            return point;
+        }
+
+        private void StartScaling(object sender, MouseButtonEventArgs e)
+        {
+            isScaling = true;
+            previousMousePosition = e.GetPosition(MainCanvas);
+            Mouse.Capture((UIElement)sender);
+        }
+
+        private void PerformScaling(object sender, MouseEventArgs e)
+        {
+            if (isScaling && selectedGraph != null)
+            {
+                Point currentMousePosition = e.GetPosition(MainCanvas);
+                Vector delta = currentMousePosition - previousMousePosition;
+
+                double scaleDelta = 1 + delta.Y / 100; // Изменение масштаба по вертикали
+                scaleDelta = Math.Max(0.1, scaleDelta); // Ограничение минимального масштаба
+
+                ScaleTransform scaleTransform = (ScaleTransform)selectedGraph.RenderTransform;
+                scaleTransform.ScaleX *= scaleDelta;
+                scaleTransform.ScaleY *= scaleDelta;
+
+                previousMousePosition = currentMousePosition;
+            }
+        }
+
+        private void StopScaling(object sender, MouseButtonEventArgs e)
+        {
+            isScaling = false;
+            Mouse.Capture(null);
+        }
+
+        private void Graph_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = true;
+            lastMousePosition = e.GetPosition(MainCanvas);
+            Mouse.Capture((UIElement)sender);
+        }
+
+        private void Graph_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging && selectedGraph != null)
+            {
+                Point currentMousePosition = e.GetPosition(MainCanvas);
+                Vector delta = currentMousePosition - lastMousePosition;
+
+                TranslateTransform translateTransform = new TranslateTransform(delta.X, delta.Y);
+                selectedGraph.RenderTransform = new TransformGroup
+                {
+                    Children = { selectedGraph.RenderTransform, translateTransform }
+                };
+
+                lastMousePosition = currentMousePosition;
+            }
+        }
+
+        private void Graph_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            Mouse.Capture(null);
+        }
+
+
+
+
+
+
+
+
+
+
+        /*
 
         private Brush originalGraphColor;
 
@@ -306,7 +482,7 @@ namespace lab10Variant8
                 selectedGraph.ReleaseMouseCapture();
             }
         }
-
+        */
         private void GraphScaleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (double.TryParse(GraphScaleTextBox.Text, out double newScale))
@@ -316,10 +492,10 @@ namespace lab10Variant8
             }
             else
             {
-                if(GraphScaleTextBox.Text.Length>0)
+                if (GraphScaleTextBox.Text.Length > 0)
                 {
 
-                MessageBox.Show("Введите корректное значение!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Введите корректное значение!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
@@ -348,7 +524,7 @@ namespace lab10Variant8
 
         private void BuildGraphMenuItem_Click(object sender, RoutedEventArgs e)
         {
-           
+
             DrawBernoulliLemniscate();
             MessageBox.Show("График построен успешно!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -370,7 +546,8 @@ namespace lab10Variant8
             if (double.TryParse(FontSizeTextBox.Text, out double newSize))
             {
                 GraphTitle.FontSize = newSize;
-            } else
+            }
+            else
             {
                 if (FontSizeTextBox.Text.Length > 0)
                 {
@@ -466,4 +643,4 @@ namespace lab10Variant8
             this.Close();
         }
     }
-} 
+}

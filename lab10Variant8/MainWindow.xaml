@@ -36,7 +36,7 @@
                 <TextBlock  Visibility="Hidden"   Canvas.Left="1636"  FontSize="22" TextWrapping="Wrap" Canvas.Top="53" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="en-gb" Text="X: 0, Y: 0"/></TextBlock>
 
 
-                 
+
 
             </Canvas>
         </ScrollViewer>
@@ -80,4 +80,6 @@
             </StackPanel>
         </Canvas>
     </Grid>
+
+
 </Window>
