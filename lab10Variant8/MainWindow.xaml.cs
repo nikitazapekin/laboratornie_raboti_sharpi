@@ -104,6 +104,30 @@ namespace lab10Variant8
 
 
 
+
+        private void AddCenterPoint(double centerX, double centerY)
+        {
+            // Создаем точку в центре графика
+            Ellipse centerPoint = new Ellipse
+            {
+                Width = 20,
+                Height = 20,
+                Fill = Brushes.Green // Используем зеленый цвет для центра
+            };
+
+            // Устанавливаем позицию точки в центре
+            Canvas.SetLeft(centerPoint, centerX - centerPoint.Width / 2);
+            Canvas.SetTop(centerPoint, centerY - centerPoint.Height / 2);
+            centerPoint.RenderTransform = graphTransform;
+
+            centerPoint.MouseDown += StartScaling;
+            centerPoint.MouseMove += PerformScaling;
+            centerPoint.MouseUp += StopScaling;
+
+            MainCanvas.Children.Add(centerPoint);
+        }
+
+
         private void DrawBernoulliLemniscate()
         {
             MainCanvas.Children.Clear();
@@ -157,6 +181,7 @@ namespace lab10Variant8
             MainCanvas.Children.Add(GraphTitle);
 
             AddDiagonalPoints(maxX, maxY, minX, minY);
+            AddCenterPoint(centerX, centerY);
         }
         private bool isScalingTopRight = false;
         private bool isScalingBottomLeft = false;
