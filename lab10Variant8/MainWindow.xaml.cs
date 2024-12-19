@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -26,6 +27,10 @@ namespace lab10Variant8
 
         public delegate void GraphBuiltEventHandler(object sender, EventArgs e);
         public event GraphBuiltEventHandler GraphBuilt;
+        private double maxX;
+        private double maxY;
+        private double minX;
+        private double minY;
 
         public MainWindow()
         {
@@ -102,32 +107,6 @@ namespace lab10Variant8
             GraphBuilt?.Invoke(this, EventArgs.Empty);
         }
 
-
-
-
-        private void AddCenterPoint(double centerX, double centerY)
-        {
-            // Создаем точку в центре графика
-            Ellipse centerPoint = new Ellipse
-            {
-                Width = 20,
-                Height = 20,
-                Fill = Brushes.Green // Используем зеленый цвет для центра
-            };
-
-            // Устанавливаем позицию точки в центре
-            Canvas.SetLeft(centerPoint, centerX - centerPoint.Width / 2);
-            Canvas.SetTop(centerPoint, centerY - centerPoint.Height / 2);
-            centerPoint.RenderTransform = graphTransform;
-
-            centerPoint.MouseDown += StartScaling;
-            centerPoint.MouseMove += PerformScaling;
-            centerPoint.MouseUp += StopScaling;
-
-            MainCanvas.Children.Add(centerPoint);
-        }
-
-
         private void DrawBernoulliLemniscate()
         {
             MainCanvas.Children.Clear();
@@ -146,11 +125,10 @@ namespace lab10Variant8
             };
 
             int numPoints = 1000;
-            double maxX = double.MinValue;
-            double maxY = double.MinValue;
-
-            double minX = double.MaxValue;
-            double minY = double.MaxValue;
+            maxX = double.MinValue;  
+            maxY = double.MinValue;
+            minX = double.MaxValue;
+            minY = double.MaxValue;
 
             for (int i = 0; i <= numPoints; i++)
             {
@@ -176,23 +154,25 @@ namespace lab10Variant8
             lemniscate.MouseUp += Graph_MouseUp;
 
             selectedGraph = lemniscate;
+
             MainCanvas.Children.Add(BackgroundImage);
             MainCanvas.Children.Add(lemniscate);
             MainCanvas.Children.Add(GraphTitle);
-
-            AddDiagonalPoints(maxX, maxY, minX, minY);
-            AddCenterPoint(centerX, centerY);
+ 
+            UpdateDiagonalPoints(maxX, maxY, minX, minY);
         }
+
+
         private bool isScalingTopRight = false;
         private bool isScalingBottomLeft = false;
         private Point previousMousePosition;
-
+        /*
         private void AddDiagonalPoints(double maxX, double maxY, double minX, double minY)
         {
             Ellipse point1 = new Ellipse
             {
-                Width = 40,
-                Height = 40,
+                Width = 20,
+                Height = 20,
                 Fill = Brushes.Red
             };
 
@@ -208,8 +188,8 @@ namespace lab10Variant8
 
             Ellipse point2 = new Ellipse
             {
-                Width = 40,
-                Height = 40,
+                Width = 20,
+                Height = 20,
                 Fill = Brushes.Blue
             };
 
@@ -224,7 +204,7 @@ namespace lab10Variant8
             MainCanvas.Children.Add(point2);
         }
 
-
+        */
 
 
 
@@ -245,41 +225,86 @@ namespace lab10Variant8
 
             currentScalingPoint?.CaptureMouse();
         }
+
+
         private void PerformScaling(object sender, MouseEventArgs e)
         {
             if (currentScalingPoint == null || e.LeftButton != MouseButtonState.Pressed) return;
 
-            // Track the current mouse position
             Point currentMousePosition = e.GetPosition(MainCanvas);
-            double deltaX = currentMousePosition.X - previousMousePosition.X;
             double deltaY = currentMousePosition.Y - previousMousePosition.Y;
 
-            // Calculate the scale factor based on mouse movement
-            double scaleFactor = 1.0 + (deltaY / 50); // Increase the divisor for smoother zoom
+            double scaleFactor = 1.0 + (deltaY / 25);
 
-            if (Math.Abs(deltaX) > 0.1 || Math.Abs(deltaY) > 0.1)
+            if (Math.Abs(deltaY) > 0.1)
             {
-                // Adjust scale for both axes based on which scaling point is dragged
                 bool isTopRight = currentScalingPoint.Fill == Brushes.Red;
-                bool isBottomLeft = currentScalingPoint.Fill == Brushes.Blue;
-
                 if (isTopRight)
                 {
-                    // Zoom in for the top-right point
                     scale *= scaleFactor;
                 }
-                else if (isBottomLeft)
+                else
                 {
-                    // Zoom out for the bottom-left point
                     scale /= scaleFactor;
                 }
 
-                // Re-render the graph with updated scale
+               
                 DrawBernoulliLemniscate();
 
-                // Update the previous mouse position to keep the scaling continuous
                 previousMousePosition = currentMousePosition;
             }
+        }
+
+        private void UpdateDiagonalPoints(double maxX, double maxY, double minX, double minY)
+        {
+        
+            double centerX = MainCanvas.ActualWidth / 2;
+            double centerY = MainCanvas.ActualHeight / 2;
+ 
+            double adjustmentFactor = 0.85;
+ 
+            Ellipse point1 = MainCanvas.Children.OfType<Ellipse>().FirstOrDefault(p => p.Fill == Brushes.Red);
+            if (point1 == null)
+            {
+                point1 = new Ellipse
+                {
+                    Width = 40,
+                    Height = 40,
+                    Fill = Brushes.Red,
+                    RenderTransform = graphTransform
+                };
+                point1.MouseDown += StartScaling;
+                point1.MouseMove += PerformScaling;
+                point1.MouseUp += StopScaling;
+                MainCanvas.Children.Add(point1);
+            }
+        
+            double point1X = centerX + (maxX - centerX) * adjustmentFactor;
+            double point1Y = centerY + (maxY - centerY) * adjustmentFactor;
+            Canvas.SetLeft(point1, point1X - point1.Width / 2);
+            Canvas.SetTop(point1, point1Y - point1.Height / 2);
+
+           
+            Ellipse point2 = MainCanvas.Children.OfType<Ellipse>().FirstOrDefault(p => p.Fill == Brushes.Blue);
+            if (point2 == null)
+            {
+                point2 = new Ellipse
+                {
+                    Width = 40,
+                    Height = 40,
+                    Fill = Brushes.Blue,
+                    RenderTransform = graphTransform
+                };
+                point2.MouseDown += StartScaling;
+                point2.MouseMove += PerformScaling;
+                point2.MouseUp += StopScaling;
+                MainCanvas.Children.Add(point2);
+            }
+        
+            double point2X = centerX + (minX - centerX) * adjustmentFactor;
+            double point2Y = centerY + (minY - centerY) * adjustmentFactor;
+            Canvas.SetLeft(point2, point2X - point2.Width / 2);
+            Canvas.SetTop(point2, point2Y - point2.Height / 2);
         }
 
 
