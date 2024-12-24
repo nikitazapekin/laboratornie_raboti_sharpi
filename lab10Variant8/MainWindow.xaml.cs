@@ -49,7 +49,7 @@ namespace lab10Variant8
             InitializeComponent();
 
             FontFamilyComboBox.ItemsSource = Fonts.SystemFontFamilies;
-            FontWeightComboBox.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold };
+       //     FontWeightComboBox.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold };
 
             GraphBuilt += (sender, args) => DrawSpiralOfGalileo();
             MainCanvas.Children.Clear();
@@ -57,57 +57,22 @@ namespace lab10Variant8
 
         private void EditGraphMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            EditPanel.Visibility = Visibility.Visible;
-            GraphEditor.Visibility = Visibility.Visible;
-            TextEditor.Visibility = Visibility.Collapsed;
+           // EditPanel.Visibility = Visibility.Visible;
+         //   GraphEditor.Visibility = Visibility.Visible;
+         //   TextEditor.Visibility = Visibility.Collapsed;
 
             DrawSpiralOfGalileo();
         }
 
         private void EditTextMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            EditPanel.Visibility = Visibility.Visible;
+         /*   EditPanel.Visibility = Visibility.Visible;
             GraphEditor.Visibility = Visibility.Collapsed;
             TextEditor.Visibility = Visibility.Visible;
+         */
         }
 
-        private void EditPanel_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                isDraggingPanel = true;
-                panelStartPoint = e.GetPosition(this);
-                EditPanel.CaptureMouse();
-            }
-        }
-
-        private void EditPanel_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isDraggingPanel)
-            {
-                Point currentPoint = e.GetPosition(this);
-                double offsetX = currentPoint.X - panelStartPoint.X;
-                double offsetY = currentPoint.Y - panelStartPoint.Y;
-
-                double currentLeft = Canvas.GetLeft(EditPanel);
-                double currentTop = Canvas.GetTop(EditPanel);
-
-                Canvas.SetLeft(EditPanel, currentLeft + offsetX);
-                Canvas.SetTop(EditPanel, currentTop + offsetY);
-
-                panelStartPoint = currentPoint;
-            }
-        }
-
-        private void EditPanel_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            if (isDraggingPanel)
-            {
-                isDraggingPanel = false;
-                EditPanel.ReleaseMouseCapture();
-            }
-        }
-
+ 
         private void BuildGraphButton_Click(object sender, RoutedEventArgs e)
         {
             OnGraphBuilt();
@@ -433,15 +398,7 @@ namespace lab10Variant8
                 GraphTitle.FontFamily = selectedFont;
             }
         }
-
-        private void FontWeightComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (FontWeightComboBox.SelectedItem is FontWeight selectedWeight)
-            {
-                GraphTitle.FontWeight = selectedWeight;
-            }
-        }
-
+ 
         private void SaveToPngMenuItem_Click(object sender, RoutedEventArgs e)
         {
             SaveCanvasAsPng(MainCanvas);

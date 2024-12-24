@@ -9,7 +9,7 @@
 
 
     <Grid>
-
+<!--
         <Menu VerticalAlignment="Top" Background="LightGray" Panel.ZIndex="2"
               
               >
@@ -24,6 +24,7 @@
 
             <MenuItem FontSize="22" Header="Выход" Click="ExitMenuItem_Click" HorizontalAlignment="Right"   Margin="820,0,0,0"/>
         </Menu>
+        -->
 
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
             <Canvas x:Name="MainCanvas" Background="#F0F0F8"
@@ -49,42 +50,53 @@
         <Button FontSize="22" x:Name="BuildGraphButton" Content="Построить график" HorizontalAlignment="Left" VerticalAlignment="Top" Width="332" Height="40" Click="BuildGraphButton_Click" Margin="0,31,0,0"/>
 
         <Canvas>
-            <StackPanel x:Name="EditPanel" Width="300" Background="LightGray"  Cursor="Hand"
-                        Visibility="Collapsed" Canvas.Top="50" Canvas.Left="50"
-                        MouseDown="EditPanel_MouseDown" MouseMove="EditPanel_MouseMove" MouseUp="EditPanel_MouseUp">
+            <StackPanel Canvas.Left="0" Canvas.Top="0" Width="200" Background="LightGray" Orientation="Vertical">
+                <TextBlock FontSize="22" FontWeight="Bold" Margin="10">Меню</TextBlock>
+                <Button FontSize="22" Content="Файл" Background="Transparent" Click="SaveToPngMenuItem_Click" />
+                <Button FontSize="22" Content="Редактировать график" Background="Transparent" Click="EditGraphMenuItem_Click" />
+                <Button FontSize="22" Content="Редактировать текст" Background="Transparent" Click="EditTextMenuItem_Click" />
+                <Button FontSize="22" Content="Построить график" Background="Transparent" Click="BuildGraphMenuItem_Click" />
+                <Button FontSize="22" Content="Добавить фон" Background="Transparent" Click="AddBackgroundMenuItem_Click" />
+                <Button FontSize="22" Content="Выход" Background="Transparent" Click="ExitMenuItem_Click" />
+            </StackPanel>
+
+            <!-- Панель редактирования -->
+            <StackPanel x:Name="EditPanel" Width="300" Background="LightGray" Cursor="Hand"
+                Visibility="Collapsed" Canvas.Top="50" Canvas.Left="220"
+            >
                 <TextBlock FontSize="22" FontWeight="Bold" Margin="10">Параметры</TextBlock>
                 <StackPanel x:Name="GraphEditor" Visibility="Collapsed">
-                    <TextBlock   FontSize="22" Text="Выбор цвета:" Margin="10" />
-                    <ComboBox  FontSize="22" x:Name="LineColorComboBox" SelectionChanged="LineColorComboBox_SelectionChanged" Margin="10">
+                    <TextBlock FontSize="22" Text="Выбор цвета:" Margin="10" />
+                    <ComboBox FontSize="22" x:Name="LineColorComboBox" SelectionChanged="LineColorComboBox_SelectionChanged" Margin="10">
                         <ComboBoxItem Content="Синий" />
                         <ComboBoxItem Content="Красный" />
                         <ComboBoxItem Content="Зеленый" />
                     </ComboBox>
-                    <TextBlock  FontSize="22" Text="Масштабирование (%):" Margin="10" />
-                    <TextBox  FontSize="22"  x:Name="GraphScaleTextBox" Margin="10" TextChanged="GraphScaleTextBox_TextChanged"  />
-                    <TextBlock   FontSize="22" Text="Ширина линии:" Margin="10" />
-                    <TextBox  FontSize="22" x:Name="LineWidthTextBox" Text="2" TextChanged="LineWidthTextBox_TextChanged" Margin="10" />
+                    <TextBlock FontSize="22" Text="Масштабирование (%):" Margin="10" />
+                    <TextBox FontSize="22" x:Name="GraphScaleTextBox" Margin="10" TextChanged="GraphScaleTextBox_TextChanged" />
+                    <TextBlock FontSize="22" Text="Ширина линии:" Margin="10" />
+                    <TextBox FontSize="22" x:Name="LineWidthTextBox" Text="2" TextChanged="LineWidthTextBox_TextChanged" Margin="10" />
                 </StackPanel>
                 <StackPanel x:Name="TextEditor" Visibility="Collapsed">
-                    <TextBlock  FontSize="22" Text="Выбор цвета:" Margin="10" />
-                    <ComboBox  FontSize="22"  x:Name="TextColorComboBox" SelectionChanged="TextColorComboBox_SelectionChanged" Margin="10">
+                    <TextBlock FontSize="22" Text="Выбор цвета:" Margin="10" />
+                    <ComboBox FontSize="22" x:Name="TextColorComboBox" SelectionChanged="TextColorComboBox_SelectionChanged" Margin="10">
                         <ComboBoxItem Content="Черный" />
                         <ComboBoxItem Content="Синий" />
                         <ComboBoxItem Content="Красный" />
                     </ComboBox>
-                    <TextBlock  FontSize="22" Text="Шрифт:" Margin="10" />
-                    <ComboBox  FontSize="22" x:Name="FontFamilyComboBox" Margin="10" SelectionChanged="FontFamilyComboBox_SelectionChanged" />
-
-                    <TextBlock   FontSize="22" Text="Начертание:" Margin="10" />
-                    <ComboBox  FontSize="22"  x:Name="FontWeightComboBox" Margin="10"   SelectionChanged="FontWeightComboBox_SelectionChanged"  />
-                    <TextBlock  FontSize="22" Text="Размер шрифта:" Margin="10" />
-                    <TextBox   FontSize="22" x:Name="FontSizeTextBox" Margin="10" TextChanged="FontSizeTextBox_TextChanged" />
-                    <TextBlock  FontSize="22" Text="Текст надписи:" Margin="10" />
-                    <TextBox   FontSize="22" x:Name="GraphTitleTextBox" Margin="10" TextChanged="GraphTitleTextBox_TextChanged" />
+                    <TextBlock FontSize="22" Text="Шрифт:" Margin="10" />
+                    <ComboBox FontSize="22" x:Name="FontFamilyComboBox" Margin="10" SelectionChanged="FontFamilyComboBox_SelectionChanged" />
+                    <TextBlock FontSize="22" Text="Начертание:" Margin="10" />
+                    <ComboBox FontSize="22" x:Name="FontWeightComboBox" Margin="10"   />
+                    <TextBlock FontSize="22" Text="Размер шрифта:" Margin="10" />
+                    <TextBox FontSize="22" x:Name="FontSizeTextBox" Margin="10" TextChanged="FontSizeTextBox_TextChanged" />
+                    <TextBlock FontSize="22" Text="Текст надписи:" Margin="10" />
+                    <TextBox FontSize="22" x:Name="GraphTitleTextBox" Margin="10" TextChanged="GraphTitleTextBox_TextChanged" />
                 </StackPanel>
             </StackPanel>
         </Canvas>
     </Grid>
+
 
 
 </Window>
