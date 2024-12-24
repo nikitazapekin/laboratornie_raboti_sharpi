@@ -21,12 +21,24 @@ namespace lab10Variant8
         private TranslateTransform graphTransform = new TranslateTransform();
 
         private const double c = 0.5;
-        private double scale = 100;
-        private Brush lineColor = Brushes.Blue;
-        private double lineWidth = 2;
+        //private double scale = 100;
+  
+        //private double lineWidth = 2;
+
+
+
+        private double scale = 10;  
+        private Brush lineColor = Brushes.Orange;  
+        private double lineWidth = 4;  
+        private double a = 1.0; 
+
+
+
+
 
         public delegate void GraphBuiltEventHandler(object sender, EventArgs e);
         public event GraphBuiltEventHandler GraphBuilt;
+
         private double maxX;
         private double maxY;
         private double minX;
@@ -39,8 +51,8 @@ namespace lab10Variant8
             FontFamilyComboBox.ItemsSource = Fonts.SystemFontFamilies;
             FontWeightComboBox.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold };
 
-
-            GraphBuilt += (sender, args) => DrawBernoulliLemniscate();
+            GraphBuilt += (sender, args) => DrawSpiralOfGalileo();
+            MainCanvas.Children.Clear();
         }
 
         private void EditGraphMenuItem_Click(object sender, RoutedEventArgs e)
@@ -49,7 +61,7 @@ namespace lab10Variant8
             GraphEditor.Visibility = Visibility.Visible;
             TextEditor.Visibility = Visibility.Collapsed;
 
-            DrawBernoulliLemniscate();
+            DrawSpiralOfGalileo();
         }
 
         private void EditTextMenuItem_Click(object sender, RoutedEventArgs e)
@@ -107,7 +119,8 @@ namespace lab10Variant8
             GraphBuilt?.Invoke(this, EventArgs.Empty);
         }
 
-        private void DrawBernoulliLemniscate()
+ 
+        private void DrawSpiralOfGalileo()
         {
             MainCanvas.Children.Clear();
 
@@ -116,100 +129,45 @@ namespace lab10Variant8
             double centerX = canvasWidth / 2;
             double centerY = canvasHeight / 2;
 
-            Polyline lemniscate = new Polyline
+            Polyline spiral = new Polyline
             {
                 Stroke = lineColor,
-                StrokeThickness = lineWidth,
-                RenderTransform = graphTransform,
-                Cursor = Cursors.SizeAll
+                StrokeThickness = lineWidth
             };
 
-            int numPoints = 1000;
-            maxX = double.MinValue;  
-            maxY = double.MinValue;
-            minX = double.MaxValue;
-            minY = double.MaxValue;
+            int numPoints = 1000; // Количество точек для графика
+            double maxPhi = 10 * Math.PI; // Максимальное значение φ
 
             for (int i = 0; i <= numPoints; i++)
             {
-                double phi = 2 * Math.PI * i / numPoints;
-                double cos2phi = Math.Cos(2 * phi);
-                if (cos2phi < 0) continue;
+                double phi = i * maxPhi / numPoints; // Текущий угол φ
+                double radius = a * phi; // Радиус r = aφ - l (l >= 0)
 
-                double radius = Math.Sqrt(2 * c * c * cos2phi);
+                if (radius < 0) continue; // Пропускаем отрицательные значения радиуса
+
                 double x = radius * Math.Cos(phi) * scale + centerX;
                 double y = -radius * Math.Sin(phi) * scale + centerY;
 
-                maxX = Math.Max(maxX, x);
-                maxY = Math.Max(maxY, y);
-
-                minX = Math.Min(minX, x);
-                minY = Math.Min(minY, y);
-
-                lemniscate.Points.Add(new Point(x, y));
+                spiral.Points.Add(new Point(x, y));
             }
 
-            lemniscate.MouseDown += Graph_MouseDown;
-            lemniscate.MouseMove += Graph_MouseMove;
-            lemniscate.MouseUp += Graph_MouseUp;
-
-            selectedGraph = lemniscate;
+          spiral.MouseDown += Graph_MouseDown;
+          spiral.MouseMove += Graph_MouseMove;
+        spiral.MouseUp += Graph_MouseUp;
+            selectedGraph = spiral; // Назначаем текущий график переменной selectedGraph
 
             MainCanvas.Children.Add(BackgroundImage);
-            MainCanvas.Children.Add(lemniscate);
+            MainCanvas.Children.Add(spiral);
             MainCanvas.Children.Add(GraphTitle);
- 
-            UpdateDiagonalPoints(maxX, maxY, minX, minY);
         }
+
+
 
 
         private bool isScalingTopRight = false;
         private bool isScalingBottomLeft = false;
         private Point previousMousePosition;
-        /*
-        private void AddDiagonalPoints(double maxX, double maxY, double minX, double minY)
-        {
-            Ellipse point1 = new Ellipse
-            {
-                Width = 20,
-                Height = 20,
-                Fill = Brushes.Red
-            };
-
-            Canvas.SetLeft(point1, maxX - point1.Width / 2);
-            Canvas.SetTop(point1, maxY - point1.Height / 2);
-            point1.RenderTransform = graphTransform;
-
-            point1.MouseDown += StartScaling;
-            point1.MouseMove += PerformScaling;
-            point1.MouseUp += StopScaling;
-
-            MainCanvas.Children.Add(point1);
-
-            Ellipse point2 = new Ellipse
-            {
-                Width = 20,
-                Height = 20,
-                Fill = Brushes.Blue
-            };
-
-            Canvas.SetLeft(point2, minX - point2.Width / 2);
-            Canvas.SetTop(point2, minY - point2.Height / 2);
-            point2.RenderTransform = graphTransform;
-
-            point2.MouseDown += StartScaling;
-            point2.MouseMove += PerformScaling;
-            point2.MouseUp += StopScaling;
-
-            MainCanvas.Children.Add(point2);
-        }
-
-        */
-
-
-
-
-
+   
 
         private Ellipse currentScalingPoint = null;
 
@@ -248,8 +206,8 @@ namespace lab10Variant8
                     scale /= scaleFactor;
                 }
 
-               
-                DrawBernoulliLemniscate();
+
+                DrawSpiralOfGalileo();
 
                 previousMousePosition = currentMousePosition;
             }
@@ -367,7 +325,7 @@ namespace lab10Variant8
             if (double.TryParse(GraphScaleTextBox.Text, out double newScale))
             {
                 scale = newScale;
-                DrawBernoulliLemniscate();
+                DrawSpiralOfGalileo();
             }
             else
             {
@@ -389,7 +347,7 @@ namespace lab10Variant8
                 "Зеленый" => Brushes.Green,
                 _ => Brushes.Blue
             };
-            DrawBernoulliLemniscate();
+            DrawSpiralOfGalileo();
         }
 
         private void LineWidthTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -397,14 +355,13 @@ namespace lab10Variant8
             if (double.TryParse(LineWidthTextBox.Text, out double newLineWidth))
             {
                 lineWidth = newLineWidth;
-                DrawBernoulliLemniscate();
+                DrawSpiralOfGalileo();
             }
         }
 
         private void BuildGraphMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
-            DrawBernoulliLemniscate();
+            DrawSpiralOfGalileo();
             MessageBox.Show("График построен успешно!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
