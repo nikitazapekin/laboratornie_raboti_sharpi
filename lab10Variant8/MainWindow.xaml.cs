@@ -27,10 +27,10 @@ namespace lab10Variant8
 
 
 
-        private double scale = 10;  
+        private double scale = 1;  
         private Brush lineColor = Brushes.Orange;  
-        private double lineWidth = 4;  
-        private double a = 1.0; 
+        private double lineWidth = 40;  
+        private double a = 5.0; 
 
 
 
