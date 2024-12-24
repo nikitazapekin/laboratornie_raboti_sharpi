@@ -54,7 +54,7 @@
                 <Button FontSize="22" Content="Файл" Background="Transparent" Click="SaveToPngMenuItem_Click" />
  
                 <Button FontSize="22" Content="Построить график" Background="Transparent" Click="BuildGraphMenuItem_Click" />
-                <Button FontSize="22" Content="Делегат" Background="Transparent"  x:Name="BuildGraphButton" />
+                <Button FontSize="22" Content="Делегат" Background="Transparent" Click="BuildDelegateButton_Click" />
                 <Button FontSize="22" Content="Фон" Background="Transparent" Click="AddBackgroundMenuItem_Click" />
 
 

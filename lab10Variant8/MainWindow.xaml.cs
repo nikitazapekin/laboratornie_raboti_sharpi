@@ -62,6 +62,15 @@ namespace lab10Variant8
         {
             GraphBuilt?.Invoke(this, EventArgs.Empty);
         }
+
+
+        private void BuildDelegateButton_Click(object sender, RoutedEventArgs e)
+        {
+            OnGraphBuilt();
+            MessageBox.Show("График построен успешно!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+
         private void DrawSpiralOfGalileo()
         {
             MainCanvas.Children.Clear();
