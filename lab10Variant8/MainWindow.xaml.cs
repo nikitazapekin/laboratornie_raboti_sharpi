@@ -49,42 +49,19 @@ namespace lab10Variant8
             InitializeComponent();
 
             FontFamilyComboBox.ItemsSource = Fonts.SystemFontFamilies;
-       //     FontWeightComboBox.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold };
+      
 
             GraphBuilt += (sender, args) => DrawSpiralOfGalileo();
             MainCanvas.Children.Clear();
         }
 
-        private void EditGraphMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-           // EditPanel.Visibility = Visibility.Visible;
-         //   GraphEditor.Visibility = Visibility.Visible;
-         //   TextEditor.Visibility = Visibility.Collapsed;
-
-            DrawSpiralOfGalileo();
-        }
-
-        private void EditTextMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-         /*   EditPanel.Visibility = Visibility.Visible;
-            GraphEditor.Visibility = Visibility.Collapsed;
-            TextEditor.Visibility = Visibility.Visible;
-         */
-        }
-
+        
  
-        private void BuildGraphButton_Click(object sender, RoutedEventArgs e)
-        {
-            OnGraphBuilt();
-            MessageBox.Show("График построен успешно!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
+       
         private void OnGraphBuilt()
         {
             GraphBuilt?.Invoke(this, EventArgs.Empty);
         }
-
- 
         private void DrawSpiralOfGalileo()
         {
             MainCanvas.Children.Clear();
@@ -97,18 +74,19 @@ namespace lab10Variant8
             Polyline spiral = new Polyline
             {
                 Stroke = lineColor,
-                StrokeThickness = lineWidth
+                StrokeThickness = lineWidth,
+                RenderTransform = graphTransform // Применяем трансформацию
             };
 
-            int numPoints = 1000; // Количество точек для графика
-            double maxPhi = 10 * Math.PI; // Максимальное значение φ
+            int numPoints = 1000;
+            double maxPhi = 10 * Math.PI;
 
             for (int i = 0; i <= numPoints; i++)
             {
-                double phi = i * maxPhi / numPoints; // Текущий угол φ
-                double radius = a * phi; // Радиус r = aφ - l (l >= 0)
+                double phi = i * maxPhi / numPoints;
+                double radius = a * phi;
 
-                if (radius < 0) continue; // Пропускаем отрицательные значения радиуса
+                if (radius < 0) continue;
 
                 double x = radius * Math.Cos(phi) * scale + centerX;
                 double y = -radius * Math.Sin(phi) * scale + centerY;
@@ -116,17 +94,60 @@ namespace lab10Variant8
                 spiral.Points.Add(new Point(x, y));
             }
 
-          spiral.MouseDown += Graph_MouseDown;
-          spiral.MouseMove += Graph_MouseMove;
-        spiral.MouseUp += Graph_MouseUp;
-            selectedGraph = spiral; // Назначаем текущий график переменной selectedGraph
+            // Добавляем обработчики событий для перетаскивания
+            spiral.MouseDown += Graph_MouseDown;
+            spiral.MouseMove += Graph_MouseMove;
+            spiral.MouseUp += Graph_MouseUp;
 
-            MainCanvas.Children.Add(BackgroundImage);
+            selectedGraph = spiral;
+
             MainCanvas.Children.Add(spiral);
-            MainCanvas.Children.Add(GraphTitle);
         }
 
+        private void Graph_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed && sender is Polyline graph)
+            {
+                selectedGraph = graph;
+                isDraggingGraph = true;
+                graphStartPoint = e.GetPosition(MainCanvas);
 
+                originalGraphColor = selectedGraph.Stroke;
+                selectedGraph.Stroke = Brushes.Pink;
+                selectedGraph.CaptureMouse();
+            }
+        }
+
+        private void Graph_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDraggingGraph && selectedGraph != null)
+            {
+                Point currentPoint = e.GetPosition(MainCanvas);
+                double offsetX = currentPoint.X - graphStartPoint.X;
+                double offsetY = currentPoint.Y - graphStartPoint.Y;
+
+                // Применяем смещение
+                graphTransform.X += offsetX;
+                graphTransform.Y += offsetY;
+
+                originalGraphColor = selectedGraph.Stroke;
+                selectedGraph.Stroke = Brushes.Yellow;
+
+
+                graphStartPoint = currentPoint;
+            }
+        }
+
+        private void Graph_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (isDraggingGraph && selectedGraph != null)
+            {
+                isDraggingGraph = false;
+                originalGraphColor = selectedGraph.Stroke;
+                selectedGraph.Stroke = Brushes.Blue;
+                selectedGraph.ReleaseMouseCapture();
+            }
+        }
 
 
         private bool isScalingTopRight = false;
@@ -243,7 +264,7 @@ namespace lab10Variant8
 
 
         private Brush originalGraphColor;
-
+        /*
         private void Graph_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -256,10 +277,10 @@ namespace lab10Variant8
                 selectedGraph.CaptureMouse();
             }
         }
-
+       
         private void Graph_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isDraggingGraph)
+            if (isDraggingGraph && selectedGraph != null)
             {
                 Point currentPoint = e.GetPosition(MainCanvas);
                 double offsetX = currentPoint.X - graphStartPoint.X;
@@ -269,8 +290,6 @@ namespace lab10Variant8
                 graphTransform.Y += offsetY;
 
                 graphStartPoint = currentPoint;
-
-                selectedGraph.Stroke = Brushes.Green;
             }
         }
 
@@ -284,7 +303,7 @@ namespace lab10Variant8
                 selectedGraph.ReleaseMouseCapture();
             }
         }
-
+        */
         private void GraphScaleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (double.TryParse(GraphScaleTextBox.Text, out double newScale))

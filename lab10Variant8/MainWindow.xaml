@@ -52,14 +52,7 @@
             <StackPanel Width="339" Background="LightGray" Orientation="Vertical" HorizontalAlignment="Center"  Height="1234" VerticalAlignment="Top">
                 <TextBlock FontSize="22" FontWeight="Bold" Margin="10">Меню</TextBlock>
                 <Button FontSize="22" Content="Файл" Background="Transparent" Click="SaveToPngMenuItem_Click" />
-                <!--
-                <Button FontSize="22" Content="Редактировать график" Background="Transparent" Click="EditGraphMenuItem_Click" />
-
-
-                <Button FontSize="22" Content="Редактировать текст" Background="Transparent" Click="EditTextMenuItem_Click" />
-                <Button FontSize="22" Content="Выход" Background="Transparent" Click="ExitMenuItem_Click" />
-                <Button FontSize="22" x:Name="BuildGraphButton" Content="Построить график" HorizontalAlignment="Left" Click="BuildGraphButton_Click" Width="339" />
--->
+ 
                 <Button FontSize="22" Content="Построить график" Background="Transparent" Click="BuildGraphMenuItem_Click" />
                 <Button FontSize="22" Content="Делегат" Background="Transparent"  x:Name="BuildGraphButton" />
                 <Button FontSize="22" Content="Фон" Background="Transparent" Click="AddBackgroundMenuItem_Click" />
