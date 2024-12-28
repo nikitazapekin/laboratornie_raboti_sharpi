@@ -54,6 +54,8 @@ public class Memory : Element
     {
         
         currentState = currentState == 0 ? 1 : 0;
+        ComputeOutput();
+
     }
 
     public void SaveToBinary(string fileName)

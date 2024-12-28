@@ -131,26 +131,7 @@ namespace lab9Var18
                 int inputValue = memory.GetTInput();
                 TriggerOutput.Text = $"Результат: Вход: {inputValue}, Состояние: {state}";
 
-            /*    var inputs = TriggerInputs.Text.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                int[] parsedInputs = new int[inputs.Length];
-
-
-                for (int i = 0; i < inputs.Length; i++)
-                {
-
-                    if (!int.TryParse(inputs[i], out parsedInputs[i]) || (parsedInputs[i] != 0 && parsedInputs[i] != 1))
-                    {
-                        MessageBox.Show("Все значения должны быть либо 0, либо 1.");
-                        return;
-                    }
-                }
-
-
-                memory.SetInput(parsedInputs[0]);
-
-                TriggerValues.Text = $"Входы: {string.Join(" ", parsedInputs)}";
-            */
+          
             }
             catch (Exception ex)
             {
@@ -160,9 +141,16 @@ namespace lab9Var18
 
 
 
+        private void InvertMemory_Click(object sender, RoutedEventArgs e)
+        {
+            memory.Invert();
+            memory.ComputeOutput();
+            int state = memory.GetState();
+            int inputValue = memory.GetTInput();
+            TriggerOutput.Text = $"Результат: Вход: {inputValue}, Состояние: {state}";
+        }
 
 
 
-
-    }
+        }
 }

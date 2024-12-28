@@ -64,7 +64,9 @@ public abstract class Element : IInvertible
 
     public virtual void Invert()
     {
-        throw new ArgumentException("Error");
+       
+
+         throw new ArgumentException("Error");
     }
 
     public abstract int ComputeOutput();
