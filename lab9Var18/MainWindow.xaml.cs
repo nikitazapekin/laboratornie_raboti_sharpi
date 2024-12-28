@@ -58,6 +58,25 @@ namespace lab9Var18
 
         }
 
+        private void InvertComb_Click(object sender, RoutedEventArgs e)
+        {
+            comb.Invert();
+
+            int[] inputs = new int[8];
+            inputs = comb.GetInputs();
+            Input1.Text = inputs[0].ToString();
+            Input2.Text = inputs[1].ToString();
+            Input3.Text = inputs[2].ToString();
+            Input4.Text = inputs[3].ToString();
+            Input5.Text = inputs[4].ToString();
+            Input6.Text = inputs[5].ToString();
+            Input7.Text = inputs[6].ToString();
+            Input8.Text = inputs[7].ToString();
+        }
+
+
+
+
 
         private int ParseInput(string input, string fieldName)
         {

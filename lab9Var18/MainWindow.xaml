@@ -55,6 +55,7 @@
                 <Button Content="Инвертировать" 
                         FontSize="14" 
                         Background="LightCoral" 
+                        Click="InvertComb_Click"
                         Margin="0,5" 
                         Width="200" />
                 <Button Content="Сохранить входы" 
