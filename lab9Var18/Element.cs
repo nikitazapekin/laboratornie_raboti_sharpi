@@ -57,9 +57,9 @@ public abstract class Element : IInvertible
 
 
 
-    public virtual void SetInputs(int[] inputs)
+    public virtual void SetInput(int  inputs)
     {
-        throw new ArgumentException("Error");
+        throw new ArgumentException("Error setInput");
     }
 
     public virtual void Invert()
