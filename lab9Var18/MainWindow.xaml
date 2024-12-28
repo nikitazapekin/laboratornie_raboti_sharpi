@@ -5,8 +5,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab9Var18"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="1250" Width="1800"
+         Background="LightBlue"
+        >
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid Margin="10">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="432">
+              
+                <TextBlock Text="Введите значения входов (0 или 1):" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,10" />
 
-    </Grid>
+            
+                <TextBlock Text="Элемент 1" FontSize="16" />
+                <TextBox Name="Input1" Width="200" Margin="0,5" FontSize="14" />
+
+                <TextBlock Text="Элемент 2" FontSize="16" />
+                <TextBox  Name="Input2" Width="200" Margin="0,5" FontSize="14" />
+
+                <TextBlock Text="Элемент 3" FontSize="16" />
+                <TextBox  Name="Input3" Width="200" Margin="0,5" FontSize="14" />
+
+                <TextBlock Text="Элемент 4" FontSize="16" />
+                <TextBox   Name="Input4" Width="200" Margin="0,5" FontSize="14" />
+
+                <TextBlock Text="Элемент 5" FontSize="16" />
+                <TextBox    Name="Input5" Width="200" Margin="0,5" FontSize="14" />
+
+                <TextBlock Text="Элемент 6" FontSize="16" />
+                <TextBox    Name="Input6" Width="200" Margin="0,5" FontSize="14" />
+
+
+                <TextBlock Text="Элемент 7" FontSize="16" />
+                <TextBox    Name="Input7" Width="200" Margin="0,5" FontSize="14" />
+
+
+                <TextBlock Text="Элемент 8" FontSize="16" />
+                <TextBox    Name="Input8" Width="200" Margin="0,5" FontSize="14" />
+                
+                
+                <TextBlock Name="ResultComb" Text="Выход:" FontSize="16" Margin="0,10,0,5" />
+                <Button Content="Вычислить" 
+                        FontSize="14" 
+                        Background="LightGreen" 
+                        Click="ComputeComb_Click"
+                        Margin="0,5" 
+                        Width="200" />
+                <Button Content="Инвертировать" 
+                        FontSize="14" 
+                        Background="LightCoral" 
+                        Margin="0,5" 
+                        Width="200" />
+                <Button Content="Сохранить входы" 
+                        FontSize="14" 
+                        Background="LightSkyBlue" 
+                        Margin="0,5" 
+                        Width="200" />
+                <Button Content="Загрузить входы" 
+                        FontSize="14" 
+                        Background="LightGoldenrodYellow" 
+                        Margin="0,5" 
+                        Width="200" />
+
+
+
+
+
+
+
+                <TextBlock Text="Входы для триггера" FontSize="16" Foreground="#FF333333"/>
+                <TextBox Name="TriggerInputs" Width="200" Margin="0,5" FontSize="14" Background="#FFFFFFFF"/>
+                <TextBlock Name="TriggerValues" Text="Входы:" FontSize="16" Foreground="#FF555555"/>
+                <TextBlock Name="TriggerOutput" Text="Результат:" FontSize="16" Foreground="#FF555555"/>
+
+                <Button Content="Установить" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+                <Button Content="Выход" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+                <Button Content="Инвертировать" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+                <Button Content="Сохранить" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+                <Button Content="Загрузить" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+
+                <TextBlock Name="TriggerInputsArray" Text="Регистры: [0,0,0] [0,0,0] [0,0,0] [0,0,0]" FontSize="16" Foreground="#FF555555"/>
+                <TextBlock Text="Номер триггера:" FontSize="16" Foreground="#FF555555"/>
+                <TextBox Name="TriggerIndex" Width="100" Height="30" Background="#FFFFFFFF"/>
+
+                <TextBlock Text="Значения (1 либо 0):" FontSize="16" Foreground="#FF555555"/>
+                <TextBox Name="TriggerRegisterValues" Width="200" Height="30" Background="#FFFFFFFF"/>
+
+                <Button Content="Установить" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+                <Button Content="Рандом" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+                <Button Content="Инвертировать" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+                <Button Content="Сдвиг" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+                <Button Content="Сохранить" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+                <Button Content="Загрузить" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+            </StackPanel>
+
+
+
+            <StackPanel Orientation="Vertical" Margin="0,0,0,20">
+              
+            </StackPanel>
+           
+        </Grid>
+    </ScrollViewer>
 </Window>
