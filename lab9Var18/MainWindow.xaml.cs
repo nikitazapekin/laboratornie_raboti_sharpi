@@ -85,60 +85,22 @@ namespace lab9Var18
             return value;
         }
 
-        //=============================================================
-        /*
-        private void SetTrigger_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var inputs = TriggerInputs.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-
-
-                int[] parsedInputs = new int[inputs.Length];
-
-                for (int i = 0; i < inputs.Length; i++)
-                {
-                    if (!int.TryParse(inputs[i], out parsedInputs[i]) || (parsedInputs[i] != 0 && parsedInputs[i] != 1))
-                    {
-                        MessageBox.Show("Все значения должны быть либо 0, либо 1.");
-                        return;
-                    }
-                }
-
-
-             memory.SetInputs(parsedInputs);
-
-
-                TriggerValues.Text = $"Входы: {string.Join(" ", parsedInputs)}";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-
-
-
-        }
-        */
-
+     
 
 
         private void SetTrigger_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Убираем лишние пробелы в начале и в конце строки, разделяем по пробелам
+             
                 var inputs = TriggerInputs.Text.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                // Массив для хранения значений после парсинга
+ 
                 int[] parsedInputs = new int[inputs.Length];
 
-                // Проходим по всем введенным данным
+           
                 for (int i = 0; i < inputs.Length; i++)
                 {
-                    // Проверяем, что введенные данные можно преобразовать в int и что это либо 0, либо 1
+                   
                     if (!int.TryParse(inputs[i], out parsedInputs[i]) || (parsedInputs[i] != 0 && parsedInputs[i] != 1))
                     {
                         MessageBox.Show("Все значения должны быть либо 0, либо 1.");
@@ -146,10 +108,9 @@ namespace lab9Var18
                     }
                 }
 
-                // Применяем введенные значения
-                //    memory.SetInputs(parsedInputs);
+              
                 memory.SetInput(parsedInputs[0]);
-                // Отображаем введенные значения
+              
                 TriggerValues.Text = $"Входы: {string.Join(" ", parsedInputs)}";
             }
             catch (Exception ex)
@@ -159,6 +120,43 @@ namespace lab9Var18
         }
 
 
+        private void ComputeOutput_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+
+                memory.ComputeOutput();
+                int state = memory.GetState();
+                int inputValue = memory.GetTInput();
+                TriggerOutput.Text = $"Результат: Вход: {inputValue}, Состояние: {state}";
+
+            /*    var inputs = TriggerInputs.Text.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                int[] parsedInputs = new int[inputs.Length];
+
+
+                for (int i = 0; i < inputs.Length; i++)
+                {
+
+                    if (!int.TryParse(inputs[i], out parsedInputs[i]) || (parsedInputs[i] != 0 && parsedInputs[i] != 1))
+                    {
+                        MessageBox.Show("Все значения должны быть либо 0, либо 1.");
+                        return;
+                    }
+                }
+
+
+                memory.SetInput(parsedInputs[0]);
+
+                TriggerValues.Text = $"Входы: {string.Join(" ", parsedInputs)}";
+            */
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
 
 
 
