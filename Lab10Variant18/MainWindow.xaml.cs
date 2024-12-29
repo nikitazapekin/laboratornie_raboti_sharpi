@@ -31,6 +31,10 @@ namespace Lab10Variant18
          
 
             GraphBuilt += (sender, args) => DrawHyperbolicSpiral();
+          TextFont.ItemsSource = Fonts.SystemFontFamilies;
+          TextWeight.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold, FontWeights.UltraBold };
+
+
         }
 
         private void DrawHyperbolicSpiral()
@@ -134,54 +138,7 @@ namespace Lab10Variant18
 
 
         }
-        /*
-        private void PerformScaling(object sender, MouseEventArgs e)
-        {
-            if (currentScalingPoint == null || e.LeftButton != MouseButtonState.Pressed) return;
-
-            Point currentMousePosition = e.GetPosition(MainCanvas);
-            double deltaY = currentMousePosition.Y - previousMousePosition.Y;
-
-            double scaleFactor = 1.0 + (deltaY / 100);
-            lineColor = Brushes.Pink;
-            if (Math.Abs(deltaY) > 0.1)
-            {
-                if (currentScalingPoint.Fill == Brushes.Red) 
-                {
-                    if (deltaY < 0) scale *= scaleFactor;  
-                    else scale /= scaleFactor;         
-                }
-                else if (currentScalingPoint.Fill == Brushes.Blue)  
-                {
-                    if (deltaY > 0) scale *= scaleFactor;  
-                    else scale /= scaleFactor;           
-                }
-
-              
-                if (currentScalingPoint.Fill == Brushes.Green)
-                {
-                    offsetX += currentMousePosition.X - previousMousePosition.X;
-                    offsetY += currentMousePosition.Y - previousMousePosition.Y;
-                }
-
-                DrawHyperbolicSpiral(); 
-                previousMousePosition = currentMousePosition;
-              
-            }
-        
-        }
-
-        private void StopScaling(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton != MouseButtonState.Released) return;
-
-            currentScalingPoint?.ReleaseMouseCapture();
-            currentScalingPoint = null;
-            lineColor = Brushes.Orange;
-        }
-
-        */
-
+     
 
         private void PerformScaling(object sender, MouseEventArgs e)
         {
@@ -191,9 +148,7 @@ namespace Lab10Variant18
             double deltaY = currentMousePosition.Y - previousMousePosition.Y;
 
             double scaleFactor = 1.0 + (deltaY / 100);
-
-            // Меняем цвет графика на время перетаскивания
-
+ 
             if (Math.Abs(deltaY) > 0.1)
             {
                 if (currentScalingPoint.Fill == Brushes.Red)
@@ -216,7 +171,7 @@ namespace Lab10Variant18
             lineColor = Brushes.Red;
                 }
 
-                DrawHyperbolicSpiral(); // Перерисовываем график с новым цветом
+                DrawHyperbolicSpiral(); 
                 previousMousePosition = currentMousePosition;
             }
         }
@@ -225,12 +180,12 @@ namespace Lab10Variant18
         {
             if (e.LeftButton != MouseButtonState.Released) return;
 
-            // Возвращаем исходный цвет графика
+         
             lineColor = Brushes.Orange;
 
             currentScalingPoint?.ReleaseMouseCapture();
             currentScalingPoint = null;
-            DrawHyperbolicSpiral(); // Перерисовываем график с восстановленным цветом
+            DrawHyperbolicSpiral(); 
         }
 
 
