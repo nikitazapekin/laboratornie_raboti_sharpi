@@ -1,9 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Lab10Variant18
@@ -15,7 +17,7 @@ namespace Lab10Variant18
         private double lineWidth = 4;
         private Ellipse currentScalingPoint = null;
         private Point previousMousePosition;
-        private double offsetX = 0, offsetY = 0; 
+        private double offsetX = 0, offsetY = 0;
         private double greenPointX, greenPointY;
 
 
@@ -28,11 +30,11 @@ namespace Lab10Variant18
         public MainWindow()
         {
             InitializeComponent();
-         
+
 
             GraphBuilt += (sender, args) => DrawHyperbolicSpiral();
-          TextFont.ItemsSource = Fonts.SystemFontFamilies;
-          TextWeight.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold, FontWeights.UltraBold };
+            TextFont.ItemsSource = Fonts.SystemFontFamilies;
+            TextWeight.ItemsSource = new[] { FontWeights.Normal, FontWeights.Bold, FontWeights.UltraBold };
 
 
         }
@@ -46,7 +48,7 @@ namespace Lab10Variant18
             double centerX = (canvasWidth / 2) - 200 + offsetX;
             double centerY = canvasHeight / 2 + offsetY;
 
-           
+
             Polyline hyperbolicSpiral = new Polyline
             {
                 Stroke = lineColor,
@@ -66,41 +68,41 @@ namespace Lab10Variant18
 
                 hyperbolicSpiral.Points.Add(new Point(x, y));
             }
+            MainCanvas.Children.Add(BackgroundImage);
             MainCanvas.Children.Add(hyperbolicSpiral);
             MainCanvas.Children.Add(GraphTitle);
 
-        
             UpdateScalingPoints(centerX, centerY);
         }
 
         private void UpdateScalingPoints(double centerX, double centerY)
         {
-           
-            double phi1 = 2.0; 
-            double phi2 = 4.0; 
 
-            
+            double phi1 = 2.0;
+            double phi2 = 4.0;
+
+
             const double a = 1.0;
             double radius1 = a / phi1;
             double radius2 = a / phi2;
 
-           
+
             double point1X = radius1 * Math.Cos(phi1) * scale + centerX;
             double point1Y = -radius1 * Math.Sin(phi1) * scale + centerY;
 
             double point2X = radius2 * Math.Cos(phi2) * scale + centerX;
             double point2Y = -radius2 * Math.Sin(phi2) * scale + centerY;
 
-           UpdatePoint(Brushes.Red, point1X, point1Y);
+            UpdatePoint(Brushes.Red, point1X, point1Y);
             UpdatePoint(Brushes.Blue, point2X, point2Y);
 
-          
-            double greenPointPhi = 3.0; 
+
+            double greenPointPhi = 3.0;
             double greenPointRadius = a / greenPointPhi;
             greenPointX = greenPointRadius * Math.Cos(greenPointPhi) * scale + centerX;
             greenPointY = -greenPointRadius * Math.Sin(greenPointPhi) * scale + centerY;
 
-          
+
             UpdatePoint(Brushes.Green, greenPointX, greenPointY);
         }
 
@@ -138,7 +140,7 @@ namespace Lab10Variant18
 
 
         }
-     
+
 
         private void PerformScaling(object sender, MouseEventArgs e)
         {
@@ -148,7 +150,7 @@ namespace Lab10Variant18
             double deltaY = currentMousePosition.Y - previousMousePosition.Y;
 
             double scaleFactor = 1.0 + (deltaY / 100);
- 
+
             if (Math.Abs(deltaY) > 0.1)
             {
                 if (currentScalingPoint.Fill == Brushes.Red)
@@ -168,10 +170,10 @@ namespace Lab10Variant18
                 {
                     offsetX += currentMousePosition.X - previousMousePosition.X;
                     offsetY += currentMousePosition.Y - previousMousePosition.Y;
-            lineColor = Brushes.Red;
+                    lineColor = Brushes.Red;
                 }
 
-                DrawHyperbolicSpiral(); 
+                DrawHyperbolicSpiral();
                 previousMousePosition = currentMousePosition;
             }
         }
@@ -180,12 +182,12 @@ namespace Lab10Variant18
         {
             if (e.LeftButton != MouseButtonState.Released) return;
 
-         
+
             lineColor = Brushes.Orange;
 
             currentScalingPoint?.ReleaseMouseCapture();
             currentScalingPoint = null;
-            DrawHyperbolicSpiral(); 
+            DrawHyperbolicSpiral();
         }
 
 
@@ -239,7 +241,7 @@ namespace Lab10Variant18
             if (double.TryParse(GraphWidthTextBox.Text, out double newWidth))
             {
                 lineWidth = newWidth;
-                DrawHyperbolicSpiral(); 
+                DrawHyperbolicSpiral();
             }
             else
             {
@@ -278,7 +280,7 @@ namespace Lab10Variant18
 
         private void graphText(object sender, TextChangedEventArgs e)
         {
-            GraphTitle.Text =TextValue.Text;
+            GraphTitle.Text = TextValue.Text;
         }
 
 
@@ -321,14 +323,71 @@ namespace Lab10Variant18
             }
             else
             {
-                GraphTitle.Foreground = Brushes.Black;  
+                GraphTitle.Foreground = Brushes.Black;
             }
         }
 
 
 
+        private void AddBackground(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog
+            {
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    var imageSource = new ImageSourceConverter().ConvertFromString(openFileDialog.FileName) as ImageSource;
+                    if (imageSource != null)
+                    {
+                        BackgroundImage.Source = imageSource;
+                        BackgroundImage.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка загрузки изображения.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка: {ex.Message}");
+                }
+            }
+        }
 
 
+      private void  handleDownload(object sender, RoutedEventArgs e) {
+            saveCanvas(MainCanvas);
+            }
+        private void saveCanvas(Canvas canvas)
+        {
+            RenderTargetBitmap renderTarget = new RenderTargetBitmap(
+                (int)canvas.ActualWidth, (int)canvas.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            renderTarget.Render(canvas);
+
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog
+            {
+                Filter = "PNG Files|*.png",
+                FileName = "Graph.png"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                {
+                    PngBitmapEncoder encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(renderTarget));
+                    encoder.Save(fs);
+                }
+
+                MessageBox.Show("График сохранен как PNG", "Сохранение завершено", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
 
 
     }
