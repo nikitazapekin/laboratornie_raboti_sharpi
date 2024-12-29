@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -281,8 +282,7 @@ namespace lab9Var18
             TriggerArray.Text = "Регистры: " + formattedInputs;
         }
 
-
-        //InvertRegister
+ 
         private void InvertRegister(object sender, RoutedEventArgs e)
         {
             register.Invert();
@@ -304,6 +304,92 @@ namespace lab9Var18
 
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void SaveInputsCombinational(object sender, RoutedEventArgs e)
+
+        {
+            int[] inputs = new int[8];
+
+
+            try
+            {
+                string fileName = $"comb_save";
+                using (var writer = new StreamWriter(fileName))
+                {
+                    writer.WriteLine(comb.ToBinaryString());
+                }
+                MessageBox.Show($"Комбинированный элемент сохранен в файл: {fileName}");
+
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
+
         }
+
+        private void LoadInputsCombinational(object sender, RoutedEventArgs e)
+
+        {
+            string fileName = $"comb_save";
+            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+
+
+
+
+
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("Файл сохранения не найден.");
+                return;
+            }
+
+            try
+            {
+                string binaryData = File.ReadAllText(filePath);
+
+
+                comb.FromBinaryString(binaryData);
+
+                MessageBox.Show("Данные для Combinational успешно загружены.");
+
+                int[] inputs = new int[8];
+                inputs = comb.GetInputs();
+
+                Input1.Text = inputs[0].ToString();
+                Input2.Text = inputs[1].ToString();
+                Input3.Text = inputs[2].ToString();
+                Input4.Text = inputs[3].ToString();
+                Input5.Text = inputs[4].ToString();
+                Input6.Text = inputs[5].ToString();
+                Input7.Text = inputs[6].ToString();
+                Input8.Text = inputs[7].ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
+
+
+        }
+
+
+    }
 }
 

@@ -59,11 +59,13 @@
                         Margin="0,5" 
                         Width="200" />
                 <Button Content="Сохранить входы" 
+                        Click="SaveInputsCombinational"
                         FontSize="14" 
                         Background="LightSkyBlue" 
                         Margin="0,5" 
                         Width="200" />
                 <Button Content="Загрузить входы" 
+                        Click="LoadInputsCombinational"
                         FontSize="14" 
                         Background="LightGoldenrodYellow" 
                         Margin="0,5" 
