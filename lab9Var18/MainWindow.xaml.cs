@@ -390,6 +390,79 @@ namespace lab9Var18
         }
 
 
+
+
+
+
+        private void SaveMemory(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string fileName = "memory_save.bin";
+                memory.SaveToBinary(fileName);
+                MessageBox.Show($"Элемент триггера сохранен в файл: {fileName}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private void LoadMemory(object sender, RoutedEventArgs e)
+        {
+            string fileName = "memory_save.bin";
+            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("Файл сохранения не найден.");
+                return;
+            }
+
+            try
+            {
+                memory.LoadFromBinary(filePath);
+
+                MessageBox.Show("Данные для Memory успешно загружены.");
+
+               
+                int inputs = memory.GetTInput();
+                int state = memory.GetState();
+
+             
+                string inputsString = $"Результат: Вход: {inputs}, Состояние: {state}";
+
+              TriggerOutput.Text = inputsString;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+ 
+
+
+        private void SaveRegister(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string fileName = "register_save.bin";
+                register.SaveToBinary(fileName);
+                MessageBox.Show($"Элемены регистров  сохранен в файл: {fileName}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+
+        }
+
+
+
+
+
+
+
     }
 }
 

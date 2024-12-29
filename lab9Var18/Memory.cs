@@ -58,6 +58,52 @@ public class Memory : Element
 
     }
 
+
+    public void SaveToBinary(string fileName)
+    {
+        using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+        using (var writer = new BinaryWriter(fs))
+        {
+            // Сохраняем tInput и currentState
+            writer.Write(tInput);
+            writer.Write(currentState);
+        }
+    }
+
+    // Загрузка состояния и входа из бинарного файла
+    public void LoadFromBinary(string fileName)
+    {
+        if (!File.Exists(fileName))
+            throw new FileNotFoundException("Файл не найден.");
+
+        using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+        using (var reader = new BinaryReader(fs))
+        {
+            // Загружаем tInput и currentState
+            tInput = reader.ReadInt32();
+            currentState = reader.ReadInt32();
+        }
+    }
+
+
+
+
+    public override bool Equals(object obj)
+    {
+        if (obj is Memory other)
+        {
+            return this.currentState == other.currentState;
+        }
+        return false;
+    }
+
+
+
+
+}
+ 
+
+    /*
     public void SaveToBinary(string fileName)
     {
         using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
@@ -78,18 +124,6 @@ public class Memory : Element
             currentState = reader.ReadInt32();
         }
     }
-
-    public override bool Equals(object obj)
-    {
-        if (obj is Memory other)
-        {
-            return this.currentState == other.currentState;
-        }
-        return false;
-    }
+    */
 
 
-
-
-}
- 
