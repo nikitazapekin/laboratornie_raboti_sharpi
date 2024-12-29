@@ -214,5 +214,27 @@ namespace Lab10Variant18
 
 
 
+
+
+        private void graphScale(object sender, TextChangedEventArgs e)
+        {
+            if (double.TryParse(GraphScaleTextBox.Text, out double newScale))
+            {
+                scale = newScale;
+                DrawHyperbolicSpiral();
+            }
+            else
+            {
+                if (GraphScaleTextBox.Text.Length > 0)
+                {
+
+                    MessageBox.Show("Введите корректное значение!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+        }
+
+
+
+
     }
 }
