@@ -234,6 +234,50 @@ namespace Lab10Variant18
         }
 
 
+        private void graphWidth(object sender, TextChangedEventArgs e)
+        {
+            if (double.TryParse(GraphWidthTextBox.Text, out double newWidth))
+            {
+                lineWidth = newWidth;
+                DrawHyperbolicSpiral(); 
+            }
+            else
+            {
+                if (GraphWidthTextBox.Text.Length > 0)
+                {
+                    MessageBox.Show("Введите корректное значение для толщины!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+        }
+
+
+
+        private void graphColor(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedColor = (LineColorComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            if (selectedColor == "Синий")
+            {
+                lineColor = Brushes.Blue;
+            }
+            else if (selectedColor == "Красный")
+            {
+                lineColor = Brushes.Red;
+            }
+            else if (selectedColor == "Черный")
+            {
+                lineColor = Brushes.Black;
+            }
+            else
+            {
+                lineColor = Brushes.Orange;
+            }
+
+            DrawHyperbolicSpiral();
+        }
+
+
+
 
 
     }
