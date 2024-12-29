@@ -282,7 +282,27 @@ namespace lab9Var18
         }
 
 
+        //InvertRegister
+        private void InvertRegister(object sender, RoutedEventArgs e)
+        {
+            register.Invert();
+            var currentInputs = register.GetInputs();
 
+
+
+
+            register.SetInputs(currentInputs);
+
+
+            string formattedInputs = "";
+            foreach (var input in currentInputs)
+            {
+                formattedInputs += $"[{input[0]}, {input[1]}] ";
+            }
+
+            TriggerArray.Text = "Регистры: " + formattedInputs;
+
+        }
 
         }
 }
