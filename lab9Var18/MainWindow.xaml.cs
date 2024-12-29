@@ -439,7 +439,11 @@ namespace lab9Var18
                 MessageBox.Show($"Ошибка: {ex.Message}");
             }
         }
- 
+
+
+
+
+
 
 
         private void SaveRegister(object sender, RoutedEventArgs e)
@@ -448,7 +452,7 @@ namespace lab9Var18
             {
                 string fileName = "register_save.bin";
                 register.SaveToBinary(fileName);
-                MessageBox.Show($"Элемены регистров  сохранен в файл: {fileName}");
+             
             }
             catch (Exception ex)
             {
@@ -457,6 +461,52 @@ namespace lab9Var18
 
         }
 
+
+
+        private void LoadRegister(object sender, RoutedEventArgs e)
+        {
+
+            string fileName = "register_save.bin";
+            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("Файл сохранения не найден.");
+                return;
+            }
+
+            try
+            {
+
+                register.LoadFromBinary(filePath);
+
+                MessageBox.Show("Данные для Register успешно загружены.");
+
+
+
+
+
+                int[][] parsedInputs = register.GetInputs();
+
+
+                string formattedInputs = "";
+                for (int i = 0; i < parsedInputs.Length; i++)
+                {
+                    formattedInputs += $"[{parsedInputs[i][0]}, {parsedInputs[i][1]}] ";
+                }
+
+
+                TriggerArray.Text = "Регистры: " + formattedInputs;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+
+        }
 
 
 
