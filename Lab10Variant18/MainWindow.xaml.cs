@@ -10,12 +10,12 @@ namespace Lab10Variant18
 {
     public partial class MainWindow : Window
     {
-        private double scale = 250; // Увеличили начальный масштаб
+        private double scale = 150;
         private Brush lineColor = Brushes.Orange;
         private double lineWidth = 4;
         private Ellipse currentScalingPoint = null;
         private Point previousMousePosition;
-        private Point currentOffset = new Point(0, 0); // Смещение графика
+        private double offsetX = 0, offsetY = 0; // Для смещения спирали
 
         public MainWindow()
         {
@@ -29,8 +29,8 @@ namespace Lab10Variant18
 
             double canvasWidth = MainCanvas.ActualWidth;
             double canvasHeight = MainCanvas.ActualHeight;
-            double centerX = (canvasWidth / 2) + currentOffset.X;
-            double centerY = canvasHeight / 2 + currentOffset.Y;
+            double centerX = (canvasWidth / 2) - 200 + offsetX;
+            double centerY = canvasHeight / 2 + offsetY;
 
             // Рисуем гиперболическую спираль
             Polyline hyperbolicSpiral = new Polyline
@@ -62,15 +62,13 @@ namespace Lab10Variant18
         private void UpdateScalingPoints(double centerX, double centerY)
         {
             // Углы (phi) для размещения точек на кривой
-            double phi1 = 2.0; // Красная точка
-            double phi2 = 4.0; // Синяя точка
-            double phi3 = 6.0; // Зеленая точка
+            double phi1 = 2.0; // Верхняя точка
+            double phi2 = 4.0; // Нижняя точка
 
             // Вычисляем радиусы для точек
             const double a = 1.0; // Коэффициент кривой
             double radius1 = a / phi1;
             double radius2 = a / phi2;
-            double radius3 = a / phi3;
 
             // Вычисляем координаты точек, используя те же уравнения, что и для кривой
             double point1X = radius1 * Math.Cos(phi1) * scale + centerX;
@@ -79,13 +77,15 @@ namespace Lab10Variant18
             double point2X = radius2 * Math.Cos(phi2) * scale + centerX;
             double point2Y = -radius2 * Math.Sin(phi2) * scale + centerY;
 
-            double point3X = radius3 * Math.Cos(phi3) * scale + centerX;
-            double point3Y = -radius3 * Math.Sin(phi3) * scale + centerY;
-
             // Обновляем или создаём точки
             UpdatePoint(Brushes.Red, point1X, point1Y);
             UpdatePoint(Brushes.Blue, point2X, point2Y);
-            UpdatePoint(Brushes.Green, point3X, point3Y);
+
+            // Создаем зеленую точку на прямой (например, на оси X)
+            double greenPointX = centerX + 150; // Зеленая точка на оси X (можно изменить)
+            double greenPointY = centerY; // Можно настроить координаты по оси Y
+
+            UpdatePoint(Brushes.Green, greenPointX, greenPointY);
         }
 
         private void UpdatePoint(Brush color, double x, double y)
@@ -103,13 +103,6 @@ namespace Lab10Variant18
                 point.MouseDown += StartScaling;
                 point.MouseMove += PerformScaling;
                 point.MouseUp += StopScaling;
-
-                // Для зеленой точки добавляем обработку перетаскивания
-                if (color == Brushes.Green)
-                {
-                    point.MouseMove += PerformDrag;
-                }
-
                 MainCanvas.Children.Add(point);
             }
 
@@ -138,20 +131,22 @@ namespace Lab10Variant18
 
             if (Math.Abs(deltaY) > 0.1)
             {
-                if (currentScalingPoint.Fill == Brushes.Red) // Красная точка
+                if (currentScalingPoint.Fill == Brushes.Red) // Верхняя точка
                 {
                     if (deltaY < 0) scale *= scaleFactor; // Увеличение
                     else scale /= scaleFactor;           // Уменьшение
                 }
-                else if (currentScalingPoint.Fill == Brushes.Blue) // Синяя точка
+                else if (currentScalingPoint.Fill == Brushes.Blue) // Нижняя точка
                 {
                     if (deltaY > 0) scale *= scaleFactor; // Увеличение
                     else scale /= scaleFactor;           // Уменьшение
                 }
-                else if (currentScalingPoint.Fill == Brushes.Green) // Зеленая точка
+
+                // Смещаем график, если это зеленая точка
+                if (currentScalingPoint.Fill == Brushes.Green)
                 {
-                    if (deltaY > 0) scale *= scaleFactor; // Увеличение
-                    else scale /= scaleFactor;           // Уменьшение
+                    offsetX += currentMousePosition.X - previousMousePosition.X;
+                    offsetY += currentMousePosition.Y - previousMousePosition.Y;
                 }
 
                 DrawHyperbolicSpiral(); // Перерисовываем график и обновляем точки
@@ -165,23 +160,6 @@ namespace Lab10Variant18
 
             currentScalingPoint?.ReleaseMouseCapture();
             currentScalingPoint = null;
-        }
-
-        private void PerformDrag(object sender, MouseEventArgs e)
-        {
-            if (currentScalingPoint == null || e.LeftButton != MouseButtonState.Pressed) return;
-
-            Point currentMousePosition = e.GetPosition(MainCanvas);
-            double deltaX = currentMousePosition.X - previousMousePosition.X;
-            double deltaY = currentMousePosition.Y - previousMousePosition.Y;
-
-            // Обновляем смещение графика
-            currentOffset.X += deltaX;
-            currentOffset.Y += deltaY;
-
-            // Перерисовываем график с новыми смещениями
-            DrawHyperbolicSpiral();
-            previousMousePosition = currentMousePosition;
         }
     }
 }
