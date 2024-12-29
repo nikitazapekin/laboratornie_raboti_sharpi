@@ -54,28 +54,42 @@ namespace Lab10Variant18
 
             MainCanvas.Children.Add(hyperbolicSpiral);
 
-            // Добавляем точки
-            AddScalingPoint(centerX - 100, centerY - 100, Brushes.Red); // Верхняя точка
-            AddScalingPoint(centerX + 100, centerY + 100, Brushes.Blue); // Нижняя точка
+            // Обновляем позиции точек
+            UpdateScalingPoints(centerX, centerY);
         }
 
-        private void AddScalingPoint(double x, double y, Brush color)
+        private void UpdateScalingPoints(double centerX, double centerY)
         {
-            Ellipse point = new Ellipse
+            double pointOffset = 100; // Начальное смещение точек от центра
+         double pointAdjustmentFactor = scale / 250; // Изменение смещения в зависимости от масштаба
+          //  double pointAdjustmentFactor = 0.85;
+            // Обновляем верхнюю точку
+            UpdatePoint(Brushes.Red, centerX - pointOffset * pointAdjustmentFactor, centerY - pointOffset * pointAdjustmentFactor);
+
+            // Обновляем нижнюю точку
+            UpdatePoint(Brushes.Blue, centerX + pointOffset * pointAdjustmentFactor, centerY + pointOffset * pointAdjustmentFactor);
+        }
+
+        private void UpdatePoint(Brush color, double x, double y)
+        {
+            Ellipse point = MainCanvas.Children.OfType<Ellipse>().FirstOrDefault(p => p.Fill == color);
+
+            if (point == null)
             {
-                Width = 40,
-                Height = 40,
-                Fill = color
-            };
+                point = new Ellipse
+                {
+                    Width = 40,
+                    Height = 40,
+                    Fill = color
+                };
+                point.MouseDown += StartScaling;
+                point.MouseMove += PerformScaling;
+                point.MouseUp += StopScaling;
+                MainCanvas.Children.Add(point);
+            }
 
             Canvas.SetLeft(point, x - point.Width / 2);
             Canvas.SetTop(point, y - point.Height / 2);
-
-            point.MouseDown += StartScaling;
-            point.MouseMove += PerformScaling;
-            point.MouseUp += StopScaling;
-
-            MainCanvas.Children.Add(point);
         }
 
         private void StartScaling(object sender, MouseButtonEventArgs e)
@@ -95,22 +109,22 @@ namespace Lab10Variant18
             Point currentMousePosition = e.GetPosition(MainCanvas);
             double deltaY = currentMousePosition.Y - previousMousePosition.Y;
 
-            double scaleFactor = 1.0 + (deltaY / 100); // Чем больше делитель, тем медленнее масштабирование
+            double scaleFactor = 1.0 + (deltaY / 100);
 
             if (Math.Abs(deltaY) > 0.1)
             {
                 if (currentScalingPoint.Fill == Brushes.Red) // Верхняя точка
                 {
-                    if (deltaY < 0) scale *= scaleFactor; // Перетаскивание вверх — увеличение
-                    else scale /= scaleFactor;           // Перетаскивание вниз — уменьшение
+                    if (deltaY < 0) scale *= scaleFactor; // Увеличение
+                    else scale /= scaleFactor;           // Уменьшение
                 }
                 else if (currentScalingPoint.Fill == Brushes.Blue) // Нижняя точка
                 {
-                    if (deltaY > 0) scale *= scaleFactor; // Перетаскивание вниз — увеличение
-                    else scale /= scaleFactor;           // Перетаскивание вверх — уменьшение
+                    if (deltaY > 0) scale *= scaleFactor; // Увеличение
+                    else scale /= scaleFactor;           // Уменьшение
                 }
 
-                DrawHyperbolicSpiral();
+                DrawHyperbolicSpiral(); // Перерисовываем график и обновляем точки
                 previousMousePosition = currentMousePosition;
             }
         }
