@@ -66,8 +66,8 @@ namespace Lab10Variant18
 
                 hyperbolicSpiral.Points.Add(new Point(x, y));
             }
-
             MainCanvas.Children.Add(hyperbolicSpiral);
+            MainCanvas.Children.Add(GraphTitle);
 
         
             UpdateScalingPoints(centerX, centerY);
@@ -275,6 +275,57 @@ namespace Lab10Variant18
 
             DrawHyperbolicSpiral();
         }
+
+        private void graphText(object sender, TextChangedEventArgs e)
+        {
+            GraphTitle.Text =TextValue.Text;
+        }
+
+
+
+
+
+        private void textFont(object sender, SelectionChangedEventArgs e)
+        {
+            if (TextFont.SelectedItem is FontFamily selectedFont)
+            {
+                GraphTitle.FontFamily = selectedFont;
+            }
+        }
+
+        private void textWeight(object sender, SelectionChangedEventArgs e)
+        {
+            if (TextWeight.SelectedItem is FontWeight selectedWeight)
+            {
+                GraphTitle.FontWeight = selectedWeight;
+            }
+        }
+
+
+
+        private void textColor(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedColor = (TextColor.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            if (selectedColor == "Черный")
+            {
+                GraphTitle.Foreground = Brushes.Black;
+            }
+            else if (selectedColor == "Синий")
+            {
+                GraphTitle.Foreground = Brushes.Blue;
+            }
+            else if (selectedColor == "Красный")
+            {
+                GraphTitle.Foreground = Brushes.Red;
+            }
+            else
+            {
+                GraphTitle.Foreground = Brushes.Black;  
+            }
+        }
+
+
 
 
 
