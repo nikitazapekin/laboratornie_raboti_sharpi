@@ -1,0 +1,37 @@
+﻿<Window x:Class="Lab10Variant18.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab10Variant18"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1250" Width="1800">
+    <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
+            <Canvas x:Name="MainCanvas" Background="LightGray" Margin="0,0,0,250"
+                   Width="1636" 
+        Height="878"
+            Cursor="SizeAll"
+                    >
+
+                <TextBlock  Panel.ZIndex="3" x:Name="GraphTitle"  Canvas.Left="62" FontSize="22" TextWrapping="Wrap" Text="Гиперболическая спираль " Canvas.Top="44"/>
+                <TextBlock  Visibility="Hidden"   Canvas.Left="1636"  FontSize="22" TextWrapping="Wrap" Canvas.Top="53" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="en-gb" Text="X: 0, Y: 0"/></TextBlock>
+
+
+
+
+            </Canvas>
+        </ScrollViewer>
+        <StackPanel Margin="0,1000,0,0">
+            <TextBlock  FontSize="32" Text="График" />
+            <TextBlock   FontSize="22" Text="Цвет:" Margin="10" />
+            <ComboBox  FontSize="22" x:Name="LineColorComboBox"    Margin="10">
+                <ComboBoxItem Content="Синий" />
+                <ComboBoxItem Content="Красный" />
+                <ComboBoxItem Content="Зеленый" />
+            </ComboBox>
+            <TextBlock  FontSize="22" Text="Размер:" Margin="10" />
+            <TextBox  FontSize="22"  x:Name="GraphScaleTextBox" Margin="10"   />
+        </StackPanel>
+    </Grid>
+</Window>
