@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,12 +24,13 @@ namespace lab9Var18
 
         public Combinational comb;
         public Memory memory;
-       
+        public Register register;
         public MainWindow()
         {
             InitializeComponent();
            comb  = new Combinational(8);
           memory = new Memory();
+            register = new Register(10);
         }
 
         private void ComputeComb_Click(object sender, RoutedEventArgs e)
@@ -152,5 +154,48 @@ namespace lab9Var18
 
 
 
+
+
+
+
+    private void  GenerateNums(object sender, RoutedEventArgs e)
+    {
+            try
+            {
+                Random random = new Random();
+                int[][] parsedInputs = new int[10][];
+
+                for (int i = 0; i < parsedInputs.Length; i++)
+                {
+
+                    parsedInputs[i] = new int[]
+                    {
+                random.Next(0, 2), // R
+                random.Next(0, 2), // S
+            
+                    };
+                }
+
+
+                register.SetInputs(parsedInputs);
+
+
+                string formattedInputs = "";
+                for (int i = 0; i < parsedInputs.Length; i++)
+                {
+                    formattedInputs += $"[{parsedInputs[i][0]}, {parsedInputs[i][1]}] ";
+                }
+
+
+                TriggerArray.Text = "Регистры: " + formattedInputs;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+
+
+
+        }
         }
 }

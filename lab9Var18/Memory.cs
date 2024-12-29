@@ -92,11 +92,4 @@ public class Memory : Element
 
 
 }
-/*
-namespace lab9Var18
-{
-    class Memory
-    {
-    }
-}
-*/
+ 
