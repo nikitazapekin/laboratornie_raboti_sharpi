@@ -75,7 +75,7 @@ public class Register : Element, IShiftable
         for (int i = 0; i < memories.Length; i++)
         {
             if (inputValues[i].Length != 2)
-          //      throw new ArgumentException($"Ошибка: Каждый входной массив должен содержать два элемента.");
+         
 
           
             memories[i][0] = inputValues[i][0];   

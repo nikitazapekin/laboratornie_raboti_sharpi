@@ -96,7 +96,7 @@
                 <Button Content="Установить" Click="SetByIndexClick" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
                 <Button Content="Произвольные числа"  Click="GenerateNums"  FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
                 <Button Content="Инвертировать" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
-                <Button Content="Сдвиг" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
+                <Button Content="Смещение" Click="MoveClick" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
                 <Button Content="Сохранить" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
                 <Button Content="Загрузить" FontSize="14" Height="40" Margin="0,10,0,0" Background="#FFE6F7FF"/>
             </StackPanel>
