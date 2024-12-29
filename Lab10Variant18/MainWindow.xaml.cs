@@ -60,14 +60,25 @@ namespace Lab10Variant18
 
         private void UpdateScalingPoints(double centerX, double centerY)
         {
-            double pointOffset = 100; // Начальное смещение точек от центра
-         double pointAdjustmentFactor = scale / 250; // Изменение смещения в зависимости от масштаба
-          //  double pointAdjustmentFactor = 0.85;
-            // Обновляем верхнюю точку
-            UpdatePoint(Brushes.Red, centerX - pointOffset * pointAdjustmentFactor, centerY - pointOffset * pointAdjustmentFactor);
+            // Углы (phi) для размещения точек на кривой
+            double phi1 = 2.0; // Верхняя точка
+            double phi2 = 4.0; // Нижняя точка
 
-            // Обновляем нижнюю точку
-            UpdatePoint(Brushes.Blue, centerX + pointOffset * pointAdjustmentFactor, centerY + pointOffset * pointAdjustmentFactor);
+            // Вычисляем радиусы для точек
+            const double a = 1.0; // Коэффициент кривой
+            double radius1 = a / phi1;
+            double radius2 = a / phi2;
+
+            // Вычисляем координаты точек, используя те же уравнения, что и для кривой
+            double point1X = radius1 * Math.Cos(phi1) * scale + centerX;
+            double point1Y = -radius1 * Math.Sin(phi1) * scale + centerY;
+
+            double point2X = radius2 * Math.Cos(phi2) * scale + centerX;
+            double point2Y = -radius2 * Math.Sin(phi2) * scale + centerY;
+
+            // Обновляем или создаём точки
+            UpdatePoint(Brushes.Red, point1X, point1Y);
+            UpdatePoint(Brushes.Blue, point2X, point2Y);
         }
 
         private void UpdatePoint(Brush color, double x, double y)
