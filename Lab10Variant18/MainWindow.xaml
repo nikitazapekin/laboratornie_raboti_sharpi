@@ -20,6 +20,8 @@
  
         <StackPanel Margin="1320,10,10,10" Width="300" VerticalAlignment="Top">
             <TextBlock FontSize="32" Text="График" Margin="0,0,0,10" />
+            <Button Click="handleDraw"  FontSize="22" Content="Построить график" />
+            <Button Click="drawDelegate"  FontSize="22" Content="Делегат " />
             <TextBlock FontSize="22" Text="Цвет:" Margin="10,0" />
             <ComboBox FontSize="22" x:Name="LineColorComboBox" Margin="10">
                 <ComboBoxItem Content="Синий" />
