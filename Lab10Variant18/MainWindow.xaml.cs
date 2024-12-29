@@ -10,12 +10,13 @@ namespace Lab10Variant18
 {
     public partial class MainWindow : Window
     {
-        private double scale = 150;
+        private double scale = 250;
         private Brush lineColor = Brushes.Orange;
         private double lineWidth = 4;
         private Ellipse currentScalingPoint = null;
         private Point previousMousePosition;
         private double offsetX = 0, offsetY = 0; // Для смещения спирали
+        private double greenPointX, greenPointY;  // Позиции зеленой точки на графике
 
         public MainWindow()
         {
@@ -81,10 +82,13 @@ namespace Lab10Variant18
             UpdatePoint(Brushes.Red, point1X, point1Y);
             UpdatePoint(Brushes.Blue, point2X, point2Y);
 
-            // Создаем зеленую точку на прямой (например, на оси X)
-            double greenPointX = centerX + 150; // Зеленая точка на оси X (можно изменить)
-            double greenPointY = centerY; // Можно настроить координаты по оси Y
+            // Зеленая точка на кривой
+            double greenPointPhi = 3.0; // Фиксированное значение для зеленой точки на кривой
+            double greenPointRadius = a / greenPointPhi;
+            greenPointX = greenPointRadius * Math.Cos(greenPointPhi) * scale + centerX;
+            greenPointY = -greenPointRadius * Math.Sin(greenPointPhi) * scale + centerY;
 
+            // Обновляем зеленую точку
             UpdatePoint(Brushes.Green, greenPointX, greenPointY);
         }
 
