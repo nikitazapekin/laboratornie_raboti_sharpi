@@ -17,7 +17,7 @@
             </Canvas>
         </ScrollViewer>
 
-        <!-- Элементы управления графиком -->
+ 
         <StackPanel Margin="1320,10,10,10" Width="300" VerticalAlignment="Top">
             <TextBlock FontSize="32" Text="График" Margin="0,0,0,10" />
             <TextBlock FontSize="22" Text="Цвет:" Margin="10,0" />
