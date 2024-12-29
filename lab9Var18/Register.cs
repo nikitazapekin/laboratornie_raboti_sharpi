@@ -75,7 +75,7 @@ public class Register : Element, IShiftable
         for (int i = 0; i < memories.Length; i++)
         {
             if (inputValues[i].Length != 2)
-                throw new ArgumentException($"Ошибка: Каждый входной массив должен содержать два элемента.");
+          //      throw new ArgumentException($"Ошибка: Каждый входной массив должен содержать два элемента.");
 
           
             memories[i][0] = inputValues[i][0];   
@@ -94,14 +94,13 @@ public class Register : Element, IShiftable
         {
             try
             {
-                // Сдвиг: передвигаем значения состояния и входа
+               
                 int lastState = memory[0];
                 int lastInput = memory[1];
 
-                // Можно реализовать нужную логику сдвига в зависимости от требований
-
-                memory[0] = lastInput;  // Сдвигаем состояние на место входа
-                memory[1] = lastState;  // Сдвигаем вход на место состояния
+            
+                memory[0] = lastInput;  
+                memory[1] = lastState;  
             }
             catch (Exception ex)
             {

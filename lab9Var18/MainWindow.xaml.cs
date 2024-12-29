@@ -170,8 +170,8 @@ namespace lab9Var18
 
                     parsedInputs[i] = new int[]
                     {
-                random.Next(0, 2), // R
-                random.Next(0, 2), // S
+                random.Next(0, 2), 
+                random.Next(0, 2), 
             
                     };
                 }
@@ -195,7 +195,149 @@ namespace lab9Var18
             }
 
 
+        }
+
+        /*
+        private void SetByIndexClick(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+
+                int triggerIndex = int.Parse(TriggerIndex.Text);
+
+                string[] triggerValues = TriggerRegisterValues.Text.Split(' ');
+
+
+                if (triggerValues.Length != 2)
+                {
+                    MessageBox.Show("Ошибка: Введите 1 значения (0 или 1).");
+                    return;
+                }
+
+
+                int[] parsedValues = new int[3];
+                for (int i = 0; i < 2; i++)
+                {
+                    parsedValues[i] = int.Parse(triggerValues[i]);
+
+
+                    if (parsedValues[i] != 0 && parsedValues[i] != 1)
+                    {
+                        MessageBox.Show("Ошибка: Значение должны быть 0 или 1.");
+                        return;
+                    }
+                }
+
+
+                if (triggerIndex < 0 || triggerIndex >= register.GetInputs().Length)
+                {
+                    MessageBox.Show("Ошибка: Индекс выходит за пределы массива.");
+                    return;
+                }
+
+
+                var currentInputs = register.GetInputs();
+
+
+                currentInputs[triggerIndex] = parsedValues;
+
+
+                register.SetInputs(currentInputs);
+
+
+                string formattedInputs = "";
+                foreach (var input in currentInputs)
+                {
+                    formattedInputs += $"[{input[0]}, {input[1]}, {input[2]}] ";
+                }
+
+
+                TriggerArray.Text = "Регистры: " + formattedInputs;
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка: Неверный формат ввода.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
 
         }
+
+        */
+
+
+
+        private void SetByIndexClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int triggerIndex = int.Parse(TriggerIndex.Text);
+
+                string[] triggerValues = TriggerRegisterValues.Text.Split(' ');
+
+                // Проверяем, что вводятся только два значения
+                if (triggerValues.Length != 2)
+                {
+                    MessageBox.Show("Ошибка: Введите два значения (состояние и вход).");
+                    return;
+                }
+
+                int[] parsedValues = new int[2]; // Массив из двух значений
+                for (int i = 0; i < 2; i++)
+                {
+                    parsedValues[i] = int.Parse(triggerValues[i]);
+
+                    if (parsedValues[i] != 0 && parsedValues[i] != 1)
+                    {
+                        MessageBox.Show("Ошибка: Значения должны быть 0 или 1.");
+                        return;
+                    }
+                }
+
+                // Проверка на корректный индекс
+                if (triggerIndex < 0 || triggerIndex >= register.GetInputs().Length)
+                {
+                    MessageBox.Show("Ошибка: Индекс выходит за пределы массива.");
+                    return;
+                }
+
+                var currentInputs = register.GetInputs();
+
+                // Корректно присваиваем новые значения для состояния и входа
+                currentInputs[triggerIndex][0] = parsedValues[0]; // Состояние
+                currentInputs[triggerIndex][1] = parsedValues[1]; // Вход
+
+                // Устанавливаем обновленные данные
+                register.SetInputs(currentInputs);
+
+                // Форматируем вывод
+                string formattedInputs = "";
+                foreach (var input in currentInputs)
+                {
+                    formattedInputs += $"[{input[0]}, {input[1]}] "; // Отображаем состояние и вход
+                }
+
+                TriggerArray.Text = "Регистры: " + formattedInputs;
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ошибка: Неверный формат ввода.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
         }
+
+
+
+
+
+
+
+    }
 }
+
