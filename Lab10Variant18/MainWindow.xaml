@@ -7,31 +7,27 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1250" Width="1800">
     <Grid>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0">
-            <Canvas x:Name="MainCanvas" Background="LightGray" Margin="0,0,0,250"
-                   Width="1636" 
-        Height="878"
-            Cursor="SizeAll"
-                    >
-
-                <TextBlock  Panel.ZIndex="3" x:Name="GraphTitle"  Canvas.Left="62" FontSize="22" TextWrapping="Wrap" Text="Гиперболическая спираль " Canvas.Top="44"/>
-                <TextBlock  Visibility="Hidden"   Canvas.Left="1636"  FontSize="22" TextWrapping="Wrap" Canvas.Top="53" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="en-gb" Text="X: 0, Y: 0"/></TextBlock>
-
-
-
-
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" 
+                      Margin="4,-1,596,35" Width="1200" Height="800">
+            <Canvas x:Name="MainCanvas" Background="LightGray" 
+                    Width="1400" Height="800"
+                    Cursor="SizeAll">
+                <TextBlock Panel.ZIndex="3" x:Name="GraphTitle" Canvas.Left="20" Canvas.Top="20"
+                           FontSize="22" TextWrapping="Wrap" Text="Гиперболическая спираль" />
             </Canvas>
         </ScrollViewer>
-        <StackPanel Margin="0,1000,0,0">
-            <TextBlock  FontSize="32" Text="График" />
-            <TextBlock   FontSize="22" Text="Цвет:" Margin="10" />
-            <ComboBox  FontSize="22" x:Name="LineColorComboBox"    Margin="10">
+
+        <!-- Элементы управления графиком -->
+        <StackPanel Margin="1320,10,10,10" Width="300" VerticalAlignment="Top">
+            <TextBlock FontSize="32" Text="График" Margin="0,0,0,10" />
+            <TextBlock FontSize="22" Text="Цвет:" Margin="10,0" />
+            <ComboBox FontSize="22" x:Name="LineColorComboBox" Margin="10">
                 <ComboBoxItem Content="Синий" />
                 <ComboBoxItem Content="Красный" />
                 <ComboBoxItem Content="Зеленый" />
             </ComboBox>
-            <TextBlock  FontSize="22" Text="Размер:" Margin="10" />
-            <TextBox  FontSize="22"  x:Name="GraphScaleTextBox" Margin="10"   />
+            <TextBlock FontSize="22" Text="Масштаб:" Margin="10,0" />
+            <TextBox FontSize="22" x:Name="GraphScaleTextBox" Margin="10" />
         </StackPanel>
     </Grid>
 </Window>

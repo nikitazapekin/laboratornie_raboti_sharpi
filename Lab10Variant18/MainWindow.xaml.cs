@@ -8,9 +8,9 @@ namespace Lab10Variant18
 {
     public partial class MainWindow : Window
     {
-        private double scale = 100; // Масштаб графика
+        private double scale = 50; // Масштаб графика
         private Brush lineColor = Brushes.Orange;
-        private double lineWidth = 2;
+        private double lineWidth = 4;
 
         public MainWindow()
         {
@@ -24,7 +24,7 @@ namespace Lab10Variant18
 
             double canvasWidth = MainCanvas.ActualWidth;
             double canvasHeight = MainCanvas.ActualHeight;
-            double centerX = canvasWidth / 2;
+            double centerX = (canvasWidth / 2) -200;
             double centerY = canvasHeight / 2;
 
             Polyline hyperbolicSpiral = new Polyline
