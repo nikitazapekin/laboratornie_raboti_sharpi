@@ -41,17 +41,17 @@ namespace lab9Var18
             try
             {
 
+              
                 int[] inputs = new int[8];
-                inputs[0] = ParseInput(Input1.Text, "Вход 1");
-                inputs[1] = ParseInput(Input2.Text, "Вход 2");
-                inputs[2] = ParseInput(Input3.Text, "Вход 3");
-                inputs[3] = ParseInput(Input4.Text, "Вход 4");
-                inputs[4] = ParseInput(Input1.Text, "Вход 5");
-                inputs[5] = ParseInput(Input2.Text, "Вход 6");
-                inputs[6] = ParseInput(Input3.Text, "Вход 7");
-                inputs[7] = ParseInput(Input4.Text, "Вход 8");
+                TextBox[] inputTextBoxes = new TextBox[] { Input1, Input2, Input3, Input4, Input1, Input2, Input3, Input4 };
 
-                comb.SetInputs(inputs);
+                for (int i = 0; i < inputs.Length; i++)
+                {
+                    inputs[i] = ParseInput(inputTextBoxes[i].Text, $"Вход {i + 1}");
+                }
+
+
+
                 comb.SetInputs(inputs);
                 int result = comb.ComputeOutput();
                 ResultComb.Text = $"Выход: {result}";
@@ -62,21 +62,40 @@ namespace lab9Var18
             }
 
         }
+      
 
         private void InvertComb_Click(object sender, RoutedEventArgs e)
         {
+           
+            TextBox[] inputTextBoxes = new TextBox[] { Input1, Input2, Input3, Input4, Input5, Input6, Input7, Input8 };
+            int[] newInputs = new int[inputTextBoxes.Length];
+
+            for (int i = 0; i < inputTextBoxes.Length; i++)
+            {
+                
+                if (int.TryParse(inputTextBoxes[i].Text, out int value) && (value == 0 || value == 1))
+                {
+                    newInputs[i] = value;
+                }
+                else
+                {
+                    MessageBox.Show($"Некорректное значение в элементе {i + 1}. Введите 0 или 1.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;  
+                }
+            }
+
+          
+            comb.SetInputs(newInputs);
+
+           
             comb.Invert();
 
-            int[] inputs = new int[8];
-            inputs = comb.GetInputs();
-            Input1.Text = inputs[0].ToString();
-            Input2.Text = inputs[1].ToString();
-            Input3.Text = inputs[2].ToString();
-            Input4.Text = inputs[3].ToString();
-            Input5.Text = inputs[4].ToString();
-            Input6.Text = inputs[5].ToString();
-            Input7.Text = inputs[6].ToString();
-            Input8.Text = inputs[7].ToString();
+           
+            int[] invertedInputs = comb.GetInputs();
+            for (int i = 0; i < invertedInputs.Length; i++)
+            {
+                inputTextBoxes[i].Text = invertedInputs[i].ToString();
+            }
         }
 
         private int ParseInput(string input, string fieldName)
@@ -88,9 +107,8 @@ namespace lab9Var18
             return value;
         }
 
-     
 
-
+         
         private void SetTrigger_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -122,6 +140,8 @@ namespace lab9Var18
             }
         }
 
+        
+
 
         private void ComputeOutput_Click(object sender, RoutedEventArgs e)
         {
@@ -152,12 +172,6 @@ namespace lab9Var18
             int inputValue = memory.GetTInput();
             TriggerOutput.Text = $"Результат: Вход: {inputValue}, Состояние: {state}";
         }
-
-
-
-
-
-
 
     private void  GenerateNums(object sender, RoutedEventArgs e)
     {
@@ -197,29 +211,31 @@ namespace lab9Var18
 
 
         }
- 
 
 
+  
         private void SetByIndexClick(object sender, RoutedEventArgs e)
         {
             try
             {
+               
                 int triggerIndex = int.Parse(TriggerIndex.Text);
 
+             
                 string[] triggerValues = TriggerRegisterValues.Text.Split(' ');
 
-              
+                
                 if (triggerValues.Length != 2)
                 {
                     MessageBox.Show("Ошибка: Введите два значения (состояние и вход).");
                     return;
                 }
-
-                int[] parsedValues = new int[2];  
+ 
+                int[] parsedValues = new int[2];
                 for (int i = 0; i < 2; i++)
                 {
                     parsedValues[i] = int.Parse(triggerValues[i]);
-
+ 
                     if (parsedValues[i] != 0 && parsedValues[i] != 1)
                     {
                         MessageBox.Show("Ошибка: Значения должны быть 0 или 1.");
@@ -227,28 +243,28 @@ namespace lab9Var18
                     }
                 }
 
-              
+                
                 if (triggerIndex < 0 || triggerIndex >= register.GetInputs().Length)
                 {
                     MessageBox.Show("Ошибка: Индекс выходит за пределы массива.");
                     return;
                 }
 
+                
                 var currentInputs = register.GetInputs();
 
-              
-                currentInputs[triggerIndex][0] = parsedValues[0];  
-                currentInputs[triggerIndex][1] = parsedValues[1]; 
+             
+                currentInputs[triggerIndex][0] = parsedValues[0]; // Состояние
+                currentInputs[triggerIndex][1] = parsedValues[1]; // Вход
  
                 register.SetInputs(currentInputs);
-
-               
+ 
                 string formattedInputs = "";
                 foreach (var input in currentInputs)
                 {
-                    formattedInputs += $"[{input[0]}, {input[1]}] ";  
+                    formattedInputs += $"[{input[0]}, {input[1]}] ";
                 }
-
+ 
                 TriggerArray.Text = "Регистры: " + formattedInputs;
             }
             catch (FormatException)
@@ -260,7 +276,7 @@ namespace lab9Var18
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         }
-
+ 
 
         private void  MoveClick(object sender, RoutedEventArgs e)
         {
@@ -368,18 +384,20 @@ namespace lab9Var18
                 comb.FromBinaryString(binaryData);
 
                 MessageBox.Show("Данные для Combinational успешно загружены.");
+ 
 
-                int[] inputs = new int[8];
-                inputs = comb.GetInputs();
 
-                Input1.Text = inputs[0].ToString();
-                Input2.Text = inputs[1].ToString();
-                Input3.Text = inputs[2].ToString();
-                Input4.Text = inputs[3].ToString();
-                Input5.Text = inputs[4].ToString();
-                Input6.Text = inputs[5].ToString();
-                Input7.Text = inputs[6].ToString();
-                Input8.Text = inputs[7].ToString();
+
+                int[] inputs = comb.GetInputs();
+                TextBox[] inputTextBoxes = new TextBox[] { Input1, Input2, Input3, Input4, Input5, Input6, Input7, Input8 };
+
+                for (int i = 0; i < inputs.Length; i++)
+                {
+                    inputTextBoxes[i].Text = inputs[i].ToString();
+                }
+
+
+
             }
             catch
             {

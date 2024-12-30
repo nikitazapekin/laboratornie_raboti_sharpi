@@ -19,12 +19,12 @@ public class Register : Element, IShiftable
     private static int ResetState = 0;
     private static int SetState = 0;
 
-    
+
     private int[][] memories;
 
     public Register(int inputCount = 1) : base("Register", inputCount, 1)
     {
-     
+
         memories = new int[inputCount][];
         for (int i = 0; i < inputCount; i++)
         {
@@ -34,11 +34,11 @@ public class Register : Element, IShiftable
 
     public override int ComputeOutput()
     {
-        
+
         int output = 0;
         foreach (var memory in memories)
         {
-            output ^= memory[0];  
+            output ^= memory[0];
         }
         return output;
     }
@@ -60,12 +60,13 @@ public class Register : Element, IShiftable
 
     public override void Invert()
     {
-      
+
         foreach (var memory in memories)
         {
-            memory[0] = memory[0] == 0 ? 1 : 0;   
+            memory[0] = memory[0] == 0 ? 1 : 0;
         }
     }
+
 
     public void SetInputs(int[][] inputValues)
     {
@@ -75,14 +76,15 @@ public class Register : Element, IShiftable
         for (int i = 0; i < memories.Length; i++)
         {
             if (inputValues[i].Length != 2)
-         
+                throw new ArgumentException($"Ошибка: Каждое значение должно содержать два элемента.");
 
-          
-            memories[i][0] = inputValues[i][0];   
-            memories[i][1] = inputValues[i][1];  
+            memories[i][0] = inputValues[i][0];  // Состояние
+            memories[i][1] = inputValues[i][1];  // Вход
         }
     }
 
+
+    /*
     public void Shift(int bits)
     {
         if (bits != 1)
@@ -94,13 +96,13 @@ public class Register : Element, IShiftable
         {
             try
             {
-               
+
                 int lastState = memory[0];
                 int lastInput = memory[1];
 
-            
-                memory[0] = lastInput;  
-                memory[1] = lastState;  
+
+                memory[0] = lastInput;
+                memory[1] = lastState;
             }
             catch (Exception ex)
             {
@@ -108,6 +110,28 @@ public class Register : Element, IShiftable
             }
         }
     }
+    */
+
+    public void Shift(int bits)
+    {
+        if (bits != 1)
+        {
+            throw new ArgumentException("Метод поддерживает только сдвиг на 1 бит.");
+        }
+
+        // Сдвигаем вложенные массивы
+        int[][] newMemories = new int[memories.Length][];
+        for (int i = 0; i < memories.Length; i++)
+        {
+            int targetIndex = (i + bits) % memories.Length; // Индекс, на который должен быть сдвигнут элемент
+            newMemories[targetIndex] = memories[i];
+        }
+
+        memories = newMemories;
+    }
+
+
+
 
     public override string ToBinaryString()
     {

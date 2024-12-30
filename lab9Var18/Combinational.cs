@@ -13,10 +13,7 @@ public class Combinational : Element
 
     private int[] inputs;
 
-    public Combinational() : base("Comb", 2, 1)
-    {
-        inputs = new int[InputCount];
-    }
+  
 
     public Combinational(int inputCount) : base("Comb", inputCount, 1)
     {
@@ -48,15 +45,7 @@ public class Combinational : Element
     }
 
 
-    public int GetInputState(int index)
-    {
-        if (index < 0 || index >= InputCount)
-        {
-            throw new ArgumentOutOfRangeException("Неверный индекс входа.");
-        }
-        return inputs[index];
-    }
-
+ 
 
     public override int ComputeOutput()
     {
@@ -72,42 +61,7 @@ public class Combinational : Element
 
 
 
-    /*
-
-
-    public override string ToBinaryString()
-    {
-        using (var ms = new MemoryStream())
-        using (var writer = new BinaryWriter(ms))
-        {
-            writer.Write(inputs.Length);
-            foreach (var value in inputs)
-            {
-                writer.Write(value);
-            }
-
-            return Convert.ToBase64String(ms.ToArray());
-        }
-    }
-
-
-    public override void FromBinaryString(string dataString)
-    {
-        var data = Convert.FromBase64String(dataString);
-        using (var ms = new MemoryStream(data))
-        using (var reader = new BinaryReader(ms))
-        {
-
-
-            int inputValuesLength = reader.ReadInt32();
-            for (int i = 0; i < inputValuesLength; i++)
-            {
-                inputs[i] = reader.ReadInt32();
-            }
-        }
-    }
-    */
-
+ 
 
 
 

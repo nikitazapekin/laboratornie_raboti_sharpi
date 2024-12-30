@@ -88,13 +88,4 @@ public abstract class Element : IInvertible
 
 }
 
-
-/*
- * 
-namespace lab9Var18
-{
-    class Element
-    {
-    }
-}
-*/
+ 
