@@ -276,8 +276,8 @@ namespace lab9Var18
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         }
- 
 
+        /*
         private void  MoveClick(object sender, RoutedEventArgs e)
         {
             register.Shift(1);
@@ -297,8 +297,46 @@ namespace lab9Var18
 
             TriggerArray.Text = "Регистры: " + formattedInputs;
         }
+        */
 
- 
+
+        private void MoveClick(object sender, RoutedEventArgs e)
+        {
+            
+            string shiftValueText = TriggerMoveValue.Text;
+
+           
+            if (int.TryParse(shiftValueText, out int shiftValue))
+            {
+             
+                register.Shift(shiftValue);
+
+            
+                var currentInputs = register.GetInputs();
+
+               
+                register.SetInputs(currentInputs);
+
+               
+                string formattedInputs = "";
+                foreach (var input in currentInputs)
+                {
+                    formattedInputs += $"[{input[0]}, {input[1]}] ";
+                }
+
+              
+                TriggerArray.Text = "Регистры: " + formattedInputs;
+            }
+            else
+            {
+              
+                MessageBox.Show("Введите корректное число для значения сдвига.", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+
+
+
         private void InvertRegister(object sender, RoutedEventArgs e)
         {
             register.Invert();

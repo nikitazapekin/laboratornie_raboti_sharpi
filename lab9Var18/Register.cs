@@ -84,42 +84,16 @@ public class Register : Element, IShiftable
     }
 
 
-    /*
-    public void Shift(int bits)
-    {
-        if (bits != 1)
-        {
-            throw new ArgumentException("Метод поддерживает только сдвиг на 1 бит.");
-        }
-
-        foreach (var memory in memories)
-        {
-            try
-            {
-
-                int lastState = memory[0];
-                int lastInput = memory[1];
-
-
-                memory[0] = lastInput;
-                memory[1] = lastState;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при сдвиге памяти: {ex.Message}");
-            }
-        }
-    }
-    */
+   
 
     public void Shift(int bits)
     {
         if (bits != 1)
         {
-            throw new ArgumentException("Метод поддерживает только сдвиг на 1 бит.");
+         //   throw new ArgumentException("Метод поддерживает только сдвиг на 1 бит.");
         }
 
-        // Сдвигаем вложенные массивы
+       
         int[][] newMemories = new int[memories.Length][];
         for (int i = 0; i < memories.Length; i++)
         {
