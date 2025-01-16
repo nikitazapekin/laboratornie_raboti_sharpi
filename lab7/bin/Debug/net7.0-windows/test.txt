@@ -1,0 +1,6 @@
+Train Number: 101, Destination: Москва, Departure Time: 13.11.2024 15:30:00
+Train Number: 102, Destination: Санкт-Петербург, Departure Time: 13.11.2024 16:00:00
+Train Number: 103, Destination: Владивосток, Departure Time: 13.11.2024 17:30:00
+Train Number: 104, Destination: Калуга, Departure Time: 13.11.2024 18:00:00
+Train Number: 105, Destination: Нижний Новгород, Departure Time: 13.11.2024 19:15:00
+Train Number: 106, Destination: Ярославль, Departure Time: 13.11.2024 20:45:00

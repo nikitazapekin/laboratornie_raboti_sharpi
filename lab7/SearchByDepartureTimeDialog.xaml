@@ -1,0 +1,31 @@
+﻿<Window x:Class="lab7.SearchByDepartureTimeDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab7"
+        mc:Ignorable="d"
+        Title="SearchByDepartureTimeDialog" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock FontSize="16" Text="Выберите дату и время отправления:" Margin="0,5,0,0"/>
+            <DatePicker x:Name="DepartureDatePicker" FontSize="22" Margin="0,10"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10">
+                <StackPanel Margin="10">
+                    <TextBlock FontSize="14" Text="Время от:" Margin="0,0,0,5"/>
+                    <TextBox x:Name="StartTimeTextBox" FontSize="22" Width="150"  />
+                </StackPanel>
+                <StackPanel Margin="10">
+                    <TextBlock FontSize="14" Text="Время до:" Margin="0,0,0,5"/>
+                    <TextBox x:Name="EndTimeTextBox" FontSize="22" Width="150"  />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button FontSize="22" Content="Поиск" Width="100" Margin="5" Click="SearchButton_Click"/>
+                <Button FontSize="22" Content="Отмена" Width="100" Margin="5" Click="CancelButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

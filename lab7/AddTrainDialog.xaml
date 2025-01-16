@@ -1,0 +1,40 @@
+﻿<Window x:Class="lab7.AddTrainDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab7"
+        mc:Ignorable="d"
+        Title="AddTrainDialog" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock FontSize="32" Text="Введите данные поезда:" Margin="0,0,0,10"/>
+
+            <TextBlock FontSize="16" Text="Название пункта" Margin="0,5,0,0"/>
+            <TextBox x:Name="DestinationTextBox" FontSize="22"/>
+
+            <TextBlock FontSize="16" Text="Номер поезда" Margin="0,5,0,0"/>
+            <TextBox x:Name="TrainNumberTextBox" FontSize="22"/>
+
+            <TextBlock FontSize="16" Text="Время отправления" Margin="0,5,0,0"/>
+
+            <DatePicker        DateValidationError="DatePicker_DateValidationError" x:Name="DepartureDatePicker" FontSize="22"/>
+
+
+            <TextBlock FontSize="16" Text="Время отправления" Margin="0,5,0,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <ComboBox x:Name="HourComboBox" FontSize="22" Width="60" Margin="5"/>
+                <TextBlock Text=":" FontSize="22" VerticalAlignment="Center"/>
+                <ComboBox x:Name="MinuteComboBox" FontSize="22" Width="60" Margin="5"/>
+                <TextBlock Text=":" FontSize="22" VerticalAlignment="Center"/>
+                <ComboBox x:Name="SecondComboBox" FontSize="22" Width="60" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button FontSize="22"  Content="OK" Width="100" Margin="5" Click="OkButton_Click"/>
+                <Button FontSize="22" Content="Отмена" Width="100" Margin="5" Click="CancelButton_Click"/>
+            </StackPanel>
+           
+        </StackPanel>
+    </Grid>
+</Window>
