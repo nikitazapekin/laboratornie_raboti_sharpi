@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wotbl\\source\\repos\\lab9Itog\\lab9Itog\\lab9Itog.csproj": {}
+    "C:\\Users\\wotbl\\source\\repos\\lab9ItogNew\\lab9Itog\\lab9Itog.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wotbl\\source\\repos\\lab9Itog\\lab9Itog\\lab9Itog.csproj": {
+    "C:\\Users\\wotbl\\source\\repos\\lab9ItogNew\\lab9Itog\\lab9Itog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wotbl\\source\\repos\\lab9Itog\\lab9Itog\\lab9Itog.csproj",
+        "projectUniqueName": "C:\\Users\\wotbl\\source\\repos\\lab9ItogNew\\lab9Itog\\lab9Itog.csproj",
         "projectName": "lab9Itog",
-        "projectPath": "C:\\Users\\wotbl\\source\\repos\\lab9Itog\\lab9Itog\\lab9Itog.csproj",
+        "projectPath": "C:\\Users\\wotbl\\source\\repos\\lab9ItogNew\\lab9Itog\\lab9Itog.csproj",
         "packagesPath": "C:\\Users\\wotbl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wotbl\\source\\repos\\lab9Itog\\lab9Itog\\obj\\",
+        "outputPath": "C:\\Users\\wotbl\\source\\repos\\lab9ItogNew\\lab9Itog\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
