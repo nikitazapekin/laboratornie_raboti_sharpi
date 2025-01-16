@@ -5,4 +5,38 @@
   <parityBit>true</parityBit>
   <ParityBit>false</ParityBit>
   <ZeroCount>0</ZeroCount>
+  <Inputs>
+    <ArrayOfInt>
+      <int>1</int>
+      <int>1</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>1</int>
+      <int>1</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>1</int>
+      <int>0</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>1</int>
+      <int>1</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>0</int>
+      <int>0</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>0</int>
+      <int>1</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>1</int>
+      <int>0</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>1</int>
+      <int>1</int>
+    </ArrayOfInt>
+  </Inputs>
 </Register>
