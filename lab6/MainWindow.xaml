@@ -1,0 +1,101 @@
+﻿<Window x:Class="lab6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab6"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1250" Width="1400">
+
+
+
+
+    <Window.Resources>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="_Border" Padding="2" SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="_Border" Property="Background" Value="Gray"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </Window.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+
+ 
+
+            <TextBox FontSize="22" x:Name="FirstNameTextBox" HorizontalAlignment="Left" Margin="42,72,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="340" Height="52"/>
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,38,0,0" TextWrapping="Wrap" Text="Введите имя студента" VerticalAlignment="Top"/>
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,145,0,0" TextWrapping="Wrap" Text="Введите фамилию студента" VerticalAlignment="Top"/>
+            <TextBox  FontSize="22" x:Name="LastNameTextBox" HorizontalAlignment="Left" Margin="42,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="51"/>
+
+            <DatePicker      DateValidationError="DatePicker_DateValidationError" FontSize="22" x:Name="DateOfBirthPicker" HorizontalAlignment="Left" Margin="42,276,0,0" VerticalAlignment="Top" Height="59" Width="340">
+                <DatePicker.Resources>
+                    <Style TargetType="DatePickerTextBox">
+                        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                    </Style>
+                </DatePicker.Resources>
+                <DatePicker.Text>
+                    <Binding Path="SelectedDate" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <local:DateValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.Text>
+            </DatePicker>
+
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,246,0,0" TextWrapping="Wrap" Text="Дата рождения студента" VerticalAlignment="Top"/>
+            <Button FontSize="22" Content="Добавить студента"  Click="AddStudentButton_Click"  HorizontalAlignment="Left" Margin="42,354,0,0" VerticalAlignment="Top" Height="47" Width="340"/>
+
+            <ComboBox x:Name="SortCriteriaComboBox" FontSize="22" HorizontalAlignment="Left" Margin="42,444,0,0" VerticalAlignment="Top" Width="340" Height="52">
+                <ComboBoxItem Content="Сортировать по имени" />
+                <ComboBoxItem Content="Сортировать по фамилии" />
+                <ComboBoxItem Content="Сортировать по дате рождения" />
+            </ComboBox>
+            <Button FontSize="22" Content="Сортировать" Click="SortButton_Click" HorizontalAlignment="Left" Margin="42,501,0,0" VerticalAlignment="Top" Height="55" Width="340"/>
+            <TextBox FontSize="22"  x:Name="SearchTextBox"  HorizontalAlignment="Left" Margin="42,659,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="52"/>
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,556,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.284,0.692"><Run Text="Поиск студента"/><Run Text="  "/><Run Text="по фамилии"/></TextBlock>
+            <Button FontSize="22" Click="FindButton_Click"   Content="Найти" HorizontalAlignment="Left" Margin="42,711,0,0" VerticalAlignment="Top" Height="51" Width="340"/>
+
+            <!--
+            <ListBox  FontSize="22" x:Name="ResultListBox" HorizontalAlignment="Left" Margin="504,378,0,0" Width="368" VerticalAlignment="Top" Height="472" />
+-->
+            <ListBox   SelectionMode="Multiple"  FontSize="22" x:Name="ResultListBox" HorizontalAlignment="Left" Margin="440,378,0,0" Width="414" VerticalAlignment="Top" Height="472">
+                
+            </ListBox>
+
+
+            <ListBox FontSize="22" x:Name="ResultListFindBox" HorizontalAlignment="Left" Margin="918,378,0,0" Width="442" VerticalAlignment="Top" Height="472" />
+            <TextBlock FontSize="22" x:Name="ResultTextBlockAll" HorizontalAlignment="Left" Margin="440,330,0,0" TextWrapping="Wrap" Text="Студенты (Группа)" VerticalAlignment="Top"/>
+            <Image HorizontalAlignment="Left" Height="199" Margin="440,92,0,0" VerticalAlignment="Top" Width="920" Source="/Снимок экрана 2024-10-21 203549.png"/>
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,803,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Удалить студента"/><Run Text=" по фамилии"/><LineBreak/><Run/><Run Text=" "/></TextBlock>
+            <TextBox FontSize="22" x:Name="SearchTextBoxRemove" HorizontalAlignment="Left" Margin="42,867,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="51"/>
+            <Button FontSize="22" Click="RemoveStudentButton_Click" Content="Удалить" HorizontalAlignment="Left" Margin="42,932,0,0" VerticalAlignment="Top" Height="54" Width="340"/>
+            <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,406,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.284,0.692"><Run Language="ru-ru" Text="Критерий сортировки"/></TextBlock>
+            <ComboBox x:Name="SortCriteriaComboBox_Copy" FontSize="22" HorizontalAlignment="Left" Margin="42,602,0,0" VerticalAlignment="Top" Width="340" Height="52">
+                <ComboBoxItem Content="Поиск по имени" />
+                <ComboBoxItem Content="Поиск по фамилии" />
+
+            </ComboBox>
+            <Button  Click="AddStudentsButton_Click"  FontSize="22" Content="Добавить студентов" HorizontalAlignment="Left" Margin="42,1013,0,0" VerticalAlignment="Top" Height="52" Width="340"/>
+            <Button   FontSize="22" Content="Сравнить студентов"  Click="Compare_Click"  HorizontalAlignment="Left" Margin="42,1088,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
+            <Button  FontSize="22" Content="Индексаторы"  Click="Indecsator_Click"  HorizontalAlignment="Left" Margin="42,1167,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
+            <TextBlock FontSize="22" x:Name="ResultTextBlockAll_Copy" HorizontalAlignment="Left" Margin="918,330,0,0" TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top"/>
+            <Button  FontSize="22" Content="Linq имя"  Click="SortByName"  HorizontalAlignment="Left" Margin="454,929,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
+            <Button  FontSize="22" Content="Linq фамилия"  Click="Indecsator_Click"  HorizontalAlignment="Left" Margin="454,1009,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
+            <Button  FontSize="22" Content="Индексаторы"  Click="Indecsator_Click"  HorizontalAlignment="Left" Margin="454,1093,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
+        </Grid>
+    </ScrollViewer>
+</Window>
