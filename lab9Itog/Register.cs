@@ -8,29 +8,65 @@ using System.Xml.Serialization;
 [Serializable]
 public class Register : Element, IShiftable
 {
-  public bool parityBit; // Бит четности
     private int zeroCount;  // Количество нулей
+ 
 
-   /* public bool ParityBit
+  public bool parityBit; // Бит четности
+    private bool currentParityBit; // Текущее состояние бита четности
+    private bool newParityBit;
+
+
+    public bool ParityBit
     {
-        get => parityBit;
-        private set => parityBit = value;
+        get => currentParityBit;
+      set
+        {
+            newParityBit = value;
+            if (currentParityBit != newParityBit)
+            {
+                OnParityBitChanged();
+                currentParityBit = newParityBit; // Обновляем текущее состояние
+            }
+        }
+    }
+    //  public bool ParityBit { get; set; }  
+
+    private void UpdateParityBit()
+    {
+        int oneCount = 0;
+
+        for (int i = 0; i < memories.Length; i++)
+        {
+            int state = memories[i].DirectOutput;
+            if (state == 1)
+                oneCount++;
+        }
+
+        ParityBit = !(oneCount % 2 == 1); // true, если четное количество единиц
     }
 
-    public int ZeroCount
+    // Метод, вызываемый при изменении бита четности
+    private void OnParityBitChanged()
     {
-        get => zeroCount;
-        private set => zeroCount = value;
+        Console.WriteLine("Бит четности изменился. Новое значение: " + newParityBit);
     }
-   */
 
-    public bool ParityBit { get; set; } // Публичный set
+    
+    public void SubtractParityBit()
+    {
+        ParityBit = false;
+    }
+
+
+
+
+
     public int ZeroCount { get; set; }
 
     private static int ResetState = 0;
     private static int SetState = 0;
     private Memory[] memories;
-    //  private int[][] inputs;
+  
     public int[][] Inputs
     {
         get => inputs;
@@ -38,14 +74,14 @@ public class Register : Element, IShiftable
     }
 
     private int[][] inputs;
-    // Параметрless-конструктор для XML-сериализации
+    
     public Register()
     {
         memories = Array.Empty<Memory>();
         inputs = Array.Empty<int[]>();
     }
 
-    // Конструктор с параметрами
+    
     public Register(int size) : base("Register", size, size)
     {
         memories = new Memory[size];
@@ -69,8 +105,8 @@ public class Register : Element, IShiftable
 
             inputs[i] = inputValues[i];
         }
-
-        UpdateParityAndZeroCount();
+        UpdateParityBit();
+       // UpdateParityAndZeroCount();
     }
 
     public int[][] GetInputs() => inputs;
@@ -227,7 +263,7 @@ public class Register : Element, IShiftable
         return $"Входы: {string.Join(" ", rows)}";
     }
 
-    private void UpdateParityAndZeroCount()
+   /* private void UpdateParityAndZeroCount()
     {
         int oneCount = 0;
         zeroCount = 0;
@@ -243,7 +279,7 @@ public class Register : Element, IShiftable
 
         parityBit = !(oneCount % 2 == 1); // true, если четное количество единиц
     }
-
+   */
     public void ReadXmlData(string xmlFilePath)
     {
         if (string.IsNullOrEmpty(xmlFilePath) || !File.Exists(xmlFilePath))

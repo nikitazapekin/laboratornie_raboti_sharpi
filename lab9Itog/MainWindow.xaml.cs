@@ -16,6 +16,7 @@ namespace lab9Itog
         private Memory memoryElement;
         private Register registerElement;
         private MemoryChild memoryChild;
+        private RegisterChild registerChild;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace lab9Itog
             UpdateTriggersInfo();
             registerElement = new Register(8);
             memoryChild = new MemoryChild();
+            registerChild = new RegisterChild(8);
         }
 
         private void ElementSelector_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -574,7 +576,18 @@ namespace lab9Itog
 
         }
 
-
+        private void handleToggle(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("Бит четности");
+                registerChild.ToggleParityBit = !registerChild.ToggleParityBit;
+             //   registerChild.parityBit = !registerChild.parityBit;
+            }  catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
 
 

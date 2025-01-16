@@ -67,9 +67,10 @@
             <Button FontSize="22" Click="handleReadXML"  Content="Прочитать xml" HorizontalAlignment="Left" Margin="1086,774,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
             <Button FontSize="22" Click="handleSave"  Content="Сохранить в xml" HorizontalAlignment="Left" Margin="1086,843,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
 
-            <Button FontSize="22" Click="handleSaveRegister"  Content="Сохранить register в xml" HorizontalAlignment="Left" Margin="1446,765,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
+            <Button FontSize="22" Click="handleSaveRegister"  Content="Сохранить register в xml" HorizontalAlignment="Left" Margin="1446,691,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
 
-            <Button FontSize="22" Click="handleReadXMLRegister"  Content="xml для register" HorizontalAlignment="Left" Margin="1446,843,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
+            <Button FontSize="22" Click="handleReadXMLRegister"  Content="xml для register" HorizontalAlignment="Left" Margin="1446,769,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
+            <Button FontSize="22" Click="handleToggle"  Content="бит четности" HorizontalAlignment="Left" Margin="1446,850,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
         </Grid>
     </ScrollViewer>
 </Window>
