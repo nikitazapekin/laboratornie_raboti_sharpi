@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Register xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <InputCount>8</InputCount>
+  <OutputCount>8</OutputCount>
+  <parityBit>true</parityBit>
+  <ParityBit>false</ParityBit>
+  <ZeroCount>0</ZeroCount>
+</Register>

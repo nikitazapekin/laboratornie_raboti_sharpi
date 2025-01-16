@@ -523,13 +523,6 @@ namespace lab9Itog
 
         private void handleSave(object sender, RoutedEventArgs e)
         {
-          /*  Combinational combinational = new Combinational(4)
-            {
-                Inputs = new int[] { 1, 0, 1, 1 }
-            };
-           */
-
-
             try
             {
                 combinationalElement.SaveToXml("combinational.xml");
@@ -542,6 +535,48 @@ namespace lab9Itog
             }
 
         }
+
+
+
+
+
+        private void handleReadXMLRegister(object sender, RoutedEventArgs e)
+        {
+
+
+            try
+            {
+              registerElement.ReadXmlData("register.xml");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при чтении: {ex.Message}");
+
+            }
+
+
+            UpdateTriggersInfo();
+        }
+
+        private void handleSaveRegister(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+            registerElement.SaveToXml("register.xml");
+                MessageBox.Show("Сохранено в xml");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(""+ex);
+            }
+
+        }
+
+
+
+
 
     }
 

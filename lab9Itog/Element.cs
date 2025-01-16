@@ -47,7 +47,7 @@ using System;
         }
 
  
-
+    
         public virtual void SetInputs(int[] inputs)
         {
             throw new NotImplementedException("This element type does not support setting inputs.");
@@ -65,17 +65,7 @@ using System;
     {
         throw new NotImplementedException("This element type does not support setting inputs.");
     }
-    /*
-    public virtual void ReadXmlData(string xmlFilePath)
-    {
-        throw new NotImplementedException("This element type does not support setting inputs.");
-    }
-     * public virtual void SaveXmlData(string xmlFilePath)
-    {
-        throw new NotImplementedException("This element type does not support setting inputs.");
-    }
-    */
-
+ 
     public virtual string ToBinaryString()
     {
         throw new NotImplementedException();

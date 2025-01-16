@@ -221,4 +221,9 @@ public class Combinational : Element, IComparable<Combinational>
 
     }
 
+
+    public override string ToString()
+    {
+        return $"Входы: [{string.Join(" ", inputs)}]";
     }
+}

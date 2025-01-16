@@ -1,7 +1,4 @@
-﻿/*
-В классе память определить булевское поле для хранения четности как операций XOR 
-всех входов и целочисленное поле  в котором хранится количество единиц о выходах. Задать свойства чтения-записи.
-*/
+﻿ 
 
 using System;
 using System.IO;
@@ -102,6 +99,7 @@ public class Memory : Element
         {
             inputValues = inputs;
         }
+        UpdateFields();
     }
     
 
@@ -245,7 +243,10 @@ public class Memory : Element
 
 
 
-
+    public override string ToString()
+    {
+        return $"Входы: [{string.Join(" ", inputValues)}]";
+    }
 
 
 }
