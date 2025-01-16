@@ -10,11 +10,11 @@ namespace lab9Itog
     class MemoryChild : Memory
     {
 
-        public MemoryChild() : base(1) // Вызываем базовый конструктор Memory с 1 входом
+        public MemoryChild() : base(1)  
         {
         }
 
-        // Конструктор с параметром (количество входов)
+       
         public MemoryChild(int inputCount) : base(inputCount)
         {
         }

@@ -113,20 +113,7 @@ public class Combinational : Element, IComparable<Combinational>
  
    
 
-    public override bool Equals(object obj)
-    {
-        if (obj == null || GetType() != obj.GetType())
-            return false;
-
-        var other = (Combinational)obj;
-
-     
-        if (Name != other.Name || InputCount != other.InputCount)
-            return false;
-
-       
-        return true;
-    }
+   
 
 
 
@@ -170,7 +157,42 @@ public class Combinational : Element, IComparable<Combinational>
         return this.CountOnesOnOutputs().CompareTo(other.CountOnesOnOutputs());
     }
 
+    public static bool operator <(Combinational a, Combinational b)
+    {
+        if (a == null || b == null)
+            throw new ArgumentNullException("Нельзя сравнивать с null.");
+        
+        return a.ComputeOutput() < b.ComputeOutput();
+    }
 
+    public static bool operator >(Combinational a, Combinational b)
+    {
+        if (a == null || b == null)
+            throw new ArgumentNullException("Нельзя сравнивать с null.");
+     
+        return a.ComputeOutput() > b.ComputeOutput();
+    }
+    public static bool operator ==(Combinational a, Combinational b)
+    {
+        if (ReferenceEquals(a, b)) return true;
+        if ((object)a == null || (object)b == null) return false;
+        return a.ComputeOutput() == b.ComputeOutput();
+    }
+
+    public static bool operator !=(Combinational a, Combinational b)
+    {
+        return !(a == b);
+    }
+
+ 
+    public override bool Equals(object obj)
+    {
+        if (obj is Combinational other)
+        {
+            return this.ComputeOutput() == other.ComputeOutput();
+        }
+        return false;
+    }
 
 
 }

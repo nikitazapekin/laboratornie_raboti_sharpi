@@ -444,18 +444,17 @@ namespace lab9Itog
 
         private void handleSort(object sender, RoutedEventArgs e)
         {
-            // Создание массива
+         
             Combinational[] combinationalArray = new Combinational[]
             {
         new Combinational(5) { Inputs = new int[] { 1, 0, 1, 1, 1 } },
         new Combinational(5) { Inputs = new int[] { 0, 1, 1, 0, 1 } },
         new Combinational(5) { Inputs = new int[] { 0, 0, 0, 0, 0 } }
             };
-
-            // Сортировка массива
+ 
             Array.Sort(combinationalArray);
 
-            // Формирование строки для вывода
+          
             string result = "[";
             foreach (var item in combinationalArray)
             {
@@ -463,12 +462,34 @@ namespace lab9Itog
             }
             result = result.TrimEnd(',', ' ') + "]";
 
-            // Отображение в outputTextBlock
+          
             outputTextBlock.Text = result;
         }
 
 
-
+        private void handleCompare(object sender, RoutedEventArgs e)
+        {
+            Combinational[] combinationalArray = new Combinational[]
+         {
+        new Combinational(5) { Inputs = new int[] { 1, 0, 1, 1, 0 } },
+     
+        new Combinational(5) { Inputs = new int[] { 0, 0, 0, 0, 0 } }
+         };
+            if (combinationalArray[0] == combinationalArray[1]) 
+            {
+                MessageBox.Show("У обоих элементов 1 или 0  на выходе");
+            } 
+            else if (combinationalArray[0] > combinationalArray[1])
+            {
+                MessageBox.Show("У первого элемента  1 на выходе, у второго 0");
+            } else if (combinationalArray[0] < combinationalArray[1])
+            {
+                MessageBox.Show("У второго элемента  1 на выходе, у первого 0");
+            } else
+            {
+                MessageBox.Show("Error");
+            }
+        }
     }
 
 }
