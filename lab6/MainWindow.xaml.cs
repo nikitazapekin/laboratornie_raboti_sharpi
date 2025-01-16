@@ -6,6 +6,9 @@ using System.Windows.Controls;
 
 namespace lab6
 {
+
+
+
     public partial class MainWindow : Window
     {
         private StudentGroup group = new StudentGroup();
@@ -269,8 +272,7 @@ namespace lab6
           for (int i=0; i<group.Count; i++)
             {
 
-                //   ResultListBox.Items.Add($"{group[i].FirstName} {group[i].LastName} (Дата рождения: {group[i].DateOfBirth.ToShortDateString()})");
-                //ResultListBox.Items.Add(new Student("Имя", "Фамилия", DateTime.Parse("20.12.2002")));
+              
                 ResultListBox.Items.Add(new Student($"{group[i].FirstName}", $"{group[i].LastName}", DateTime.Parse($"{group[i].DateOfBirth}")));
 
             }
@@ -286,6 +288,47 @@ namespace lab6
         }
 
 
+
+
+        private void handleSave(object sender, RoutedEventArgs e)
+        {
+           
+
+            try
+            {
+               group.SaveToXml("students.xml");
+                MessageBox.Show("Сохранено в xml");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error");
+            }
+
+
+
+
+
+        }
+
+
+        private void handleRead(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                group.ReadXmlData("students.xml");
+                MessageBox.Show("Прочитано из xml");
+                UpdateResult();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error");
+            }
+
+
+        }
 
 
         }

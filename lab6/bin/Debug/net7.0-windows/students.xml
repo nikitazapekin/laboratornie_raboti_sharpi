@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStudent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Student>
+    <FirstName>Alice</FirstName>
+    <LastName>Smith</LastName>
+    <DateOfBirth>2000-01-15T00:00:00</DateOfBirth>
+  </Student>
+  <Student>
+    <FirstName>Bob</FirstName>
+    <LastName>Johnson</LastName>
+    <DateOfBirth>2001-02-20T00:00:00</DateOfBirth>
+  </Student>
+  <Student>
+    <FirstName>Charlie</FirstName>
+    <LastName>Williams</LastName>
+    <DateOfBirth>2002-03-25T00:00:00</DateOfBirth>
+  </Student>
+  <Student>
+    <FirstName>Diana</FirstName>
+    <LastName>Jones</LastName>
+    <DateOfBirth>2003-04-30T00:00:00</DateOfBirth>
+  </Student>
+  <Student>
+    <FirstName>Alex</FirstName>
+    <LastName>Bern</LastName>
+    <DateOfBirth>2002-03-25T00:00:00</DateOfBirth>
+  </Student>
+  <Student>
+    <FirstName>Lia</FirstName>
+    <LastName>Charlz</LastName>
+    <DateOfBirth>2003-04-30T00:00:00</DateOfBirth>
+  </Student>
+</ArrayOfStudent>

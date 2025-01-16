@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Xml.Serialization;
 
 namespace lab6
 {
@@ -10,6 +12,8 @@ namespace lab6
     void    SortByLastNameLinq();
         void SortByDateOfBirthLinq();
     }
+
+    [Serializable]
     public class Student : IComparable, ISortable
     {
         public string FirstName { get; set; }
@@ -45,6 +49,19 @@ namespace lab6
             return $"{FirstName} {LastName}, Дата рождения: {DateOfBirth.ToShortDateString()}";
         }
 
+
+       public void SortByFirstNameLinq()
+        {
+            throw new ArgumentException("Object is not a Student");
+        }
+        public void SortByLastNameLinq()
+        {
+            throw new ArgumentException("Object is not a Student");
+        }
+        public void SortByDateOfBirthLinq()
+        {
+            throw new ArgumentException("Object is not a Student");
+        }
         public static int CompareStrings(string str1, string str2)
         {
             int length = Math.Min(str1.Length, str2.Length);
@@ -102,7 +119,7 @@ namespace lab6
             return left.CompareTo(right) <= 0;
         }
     } 
-    public class StudentGroup
+    public class StudentGroup : ISortable
     {
         private Student[] students = new Student[0];
 
@@ -341,30 +358,14 @@ namespace lab6
         }
 
 
+         
 
-        /*
-
-        public void SortByFirstNameLinq()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SortByLastNameLinq()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SortByDateOfBirthLinq()
-        {
-            throw new NotImplementedException();
-        }
-
-        */
         public void SortByFirstNameLinq()
         {
             students = students.OrderBy(student => student.FirstName, StringComparer.OrdinalIgnoreCase).ToArray();
             handleDisplay();
         }
+        
         public void SortByLastNameLinq()
         {
             students = students.OrderBy(student => student.LastName, StringComparer.OrdinalIgnoreCase).ToArray();
@@ -380,6 +381,34 @@ namespace lab6
         {
             MessageBox.Show("Сортировка выполнена успешно");
         }
+
+
+
+       
+        public void ReadXmlData(string xmlFilePath)
+        {
+            if (string.IsNullOrEmpty(xmlFilePath) || !File.Exists(xmlFilePath))
+            {
+                throw new FileNotFoundException("XML файл не найден.");
+            }
+
+            XmlSerializer serializer = new XmlSerializer(typeof(Student[]));
+            using (FileStream fs = new FileStream(xmlFilePath, FileMode.Open))
+            {
+                students = (Student[])serializer.Deserialize(fs);
+            }
+        }
+
+        public void SaveToXml(string xmlFilePath)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Student[]));
+            using (FileStream fs = new FileStream(xmlFilePath, FileMode.Create))
+            {
+                serializer.Serialize(fs, students);
+            }
+        }
+
+
 
 
 

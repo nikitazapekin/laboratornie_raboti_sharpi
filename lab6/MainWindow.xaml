@@ -34,7 +34,7 @@
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid>
 
- 
+
 
             <TextBox FontSize="22" x:Name="FirstNameTextBox" HorizontalAlignment="Left" Margin="42,72,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Width="340" Height="52"/>
             <TextBlock FontSize="22" HorizontalAlignment="Left" Margin="42,38,0,0" TextWrapping="Wrap" Text="Введите имя студента" VerticalAlignment="Top"/>
@@ -73,7 +73,7 @@
             <ListBox  FontSize="22" x:Name="ResultListBox" HorizontalAlignment="Left" Margin="504,378,0,0" Width="368" VerticalAlignment="Top" Height="472" />
 -->
             <ListBox   SelectionMode="Multiple"  FontSize="22" x:Name="ResultListBox" HorizontalAlignment="Left" Margin="440,378,0,0" Width="414" VerticalAlignment="Top" Height="472">
-                
+
             </ListBox>
 
 
@@ -95,7 +95,9 @@
             <TextBlock FontSize="22" x:Name="ResultTextBlockAll_Copy" HorizontalAlignment="Left" Margin="918,330,0,0" TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top"/>
             <Button  FontSize="22" Content="Linq имя"  Click="SortByName"  HorizontalAlignment="Left" Margin="454,929,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
             <Button  FontSize="22" Content="Linq фамилия"  Click="Indecsator_Click"  HorizontalAlignment="Left" Margin="454,1009,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
-            <Button  FontSize="22" Content="Индексаторы"  Click="Indecsator_Click"  HorizontalAlignment="Left" Margin="454,1093,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
+            <Button  FontSize="22" Content="Linq дата"  Click="Indecsator_Click"  HorizontalAlignment="Left" Margin="454,1093,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
+            <Button  FontSize="22" Content="Сериализация"  Click="handleSave"  HorizontalAlignment="Left" Margin="872,929,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
+            <Button  FontSize="22" Content="Чтение из xml"  Click="handleRead"  HorizontalAlignment="Left" Margin="872,1009,0,0" VerticalAlignment="Top" Height="57" Width="340"/>
         </Grid>
     </ScrollViewer>
 </Window>
