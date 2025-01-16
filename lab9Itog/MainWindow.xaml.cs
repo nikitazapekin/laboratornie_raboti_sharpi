@@ -464,8 +464,14 @@ namespace lab9Itog
 
           
             outputTextBlock.Text = result;
+            handleDisplayMessage();
         }
 
+
+        private void handleDisplayMessage()
+        {
+            MessageBox.Show("Сортировка прошла успешно");
+        }
 
         private void handleCompare(object sender, RoutedEventArgs e)
         {
@@ -490,6 +496,53 @@ namespace lab9Itog
                 MessageBox.Show("Error");
             }
         }
+
+
+
+
+
+
+        private void handleReadXML(object sender, RoutedEventArgs e)
+        {
+          
+
+            try
+            {
+                combinationalElement.ReadXmlData("combinational.xml");
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при чтении: {ex.Message}");
+
+            }
+
+
+            UpdateTriggersInfo();
+        }
+
+        private void handleSave(object sender, RoutedEventArgs e)
+        {
+          /*  Combinational combinational = new Combinational(4)
+            {
+                Inputs = new int[] { 1, 0, 1, 1 }
+            };
+           */
+
+
+            try
+            {
+                combinationalElement.SaveToXml("combinational.xml");
+                MessageBox.Show("Сохранено в xml");
+                
+            }
+            catch (Exception ex)
+            {
+              
+            }
+
+        }
+
     }
 
 }

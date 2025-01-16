@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Combinational xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <InputCount>5</InputCount>
+  <OutputCount>1</OutputCount>
+  <inputs>
+    <int>1</int>
+    <int>1</int>
+    <int>1</int>
+    <int>1</int>
+    <int>1</int>
+  </inputs>
+  <Inputs>
+    <int>1</int>
+    <int>1</int>
+    <int>1</int>
+    <int>1</int>
+    <int>1</int>
+  </Inputs>
+</Combinational>

@@ -64,6 +64,8 @@
             <TextBlock FontSize="22" Name="outputTextBlock" HorizontalAlignment="Left" Margin="942,553,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Height="83" Width="189"/>
             <Button FontSize="22"  Content="Сортировка" Click="handleSort" HorizontalAlignment="Left" Margin="34,862,0,0" VerticalAlignment="Top" Height="43" Width="320"/>
             <Button FontSize="22" Click="handleCompare"  Content="Сравнить по выходу" HorizontalAlignment="Left" Margin="390,708,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
+            <Button FontSize="22" Click="handleReadXML"  Content="Прочитать xml" HorizontalAlignment="Left" Margin="390,786,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
+            <Button FontSize="22" Click="handleSave"  Content="Сохранить в xml" HorizontalAlignment="Left" Margin="390,855,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
         </Grid>
     </ScrollViewer>
 </Window>

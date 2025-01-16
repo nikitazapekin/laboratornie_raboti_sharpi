@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Xml.Serialization;
 
+[Serializable]
 public class Combinational : Element, IComparable<Combinational>
 {
    
@@ -194,5 +196,29 @@ public class Combinational : Element, IComparable<Combinational>
         return false;
     }
 
+    public   void ReadXmlData(string xmlFilePath)
+    {
+        if (string.IsNullOrEmpty(xmlFilePath) || !File.Exists(xmlFilePath))
+        {
+            throw new FileNotFoundException("XML файл не найден.");
+        }
 
-}
+        XmlSerializer serializer = new XmlSerializer(typeof(Combinational));
+        using (FileStream fs = new FileStream(xmlFilePath, FileMode.Open))
+        {
+            var loadedObject = (Combinational)serializer.Deserialize(fs);
+            this.inputs = loadedObject.inputs;
+        }
+    }
+
+    public   void  SaveToXml(string xmlFilePath)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(Combinational));
+        using (FileStream fs = new FileStream(xmlFilePath, FileMode.Create))
+        {
+            serializer.Serialize(fs, this);
+        }
+
+    }
+
+    }

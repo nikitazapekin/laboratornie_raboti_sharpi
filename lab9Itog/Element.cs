@@ -65,8 +65,16 @@ using System;
     {
         throw new NotImplementedException("This element type does not support setting inputs.");
     }
-
-
+    /*
+    public virtual void ReadXmlData(string xmlFilePath)
+    {
+        throw new NotImplementedException("This element type does not support setting inputs.");
+    }
+     * public virtual void SaveXmlData(string xmlFilePath)
+    {
+        throw new NotImplementedException("This element type does not support setting inputs.");
+    }
+    */
 
     public virtual string ToBinaryString()
     {
