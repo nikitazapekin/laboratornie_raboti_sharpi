@@ -61,8 +61,12 @@ using System;
         public abstract int  ComputeOutput();
 
 
+    public virtual void RandomSetInputs()
+    {
+        throw new NotImplementedException("This element type does not support setting inputs.");
+    }
 
- 
+
 
     public virtual string ToBinaryString()
     {

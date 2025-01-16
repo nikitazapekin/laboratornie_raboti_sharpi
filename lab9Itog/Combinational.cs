@@ -1,10 +1,17 @@
 ﻿using System;
 using System.IO;
 
-public class Combinational : Element
+public class Combinational : Element, IComparable<Combinational>
 {
    
-    private int[] inputs;
+   public int[] inputs;
+
+
+    public int[] Inputs
+    {
+        get { return inputs; }
+        set { inputs = value; }
+    }
 
     public Combinational() : base("Combinational", 2, 1)
     {
@@ -120,6 +127,49 @@ public class Combinational : Element
        
         return true;
     }
+
+
+
+    public override void RandomSetInputs()
+    {
+        Random random = new Random();
+
+        
+        for (int i = 0; i < inputs.Length; i++)
+        {
+            inputs[i] = random.Next(0, 2);  
+        }
+    }
+
+
+
+
+
+
+
+    public int CountOnesOnOutputs()
+    {
+        int count = 0;
+        foreach (var input in inputs)
+        {
+            if (input == 1)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+
+    public int CompareTo(Combinational other)
+    {
+        if (other == null) return 1;
+
+       
+        return this.CountOnesOnOutputs().CompareTo(other.CountOnesOnOutputs());
+    }
+
 
 
 

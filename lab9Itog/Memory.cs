@@ -1,10 +1,16 @@
-﻿using System;
+﻿/*
+В классе память определить булевское поле для хранения четности как операций XOR 
+всех входов и целочисленное поле  в котором хранится количество единиц о выходах. Задать свойства чтения-записи.
+*/
+
+using System;
 using System.IO;
+using System.Windows;
 
 public class Memory : Element
 { 
     private int[] inputValues;
-
+   // private inputCount;
  
     private int directOutput;  
     private int invertedOutput; 
@@ -12,7 +18,48 @@ public class Memory : Element
  
     private int setInput;
     private int resetInput;
- 
+
+
+
+
+
+
+    private bool parity; // Четность XOR всех входов
+    private int onesCount; // Количество единиц на выходах
+
+
+
+    private void UpdateFields()
+    {
+        // Обновляем четность XOR всех входов
+        parity = CalculateParity();
+
+        // Подсчитываем количество единиц на выходах
+        onesCount = (directOutput == 1 ? 1 : 0) + (invertedOutput == 1 ? 1 : 0);
+    }
+    private bool CalculateParity()
+    {
+        int xorResult = 0;
+        foreach (var value in inputValues)
+        {
+            xorResult ^= value;
+        }
+        return xorResult == 1;
+    }
+
+    // Свойства для новых полей
+    public bool Parity
+    {
+        get => parity;
+        set => parity = value; // Можно сделать поле только для чтения, убрав set
+    }
+
+    public int OnesCount
+    {
+        get => onesCount;
+        set => onesCount = value; // Можно сделать поле только для чтения, убрав set
+    }
+
     public Memory(int inputCount = 1)
         : base("Memory", inputCount + 1, 1)
     {
@@ -36,12 +83,14 @@ public class Memory : Element
         invertedOutput = other.invertedOutput;
         setInput = other.setInput;
         resetInput = other.resetInput;
+        parity = other.parity;
+        onesCount = other.onesCount;
     }
   
    
     public void SetInputs(int[] inputs)
     {
-    
+        MessageBox.Show("Typed" + inputs.Length, "Requered" + InputCount);
 
         if (inputs.Length != InputCount)
             throw new ArgumentException($"Expected {InputCount} inputs.");
@@ -178,6 +227,21 @@ public class Memory : Element
     }
 
 
+
+    public void setNewInputs(int number )
+    {
+
+        inputValues = new int[number + 1];
+       // InputCount = number;
+      //  inputValues = new int[InputCount + 1];
+        MessageBox.Show(""+InputCount);
+        for(int i=0; i< InputCount; i++)
+        {
+            inputValues[i] = 0;
+        }
+      //  SetInput()
+        //   return inputValues[1];
+    }
 
 
 

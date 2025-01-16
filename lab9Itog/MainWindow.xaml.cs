@@ -1,7 +1,11 @@
-﻿using Microsoft.Win32;
+﻿
+
+
+  using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace lab9Itog
 {
@@ -11,7 +15,7 @@ namespace lab9Itog
         private Combinational combinationalElement;
         private Memory memoryElement;
         private Register registerElement;
-
+        private MemoryChild memoryChild;
         public MainWindow()
         {
             InitializeComponent();
@@ -24,6 +28,7 @@ namespace lab9Itog
             memoryElement = new Memory();
             UpdateTriggersInfo();
             registerElement = new Register(8);
+            memoryChild = new MemoryChild();
         }
 
         private void ElementSelector_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -72,7 +77,7 @@ namespace lab9Itog
                 return;
             }
 
-            
+
             foreach (var input in inputs)
             {
                 if (input != "1" && input != "0")
@@ -148,9 +153,10 @@ namespace lab9Itog
             }
             else if (currentElement is Memory memory)
             {
-                if (inputs.Length != 2)
+                if (inputs.Length != memory.InputCount)
                 {
                     MessageBox.Show("Для Memory должно быть введено ровно 2 элемента.");
+                    MessageBox.Show("Typed" + inputs.Length + "Requered" + memory.InputCount);
                     return;
                 }
 
@@ -244,6 +250,8 @@ namespace lab9Itog
                     }
                     setInputsValues.Text = "Входы: " + inputsString.TrimEnd(' ', ',');
                 }
+
+
                 else
                 {
                     setInputsValues.Text = "Входы: " + string.Join(", ", memoryElement.GetAllInputs());
@@ -251,7 +259,7 @@ namespace lab9Itog
             }
             catch (NullReferenceException)
             {
-               
+
             }
         }
 
@@ -417,7 +425,53 @@ namespace lab9Itog
 
 
 
-    }
-}
 
+        private void RandomInputsClick(object sender, RoutedEventArgs e)
+        {
+
+            combinationalElement.RandomSetInputs();
+            UpdateTriggersInfo();
+        }
+
+        private void HandleResize(object sender, RoutedEventArgs e)
+        {
+            memoryChild.ResizeInputs(4);
+
+            UpdateTriggersInfo();
+        }
+
+
+
+        private void handleSort(object sender, RoutedEventArgs e)
+        {
+            // Создание массива
+            Combinational[] combinationalArray = new Combinational[]
+            {
+        new Combinational(5) { Inputs = new int[] { 1, 0, 1, 1, 1 } },
+        new Combinational(5) { Inputs = new int[] { 0, 1, 1, 0, 1 } },
+        new Combinational(5) { Inputs = new int[] { 0, 0, 0, 0, 0 } }
+            };
+
+            // Сортировка массива
+            Array.Sort(combinationalArray);
+
+            // Формирование строки для вывода
+            string result = "[";
+            foreach (var item in combinationalArray)
+            {
+                result += "[" + string.Join(", ", item.Inputs) + "], ";
+            }
+            result = result.TrimEnd(',', ' ') + "]";
+
+            // Отображение в outputTextBlock
+            outputTextBlock.Text = result;
+        }
+
+
+
+    }
+
+}
  
+
+
