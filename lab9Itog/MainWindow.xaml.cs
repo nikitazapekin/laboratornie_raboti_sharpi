@@ -38,14 +38,14 @@ namespace lab9Itog
                     InputValues.Visibility = Visibility.Visible;
                     ShiftPanelSettings.Visibility = Visibility.Collapsed;
                     break;
-                case "D-Trigger":
+                case "Триггер":
                     currentElement = memoryElement;
                     InputValues.Text = "";
                     InputValues.Visibility = Visibility.Visible;
                     ShiftPanel.Visibility = Visibility.Collapsed;
                     ShiftPanelSettings.Visibility = Visibility.Collapsed;
                     break;
-                case "Register":
+                case "Регистр":
                     currentElement = registerElement;
                     InputValues.Text = "";
                     InputValues.Visibility = Visibility.Collapsed;
@@ -178,7 +178,7 @@ namespace lab9Itog
                 MessageBox.Show("Выберите элемент");
                 return;
             }
-            OutputResult.Text = $"Output: {currentElement.ComputeOutput()}";
+            OutputResult.Text = $"Выход: {currentElement.ComputeOutput()}";
         }
 
         private void InvertButton_Click(object sender, RoutedEventArgs e)
@@ -190,7 +190,7 @@ namespace lab9Itog
                 return;
             }
             currentElement.Invert();
-            OutputResult.Text = $"Output (Inverted): {currentElement.ComputeOutput()}";
+            OutputResult.Text = $"Выход (Инверсия): {currentElement.ComputeOutput()}";
             UpdateTriggersInfo();
         }
 
@@ -233,7 +233,7 @@ namespace lab9Itog
                     {
                         formattedInputs += $"[{states[i][0]}, {states[i][1]}] ";
                     }
-                    setInputsValues.Text = "Inputs: " + formattedInputs;
+                    setInputsValues.Text = "Входы: " + formattedInputs;
                 }
                 else if (currentElement is Combinational combinational)
                 {
@@ -242,11 +242,11 @@ namespace lab9Itog
                     {
                         inputsString += combinational.GetInputs()[i] + ", ";
                     }
-                    setInputsValues.Text = "Inputs: " + inputsString.TrimEnd(' ', ',');
+                    setInputsValues.Text = "Входы: " + inputsString.TrimEnd(' ', ',');
                 }
                 else
                 {
-                    setInputsValues.Text = "Inputs: " + string.Join(", ", memoryElement.GetAllInputs());
+                    setInputsValues.Text = "Входы: " + string.Join(", ", memoryElement.GetAllInputs());
                 }
             }
             catch (NullReferenceException)

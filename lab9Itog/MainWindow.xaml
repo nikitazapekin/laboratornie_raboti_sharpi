@@ -15,48 +15,48 @@
 
                 <ComboBox  FontSize="22" x:Name="ElementSelector" SelectionChanged="ElementSelector_SelectionChanged" Width="624" Height="64" RenderTransformOrigin="0.626,0.455">
                     <ComboBoxItem  FontSize="22" Content="Комбинированный элемент MOD2"/>
-                    <ComboBoxItem FontSize="22"  Content="D-Trigger"/>
-                    <ComboBoxItem FontSize="22" Content="Register"/>
+                    <ComboBoxItem FontSize="22"  Content="Триггер"/>
+                    <ComboBoxItem FontSize="22" Content="Регистр"/>
                 </ComboBox>
 
 
-                <TextBlock FontSize="22"  Margin="0,0,0,20"  Text="Input Values:"   Height="42" Width="624"/>
+                <TextBlock FontSize="22"  Margin="0,0,0,20"  Text="Входы:"   Height="42" Width="624"/>
                 <TextBox FontSize="22"  Margin="0,0,0,20" x:Name="InputValues" Width="200" Height="35"/>
 
 
-                <Button FontSize="22"  Click="SetInputsButton_Click"  Margin="0,0,0,20"   x:Name="SetInputsButton" Content="Set inputs values " Height="63" Width="624"/>
-                <Button FontSize="22" Click="ComputeButton_Click"  x:Name="ComputeButton"  Margin="0,0,0,20"  Content="Get output values"  Height="61" Width="624"/>
-                <Button FontSize="22"  x:Name="InvertButton" Click="InvertButton_Click" Content="Invert"  Height="63" Width="624"/>
+                <Button FontSize="22"  Click="SetInputsButton_Click"  Margin="0,0,0,20"   x:Name="SetInputsButton" Content="Установить входы " Height="63" Width="624"/>
+                <Button FontSize="22" Click="ComputeButton_Click"  x:Name="ComputeButton"  Margin="0,0,0,20"  Content="Получить выход"  Height="61" Width="624"/>
+                <Button FontSize="22"  x:Name="InvertButton" Click="InvertButton_Click" Content="Инвертировать"  Height="63" Width="624"/>
 
                 <StackPanel x:Name="ShiftPanel" Visibility="Collapsed">
-                    <Label FontSize="22"  Content="Shift count:"  />
+                    <Label FontSize="22"  Content="Шаг:"  />
                     <TextBox FontSize="22" x:Name="ShiftValue" Width="200" />
-                    <Button Click="ShiftButton_Click"  FontSize="22" x:Name="ShiftButton" Content="Shift Register"   Width="150" Height="40"/>
+                    <Button Click="ShiftButton_Click"  FontSize="22" x:Name="ShiftButton" Content="Сдвиг"   Width="150" Height="40"/>
                 </StackPanel>
 
 
 
-                <TextBlock FontSize="22"  Margin="0,0,0,20"  x:Name="setInputsValues" Text="Inputs: "  Height="44" Width="624"/>
-                <TextBlock FontSize="22"  Margin="0,0,0,20"  x:Name="OutputResult" Text="Output: "  Height="40" Width="624"/>
+                <TextBlock FontSize="22"  Margin="0,0,0,20"  x:Name="setInputsValues" Text="Входы: "  Height="44" Width="624"/>
+                <TextBlock FontSize="22"  Margin="0,0,0,20"  x:Name="OutputResult" Text="Выход: "  Height="40" Width="624"/>
 
 
                 <TextBlock Visibility="Collapsed" FontSize="22" x:Name="OutputAllTriggersInRegister" Text="Triggers: "  Height="44" Width="624"/>
 
 
                 <StackPanel  x:Name="ShiftPanelSettings" Visibility="Collapsed" Orientation="Vertical" Margin="0,10,0,10">
-                    <TextBlock FontSize="22" Text="Trigger Index:" />
+                    <TextBlock FontSize="22" Text="Индекс триггера:" />
                     <TextBox FontSize="22" x:Name="TriggerIndex" Width="100" Height="30" />
 
-                    <TextBlock FontSize="22" Text="Trigger Values (e.g., 1 0):" />
+                    <TextBlock FontSize="22" Text="Входы триггера (1 0 и др):" />
                     <TextBox FontSize="22" x:Name="TriggerValues" Width="200" Height="30" />
 
-                    <Button FontSize="22" x:Name="SetTriggerButton" Content="Set Trigger" Click="SetTriggerButton_Click" Width="150" Height="40" />
+                    <Button FontSize="22" x:Name="SetTriggerButton" Content="Установить" Click="SetTriggerButton_Click" Width="150" Height="40" />
                 </StackPanel>
 
 
 
-                <Button FontSize="22"  Margin="0,0,0,20" x:Name="SaveButton" Content="Save data into file" Height="40" Click="SaveButton_Click_1"/>
-                <Button   FontSize="22" x:Name="LoadButton" Content="Load data from file"  Height="62" Width="624" Click="LoadButton_Click"/>
+                <Button FontSize="22"  Margin="0,0,0,20" x:Name="SaveButton" Content="Сохранить" Height="40" Click="SaveButton_Click_1"/>
+                <Button   FontSize="22" x:Name="LoadButton" Content="Загрузить"  Height="62" Width="624" Click="LoadButton_Click"/>
             </StackPanel>
             <Image HorizontalAlignment="Left" Height="591" Margin="809,101,0,0" VerticalAlignment="Top" Width="937" Source="/Снимок экрана 2024-11-27 110624.png"/>
         </Grid>
