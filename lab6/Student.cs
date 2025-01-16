@@ -4,8 +4,13 @@ using System.Windows;
 
 namespace lab6
 {
-
-    public class Student : IComparable
+    interface ISortable
+    {
+    void    SortByFirstNameLinq();
+    void    SortByLastNameLinq();
+        void SortByDateOfBirthLinq();
+    }
+    public class Student : IComparable, ISortable
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -62,6 +67,8 @@ namespace lab6
         {
             return LastName.GetHashCode(StringComparison.OrdinalIgnoreCase);
         }
+
+       
 
         public static bool operator ==(Student left, Student right)
         {
@@ -335,11 +342,24 @@ namespace lab6
 
 
 
+        /*
 
+        public void SortByFirstNameLinq()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void SortByLastNameLinq()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void SortByDateOfBirthLinq()
+        {
+            throw new NotImplementedException();
+        }
 
-
+        */
         public void SortByFirstNameLinq()
         {
             students = students.OrderBy(student => student.FirstName, StringComparer.OrdinalIgnoreCase).ToArray();
