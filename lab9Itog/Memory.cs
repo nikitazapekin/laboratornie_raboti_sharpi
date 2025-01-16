@@ -83,27 +83,49 @@ public class Memory : Element
         parity = other.parity;
         onesCount = other.onesCount;
     }
-  
-   
+
+    /*
+     public void SetInputs(int[] inputs)
+     {
+         MessageBox.Show("Typed" + inputs.Length, "Requered" + InputCount);
+
+         if (inputs.Length != InputCount)
+             throw new ArgumentException($"Expected {InputCount} inputs.");
+         if (inputs[1] == 0)
+         {
+             inputValues[1] = 0;
+         }
+         else
+         {
+             inputValues = inputs;
+         }
+         UpdateFields();
+     }
+     */
     public void SetInputs(int[] inputs)
     {
-        MessageBox.Show("Typed" + inputs.Length, "Requered" + InputCount);
+       
 
         if (inputs.Length != InputCount)
             throw new ArgumentException($"Expected {InputCount} inputs.");
+
+        // Обновляем входные значения
         if (inputs[1] == 0)
         {
             inputValues[1] = 0;
         }
         else
         {
-            inputValues = inputs;
+            for (int i = 0; i < InputCount; i++)
+            {
+                inputValues[i] = inputs[i];
+            }
         }
         UpdateFields();
     }
-    
 
- 
+
+
 
     public int GetInputState(int index)
     {
@@ -168,10 +190,31 @@ public class Memory : Element
         return inputValues;
     }
 
-    public override int ComputeOutput()
+    /*public override int ComputeOutput()
     {
         return directOutput;
     }
+    */
+    public override int ComputeOutput()
+    {
+     
+        if (setInput == 1)
+        {
+            directOutput = 1;
+        }
+        else if (resetInput == 1)
+        {
+            directOutput = 0;
+        }
+        else
+        {
+            directOutput = inputValues[0];  
+        }
+
+        invertedOutput = 1 - directOutput;  
+        return directOutput;
+    }
+
 
 
     public int DirectOutput => directOutput;

@@ -1,4 +1,5 @@
 ﻿
+using lab9Itog;
 using lab9Itog.Interfaces;
 using System;
 using System.IO;
@@ -25,11 +26,11 @@ public class Register : Element, IShiftable
             if (currentParityBit != newParityBit)
             {
                 OnParityBitChanged();
-                currentParityBit = newParityBit; // Обновляем текущее состояние
+                currentParityBit = newParityBit; 
             }
         }
     }
-    //  public bool ParityBit { get; set; }  
+    
 
     private void UpdateParityBit()
     {
@@ -44,8 +45,7 @@ public class Register : Element, IShiftable
 
         ParityBit = !(oneCount % 2 == 1); // true, если четное количество единиц
     }
-
-    // Метод, вызываемый при изменении бита четности
+ 
     private void OnParityBitChanged()
     {
         Console.WriteLine("Бит четности изменился. Новое значение: " + newParityBit);
@@ -170,12 +170,7 @@ public class Register : Element, IShiftable
         return states;
     }
 
-    public static void SetGlobalState(int set, int reset)
-    {
-        SetState = set;
-        ResetState = reset;
-    }
-
+ 
     public void Shift(int positions)
     {
         if (positions <= 0)
@@ -242,7 +237,7 @@ public class Register : Element, IShiftable
             MessageBox.Show($"Ошибка при сохранении бинарных данных: {ex.Message}");
         }
     }
-
+    /*
     public override bool Equals(object obj)
     {
         if (obj == null || GetType() != obj.GetType())
@@ -252,7 +247,7 @@ public class Register : Element, IShiftable
 
         return Name == other.Name && InputCount == other.InputCount;
     }
-
+    */
     public override string ToString()
     {
         string[] rows = new string[inputs.Length];
@@ -263,23 +258,7 @@ public class Register : Element, IShiftable
         return $"Входы: {string.Join(" ", rows)}";
     }
 
-   /* private void UpdateParityAndZeroCount()
-    {
-        int oneCount = 0;
-        zeroCount = 0;
 
-        for (int i = 0; i < memories.Length; i++)
-        {
-            int state = memories[i].DirectOutput;
-            if (state == 0)
-                zeroCount++;
-            else
-                oneCount++;
-        }
-
-        parityBit = !(oneCount % 2 == 1); // true, если четное количество единиц
-    }
-   */
     public void ReadXmlData(string xmlFilePath)
     {
         if (string.IsNullOrEmpty(xmlFilePath) || !File.Exists(xmlFilePath))
@@ -301,4 +280,69 @@ public class Register : Element, IShiftable
             serializer.Serialize(fs, this);
         }
     }
-} 
+
+
+    public int zerosCount = 0;
+
+
+    public void ComputeState(int setInput, int resetInput)
+    {
+
+      /*  if (setInput == 1)
+        {
+            directOutput = 1;
+            invertedOutput = 0;
+        }
+
+        else if (resetInput == 1)
+        {
+            directOutput = 0;
+            invertedOutput = 1;
+        }
+        else
+        {
+
+            directOutput = inputValues[0];
+            invertedOutput = 1 - directOutput;
+        }
+        public void computeZeros()
+    {
+        foreach (var item in inputs)
+        {
+            
+        }
+      */
+    }
+
+    public static bool operator >(Register left, Register right)
+    {
+        if (left == null || right == null)
+            throw new ArgumentNullException("Один из объектов равен null.");
+
+        return left.ZeroCount > right.ZeroCount;
+    }
+
+
+    public static bool operator <(Register left, Register right)
+    {
+        if (left == null || right == null)
+            throw new ArgumentNullException("Один из объектов равен null.");
+
+        return left.ZeroCount < right.ZeroCount;
+    }
+
+   
+    public override bool Equals(object obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+            return false;
+
+        var other = (RegisterChild)obj;
+        return ZeroCount == other.ZeroCount;
+    }
+
+
+
+
+
+}
