@@ -1,0 +1,40 @@
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\MainWindow.g.cs
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\App.g.cs
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog_MarkupCompile.cache
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog_MarkupCompile.lref
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\bin\Debug\net7.0-windows\lab9Itog.exe
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\bin\Debug\net7.0-windows\lab9Itog.deps.json
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\bin\Debug\net7.0-windows\lab9Itog.runtimeconfig.json
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\bin\Debug\net7.0-windows\lab9Itog.dll
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\bin\Debug\net7.0-windows\lab9Itog.pdb
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\MainWindow.baml
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.g.resources
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.AssemblyInfoInputs.cache
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.AssemblyInfo.cs
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.csproj.CoreCompileInputs.cache
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.dll
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\refint\lab9Itog.dll
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.pdb
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.genruntimeconfig.cache
+C:\Users\wotbl\source\repos\lab9Itog\lab9Itog\obj\Debug\net7.0-windows\ref\lab9Itog.dll
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\bin\Debug\net7.0-windows\lab9Itog.exe
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\bin\Debug\net7.0-windows\lab9Itog.deps.json
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\bin\Debug\net7.0-windows\lab9Itog.runtimeconfig.json
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\bin\Debug\net7.0-windows\lab9Itog.dll
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\bin\Debug\net7.0-windows\lab9Itog.pdb
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\MainWindow.g.cs
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\App.g.cs
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog_MarkupCompile.cache
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog_MarkupCompile.lref
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\MainWindow.baml
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.g.resources
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.AssemblyInfoInputs.cache
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.AssemblyInfo.cs
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.csproj.CoreCompileInputs.cache
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.dll
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\refint\lab9Itog.dll
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.pdb
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\lab9Itog.genruntimeconfig.cache
+C:\Users\wotbl\Desktop\Лабы экзамен C#\laboratornie_raboti_sharpi-lab9Itog\lab9Itog\obj\Debug\net7.0-windows\ref\lab9Itog.dll
