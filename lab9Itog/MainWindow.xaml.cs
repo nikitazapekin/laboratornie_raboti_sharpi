@@ -4,6 +4,7 @@
   using Microsoft.Win32;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -627,17 +628,45 @@ namespace lab9Itog
                 MessageBox.Show("" + ex);
             }
 
-            // int comparisonResult = registerArray[0].CompareTo(registerArray1[0]);
-            /*     int comparisonResult = registerArray[0].CompareTo(registerArray1[0]);
-                 if (comparisonResult == 0)
-                     MessageBox.Show("Оба одинаковое количество нулей имеет");
-                 else if (comparisonResult < 0)
-                  MessageBox.Show("Первый объект имеет меньше нулей, чем второй.");
-                 else
-                  MessageBox.Show("Первый объект имеет больше нулей, чем второй.");
-            */
-
+           
         }
+
+
+
+        private void handleSortRegisters(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+              
+                Register[] registers = new Register[]
+                {
+            new Register(5) { Inputs = new int[][] { new int[] { 1, 0 } }, zerosCount = 2 },
+            new Register(5) { Inputs = new int[][] { new int[] { 0, 0 } }, zerosCount = 4 },
+            new Register(5) { Inputs = new int[][] { new int[] { 1, 1 } }, zerosCount = 1 },
+            new Register(5) { Inputs = new int[][] { new int[] { 0, 1 } }, zerosCount = 3 }
+                };
+
+                
+                var sortedRegisters = registers.OrderBy(r => r.zerosCount).ToArray();
+
+              
+                string result = "Отсортированные объекты по количеству нулей:\n" +
+                                string.Join("\n", sortedRegisters.Select((r, index) => $"Регистер {index + 1}: {r.zerosCount} нулей"));
+
+            
+                MessageBox.Show(result, "Сортировка");
+
+                outputTextBlock.Text = result;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message, "Ошибка");
+            }
+        }
+
+
+
+
 
 
     }

@@ -61,7 +61,7 @@
             <Image HorizontalAlignment="Left" Height="591" Margin="809,101,0,0" VerticalAlignment="Top" Width="937" Source="/Снимок экрана 2024-11-27 110624.png"/>
             <Button FontSize="22" Content="Рандом значения входов" Click="RandomInputsClick" HorizontalAlignment="Left" Margin="730,696,0,0" VerticalAlignment="Top" Height="57" Width="320"/>
             <Button FontSize="22" Content="Ресайз" Click="HandleResize" HorizontalAlignment="Left" Margin="730,774,0,0" VerticalAlignment="Top" Height="57" Width="320"/>
-            <TextBlock FontSize="22" Name="outputTextBlock" HorizontalAlignment="Left" Margin="942,553,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Height="83" Width="189"/>
+            <TextBlock FontSize="22" Name="outputTextBlock" HorizontalAlignment="Left" Margin="773,443,0,0" TextWrapping="Wrap"   VerticalAlignment="Top" Height="83" Width="189"/>
             <Button FontSize="22"  Content="Сортировка" Click="handleSort" HorizontalAlignment="Left" Margin="730,850,0,0" VerticalAlignment="Top" Height="43" Width="320"/>
             <Button FontSize="22" Click="handleCompare"  Content="Сравнить по выходу" HorizontalAlignment="Left" Margin="1086,696,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
             <Button FontSize="22" Click="handleReadXML"  Content="Прочитать xml" HorizontalAlignment="Left" Margin="1086,774,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
@@ -72,6 +72,7 @@
             <Button FontSize="22" Click="handleReadXMLRegister"  Content="xml для register" HorizontalAlignment="Left" Margin="1446,769,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
             <Button FontSize="22" Click="handleToggle"  Content="бит четности" HorizontalAlignment="Left" Margin="1446,850,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
             <Button FontSize="22" Click="handleCompareRegister"  Content="Сравнить" HorizontalAlignment="Left" Margin="1446,579,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
+            <Button FontSize="22" Click="handleSortRegisters"  Content="Sort register" HorizontalAlignment="Left" Margin="1446,499,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
         </Grid>
     </ScrollViewer>
 </Window>
