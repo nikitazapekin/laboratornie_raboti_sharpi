@@ -237,17 +237,7 @@ public class Register : Element, IShiftable
             MessageBox.Show($"Ошибка при сохранении бинарных данных: {ex.Message}");
         }
     }
-    /*
-    public override bool Equals(object obj)
-    {
-        if (obj == null || GetType() != obj.GetType())
-            return false;
-
-        var other = (Register)obj;
-
-        return Name == other.Name && InputCount == other.InputCount;
-    }
-    */
+   
     public override string ToString()
     {
         string[] rows = new string[inputs.Length];
@@ -285,34 +275,48 @@ public class Register : Element, IShiftable
     public int zerosCount = 0;
 
 
-    public void ComputeState(int setInput, int resetInput)
+    public int directOutput=0;
+    
+    public int ComputeOutput(int setInput, int resetInput)
     {
-
-      /*  if (setInput == 1)
+        if (setInput == 1)
         {
             directOutput = 1;
-            invertedOutput = 0;
         }
-
         else if (resetInput == 1)
         {
             directOutput = 0;
-            invertedOutput = 1;
         }
         else
         {
+            directOutput = setInput;  
+        }
 
-            directOutput = inputValues[0];
-            invertedOutput = 1 - directOutput;
-        }
-        public void computeZeros()
-    {
-        foreach (var item in inputs)
-        {
-            
-        }
-      */
+      
+        return directOutput;
+
+
     }
+        public void countZeros()
+        {
+
+        foreach (var input in inputs)
+        {
+
+        if (ComputeOutput(input[0], input[1]) == 0)
+        {
+                zeroCount++;
+        }
+        }
+        }
+
+    public int CompareTo(Register other)
+    {
+        if (other == null) return 1;
+        return this.zerosCount.CompareTo(other.zerosCount);
+    }
+
+
 
     public static bool operator >(Register left, Register right)
     {
@@ -321,6 +325,23 @@ public class Register : Element, IShiftable
 
         return left.ZeroCount > right.ZeroCount;
     }
+
+    public static bool operator == (Register left, Register right)
+    {
+        if (left == null || right == null)
+            throw new ArgumentNullException("Один из объектов равен null.");
+
+        return left.ZeroCount == right.ZeroCount;
+    }
+
+    public static bool operator !=(Register left, Register right)
+    {
+        if (left == null || right == null)
+            throw new ArgumentNullException("Один из объектов равен null.");
+
+        return left.ZeroCount != right.ZeroCount;
+    }
+
 
 
     public static bool operator <(Register left, Register right)

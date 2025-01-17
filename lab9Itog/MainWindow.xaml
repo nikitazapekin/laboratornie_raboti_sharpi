@@ -71,6 +71,7 @@
 
             <Button FontSize="22" Click="handleReadXMLRegister"  Content="xml для register" HorizontalAlignment="Left" Margin="1446,769,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
             <Button FontSize="22" Click="handleToggle"  Content="бит четности" HorizontalAlignment="Left" Margin="1446,850,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
+            <Button FontSize="22" Click="handleCompareRegister"  Content="Сравнить" HorizontalAlignment="Left" Margin="1446,579,0,0" VerticalAlignment="Top" Height="57" Width="300"/>
         </Grid>
     </ScrollViewer>
 </Window>

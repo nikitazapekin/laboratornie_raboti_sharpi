@@ -591,6 +591,55 @@ namespace lab9Itog
 
 
 
+        private void handleCompareRegister(object sender, RoutedEventArgs e)
+        {
+
+
+            try
+            {
+
+            Register[] registerArray = new Register[]
+    {
+        new Register(5) { Inputs = new int[][] { new int[] { 1, 0 } }, zerosCount = 2 },
+        new Register(5) { Inputs = new int[][] { new int[] { 1, 1 } }, zerosCount = 3 },
+    };
+
+            Register[] registerArray1 = new Register[]
+            {
+        new Register(5) { Inputs = new int[][] { new int[] { 1, 0 } }, zerosCount = 2 },
+        new Register(5) { Inputs = new int[][] { new int[] { 1, 1 } }, zerosCount = 4 },
+            };
+
+            if(registerArray[0]== registerArray1[0])
+            {
+                MessageBox.Show("Оба одинаковое количество нулей имеет");
+            } 
+            if (registerArray[0] < registerArray1[0])
+            {
+                MessageBox.Show("Первый объект имеет меньше нулей, чем второй.");
+            }
+            if (registerArray[0] > registerArray1[0])
+            {
+                MessageBox.Show("Первый объект имеет больше нулей, чем второй.");
+            }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("" + ex);
+            }
+
+            // int comparisonResult = registerArray[0].CompareTo(registerArray1[0]);
+            /*     int comparisonResult = registerArray[0].CompareTo(registerArray1[0]);
+                 if (comparisonResult == 0)
+                     MessageBox.Show("Оба одинаковое количество нулей имеет");
+                 else if (comparisonResult < 0)
+                  MessageBox.Show("Первый объект имеет меньше нулей, чем второй.");
+                 else
+                  MessageBox.Show("Первый объект имеет больше нулей, чем второй.");
+            */
+
+        }
+
+
     }
 
 }
