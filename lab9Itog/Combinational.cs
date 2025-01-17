@@ -119,7 +119,7 @@ public class Combinational : Element, IComparable<Combinational>
 
 
 
-    public override void RandomSetInputs()
+    public override void RandomSetInputs() // 2
     {
         Random random = new Random();
 

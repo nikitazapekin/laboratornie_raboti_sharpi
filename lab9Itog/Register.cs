@@ -5,14 +5,15 @@ using System;
 using System.IO;
 using System.Windows;
 using System.Xml.Serialization;
-
+#region
 [Serializable]
 public class Register : Element, IShiftable
 {
     private int zeroCount;  // Количество нулей
- 
 
-  public bool parityBit; // Бит четности
+    
+    public bool parityBit; // Бит четности
+   
     private bool currentParityBit; // Текущее состояние бита четности
     private bool newParityBit;
 
@@ -30,7 +31,7 @@ public class Register : Element, IShiftable
             }
         }
     }
-    
+    #endregion
 
     private void UpdateParityBit()
     {
@@ -81,7 +82,7 @@ public class Register : Element, IShiftable
         inputs = Array.Empty<int[]>();
     }
 
-    
+   
     public Register(int size) : base("Register", size, size)
     {
         memories = new Memory[size];

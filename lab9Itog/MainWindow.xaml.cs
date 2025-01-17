@@ -455,7 +455,7 @@ namespace lab9Itog
         new Combinational(5) { Inputs = new int[] { 0, 0, 0, 0, 0 } }
             };
  
-            Array.Sort(combinationalArray);
+            Array.Sort(combinationalArray); // исправить  
 
           
             string result = "[";
@@ -583,7 +583,7 @@ namespace lab9Itog
             {
                 MessageBox.Show("Бит четности");
                 registerChild.ToggleParityBit = !registerChild.ToggleParityBit;
-             //   registerChild.parityBit = !registerChild.parityBit;
+       
             }  catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -656,7 +656,7 @@ namespace lab9Itog
             
                 MessageBox.Show(result, "Сортировка");
 
-                outputTextBlock.Text = result;
+             
             }
             catch (Exception ex)
             {
