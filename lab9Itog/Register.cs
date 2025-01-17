@@ -318,19 +318,24 @@ public class Register : Element, IShiftable
 
 
 
+    public static bool operator <(Register left, Register right)
+    {
+        if (left is null || right is null)
+            throw new ArgumentNullException("Один из объектов равен null.");
+        return left.ZeroCount < right.ZeroCount;
+    }
+
     public static bool operator >(Register left, Register right)
     {
-        if (left == null || right == null)
+        if (left is null || right is null)
             throw new ArgumentNullException("Один из объектов равен null.");
-
         return left.ZeroCount > right.ZeroCount;
     }
 
-    public static bool operator == (Register left, Register right)
+    public static bool operator ==(Register left, Register right)
     {
-        if (left == null || right == null)
-            throw new ArgumentNullException("Один из объектов равен null.");
-
+        if (ReferenceEquals(left, right)) return true;  
+        if (left is null || right is null) return false; 
         return left.ZeroCount == right.ZeroCount;
     }
 
@@ -344,22 +349,20 @@ public class Register : Element, IShiftable
 
 
 
-    public static bool operator <(Register left, Register right)
-    {
-        if (left == null || right == null)
-            throw new ArgumentNullException("Один из объектов равен null.");
 
-        return left.ZeroCount < right.ZeroCount;
-    }
 
-   
     public override bool Equals(object obj)
     {
         if (obj == null || GetType() != obj.GetType())
             return false;
 
-        var other = (RegisterChild)obj;
+        var other = (Register)obj;
         return ZeroCount == other.ZeroCount;
+    }
+
+    public override int GetHashCode()
+    {
+        return ZeroCount.GetHashCode();
     }
 
 
